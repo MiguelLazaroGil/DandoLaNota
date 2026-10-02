@@ -1,0 +1,11 @@
+﻿<Solution>
+  <Project Path="LoadSystem.csproj" />
+  <Project Path="DASamplesAssemblyDefinition.csproj" />
+  <Project Path="Utils.csproj" />
+  <Project Path="Unity.StarterAssets.Editor.csproj" />
+  <Project Path="Unity.StarterAssets.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="DelayedActionsAssembly.csproj" />
+  <Project Path="URPWizard.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>
