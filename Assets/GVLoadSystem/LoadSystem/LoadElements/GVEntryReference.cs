@@ -362,7 +362,7 @@ namespace GVLoadSystem.Core
             if (_cached != null)
             {
                 // Check if SO was reloaded (instanceID changes on reload)
-                int currentID = _groupValues != null ? _groupValues.GetInstanceID() : 0;
+                int currentID =/* _groupValues != null ? _groupValues.GetInstanceID() :*/ 0;
                 if (currentID != _lastGVInstanceID)
                 {
                     // SO was reloaded — invalidate cache
@@ -398,7 +398,7 @@ namespace GVLoadSystem.Core
                         _cached = entry;
                         _validated = true;
                         _lastCheckedKey = _entryKey;
-                        _lastGVInstanceID = _groupValues.GetInstanceID();
+                        _lastGVInstanceID = 0;// _groupValues.GetInstanceID();
                         return;
                     }
 

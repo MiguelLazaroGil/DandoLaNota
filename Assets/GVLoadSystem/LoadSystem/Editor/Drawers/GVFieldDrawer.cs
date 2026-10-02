@@ -84,7 +84,7 @@ namespace GVLoadSystem.GVEditor
 
         // ── Cache ─────────────────────────────────────────────────────────
         static string Key(SerializedProperty p)
-            => p.serializedObject.targetObject.GetInstanceID() + "_" + p.propertyPath;
+            => /*p.serializedObject.targetObject.GetInstanceID() +*/ "_" + p.propertyPath;
 
         ReorderableList GetList(SerializedProperty property)
         {

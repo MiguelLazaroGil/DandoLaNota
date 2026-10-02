@@ -135,7 +135,7 @@ namespace GVLoadSystem.GVEditor
         // ── Sync from scene ───────────────────────────────────────────────
         void SyncFromScene()
         {
-            var existing = FindObjectsByType<UIGVElement>(FindObjectsSortMode.None);
+           /* var existing = FindObjectsByType<UIGVElement>(FindObjectsSortMode.None);
             var keys = new HashSet<int>(existing.Select(e => e.gameObject.GetInstanceID()));
 
             // Remove rows whose GO no longer exists
@@ -166,7 +166,7 @@ namespace GVLoadSystem.GVEditor
                 .ToList();
 
             BuildList();
-            Repaint();
+            Repaint();*/
         }
 
         // ── List builder ──────────────────────────────────────────────────
