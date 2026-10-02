@@ -1,0 +1,17 @@
+{
+    "name": "UtilsEditorAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cadb1034564b51449ad7233a7c7e6193",
+        "GUID:2bb2e886ab4ae3d43b22ef8b145b5572"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

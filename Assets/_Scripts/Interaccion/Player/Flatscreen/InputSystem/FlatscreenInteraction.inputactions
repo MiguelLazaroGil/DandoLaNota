@@ -1,0 +1,86 @@
+{
+    "version": 1,
+    "name": "FlatscreenInteraction",
+    "maps": [
+        {
+            "name": "main",
+            "id": "ea520e94-647e-4040-bd41-e1ccce9f3766",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "7994f10c-057a-49d1-a235-a38fa529c26c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "a947e9f7-4e70-4dcd-8edc-b121cd632b69",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f19cc70f-8c0c-42d3-8f8a-2f7e90adc1ba",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ce96367-b847-4d76-aaf5-eef1a6ae2d3d",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "escape",
+            "id": "292aebb9-0492-412f-aa52-ee3b066ccaec",
+            "actions": [
+                {
+                    "name": "escape",
+                    "type": "Button",
+                    "id": "e2662ed9-cbfa-404e-9b41-708c046a4f6f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f62890f-c385-443a-b350-69d96956fb30",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

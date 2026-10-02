@@ -1,0 +1,16 @@
+{
+    "name": "UtilsInGameAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e5b1b0bba4c05294f9d69220362b94f6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
