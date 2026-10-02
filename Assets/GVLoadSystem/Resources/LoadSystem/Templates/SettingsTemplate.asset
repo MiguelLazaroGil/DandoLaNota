@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f5c27aaa37a314ea638ee27a8d0294, type: 3}
   m_Name: SettingsTemplate
   m_EditorClassIdentifier: 
-  groupValuesReference: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e,
-    type: 2}
+  groupValuesReference: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
   defaultFields:
   - fieldName: Settings
     entries:

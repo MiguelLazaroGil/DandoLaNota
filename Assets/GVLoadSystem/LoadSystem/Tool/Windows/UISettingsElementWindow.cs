@@ -135,12 +135,12 @@ namespace GVLoadSystem.GVEditor
         // ── Sync from scene ───────────────────────────────────────────────
         void SyncFromScene()
         {
-            var existing = FindObjectsByType<UIGVElement>(FindObjectsSortMode.None);
-            var keys = new HashSet<int>(existing.Select(e => e.gameObject.GetInstanceID()));
+            var existing = FindObjectsByType<UIGVElement>();
+            var keys = new HashSet<EntityId>(existing.Select(e => e.gameObject.GetEntityId()));
 
             // Remove rows whose GO no longer exists
             _rows.RemoveAll(r => r.IsInstantiated &&
-                                 !keys.Contains(r.sceneGO.GetInstanceID()));
+                                 !keys.Contains(r.sceneGO.GetEntityId()));
 
             // Add rows for elements found in scene but not tracked
             foreach (var elem in existing)

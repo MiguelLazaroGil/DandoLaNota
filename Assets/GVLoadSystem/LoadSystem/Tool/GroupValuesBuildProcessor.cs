@@ -59,6 +59,7 @@ namespace GVLoadSystem
 #endif
         }
         [MenuItem("Tools/LoadSystem/Export Clean Package", priority = 500)]
+        [System.Obsolete]
         static void ExportCleanPackage()
         {
             var settings = GroupValuesProjectSettings.instance;
@@ -136,6 +137,7 @@ namespace GVLoadSystem
                 $"Fix them before building.");
         }
 
+        [System.Obsolete]
         static List<(string msg, Object ctx)> CollectUISettingsErrors()
         {
             var errors = new List<(string, Object)>();

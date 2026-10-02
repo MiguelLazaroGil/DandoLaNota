@@ -30,7 +30,7 @@ namespace GVLoadSystem.Core
         [SerializeField] string _fieldName = "";
         [SerializeField] string _entryKey = "";
         [SerializeField] string _path = "";
-        [NonSerialized] int _lastGVInstanceID;
+        [NonSerialized] EntityId _lastGVInstanceID;
 
         // ── Cache ─────────────────────────────────────────────────────────
         [NonSerialized] GVEntry _cached;
@@ -362,7 +362,7 @@ namespace GVLoadSystem.Core
             if (_cached != null)
             {
                 // Check if SO was reloaded (instanceID changes on reload)
-                int currentID = _groupValues != null ? _groupValues.GetInstanceID() : 0;
+                EntityId currentID = _groupValues != null ? _groupValues.GetEntityId() : EntityId.None;
                 if (currentID != _lastGVInstanceID)
                 {
                     // SO was reloaded — invalidate cache
@@ -398,7 +398,7 @@ namespace GVLoadSystem.Core
                         _cached = entry;
                         _validated = true;
                         _lastCheckedKey = _entryKey;
-                        _lastGVInstanceID = _groupValues.GetInstanceID();
+                        _lastGVInstanceID = _groupValues.GetEntityId();
                         return;
                     }
 
