@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 214f92290451bd1418145f499b1f9efe
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Utils/Editor/UIColors.colors
+  uploadId: 930474

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f86f4fb76b649e84fab79af18f4cccb7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Resources/LoadSystem/Templates/TestingT.asset
+  uploadId: 930474

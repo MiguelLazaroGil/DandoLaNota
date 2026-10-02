@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 66b34bc17b1ddce45acaedf70e44bb49
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Utils/CustomLabel.cs
+  uploadId: 930474

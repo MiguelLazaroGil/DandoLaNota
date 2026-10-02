@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e398fcad4b3df1345b6ef1f63a7666ea
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/SettingsAppliers/ISettingsContainer.cs
+  uploadId: 930474

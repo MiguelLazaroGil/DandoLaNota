@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 38e2a0e7bc13e1c4086f6ea5a2354af5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/Samples/CodeSamples/DATagsSample.cs
+  uploadId: 942128

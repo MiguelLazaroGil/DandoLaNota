@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c3663d05afcc31a419ad8f29df30e794
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Prefabs/UIPrefabs/Slider.prefab
+  uploadId: 930474

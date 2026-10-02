@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d80cc3633740a3c418ecfe816e3c0192
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/LoadElements/GroupValuesWrapper.cs
+  uploadId: 930474

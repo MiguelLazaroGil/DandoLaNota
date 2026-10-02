@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ab7cbe76856a2984cbf69f37e9fdd15d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Prefabs/UIPrefabs/Dropdown.prefab
+  uploadId: 930474

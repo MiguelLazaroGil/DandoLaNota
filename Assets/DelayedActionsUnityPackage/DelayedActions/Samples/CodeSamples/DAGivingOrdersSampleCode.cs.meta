@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 33cf6c80023e0dd48a11ca8cc312cad7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/Samples/CodeSamples/DAGivingOrdersSampleCode.cs
+  uploadId: 942128

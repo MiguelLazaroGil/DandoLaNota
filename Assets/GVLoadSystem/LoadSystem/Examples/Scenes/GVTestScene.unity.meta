@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: efb1c4989bd9e1a47acff6f53aed8054
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Examples/Scenes/GVTestScene.unity
+  uploadId: 930474

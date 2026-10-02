@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b068ded494eb69a4cae87f9878a9c5a9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Utils/Editor/ExposedScriptableObjectAttributeDrawer.cs
+  uploadId: 930474

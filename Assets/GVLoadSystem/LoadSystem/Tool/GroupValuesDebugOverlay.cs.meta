@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 20f76e20d5a635c4c9ef78aa5e2f7fb8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Tool/GroupValuesDebugOverlay.cs
+  uploadId: 930474

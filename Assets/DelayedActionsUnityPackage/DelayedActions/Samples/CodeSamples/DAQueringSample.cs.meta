@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 5bf2c67c213b1844d9a881dee9acd9a6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/Samples/CodeSamples/DAQueringSample.cs
+  uploadId: 942128

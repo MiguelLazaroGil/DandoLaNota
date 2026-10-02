@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fbb81b894665b42a48be1cedf8e846, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  fields:
+  - fieldName: Settings
+    entries:
+    - name: SoundSettings
+      type: 11
+      customTypeName: SoundSettings
+      value:
+        rid: 5255470191615934789
+    - name: ViewportSettings
+      type: 11
+      customTypeName: ViewPortSettings
+      value:
+        rid: 5255470191615934790
+    - name: Jugador
+      type: 11
+      customTypeName: PlayerData
+      value:
+        rid: 5255470191615934791
+  version:
+    major: 1
+    minor: 0
+    patch: 0
+    label: 
+  references:
+    version: 2
+    RefIds:
+    - rid: 5255470191615934789
+      type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
+      data:
+        value: 
+    - rid: 5255470191615934790
+      type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
+      data:
+        value: 
+    - rid: 5255470191615934791
+      type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
+      data:
+        value: 

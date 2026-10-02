@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8a7730f043b5eba498a4247b58fa585c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/Samples/CodeSamples/DAAbortsSampleCode.cs
+  uploadId: 942128

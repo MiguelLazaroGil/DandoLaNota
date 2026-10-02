@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 698c9bdcd4955cb49afc78eed9fe9477
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Editor/Windows/TypePickerWindow.cs
+  uploadId: 930474

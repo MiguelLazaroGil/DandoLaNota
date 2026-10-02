@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 243dbbb3f73780545a2ad8063e7ade4e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Prefabs/UIPrefabs/Toggle.prefab
+  uploadId: 930474

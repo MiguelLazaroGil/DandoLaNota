@@ -1,0 +1,22 @@
+Copyright (c) 2026 Siren Blade Studios. All rights reserved.
+
+This asset ("GVLoadSystem") is licensed under the Unity Asset Store End User
+License Agreement ("Asset Store EULA"), available at:
+
+    https://unity.com/legal/as-terms
+
+By purchasing, downloading, or using this asset you agree to be bound by the
+terms of that agreement.
+
+Summary of key terms (the full EULA governs in all cases):
+
+  - You may use this asset in an unlimited number of personal and commercial
+    Unity projects.
+  - You may NOT redistribute, resell, sublicense, or share the source files of
+    this asset outside of a compiled/built application.
+  - You may NOT make the source files available to third parties through any
+    means (public repositories, package registries, forums, etc.).
+  - Modifications for your own project use are permitted; modified versions may
+    not be redistributed as a standalone asset.
+
+For licensing inquiries contact: sirenbladestudios@gmail.com

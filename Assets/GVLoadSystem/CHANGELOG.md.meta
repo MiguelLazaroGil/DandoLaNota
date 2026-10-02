@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fc6d98d0d3155fe4daab36b0aabfdd04
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/CHANGELOG.md
+  uploadId: 930474

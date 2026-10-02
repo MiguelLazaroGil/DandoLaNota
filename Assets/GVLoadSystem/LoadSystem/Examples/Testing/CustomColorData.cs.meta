@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a83c410ffe0beb8458e299ec765c1d7c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Examples/Testing/CustomColorData.cs
+  uploadId: 930474

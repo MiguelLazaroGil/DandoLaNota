@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 487d62205ab6a1943a0c8cf05fe58b62
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/LoadElements/SimpleGroupValues.cs
+  uploadId: 930474

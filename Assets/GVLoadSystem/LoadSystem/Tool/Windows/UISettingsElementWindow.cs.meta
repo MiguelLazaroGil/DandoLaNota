@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fa5f353d4f5321a4c911e719a2c3de29
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Tool/Windows/UISettingsElementWindow.cs
+  uploadId: 930474

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8f9cda6b02ea4d34eba6e7fc0bd7bb47
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LICENSE.txt
+  uploadId: 930474

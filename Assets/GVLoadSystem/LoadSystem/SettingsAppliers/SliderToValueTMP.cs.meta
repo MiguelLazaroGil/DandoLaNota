@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 01f7d338080d5d94586491de2442eed9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/SettingsAppliers/SliderToValueTMP.cs
+  uploadId: 930474

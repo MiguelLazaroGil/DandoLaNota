@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f049826c1cea3424a9a77ea5e23edf39
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Editor/Style/GVColorAttribute.cs
+  uploadId: 930474

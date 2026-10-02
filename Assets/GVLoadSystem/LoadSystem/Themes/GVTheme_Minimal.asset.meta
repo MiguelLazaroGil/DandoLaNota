@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 043d1f0c76be3834f9c77c13ba4f71fd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Themes/GVTheme_Minimal.asset
+  uploadId: 930474

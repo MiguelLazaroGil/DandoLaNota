@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 05cda944ba8bf244aaadcf6cee695a89
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Utils/Attributes/ExposedScriptableObjectAttribute.cs
+  uploadId: 930474

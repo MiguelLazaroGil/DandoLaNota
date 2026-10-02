@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 00d1842fbb52e9e4185f9e89c3c0c612
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Editor/Windows/CustomDataPickerWindow.cs
+  uploadId: 930474

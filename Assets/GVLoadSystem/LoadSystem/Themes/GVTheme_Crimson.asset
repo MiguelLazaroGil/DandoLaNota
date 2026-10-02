@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc8ccfbeec9dea4cbea1db76d35fc95, type: 3}
+  m_Name: GVTheme_Crimson
+  m_EditorClassIdentifier: 
+  backgroundDeep: {r: 0.14, g: 0.08, b: 0.1, a: 1}
+  backgroundPanel: {r: 0.12, g: 0.07, b: 0.09, a: 1}
+  backgroundCode: {r: 0.09, g: 0.05, b: 0.07, a: 1}
+  backgroundRow0: {r: 0.13, g: 0.08, b: 0.1, a: 1}
+  backgroundRow1: {r: 0.16, g: 0.1, b: 0.12, a: 1}
+  accent: {r: 0.85, g: 0.25, b: 0.35, a: 1}
+  selected: {r: 0.55, g: 0.15, b: 0.22, a: 1}
+  separator: {r: 0.3, g: 0.18, b: 0.22, a: 1}
+  textPrimary: {r: 1, g: 0.88, b: 0.9, a: 1}
+  textSecondary: {r: 0.88, g: 0.75, b: 0.78, a: 1}
+  textDim: {r: 0.65, g: 0.52, b: 0.55, a: 1}
+  textCode: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  valid: {r: 0.2, g: 0.75, b: 0.35, a: 1}
+  invalid: {r: 0.8, g: 0.25, b: 0.15, a: 1}
+  warning: {r: 0.9, g: 0.6, b: 0.1, a: 1}
+  dirty: {r: 0.9, g: 0.6, b: 0.1, a: 1}
+  typeBool: {r: 0.95, g: 0.4, b: 0.4, a: 1}
+  typeInt: {r: 0.4, g: 0.75, b: 0.95, a: 1}
+  typeFloat: {r: 0.4, g: 0.95, b: 0.65, a: 1}
+  typeDouble: {r: 0.35, g: 0.85, b: 0.55, a: 1}
+  typeString: {r: 0.95, g: 0.75, b: 0.3, a: 1}
+  typeVector: {r: 0.75, g: 0.5, b: 0.95, a: 1}
+  typeChar: {r: 0.95, g: 0.6, b: 0.8, a: 1}
+  typeByte: {r: 0.6, g: 0.8, b: 0.95, a: 1}
+  typeShort: {r: 0.5, g: 0.7, b: 0.9, a: 1}
+  typeLong: {r: 0.45, g: 0.65, b: 0.85, a: 1}
+  typeCustom: {r: 0.95, g: 0.65, b: 0.25, a: 1}
+  buttonPrimary: {r: 0.75, g: 0.2, b: 0.28, a: 1}
+  buttonSuccess: {r: 0.65, g: 0.18, b: 0.25, a: 1}
+  buttonDanger: {r: 0.55, g: 0.15, b: 0.15, a: 1}
+  buttonWarning: {r: 0.65, g: 0.45, b: 0.12, a: 1}
+  buttonNeutral: {r: 0.22, g: 0.28, b: 0.42, a: 1}
+  fontSizeTitle: 13
+  fontSizeBody: 12
+  fontSizeSmall: 11
+  fontSizeCode: 11
+  fontSizeMini: 9
+  rowHeight: 22
+  headerHeight: 28
+  padding: 8
+  indentStep: 16

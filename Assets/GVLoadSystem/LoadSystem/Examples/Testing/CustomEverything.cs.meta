@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 011224a43da0d30469bb5d6f8c0345f8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Examples/Testing/CustomEverything.cs
+  uploadId: 930474

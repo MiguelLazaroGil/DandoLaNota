@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d67cf370199fc434f9a764888bf8b4cb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Resources/LoadSystem/Templates/SettingsTemplate.asset
+  uploadId: 930474

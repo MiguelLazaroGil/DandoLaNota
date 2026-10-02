@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a55e3ab239e2a9d4b8d570e5d96001d0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Tool/GroupValuesRegistry.cs
+  uploadId: 930474

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 59aabf7cc58ef57429734cf947b8f69c
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/Samples/SampleSceneDelayedActions.unity
+  uploadId: 942128

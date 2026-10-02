@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5b6b3c2988d7a8f4c88e5514a16ddb49
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Editor/Drawers/PickGameObjectComponentAttribute.cs
+  uploadId: 930474

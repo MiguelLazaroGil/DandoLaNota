@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 036d34d026c2e38458baa23982aecf8d
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/Utils/Utils.asmdef
+  uploadId: 930474

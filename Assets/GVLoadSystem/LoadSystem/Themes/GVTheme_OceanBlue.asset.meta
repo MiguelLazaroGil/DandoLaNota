@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cd51825dc74a7794f98a28843bb0c45a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Themes/GVTheme_OceanBlue.asset
+  uploadId: 930474

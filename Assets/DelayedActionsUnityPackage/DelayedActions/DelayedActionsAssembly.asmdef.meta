@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e5b1b0bba4c05294f9d69220362b94f6
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 364042
+  packageName: Delayed Actions
+  packageVersion: 1.0
+  assetPath: Assets/DelayedActionsUnityPackage/DelayedActions/DelayedActionsAssembly.asmdef
+  uploadId: 942128

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1e52f01cc3abf8244b84ffac92955890
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Editor/Style/GVEditorStyles.cs
+  uploadId: 930474

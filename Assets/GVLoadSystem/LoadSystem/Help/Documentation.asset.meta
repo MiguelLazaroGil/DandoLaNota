@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e81c3a12aab10c74bab77dfa4be5729e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Help/Documentation.asset
+  uploadId: 930474

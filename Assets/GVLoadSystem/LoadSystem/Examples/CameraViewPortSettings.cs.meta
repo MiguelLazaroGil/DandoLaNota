@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d91c39cedf5a4564fa1b2bb2fbe19202
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Examples/CameraViewPortSettings.cs
+  uploadId: 930474

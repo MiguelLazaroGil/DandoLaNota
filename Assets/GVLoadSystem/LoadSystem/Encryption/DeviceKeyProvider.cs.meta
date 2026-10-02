@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 382d737c18ac55b4ebed1adeb651ce6d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371056
+  packageName: Group Values Load System
+  packageVersion: 1.2.1
+  assetPath: Assets/GVLoadSystem/LoadSystem/Encryption/DeviceKeyProvider.cs
+  uploadId: 930474
