@@ -1,0 +1,261 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dbbfdf51361cf4791ae3751c5041b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneProjectSettings
+  baseScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  additionalGraphRoots: []
+  sceneGraph:
+  - scene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    - {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    - {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    - {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    - {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+  - scene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
+    incomingScenes: []
+  - scene: {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
+    outgoingScenes: []
+    incomingScenes:
+    - {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+  sceneGraphEdges:
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionJugar[1]/Horizontal[1]/Tutorial[0]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionJugar[1]/Horizontal[1]/Multijugador[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/Nivel 1[0]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/Nivel2 [1]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/ModoInifinito[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    targetScene: {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
+      gameObjectPath: 
+      componentType: MLG.SimpleSceneTool.CheckpointSystem.SceneSet
+      propertyPath: Scene-set entry
+      referenceCount: 1
+  assetLinks:
+  - rootScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+    gameObjectPath: 'MainMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 0}
+    sourceAsset: {fileID: 11400000, guid: 679e56f1729464042bb9c447b64a3bca, type: 2}
+    targetAsset: {fileID: 11400000, guid: 4dcb3f7ff0adf984884516b4c826a32b, type: 2}
+    gameObjectPath: 
+    componentType: MLG.SimpleSceneTool.CheckpointSystem.SceneSetDatabase
+    propertyPath: 'sceneSets.Array.data[0]'
+    referenceCount: 1
+  - rootScene: {fileID: 0}
+    sourceAsset: {fileID: 11400000, guid: 679e56f1729464042bb9c447b64a3bca, type: 2}
+    targetAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
+    gameObjectPath: 
+    componentType: MLG.SimpleSceneTool.CheckpointSystem.SceneSetDatabase
+    propertyPath: 'sceneSets.Array.data[1]'
+    referenceCount: 1
+  - rootScene: {fileID: 0}
+    sourceAsset: {fileID: 11400000, guid: 679e56f1729464042bb9c447b64a3bca, type: 2}
+    targetAsset: {fileID: 11400000, guid: 4dcb3f7ff0adf984884516b4c826a32b, type: 2}
+    gameObjectPath: 
+    componentType: MLG.SimpleSceneTool.CheckpointSystem.SceneSetDatabase
+    propertyPath: 'sceneSets.Array.data[3]'
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    sourceAsset: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[2]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    targetAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
+    gameObjectPath: 'Testing[3]'
+    componentType: MLG.SimpleSceneTool.CheckpointSystem.ChangeSceneSet
+    propertyPath: sceneSet
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    targetAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
+    gameObjectPath: 'GameObject[5]'
+    componentType: MLG.SimpleSceneTool.CheckpointSystem.ChangeSceneSet
+    propertyPath: sceneSet
+    referenceCount: 1
+  externalReferences:
+  - sourceAsset: {fileID: 11400000, guid: 4dcb3f7ff0adf984884516b4c826a32b, type: 2}
+    targetScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+    propertyPath: Scene-set entry
+    referenceCount: 1
+  - sourceAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
+    targetScene: {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
+    propertyPath: Scene-set entry
+    referenceCount: 1
