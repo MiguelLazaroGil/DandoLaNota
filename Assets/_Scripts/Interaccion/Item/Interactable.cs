@@ -19,7 +19,12 @@ public class Interactable : MonoBehaviour
     /// <param name="code">Normally a casted Enum</param>
     public virtual void Interact()
     {
-        
+        BatutaController batuta = Object.FindAnyObjectByType<BatutaController>();
+        if (batuta != null)
+        {
+            batuta.DesactivarModoDirector();
+        }
+
         onInteractEvents?.Invoke();
         if (destroyOnInteract) GameObject.Destroy(gameObject);
 
