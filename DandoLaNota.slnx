@@ -1,10 +1,14 @@
 ﻿<Solution>
   <Project Path="LoadSystem.csproj" />
   <Project Path="DASamplesAssemblyDefinition.csproj" />
+  <Project Path="TestingAssembly.csproj" />
   <Project Path="Utils.csproj" />
-  <Project Path="Unity.StarterAssets.Editor.csproj" />
-  <Project Path="Unity.StarterAssets.csproj" />
+  <Project Path="SceneUtilsAssembly.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Unity.StarterAssets.Editor.csproj" />
+  <Project Path="UtilsEditorAssembly.csproj" />
+  <Project Path="Unity.StarterAssets.csproj" />
+  <Project Path="UtilsInGameAssembly.csproj" />
   <Project Path="DelayedActionsAssembly.csproj" />
   <Project Path="URPWizard.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />

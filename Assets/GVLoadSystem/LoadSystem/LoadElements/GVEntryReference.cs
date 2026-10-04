@@ -223,14 +223,14 @@ namespace GVLoadSystem.Core
             if (CustomGVDataRegistry.Types.TryGetValue(typeName, out var t)) return t;
 
             // 2. Fallback — scan all loaded assemblies by type name
-            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (var asm in UnityEngine.Assemblies.CurrentAssemblies.GetLoadedAssemblies())
             {
                 var found = asm.GetType(typeName);
                 if (found != null) return found;
             }
 
             // 3. Try simple name match (class name without namespace)
-            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (var asm in UnityEngine.Assemblies.CurrentAssemblies.GetLoadedAssemblies())
             {
                 try
                 {
