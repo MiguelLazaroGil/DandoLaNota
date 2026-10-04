@@ -965,139 +965,89 @@ MonoBehaviour:
     - rid: 5255470237683810306
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: In addition to these buttons, LoaderMono provides more functionality
-          to make loading and saving more automatic if that is what you are looking
-          for.
+        value: In addition to these buttons, LoaderMono provides more functionality to make loading and saving more automatic if that is what you are looking for.
     - rid: 5255470237683810315
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '
 
-          The bool loadOnAwake loads the GV on awake. The execution
-          order is set to -100. This way it is almost guaranteed that this process
-          is the first to be initialized. This value can be changed to be executed
-          soonner or later.'
+          The bool loadOnAwake loads the GV on awake. The execution order is set to -100. This way it is almost guaranteed that this process is the first to be initialized. This value can be changed to be executed soonner or later.'
     - rid: 5255470237683810316
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: The bool saveOnDisable saves the GV in the json file when being disabled.
-          Depending on the context it is very useful.
+        value: The bool saveOnDisable saves the GV in the json file when being disabled. Depending on the context it is very useful.
     - rid: 5255470237683810317
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: The bool saveOnQuit saves the GV when OnApplicationQuit. This makes
-          all data to be saved before closing the application. Very useful if yo
-          skip to save data manually.
+        value: The bool saveOnQuit saves the GV when OnApplicationQuit. This makes all data to be saved before closing the application. Very useful if yo skip to save data manually.
     - rid: 5255470237683810318
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This a very basic enum where you decide if data should be loaded /
-          saved syncronously or asyncronously. It is set to be SYNC at default, althought
-          ASYNC is strongly recommended to avoid blocking the main thread. If none
-          of the above booleans is checked, this enum does not appear.
+        value: This a very basic enum where you decide if data should be loaded / saved syncronously or asyncronously. It is set to be SYNC at default, althought ASYNC is strongly recommended to avoid blocking the main thread. If none of the above booleans is checked, this enum does not appear.
     - rid: 7221127993205981360
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Welcome to the load system tool. A tool which will allow you to save
-          data without using PlayerPrefs. It's flexible and can store a lot of serialized
-          types.
+        value: Welcome to the load system tool. A tool which will allow you to save data without using PlayerPrefs. It's flexible and can store a lot of serialized types.
     - rid: 7221127993205981361
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Basically every type. The tool can store in a defined generic<a="Structure">
-          structure</a> all primitives. <ui="BadgeInt"/><ui="BadgeBool"/><ui="BadgeFloat"/><ui="BadgeString"/>
+        value: 'Basically every type. The tool can store in a defined generic<a="Structure"> structure</a> all primitives. <ui="BadgeInt"/><ui="BadgeBool"/><ui="BadgeFloat"/><ui="BadgeString"/>
 
-          And
-          more!'
+          And more!'
     - rid: 7221127993205981362
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "For everything! Your game data can be stored in group values. Your
-          settings data can be stored too. It allows you to store all your game related
-          data. \nIn fact this documentation is stored in GroupValues! You can even
-          use this window as a read only window to see your data!\nHave fun!"
+        value: "For everything! Your game data can be stored in group values. Your settings data can be stored too. It allows you to store all your game related data. \nIn fact this documentation is stored in GroupValues! You can even use this window as a read only window to see your data!\nHave fun!"
     - rid: 7221127993205981363
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This tool requires a medium to advanced knowledge about Unity and
-          C#. It is recommended to read this documentation to understand the purpose
-          and how this tool functions. It is advised that this tool can get a bit
-          complicated in some aspects. However do not despair! If you know the workings
-          of PlayerPrefs you can use<a="SimpleGroupValues"> SimpleGroupValues</a>.
-          This class works the same as PlayerPrefs with more supported types!
+        value: This tool requires a medium to advanced knowledge about Unity and C#. It is recommended to read this documentation to understand the purpose and how this tool functions. It is advised that this tool can get a bit complicated in some aspects. However do not despair! If you know the workings of PlayerPrefs you can use<a="SimpleGroupValues"> SimpleGroupValues</a>. This class works the same as PlayerPrefs with more supported types!
     - rid: 7221127993205981364
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <a="">Group Values</a> is the core of this tool. It is the basic element
-          that allows data storage. It acts as an interface to provide structure
-          and easy manipulation of data. In fact you can manually set values or add
-          information going to the SO through the inspector (but that is not the
-          smartest way to do it,see Group Values Editor).
+        value: <a="">Group Values</a> is the core of this tool. It is the basic element that allows data storage. It acts as an interface to provide structure and easy manipulation of data. In fact you can manually set values or add information going to the SO through the inspector (but that is not the smartest way to do it,see Group Values Editor).
     - rid: 7221127993205981365
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Group values has a lot of different uses and cases. Most of all it
-          is a scriptable object in which you can store almost any type of value.
-          In scripts you can set and get different values that you can store later
-          as persistent data.
+        value: Group values has a lot of different uses and cases. Most of all it is a scriptable object in which you can store almost any type of value. In scripts you can set and get different values that you can store later as persistent data.
     - rid: 7221127993205981366
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Although GroupValues is a flexible SO in which you can store anything
-          this SO comes in a defined structure. The smallest element is called entry,
-          in which you can store a value. All entries are defined within a field.
-          All fields are confined in the GroupValue. That way you can store values
-          in a certain area inside the SO.\n<code>\nGroupValues\n|\n|------->Field\n\t|\n\t|------->Entry(value)\n</code>\nExample:\n<code>\nSettings\n|\n|------->SoundSettings\n\t|\n\t|------->Mute(bool)\n\t|------->MasterVolume(float)\n</code>"
+        value: "Although GroupValues is a flexible SO in which you can store anything this SO comes in a defined structure. The smallest element is called entry, in which you can store a value. All entries are defined within a field. All fields are confined in the GroupValue. That way you can store values in a certain area inside the SO.\n<code>\nGroupValues\n|\n|------->Field\n\t|\n\t|------->Entry(value)\n</code>\nExample:\n<code>\nSettings\n|\n|------->SoundSettings\n\t|\n\t|------->Mute(bool)\n\t|------->MasterVolume(float)\n</code>"
     - rid: 7221127993205981367
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If you want to create new Grop Values it is as simple as right-clicking
-          on your project folder (in your Resources folder preferably) and then going
-          to Create->LoadSystem->Group Values. A new instance of GV will be created.
+        value: If you want to create new Grop Values it is as simple as right-clicking on your project folder (in your Resources folder preferably) and then going to Create->LoadSystem->Group Values. A new instance of GV will be created.
     - rid: 7221127993205981368
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It is really simple. Just click on the bottom '+' button. A new field
-          will be created.
+        value: It is really simple. Just click on the bottom '+' button. A new field will be created.
     - rid: 7221127993205981369
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Inside a field go click the bottom '+' button. A pop up will appear
-          to make you choose a type for that entry value. After you selected one
-          you can edit the value and change the entry name. \n\n<a=\"\">IMPORTANT
-          NOTE</a>: entry names must be different."
+        value: "Inside a field go click the bottom '+' button. A pop up will appear to make you choose a type for that entry value. After you selected one you can edit the value and change the entry name. \n\n<a=\"\">IMPORTANT NOTE</a>: entry names must be different."
     - rid: 7221127993205981370
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'When you want to get a certain type of value you will ask for the
-          name of value that has the same type. So for example, if you want an int
-          value with name "speed" to your variable topSpeed the correct way to write
-          it is:
+        value: 'When you want to get a certain type of value you will ask for the name of value that has the same type. So for example, if you want an int value with name "speed" to your variable topSpeed the correct way to write it is:
 
           <code>
 
           GroupValues myValues;
 
-          int
-          speed = myValues.GetValue<int>("speed");</code>
+          int speed = myValues.GetValue<int>("speed");</code>
 
 '
     - rid: 7221127993205981371
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If the key does not exist it will throw an error. This is important
-          to know because <a=""> it can crash the build</a>. It will also throw an
-          error if an invalid cast is provided. To prevent crashes it is recommended
-          reading about <a="GVEntryReference">GVEntryReference</a> .
+        value: If the key does not exist it will throw an error. This is important to know because <a=""> it can crash the build</a>. It will also throw an error if an invalid cast is provided. To prevent crashes it is recommended reading about <a="GVEntryReference">GVEntryReference</a> .
     - rid: 7221127993205981372
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'In the same way you can get a value out of the class you can store
-          it as well in the scriptable object. Following the same example if you
-          want it to asign a value and then store it the correct way to do it is:
+        value: 'In the same way you can get a value out of the class you can store it as well in the scriptable object. Following the same example if you want it to asign a value and then store it the correct way to do it is:
 
-          GroupValues
-          myValues;<code>
+          GroupValues myValues;<code>
 
           int speed = 2;
 
@@ -1105,41 +1055,25 @@ MonoBehaviour:
     - rid: 7221127993205981373
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If the key does not exist it will throw an error. This is important
-          to know because<a=""> it can crash the build</a>. It will also throw an
-          error if an invalid cast is provided. To prevent crashes it is recommended
-          reading about <a="GVEntryReference">GVEntryReference</a> .
+        value: If the key does not exist it will throw an error. This is important to know because<a=""> it can crash the build</a>. It will also throw an error if an invalid cast is provided. To prevent crashes it is recommended reading about <a="GVEntryReference">GVEntryReference</a> .
     - rid: 7221127993205981374
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "You can dynamically add entries to any Group Values. It is not recommended
-          but you can do it if you want. It needs a GVEntry and a field name. Example:\n<code>\nGroupValues
-          gv;\nstring valueName=\"DynamicBool\";\n\nGVEntry entry = new GVEntry()\n       
-          {\n\n            name = valueName,\n            type = VALUE_TYPE.BOOL,\n           
-          customTypeName = \"\",\n            value = new BoolGVValue()\n       
-          };\n        entry.value.SetValue(false);\n\n\ngv.TryAddEntry(\"TestingValues\",entry);</code>\nOr
-          if you want to add a <a=\"Custom Data\">Custom class</a>:\n<code>\nGroupValues
-          gv;\nstring valueName=\"DynamicBool\";\n\nGVEntry entry = new GVEntry()\n       
-          {\n\n            name = valueName,\n            type = VALUE_TYPE.CUSTOM,\n           
-          customTypeName = \"PlayerData\",\n            value = new StringGVValue()\n       
-          };\n        \n        \ngv.TryAddEntry(\"TestingValues\",entry);</code>\n"
+        value: "You can dynamically add entries to any Group Values. It is not recommended but you can do it if you want. It needs a GVEntry and a field name. Example:\n<code>\nGroupValues gv;\nstring valueName=\"DynamicBool\";\n\nGVEntry entry = new GVEntry()\n        {\n\n            name = valueName,\n            type = VALUE_TYPE.BOOL,\n            customTypeName = \"\",\n            value = new BoolGVValue()\n        };\n        entry.value.SetValue(false);\n\n\ngv.TryAddEntry(\"TestingValues\",entry);</code>\nOr if you want to add a <a=\"Custom Data\">Custom class</a>:\n<code>\nGroupValues gv;\nstring valueName=\"DynamicBool\";\n\nGVEntry entry = new GVEntry()\n        {\n\n            name = valueName,\n            type = VALUE_TYPE.CUSTOM,\n            customTypeName = \"PlayerData\",\n            value = new StringGVValue()\n        };\n        \n        \ngv.TryAddEntry(\"TestingValues\",entry);</code>\n"
     - rid: 7221127993205981375
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If the entry already exists it will log a warning. PLEASE use in <a="">value</a>
-          supported GV types. If not used properly unity can get confused with serialization.
+        value: If the entry already exists it will log a warning. PLEASE use in <a="">value</a> supported GV types. If not used properly unity can get confused with serialization.
     - rid: 7221127993205981376
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'The same way you can create entries dynamically you can remove them.
-          Example:
+        value: 'The same way you can create entries dynamically you can remove them. Example:
 
           <code>
 
           GroupValues gv;
 
-          string
-          valueName="DynamicBool";
+          string valueName="DynamicBool";
 
 
           gv.TryRemoveEntry(valueName);
@@ -1152,63 +1086,46 @@ MonoBehaviour:
     - rid: 7221127993205981378
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If you want to add any other type than the ones shown in the pop up
-          entry you can add custom data. For more information read<a="Custom Data">
-          Custom</a>.
+        value: If you want to add any other type than the ones shown in the pop up entry you can add custom data. For more information read<a="Custom Data"> Custom</a>.
     - rid: 7221127993205981379
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It is very important for the user to know that this methods store
-          the values inside the SO(Scriptable Object) but it does not mean persistance
-          in your data stored. For more information read <a="Loaders">Loaders</a>.
+        value: It is very important for the user to know that this methods store the values inside the SO(Scriptable Object) but it does not mean persistance in your data stored. For more information read <a="Loaders">Loaders</a>.
     - rid: 7221127993205981380
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Underneath Group Values there is a Dictionary that caches all entries
-          making all data accesing O(1). This means that Get and Set are really fast
-          (almost instantly). You can use bench marking to test it yourself.
+        value: Underneath Group Values there is a Dictionary that caches all entries making all data accesing O(1). This means that Get and Set are really fast (almost instantly). You can use bench marking to test it yourself.
     - rid: 7221127993205981381
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Do you want to prevent build crashes? Are you terrified of using a
-          string key that you may later change and forget it was being referenced
-          by a script and suddenly everything is on fire? Do not worry, <a="">GVEntryReference</a>
-          solves that problem.
+        value: Do you want to prevent build crashes? Are you terrified of using a string key that you may later change and forget it was being referenced by a script and suddenly everything is on fire? Do not worry, <a="">GVEntryReference</a> solves that problem.
     - rid: 7221127993205981382
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Very simple, you need a class that needs an access to a certain type
-          of value with a certain key. Declare GVEntryReference in your script. Then
-          in the inspector go to<a=""> GVEntry->SelectGroupValues->SelectField->SelectEntry</a>.
-          Now you have complete access to that entry. No more key using.
+        value: Very simple, you need a class that needs an access to a certain type of value with a certain key. Declare GVEntryReference in your script. Then in the inspector go to<a=""> GVEntry->SelectGroupValues->SelectField->SelectEntry</a>. Now you have complete access to that entry. No more key using.
     - rid: 7221127993205981383
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Let''s say you want to get your value, it is as simple as writting
-          something like this:
+        value: 'Let''s say you want to get your value, it is as simple as writting something like this:
 
           <code>
 
-          [SerializeField] GVEntryReference
-          speedReference;
+          [SerializeField] GVEntryReference speedReference;
 
           [SerializeField] float speed;
 
 
-          speed
-          = speedReference.Get<float>();
+          speed = speedReference.Get<float>();
 
           </code>'
     - rid: 7221127993205981384
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Now let''s say you want to set your value, it is as simple as writting
-          something like this:
+        value: 'Now let''s say you want to set your value, it is as simple as writting something like this:
 
           <code>
 
-          [SerializeField] GVEntryReference
-          speedReference;
+          [SerializeField] GVEntryReference speedReference;
 
           [SerializeField] float speed;
 
@@ -1221,116 +1138,77 @@ MonoBehaviour:
     - rid: 7221127993205981385
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Whenever a key is changed, in the inspector a warning inside a box
-          will be triggered. Also a warning message may be triggered on the console.
-          Do not worry. It will auto-assign again. Although manual reassignment is
-          strongly recommended to avoid errors. Also, <a="Loaders">Loaders</a> are
-          still needed if you want persistance in your data. Setters only apply to
-          referenced GroupValues.
+        value: Whenever a key is changed, in the inspector a warning inside a box will be triggered. Also a warning message may be triggered on the console. Do not worry. It will auto-assign again. Although manual reassignment is strongly recommended to avoid errors. Also, <a="Loaders">Loaders</a> are still needed if you want persistance in your data. Setters only apply to referenced GroupValues.
     - rid: 7221127993205981386
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Templates are your Group Values readonly data. When building your
-          game the preprocessor will set your data to default values. But what if
-          you want certain entries with different defult values? Templates provide
-          a solution to fix a default value to a Group Values reference.
+        value: Templates are your Group Values readonly data. When building your game the preprocessor will set your data to default values. But what if you want certain entries with different defult values? Templates provide a solution to fix a default value to a Group Values reference.
     - rid: 7221127993205981387
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Templates need a Group Values reference. Once referenced it can access
-          to the entry values and set a default value for them. You do not need further
-          set up. The preprocessor will automatically set those values as default
-          to the referenced Group Values.
+        value: Templates need a Group Values reference. Once referenced it can access to the entry values and set a default value for them. You do not need further set up. The preprocessor will automatically set those values as default to the referenced Group Values.
     - rid: 7221127993205981388
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Really simple, go to Project Settings->Group Values <a="settings:Project/Load
-          System">(click here to see)</a>. Set Use Templates to true.
+        value: Really simple, go to Project Settings->Group Values <a="settings:Project/Load System">(click here to see)</a>. Set Use Templates to true.
     - rid: 7221127993205981389
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Let''s say you are creating a fresh template. First of all you need
-          to reference any type of Group Values. Then you have to call this method
-          to copy all fields and entries in order to create default values for your
-          referenced SO. For example:
+        value: 'Let''s say you are creating a fresh template. First of all you need to reference any type of Group Values. Then you have to call this method to copy all fields and entries in order to create default values for your referenced SO. For example:
 
           <code>
 
-          GroupValuesTemplate
-          gvT;
+          GroupValuesTemplate gvT;
 
           GroupValues gv;
 
 
           gvT.groupValuesReference=gv;
 
-          gvT.SetDefaultValuesInTemplate();//all
-          fields and entries are copied in the template
+          gvT.SetDefaultValuesInTemplate();//all fields and entries are copied in the template
 
           </code>
 
-          Although
-          you can do this, it is not recommended as you are being provided with a
-          window that makes your life easier.'
+          Although you can do this, it is not recommended as you are being provided with a window that makes your life easier.'
     - rid: 7221127993205981390
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Once you have set a copy inside your template you can then adjust
-          values and set them in your Group Values. This practice is not recommended
-          as the preprocessor does the job automatically.
+        value: 'Once you have set a copy inside your template you can then adjust values and set them in your Group Values. This practice is not recommended as the preprocessor does the job automatically.
 
           <code>
 
-          //do
-          as in previous example
+          //do as in previous example
 
           ...//change data
 
-          gvT.SetDefaultValuesInSO();//all
-          fields and entries are set in the referenced Group Values
+          gvT.SetDefaultValuesInSO();//all fields and entries are set in the referenced Group Values
 
 
           </code>
 
-          Again,
-          this is not recommended. It is not recommended to call this manually.'
+          Again, this is not recommended. It is not recommended to call this manually.'
     - rid: 7221127993205981391
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Inside a Template you should not change anything other than values.
-          This means that changing a field name or entry name can lead errors or
-          to unexpected behaviour in worst cases. The window editor will not let
-          you commit these actions. For more information, read <a="Group Values Editor">Group
-          Values Editor</a>.
+        value: Inside a Template you should not change anything other than values. This means that changing a field name or entry name can lead errors or to unexpected behaviour in worst cases. The window editor will not let you commit these actions. For more information, read <a="Group Values Editor">Group Values Editor</a>.
     - rid: 7221127993205981392
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <a="Group Values">Group Values </a>is just the tip of the iceberg.
-          All data stored in them is not persistent :( .This means that games can't
-          store data using only Group Values. However loaders are here to solve this
-          problem.
+        value: <a="Group Values">Group Values </a>is just the tip of the iceberg. All data stored in them is not persistent :( .This means that games can't store data using only Group Values. However loaders are here to solve this problem.
     - rid: 7221127993205981393
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: That is a really good question. When using the editor .json files
-          will be stored in the same path as the GV they reference. They will be
-          hidden though. When using the build they will be stored in the PersistentData
-          path (%USERPROFILE%\AppData\LocalLow).
+        value: That is a really good question. When using the editor .json files will be stored in the same path as the GV they reference. They will be hidden though. When using the build they will be stored in the PersistentData path (%USERPROFILE%\AppData\LocalLow).
     - rid: 7221127993205981394
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'This is a C# pure class. It takes a GroupValues reference and can
-          convert it to a json file. You can set your GroupValues name and a path
-          to start saving your data. However you can not use it as a component. '
+        value: 'This is a C# pure class. It takes a GroupValues reference and can convert it to a json file. You can set your GroupValues name and a path to start saving your data. However you can not use it as a component. '
     - rid: 7221127993205981395
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'ALoader contains the GV to save/load and acts as the controller of
-          a single GV.
+        value: 'ALoader contains the GV to save/load and acts as the controller of a single GV.
 
-          This way you only interact with a loader whenever
-          you want to manage data. This way the loader rules over GroupValues and
-          provides an abstraction layer.
+          This way you only interact with a loader whenever you want to manage data. This way the loader rules over GroupValues and provides an abstraction layer.
 
           <code>
 
@@ -1349,38 +1227,21 @@ MonoBehaviour:
     - rid: 7221127993205981396
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "ALoader has different attributes, but most importantly it contains
-          a reference to its assigned Group Values. Inside the class you will see:\n<code>\n//\n\n//path
-          inside Resources folder\n    [SerializeField] protected string soPath =
-          \"Assets/Resources/LoadSystem/SavedFiles/\";\n//Name without extension\n   
-          [SerializeField] protected string baseName = \"Game\";\n\n    protected
-          string soName => baseName + \".asset\";\n    protected string jsonFileName
-          => \".\" + baseName + \".json\";\n\n//Project settings\n    [ReadOnly][SerializeField]
-          EncryptionMethod encryptionMethod = EncryptionMethod.None;\n    [ReadOnly][SerializeField]
-          string password = \"\";\n\n//The core, GroupValues reference\n    [SerializeField]\n   
-          [ExposedScriptableObject]\n    protected GroupValues values;\n//\n</code>"
+        value: "ALoader has different attributes, but most importantly it contains a reference to its assigned Group Values. Inside the class you will see:\n<code>\n//\n\n//path inside Resources folder\n    [SerializeField] protected string soPath = \"Assets/Resources/LoadSystem/SavedFiles/\";\n//Name without extension\n    [SerializeField] protected string baseName = \"Game\";\n\n    protected string soName => baseName + \".asset\";\n    protected string jsonFileName => \".\" + baseName + \".json\";\n\n//Project settings\n    [ReadOnly][SerializeField] EncryptionMethod encryptionMethod = EncryptionMethod.None;\n    [ReadOnly][SerializeField] string password = \"\";\n\n//The core, GroupValues reference\n    [SerializeField]\n    [ExposedScriptableObject]\n    protected GroupValues values;\n//\n</code>"
     - rid: 7221127993205981397
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "ALoader provides the same methods as Group Values (as it provides
-          an additional abstraction layer to the SO). This means that it comes with
-          Get and Set and work the same.\n<code>\nALoader loader;//loader has speed
-          set as 5\nint speed = 0;//initialize variable\nspeed = loader.GetValue<int>(\"speed\");\nspeed
-          += 1; \nloader.SetValue<int>(\"speed\",speed);// value is set to 6\n\n\n</code>"
+        value: "ALoader provides the same methods as Group Values (as it provides an additional abstraction layer to the SO). This means that it comes with Get and Set and work the same.\n<code>\nALoader loader;//loader has speed set as 5\nint speed = 0;//initialize variable\nspeed = loader.GetValue<int>(\"speed\");\nspeed += 1; \nloader.SetValue<int>(\"speed\",speed);// value is set to 6\n\n\n</code>"
     - rid: 7221127993205981398
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'ALoader can load data from a json for you. If the path and name are
-          set up correctly it will read the data from the json file and pour it inside
-          the referenced GroupValues. It also returns GV loaded.
+        value: 'ALoader can load data from a json for you. If the path and name are set up correctly it will read the data from the json file and pour it inside the referenced GroupValues. It also returns GV loaded.
 
           <code>
 
-          //before
-          reading make sure at the start to have synchronized data
+          //before reading make sure at the start to have synchronized data
 
-          ALoader
-          loader;
+          ALoader loader;
 
           loader.LoadData();
 
@@ -1390,35 +1251,29 @@ MonoBehaviour:
 
           </code>
 
-          There
-          is also async loading:
+          There is also async loading:
 
           <code>
 
           ALoader loader;
 
-          await
-          loader.LoadValuesAsync();</code>'
+          await loader.LoadValuesAsync();</code>'
     - rid: 7221127993205981399
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Not assigning a name or name that does not exist in Resources folder
-          will not find GV and will log an error message every time you load data.
+        value: Not assigning a name or name that does not exist in Resources folder will not find GV and will log an error message every time you load data.
     - rid: 7221127993205981400
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'ALoader can save data to a json as well. If the set up is correct.
-          It will perform the action without any problems.
+        value: 'ALoader can save data to a json as well. If the set up is correct. It will perform the action without any problems.
 
           <code>
 
-          //you
-          can do this before closing app for example
+          //you can do this before closing app for example
 
           ALoader loader;
 
-          int
-          speed=5;
+          int speed=5;
 
           loader.SetValue<int>("speed",speed);
 
@@ -1426,108 +1281,71 @@ MonoBehaviour:
 
           </code>
 
-          There
-          is also async saving:
+          There is also async saving:
 
           <code>
 
           ALoader loader;
 
-          await
-          loader.SaveValuesAsync();</code>'
+          await loader.SaveValuesAsync();</code>'
     - rid: 7221127993205981401
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Not assigning a name or name that does not exist in Resources folder
-          will not find GV and will log an error message every time you save data.
+        value: Not assigning a name or name that does not exist in Resources folder will not find GV and will log an error message every time you save data.
     - rid: 7221127993205981402
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'LoaderMono comes as your useful component and implements ALoader
-          to save the day(and your data). This component allows you to set, get,
-          load and save data in runtime as ALoader does. Yippie!
+        value: 'LoaderMono comes as your useful component and implements ALoader to save the day(and your data). This component allows you to set, get, load and save data in runtime as ALoader does. Yippie!
 
-          It works
-          the same as ALoader as it provides an abstraction layer. As mentioned before
-          you can set your GroupValues name and click on AutoFindPathByName to have
-          everything set up. '
+          It works the same as ALoader as it provides an abstraction layer. As mentioned before you can set your GroupValues name and click on AutoFindPathByName to have everything set up. '
     - rid: 7221127993205981403
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<ui="Save"/><ui="Load"/><ui="Reset"/>
 
-          These buttons do
-          the as what their name implies. You can save and load through these buttons
-          or set to default without using <a="Group Values Editor">Group Values Editor</a>
-          or scripting.'
+          These buttons do the as what their name implies. You can save and load through these buttons or set to default without using <a="Group Values Editor">Group Values Editor</a> or scripting.'
     - rid: 7221127993205981404
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: 'It is up to the user to decide when to load or save data.
 
-          In
-          project settings you can set the encryption method and change the password(For
-          more information read  <a="Encryption">Encryption</a> or <a="Project Settings">Project
-          Settings</a>). '
+          In project settings you can set the encryption method and change the password(For more information read  <a="Encryption">Encryption</a> or <a="Project Settings">Project Settings</a>). '
     - rid: 7221127993205981405
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Loaders will throw exceptions when path is not correctly set, Group
-          Values is not found or when there is no Group Values to save. Be careful
-          and keep these things in mind.
+        value: Loaders will throw exceptions when path is not correctly set, Group Values is not found or when there is no Group Values to save. Be careful and keep these things in mind.
     - rid: 7221127993205981406
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Have you ever tried to move a file .asset to a different project?
-          Even though the SO script is in the project unity will remove all data.
-          This tool comes with a solution. You can export your GroupValues.asset
-          to a json, xml or csv file to then import such file in other projects.
-          This means you can recover Group Values and reuse them for future projects!
-          Yay!
+        value: Have you ever tried to move a file .asset to a different project? Even though the SO script is in the project unity will remove all data. This tool comes with a solution. You can export your GroupValues.asset to a json, xml or csv file to then import such file in other projects. This means you can recover Group Values and reuse them for future projects! Yay!
     - rid: 7221127993205981407
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: By selecting <a="">Tools->LoadSystem->Export Group Values</a><a="action:Tools/LoadSystem/Export
-          GroupValues"> (click here to see)</a> you will open the export window.
-          Select from the Assets folder any type of Group Values. Then select the
-          file format, click 'Export' and save it anywhere.
+        value: By selecting <a="">Tools->LoadSystem->Export Group Values</a><a="action:Tools/LoadSystem/Export GroupValues"> (click here to see)</a> you will open the export window. Select from the Assets folder any type of Group Values. Then select the file format, click 'Export' and save it anywhere.
     - rid: 7221127993205981408
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: By selecting <a="">Tools->LoadSystem->Import Group Values</a><a="action:Tools/LoadSystem/Import
-          GroupValues"> (click here to see)</a> you will open the import window.
-          Select your file with the same file extension. Then select somewhere inside
-          Assets to save the new Group Values (it is recommended to save it within
-          a Resources folder).
+        value: By selecting <a="">Tools->LoadSystem->Import Group Values</a><a="action:Tools/LoadSystem/Import GroupValues"> (click here to see)</a> you will open the import window. Select your file with the same file extension. Then select somewhere inside Assets to save the new Group Values (it is recommended to save it within a Resources folder).
     - rid: 7221127993205981409
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This tool allows an easier way to add more entries or more fields,
-          make changes to entry values and much more. It is the best way to manage
-          your Group Values as when applying changes it will also save it to json.
+        value: This tool allows an easier way to add more entries or more fields, make changes to entry values and much more. It is the best way to manage your Group Values as when applying changes it will also save it to json.
     - rid: 7221127993205981410
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Go to <a="">Tools->LoadSystem->Group Values Editor</a><a="action:Tools/LoadSystem/Group
-          Values Editor"> (click here to see)</a>. Do not be overwhelmed by the amount
-          of buttons we will cover them one by one.
+        value: Go to <a="">Tools->LoadSystem->Group Values Editor</a><a="action:Tools/LoadSystem/Group Values Editor"> (click here to see)</a>. Do not be overwhelmed by the amount of buttons we will cover them one by one.
     - rid: 7221127993205981411
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: The first thing you will see is that GroupValues is in color blue.
-          This is a toolbar that tells you that you are currently working on Group
-          Values. You can change it to edit Templates too.
+        value: The first thing you will see is that GroupValues is in color blue. This is a toolbar that tells you that you are currently working on Group Values. You can change it to edit Templates too.
     - rid: 7221127993205981412
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="OpenSettings"/>This button is pretty much self-explanatory. It
-          opens the LoadSystem<a="Project Settings"> project settings</a>.
+        value: <ui="OpenSettings"/>This button is pretty much self-explanatory. It opens the LoadSystem<a="Project Settings"> project settings</a>.
     - rid: 7221127993205981413
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="RefreshList"/>Just in case your freshly created GV(Group Values)
-          does not show on the list below you can click on this button to make sure
-          it appears.
+        value: <ui="RefreshList"/>Just in case your freshly created GV(Group Values) does not show on the list below you can click on this button to make sure it appears.
     - rid: 7221127993205981414
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -1535,8 +1353,7 @@ MonoBehaviour:
     - rid: 7221127993205981415
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: All buttons stated appear for both workplaces. However similarities
-          end here and each class posseses its own buttons with equivalent behaviour.
+        value: All buttons stated appear for both workplaces. However similarities end here and each class posseses its own buttons with equivalent behaviour.
     - rid: 7221127993205981416
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -1548,23 +1365,19 @@ MonoBehaviour:
     - rid: 7221127993205981418
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="ResetAll"/>Sets all GV values to default. It does not keep in
-          mind templates.
+        value: <ui="ResetAll"/>Sets all GV values to default. It does not keep in mind templates.
     - rid: 7221127993205981419
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It is a toggle that when activated allows you to see the values that
-          the template will set on your working GV.
+        value: It is a toggle that when activated allows you to see the values that the template will set on your working GV.
     - rid: 7221127993205981420
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="CopyFromCurrent"/>Copies the current working GV and lets you
-          save it wherever you want
+        value: <ui="CopyFromCurrent"/>Copies the current working GV and lets you save it wherever you want
     - rid: 7221127993205981421
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="Apply"/>This is the most important button as it saves all changes
-          and creates the json file.
+        value: <ui="Apply"/>This is the most important button as it saves all changes and creates the json file.
     - rid: 7221127993205981422
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -1588,13 +1401,11 @@ MonoBehaviour:
     - rid: 7221127993205981427
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="TemplateFromGV"/>This has the same behaviour as the method SetDefaultValuesInTemplate.
-          It copies the referenced GV fields and entries.
+        value: <ui="TemplateFromGV"/>This has the same behaviour as the method SetDefaultValuesInTemplate. It copies the referenced GV fields and entries.
     - rid: 7221127993205981428
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="TemplateToGV"/>This has the same behaviour as the method SetDefaultValuesInSO.
-          It sets the referenced GV fields and entries with the template values.
+        value: <ui="TemplateToGV"/>This has the same behaviour as the method SetDefaultValuesInSO. It sets the referenced GV fields and entries with the template values.
     - rid: 7221127993205981429
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -1602,46 +1413,33 @@ MonoBehaviour:
     - rid: 7221127993205981430
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="ResetToDefaults"/>Sets all current working Template values to
-          default.
+        value: <ui="ResetToDefaults"/>Sets all current working Template values to default.
     - rid: 7221127993205981431
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: <ui="BadgeCustom"/>Do you feel like you don't have enough types to
-          save? Do you want to make your own clean custom sets of data instead of
-          making a thousand entries? The type Custom has you covered. With it you
-          can set your class as custom and chuck it inside GV.
+        value: <ui="BadgeCustom"/>Do you feel like you don't have enough types to save? Do you want to make your own clean custom sets of data instead of making a thousand entries? The type Custom has you covered. With it you can set your class as custom and chuck it inside GV.
     - rid: 7221127993205981432
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "As everything in this tool it is really simple. You only have to
-          add the property [CustomSettingData(\"Name\")] on top of your class declaration.
-          For example:\n<code>\n\n//\n[CustomSettingData(\"PlayerStats\")][Serializable]
-          //Serializable property is a must\npublic class MyPlayerStats\n{\n\tpublic
-          Vector3 position;\n\tpublic int speed;\n}\n//\n</code>\nThen it will appear
-          in the registry. Create a new entry and set your custom data class."
+        value: "As everything in this tool it is really simple. You only have to add the property [CustomSettingData(\"Name\")] on top of your class declaration. For example:\n<code>\n\n//\n[CustomSettingData(\"PlayerStats\")][Serializable] //Serializable property is a must\npublic class MyPlayerStats\n{\n\tpublic Vector3 position;\n\tpublic int speed;\n}\n//\n</code>\nThen it will appear in the registry. Create a new entry and set your custom data class."
     - rid: 7221127993205981433
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'If you want to set or get a custom data class you need to save or
-          load the entire class. For example using <a="GVEntryReference">GVEntryReference</a>:
+        value: 'If you want to set or get a custom data class you need to save or load the entire class. For example using <a="GVEntryReference">GVEntryReference</a>:
 
           <code>
 
-          MyPlayerStats
-          stats;
+          MyPlayerStats stats;
 
           GVEntryReference statsReference;
 
 
-          //First
-          read loaded data
+          //First read loaded data
 
           stats=statsReference.Get<MyPlayerStats>();
 
 
-          //Then
-          change data and save
+          //Then change data and save
 
           stats.speed=5;
 
@@ -1651,162 +1449,73 @@ MonoBehaviour:
     - rid: 7221127993205981434
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "The answer is yes. You can add more than one custom data level. \nFor
-          example you can do this:\n<code>\n\n[CustomSettingData(\"GameStats\")][Serializable]\npublic
-          class MyGameStats\n{\n\tpublic int time;\n\tpublic string CurrentChapter;\n\n\tpublic
-          MyPlayerStats playerStats;//MyPlayerStats is custom too :)\n}\n\n</code>\n<a=\"\">HOWEVER,
-          DO NOT SELF REFERENCE OR HAVE TWO CLASES REFERENCE EACH OTHER</a>.\nIf
-          you want to avoid stack overflow I recommend thinking very well before
-          adding custom data inside custom data. User is advised."
+        value: "The answer is yes. You can add more than one custom data level. \nFor example you can do this:\n<code>\n\n[CustomSettingData(\"GameStats\")][Serializable]\npublic class MyGameStats\n{\n\tpublic int time;\n\tpublic string CurrentChapter;\n\n\tpublic MyPlayerStats playerStats;//MyPlayerStats is custom too :)\n}\n\n</code>\n<a=\"\">HOWEVER, DO NOT SELF REFERENCE OR HAVE TWO CLASES REFERENCE EACH OTHER</a>.\nIf you want to avoid stack overflow I recommend thinking very well before adding custom data inside custom data. User is advised."
     - rid: 7221127993205981435
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "It also allows Quaternion, Color, Vector4, Bounds and AnimationCurve
-          serialization among others. But most importantly it allows Lists made of
-          primitive types. It will not serialize anything with a gameObject reference.
-          \nVariables inside CustomData can also be referenced with GVEntryReference.
-          When referencing CustomData an extra path will appear to drill down the
-          class. "
+        value: "It also allows Quaternion, Color, Vector4, Bounds and AnimationCurve serialization among others. But most importantly it allows Lists made of primitive types. It will not serialize anything with a gameObject reference. \nVariables inside CustomData can also be referenced with GVEntryReference. When referencing CustomData an extra path will appear to drill down the class. "
     - rid: 7221127993205981436
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Do you want all the features that<a="Custom Data"> Custom Data</a>
-          provides but you do not want to add the tag [CustomSettingData("NameofCustom")]
-          to every single class you need to save? <a="">GroupValuesWrapper</a> has
-          you covered.
+        value: Do you want all the features that<a="Custom Data"> Custom Data</a> provides but you do not want to add the tag [CustomSettingData("NameofCustom")] to every single class you need to save? <a="">GroupValuesWrapper</a> has you covered.
     - rid: 7221127993205981437
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "It is quite simple actually. First of all your class must be serializable.
-          Add [Serializable] on top of your class if the tag does not exist. For
-          example:\n<code>//\n[Serializable] //Serializable property is a must\npublic
-          class MyPlayerStats\n{\n\tpublic Vector3 position;\n\tpublic int speed;\n}\n//</code>\nThen
-          declare wrapper variable in your mono component:\n<code>\nGroupValuesWrapper<MyPlayerStats>
-          stats;\n</code>\n<ui=\"BadgeCustom\"/>\nThis will add it to your Custom
-          collection as another valid Custom entry."
+        value: "It is quite simple actually. First of all your class must be serializable. Add [Serializable] on top of your class if the tag does not exist. For example:\n<code>//\n[Serializable] //Serializable property is a must\npublic class MyPlayerStats\n{\n\tpublic Vector3 position;\n\tpublic int speed;\n}\n//</code>\nThen declare wrapper variable in your mono component:\n<code>\nGroupValuesWrapper<MyPlayerStats> stats;\n</code>\n<ui=\"BadgeCustom\"/>\nThis will add it to your Custom collection as another valid Custom entry."
     - rid: 7221127993205981438
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "The wrapper in order to be initialized properly needs a GroupValues
-          reference and a key. \nYou can skip initialization as the wrapper has static
-          Load and Save. But it the wrapper has to be declared somewhere in order
-          to access a wrapped class. For example:\n<code>\npublic GroupValuesWrapper<MyPlayerStats>
-          stats;\npublic GroupValues gv;\npublic string key;\n\npublic void Start()\n{\n\tstats=new
-          GroupValuesWrapper<MyPlayerStats>(gv, key);\n}\n</code>"
+        value: "The wrapper in order to be initialized properly needs a GroupValues reference and a key. \nYou can skip initialization as the wrapper has static Load and Save. But it the wrapper has to be declared somewhere in order to access a wrapped class. For example:\n<code>\npublic GroupValuesWrapper<MyPlayerStats> stats;\npublic GroupValues gv;\npublic string key;\n\npublic void Start()\n{\n\tstats=new GroupValuesWrapper<MyPlayerStats>(gv, key);\n}\n</code>"
     - rid: 7221127993205981439
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "With a similiar behaviour as Custom Data the entire class is loaded
-          in the referenced entry. Here are two different ways to use the wrapper:\nInitializing
-          the wrapper.\n<code>\npublic MyPlayerStats playerStats;\npublic GroupValuesWrapper<MyPlayerStats>
-          stats;\npublic GVEntryReference reference;\n\npublic void OnEnable()\n{\n\tstats=new
-          GroupValuesWrapper<MyPlayerStats>(reference.GroupValues,\n\t\treference.EntryKey);\n}\n\n[Button(\"SetStats\")]\npublic
-          void SetStats()\n{\n\n\tplayerStats=stats.Load();\n\n\tplayerStats.speed=5;\n\n\tstats.Save(playerStats);\n}\n</code>\nUsing
-          static methods.\n<code>\npublic MyPlayerStats playerStats;\n//stats must
-          be declared on this script or elsewhere but a wrapper of MyPlayerStats
-          type must be somewhere.\npublic GroupValuesWrapper<MyPlayerStats> stats;\npublic
-          GVEntryReference reference;\n\n[Button(\"SetStats\")]\npublic void SetStats()\n{\n\n\tplayerStats=GroupValuesWrapper<MyPlayerStats>.Load(reference.GroupValues,\n\t\treference.EntryKey);\n\n\tplayerStats.speed=5;\n\n\tGroupValuesWrapper<MyPlayerStats>.Save(reference.GroupValues,\n\t\treference.EntryKey,playerStats);\n}\n</code>\nBoth
-          ways are valid. However, initializing the wrapper requires less writting
-          when trying to access data."
+        value: "With a similiar behaviour as Custom Data the entire class is loaded in the referenced entry. Here are two different ways to use the wrapper:\nInitializing the wrapper.\n<code>\npublic MyPlayerStats playerStats;\npublic GroupValuesWrapper<MyPlayerStats> stats;\npublic GVEntryReference reference;\n\npublic void OnEnable()\n{\n\tstats=new GroupValuesWrapper<MyPlayerStats>(reference.GroupValues,\n\t\treference.EntryKey);\n}\n\n[Button(\"SetStats\")]\npublic void SetStats()\n{\n\n\tplayerStats=stats.Load();\n\n\tplayerStats.speed=5;\n\n\tstats.Save(playerStats);\n}\n</code>\nUsing static methods.\n<code>\npublic MyPlayerStats playerStats;\n//stats must be declared on this script or elsewhere but a wrapper of MyPlayerStats type must be somewhere.\npublic GroupValuesWrapper<MyPlayerStats> stats;\npublic GVEntryReference reference;\n\n[Button(\"SetStats\")]\npublic void SetStats()\n{\n\n\tplayerStats=GroupValuesWrapper<MyPlayerStats>.Load(reference.GroupValues,\n\t\treference.EntryKey);\n\n\tplayerStats.speed=5;\n\n\tGroupValuesWrapper<MyPlayerStats>.Save(reference.GroupValues,\n\t\treference.EntryKey,playerStats);\n}\n</code>\nBoth ways are valid. However, initializing the wrapper requires less writting when trying to access data."
     - rid: 7221127993205981440
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "The entry for the wrapper will appear as an entry in Group Values
-          once declared on your script. Then create a new entry with Custom type
-          and select the wrapped class. \nAs wrappers are grouped with Custom Data
-          the variables within them can also be referenced with GVEntryReference."
+        value: "The entry for the wrapper will appear as an entry in Group Values once declared on your script. Then create a new entry with Custom type and select the wrapped class. \nAs wrappers are grouped with Custom Data the variables within them can also be referenced with GVEntryReference."
     - rid: 7221127993205981441
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If you are curious about how much size do all your GroupValues take
-          this tool gives you exactly that. It shows how much space does the .asset
-          and the .json take and sums it all. Go to <a=""> Tools/LoadSystem/GroupValues
-          Size Inspector</a><a="action:Tools/LoadSystem/GroupValues Size Inspector">
-          (click here to see)</a>.
+        value: If you are curious about how much size do all your GroupValues take this tool gives you exactly that. It shows how much space does the .asset and the .json take and sums it all. Go to <a=""> Tools/LoadSystem/GroupValues Size Inspector</a><a="action:Tools/LoadSystem/GroupValues Size Inspector"> (click here to see)</a>.
     - rid: 7221127993205981442
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Watching your values change in the inspector is really nice. However,
-          people that play your game want to see those values INSIDE the game, ****
-          the inspector. That is why UIGVElement is presented to you as a solution
-          to see the values changed in runtime in UI elements. It is a component
-          that you can add to a UI element(toggle, drawer,slider or input field)
-          and loads and saves an entry value perfectly.
+        value: Watching your values change in the inspector is really nice. However, people that play your game want to see those values INSIDE the game, **** the inspector. That is why UIGVElement is presented to you as a solution to see the values changed in runtime in UI elements. It is a component that you can add to a UI element(toggle, drawer,slider or input field) and loads and saves an entry value perfectly.
     - rid: 7221127993205981443
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "It is a bit tricky. However this script has been simplified to require
-          0 user modification.There are two methods in which ui can access Group
-          Values. \n\nThe first one is through a window provided by this tool and
-          the second one needs a little bit of programming. Both are valid and window
-          usage is encouraged to prevent errors.\n\nFor the second method in the
-          conceptual field you need a manager (a SettingsManager for example) that
-          registers itself in a service locator. Once registered, each ui element
-          can access the locator and ask for the registered instance. With that instance
-          it can Get and Set values as a normal GV."
+        value: "It is a bit tricky. However this script has been simplified to require 0 user modification.There are two methods in which ui can access Group Values. \n\nThe first one is through a window provided by this tool and the second one needs a little bit of programming. Both are valid and window usage is encouraged to prevent errors.\n\nFor the second method in the conceptual field you need a manager (a SettingsManager for example) that registers itself in a service locator. Once registered, each ui element can access the locator and ask for the registered instance. With that instance it can Get and Set values as a normal GV."
     - rid: 7221127993205981444
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Open the window in <a="">Tools->LoadSystem->UI Settings Elements</a><a="action:Tools/LoadSystem/UI
-          Settings Elements"> (click here to see)</a>.
+        value: 'Open the window in <a="">Tools->LoadSystem->UI Settings Elements</a><a="action:Tools/LoadSystem/UI Settings Elements"> (click here to see)</a>.
 
-          Yet another window,
-          I know. But this one is as simple as everything provided by this tool.'
+          Yet another window, I know. But this one is as simple as everything provided by this tool.'
     - rid: 7221127993205981445
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This window creates ui elements based on prefabs. Some examples are
-          provided to you. <a="">Click on Prefab Defaults</a>, it will show a list
-          of different types of UI elements and their prefab assigned. This way you
-          can assign your own prefabs or use the provided examples. Prefabs will
-          be saved for further use.
+        value: This window creates ui elements based on prefabs. Some examples are provided to you. <a="">Click on Prefab Defaults</a>, it will show a list of different types of UI elements and their prefab assigned. This way you can assign your own prefabs or use the provided examples. Prefabs will be saved for further use.
     - rid: 7221127993205981446
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Inside the window click on the '+' button.  Set a name to the element.
-          Pick an entry and the value and type of ui element will be auto-assigned.
-          The prefab will also be auto-assigned based on the type of UI. If you prefer
-          other type of prefab you can manually change it. Everything can be manually
-          changed. Assign a Canvas parent Then click on create.
+        value: Inside the window click on the '+' button.  Set a name to the element. Pick an entry and the value and type of ui element will be auto-assigned. The prefab will also be auto-assigned based on the type of UI. If you prefer other type of prefab you can manually change it. Everything can be manually changed. Assign a Canvas parent Then click on create.
     - rid: 7221127993205981447
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: I know that this method might sound bizarre so let me guide you with
-          the steps needed to link ui and GV.
+        value: I know that this method might sound bizarre so let me guide you with the steps needed to link ui and GV.
     - rid: 7221127993205981448
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Your settings manager must implement IValuesContainer and register
-          itself on the static class ValuesContainerLocator. For example, this set
-          up should do:\n<code>\npublic class SettingsManager : Monobehaviour, ISettingsContainer\n{\n\tpublic
-          GroupValues settingsValues;\n\t[SerializeField] List<UIGVElement> uiElements;\n\n\tpublic
-          void Awake()\n\t{\n\t\tsettingsValues=GetComponent<LoaderMono>().LoadValues();\n\t\tSettingsContainerLocator.Register(this);\n\t}\n\tpublic
-          void  SetValue<T>(string key,T value)\n    \t{\n        \t\tif (settingsValues
-          == null) return;\n        \t\t\tsettingsValues.SetValue<T>(key, value);\n       
-          \t\t\n    \t}\n    \tpublic T GetValue<T>(string key)\n    \t{\t\n\t\t\n\t\tif
-          (settingsValues == null) return null;\n        \t\t\treturn settingsValues.GetValue<T>(key);\n   
-          \t}\n}\n</code>"
+        value: "Your settings manager must implement IValuesContainer and register itself on the static class ValuesContainerLocator. For example, this set up should do:\n<code>\npublic class SettingsManager : Monobehaviour, ISettingsContainer\n{\n\tpublic GroupValues settingsValues;\n\t[SerializeField] List<UIGVElement> uiElements;\n\n\tpublic void Awake()\n\t{\n\t\tsettingsValues=GetComponent<LoaderMono>().LoadValues();\n\t\tSettingsContainerLocator.Register(this);\n\t}\n\tpublic void  SetValue<T>(string key,T value)\n    \t{\n        \t\tif (settingsValues == null) return;\n        \t\t\tsettingsValues.SetValue<T>(key, value);\n        \t\t\n    \t}\n    \tpublic T GetValue<T>(string key)\n    \t{\t\n\t\t\n\t\tif (settingsValues == null) return null;\n        \t\t\treturn settingsValues.GetValue<T>(key);\n    \t}\n}\n</code>"
     - rid: 7221127993205981449
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Then you can access your list of UIGVElement and asign values in
-          your manager. Following the same example you can set:\n<code>\npublic class
-          SettingsManager : Monobehaviour, ISettingsContainer\n{\n\tpublic GroupValues
-          settingsValues;\n\t[SerializeField] List<UIGVElement> uiElements;\n\t//...
-          interface functions\n\n\t//Initialize interface with stored values in settingValues\n\tpublic
-          void LoadData()\n\t{\n\t\tforeach(var uiEl in uiElements)\n\t\t{\n\t\t\tuiEl.LoadData();\n\t\t}\n\n\t}\n\n\t//When
-          closing ui save as json with loader\n\tOnCloseUI()\n\t{\n\t\tGetComponent<LoaderMono>().SaveData();\n\t}\n\n}\n</code>\nThis
-          gives you more control about when to load data(default Behabiour in UIGVElement
-          must be disabled). Following this pattern you can create your own interfaces
-          and locators for other type of cases.\n"
+        value: "Then you can access your list of UIGVElement and asign values in your manager. Following the same example you can set:\n<code>\npublic class SettingsManager : Monobehaviour, ISettingsContainer\n{\n\tpublic GroupValues settingsValues;\n\t[SerializeField] List<UIGVElement> uiElements;\n\t//... interface functions\n\n\t//Initialize interface with stored values in settingValues\n\tpublic void LoadData()\n\t{\n\t\tforeach(var uiEl in uiElements)\n\t\t{\n\t\t\tuiEl.LoadData();\n\t\t}\n\n\t}\n\n\t//When closing ui save as json with loader\n\tOnCloseUI()\n\t{\n\t\tGetComponent<LoaderMono>().SaveData();\n\t}\n\n}\n</code>\nThis gives you more control about when to load data(default Behabiour in UIGVElement must be disabled). Following this pattern you can create your own interfaces and locators for other type of cases.\n"
     - rid: 7221127993205981450
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'If your UIGVElement is created and left with default values it auto-detects
-          the ui element and on enable it will load the value. <a="">IMPORTANT NOTE</a>:
-          Key value must be the same as in GV. Also if no key value is provided it
-          will try with gameobject name. In addition, key value must be within the
-          entry name of the same GV referenced in the SettingsManager.'
+        value: 'If your UIGVElement is created and left with default values it auto-detects the ui element and on enable it will load the value. <a="">IMPORTANT NOTE</a>: Key value must be the same as in GV. Also if no key value is provided it will try with gameobject name. In addition, key value must be within the entry name of the same GV referenced in the SettingsManager.'
     - rid: 7221127993205981451
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -1814,58 +1523,41 @@ MonoBehaviour:
     - rid: 7221127993205981452
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "<code>[Button(\"Button\")]</code>\nInstead of using context menu
-          to test functions on the inspector button provides a button that can execute
-          parameterless methods.\nFor example:\n<code>\n[Button(\"Hello World\")]\npublic
-          void Log()//methods must be public in order to show the button\n{\n\tDebug.Log(\"Hello
-          World\");\n}\n</code>"
+        value: "<code>[Button(\"Button\")]</code>\nInstead of using context menu to test functions on the inspector button provides a button that can execute parameterless methods.\nFor example:\n<code>\n[Button(\"Hello World\")]\npublic void Log()//methods must be public in order to show the button\n{\n\tDebug.Log(\"Hello World\");\n}\n</code>"
     - rid: 7221127993205981453
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "<code>[ExposedScriptableObject]</code>\nAllows you to see all atributtes
-          from an Scr iptable Object inside a MonoBehaviour. It also allows writing
-          on it.\nFor example to show GroupValues ALoader uses:\n<code>\n[SerializeField]\n[ExposedScriptableObject]
-          \nprotected GroupValues values;\n</code>\n"
+        value: "<code>[ExposedScriptableObject]</code>\nAllows you to see all atributtes from an Scr iptable Object inside a MonoBehaviour. It also allows writing on it.\nFor example to show GroupValues ALoader uses:\n<code>\n[SerializeField]\n[ExposedScriptableObject] \nprotected GroupValues values;\n</code>\n"
     - rid: 7221127993205981454
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[UniqueReference]</code>
 
-          This is a special type
-          of tag. It constrains an object to only be referenced by a single class.
+          This is a special type of tag. It constrains an object to only be referenced by a single class.
 
-          For
-          example, this is used in Templates:
+          For example, this is used in Templates:
 
           <code>
 
           [UniqueReference]
 
-          public
-          GroupValues groupValuesReference;
+          public GroupValues groupValuesReference;
 
           </code>'
     - rid: 7221127993205981455
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "<code>[Showif(\"boolIstrue\")]</code>\nIt only shows a variable if
-          a condition is met. It also works for more than one condition. \n<code>[Showif(\"bool1Istrue\",\"bool2Istrue\")]</code>\nThe
-          more used case scenario I personally use is:\n<code>\n[Header(\"Debugging\")]\n[SerializeField]\ndebug=true;\n\n[SerializeField]\ndebugGame=true;\n\n[SerializeField]\ndebugScene=false;\n\n[SerializeField]\n[ShowIf(\"debug\",\"debugGame\")]//This
-          will appear on Inspector\n//debug and debugGame = true\n\ndebugGameSpeed=5;\n\n[SerializeField]\n[ShowIf(\"debug\",\"debugScene\")]//This
-          will not appear on Inspector \n//debug and debugScene = false\n\ndebugTickSceneSpeed=10;\n</code>"
+        value: "<code>[Showif(\"boolIstrue\")]</code>\nIt only shows a variable if a condition is met. It also works for more than one condition. \n<code>[Showif(\"bool1Istrue\",\"bool2Istrue\")]</code>\nThe more used case scenario I personally use is:\n<code>\n[Header(\"Debugging\")]\n[SerializeField]\ndebug=true;\n\n[SerializeField]\ndebugGame=true;\n\n[SerializeField]\ndebugScene=false;\n\n[SerializeField]\n[ShowIf(\"debug\",\"debugGame\")]//This will appear on Inspector\n//debug and debugGame = true\n\ndebugGameSpeed=5;\n\n[SerializeField]\n[ShowIf(\"debug\",\"debugScene\")]//This will not appear on Inspector \n//debug and debugScene = false\n\ndebugTickSceneSpeed=10;\n</code>"
     - rid: 7221127993205981456
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[ReadOnly]</code>
 
-          Makes a serialized field as a
-          read only value. You can not edit that value. For example, if you want
-          to see the value of a variable you can set it as this:
+          Makes a serialized field as a read only value. You can not edit that value. For example, if you want to see the value of a variable you can set it as this:
 
           <code>
 
-          [ReadOnly]
-          public float tickTimer=0;
+          [ReadOnly] public float tickTimer=0;
 
           </code>
 
@@ -1879,160 +1571,95 @@ MonoBehaviour:
 
           </code>
 
-          It
-          allows you to override a property name instead of using the one it has
-          assigned. Adding it without arguments hides the name completely.
+          It allows you to override a property name instead of using the one it has assigned. Adding it without arguments hides the name completely.
 
-          For
-          example:
+          For example:
 
           <code>
 
-          [SerializeField,CustomLabel("SPEED")]float
-          speed; //the inspector will show SPEED
+          [SerializeField,CustomLabel("SPEED")]float speed; //the inspector will show SPEED
 
-          [SerializeField,CustomLabel]float
-          maxSpeed;//the inspector will NOT show a name assigned to maxSpeed
+          [SerializeField,CustomLabel]float maxSpeed;//the inspector will NOT show a name assigned to maxSpeed
 
           </code>'
     - rid: 7221127993205981458
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Inside a <a="Custom Data">custom</a> class you can set special attributes
-          depending on what behaviour will have your values.
+        value: Inside a <a="Custom Data">custom</a> class you can set special attributes depending on what behaviour will have your values.
     - rid: 7221127993205981459
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[DontSave]</code>
 
-          If for whatever reason you do
-          not want a value to be saved because it is temporal you can mark it with
-          this attribute.
+          If for whatever reason you do not want a value to be saved because it is temporal you can mark it with this attribute.
 
           <code>[DontSave] float speedTimer=0;</code>'
     - rid: 7221127993205981460
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "<code>[GVReadOnly]</code>\nMakes a field read-only in both the inspector
-          and via GVEntryReference. The value is still serialized and loaded normally
-          \u2014 it is only protected from manual edits.\n<code>[GVReadOnly] public
-          string readonlyStr= \"This is read only\";</code>"
+        value: "<code>[GVReadOnly]</code>\nMakes a field read-only in both the inspector and via GVEntryReference. The value is still serialized and loaded normally \u2014 it is only protected from manual edits.\n<code>[GVReadOnly] public string readonlyStr= \"This is read only\";</code>"
     - rid: 7221127993205981461
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[GVMin(n)] [GVMax(n)]</code>
 
-          Adds a min or max restriction
-          to numeric values. It ONLY works on scalars.'
+          Adds a min or max restriction to numeric values. It ONLY works on scalars.'
     - rid: 7221127993205981462
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[GVRange(min,max)]</code>
 
-          Adds a range restriction
-          to numeric values. It ONLY works on scalars.'
+          Adds a range restriction to numeric values. It ONLY works on scalars.'
     - rid: 7221127993205981463
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "<code>[WriteOnce]</code>\nIt only writes a value one time, can be
-          useful for storing a once per app open value. It can be useful for storing
-          keys or in-game passwords randomly generated. Click on the R button to
-          reset and be able to write once more.\n<code>[WriteOnce] \nfloat puzzlepassword;\n</code>"
+        value: "<code>[WriteOnce]</code>\nIt only writes a value one time, can be useful for storing a once per app open value. It can be useful for storing keys or in-game passwords randomly generated. Click on the R button to reset and be able to write once more.\n<code>[WriteOnce] \nfloat puzzlepassword;\n</code>"
     - rid: 7221127993205981464
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[WriteN(n)]</code>
 
-          It can write a value n times,
-          if for whatever reason you need this it is provided. Click on the R button
-          to reset and be able to write once more.
+          It can write a value n times, if for whatever reason you need this it is provided. Click on the R button to reset and be able to write once more.
 
           <code>[WriteN(3)]
 
-          int
-          countDown;
+          int countDown;
 
-          public int __countDownWriteCount; // companion field
-          required to track write count
+          public int __countDownWriteCount; // companion field required to track write count
 
           </code>'
     - rid: 7221127993205981465
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: The interfaces provided by this tool are examples of how your scripts
-          can interact with Group Values.
+        value: The interfaces provided by this tool are examples of how your scripts can interact with Group Values.
     - rid: 7221127993205981466
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "This interface was first mentioned in <a=\"UIGVElement\"> UIGVElement</a>
-          and is the perfect example when using managers and GV. Inside of it you
-          can find:\n<code> public void SubscribeToSettingsChange(Action onChange);\npublic
-          T GetValue<T>(string key);\npublic void SetValue<T>(string key,T value);</code>\nAnd
-          bellow the interface an static class with similar name:\n<code>public static
-          class SettingsContainerLocator</code>\nTo make your manager work register
-          your interface on Awake.\n<code> SettingsContainerLocator.Register(this);//Manager</code>\nNow
-          classes that need your manager to find their respective values can find
-          it easily with:\n<code>SettingsContainerLocator.Get()//Smaller class</code>\nNow
-          when asking for a value the script does not need a GV reference and it
-          is decoupled.\n<code> float speed=SettingsContainerLocator.Get().GetValue<float>(\"speed\");//Smaller
-          class</code>\nYou can use this piece of code to set up a manager:\n<code>\npublic
-          class ManagerSettings : Monobehaviour, ISettingsContainer\n{\n\tpublic
-          GroupValues gv;\n\tpublic UnityEvent onSettingsChange;\n\n\tpublic void
-          Awake()\n\t{\n\t\tSettingsContainerLocator.Register(this);\n\t}\n\n\tpublic
-          void SubscribeToSettingsChange(Action onChange);\n\t{\n\t\tonSettingsChange.AddListener(onChange);\n\t}\n\n\tpublic
-          T GetValue<T>(string key)\n\t{\n\t\treturn gv.GetValue<T>(key);\n\t}\n\n\tpublic
-          void SetValue<T>(string key,T value)\n\t{\n\t\tgv.SetValue<T>(key,value);\n\t\tonSettingsChange.Invoke();\n\t\t//GV
-          has been changed, notify all observers\n\t}\n}\n</code>\nThis interface
-          gives guidance on what your code architecture can look like when using
-          GV. This way is clean and avoids referencing GV on every script."
+        value: "This interface was first mentioned in <a=\"UIGVElement\"> UIGVElement</a> and is the perfect example when using managers and GV. Inside of it you can find:\n<code> public void SubscribeToSettingsChange(Action onChange);\npublic T GetValue<T>(string key);\npublic void SetValue<T>(string key,T value);</code>\nAnd bellow the interface an static class with similar name:\n<code>public static class SettingsContainerLocator</code>\nTo make your manager work register your interface on Awake.\n<code> SettingsContainerLocator.Register(this);//Manager</code>\nNow classes that need your manager to find their respective values can find it easily with:\n<code>SettingsContainerLocator.Get()//Smaller class</code>\nNow when asking for a value the script does not need a GV reference and it is decoupled.\n<code> float speed=SettingsContainerLocator.Get().GetValue<float>(\"speed\");//Smaller class</code>\nYou can use this piece of code to set up a manager:\n<code>\npublic class ManagerSettings : Monobehaviour, ISettingsContainer\n{\n\tpublic GroupValues gv;\n\tpublic UnityEvent onSettingsChange;\n\n\tpublic void Awake()\n\t{\n\t\tSettingsContainerLocator.Register(this);\n\t}\n\n\tpublic void SubscribeToSettingsChange(Action onChange);\n\t{\n\t\tonSettingsChange.AddListener(onChange);\n\t}\n\n\tpublic T GetValue<T>(string key)\n\t{\n\t\treturn gv.GetValue<T>(key);\n\t}\n\n\tpublic void SetValue<T>(string key,T value)\n\t{\n\t\tgv.SetValue<T>(key,value);\n\t\tonSettingsChange.Invoke();\n\t\t//GV has been changed, notify all observers\n\t}\n}\n</code>\nThis interface gives guidance on what your code architecture can look like when using GV. This way is clean and avoids referencing GV on every script."
     - rid: 7221127993205981467
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "This interface can apply to all those scripts that need a certain
-          value from a GV.\nIt comes with:\n<code>public void SubscribeToValuesChange();\npublic
-          void OnValuesChange(); </code>\t\nInside of the first method you can subscribe
-          to UnityEvents that are triggered when a value is changed. On the second
-          one you decide what values are being read when values change. \nThis means
-          that ILoaderUser and ISettingsContainer can be used together.\nYou can
-          use this piece of code to use a manager with this type of interface:\n<code>\npublic
-          class LoadSpeed : ILoaderUser\n{\n\tISettingsContainer container;\n\tpublic
-          float speed;\n\n\tpublic void Init()\n\t{\n\t\tcontainer=SettingsContainerLocator.Get();\n\t\n\t\tif(container!=null)\n\t\t\tcontainer.SubscribeToSettingsChange(OnValuesChange);\n\t\t\t//Set
-          method for when UnityEvent is invoked\n\t}\n\n\tpublic void OnValuesChange()\n\t{\n\t\tspeed=container.GetValue<T>(\"speed\");\n\t}\n}\n</code>"
+        value: "This interface can apply to all those scripts that need a certain value from a GV.\nIt comes with:\n<code>public void SubscribeToValuesChange();\npublic void OnValuesChange(); </code>\t\nInside of the first method you can subscribe to UnityEvents that are triggered when a value is changed. On the second one you decide what values are being read when values change. \nThis means that ILoaderUser and ISettingsContainer can be used together.\nYou can use this piece of code to use a manager with this type of interface:\n<code>\npublic class LoadSpeed : ILoaderUser\n{\n\tISettingsContainer container;\n\tpublic float speed;\n\n\tpublic void Init()\n\t{\n\t\tcontainer=SettingsContainerLocator.Get();\n\t\n\t\tif(container!=null)\n\t\t\tcontainer.SubscribeToSettingsChange(OnValuesChange);\n\t\t\t//Set method for when UnityEvent is invoked\n\t}\n\n\tpublic void OnValuesChange()\n\t{\n\t\tspeed=container.GetValue<T>(\"speed\");\n\t}\n}\n</code>"
     - rid: 7221127993205981468
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: These are examples of how you can use GV and having some listenners
-          that react when values have changed.
+        value: These are examples of how you can use GV and having some listenners that react when values have changed.
     - rid: 7221127993205981469
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This script provides a full fledged example of what you can achieve
-          with GV and a good design in architecture. Go check it out in<a=""> LoadSystem/Examples</a>
+        value: This script provides a full fledged example of what you can achieve with GV and a good design in architecture. Go check it out in<a=""> LoadSystem/Examples</a>
     - rid: 7221127993205981470
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This script also provides a full fledged example. Go check it out
-          in<a=""> LoadSystem/Examples</a>
+        value: This script also provides a full fledged example. Go check it out in<a=""> LoadSystem/Examples</a>
     - rid: 7221127993205981471
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "As you can see, these scripts act as observers or listenners however
-          you want to call them. When being initialized they look for a container
-          instance. It is seen on:\n<code> SubscribeToValuesChange();</code>\nIf
-          a container is found, then it subscribes to its UnityEvent.\n<code>container
-          = SettingsContainerLocator.Get();\n\n        if (container != null)//if
-          there is a settingsContainer, subscribe OnValuesChange method\n           
-          container.SubscribeToSettingsChange(OnValuesChange);</code>\nThen, whenever
-          a UnityEvent is invoked these listenners will pick their own values and
-          apply changes.\nThis means that this tool gives more purpose than just
-          storing data.  It makes it easier to pick up values stored and avoids spaguetti
-          code."
+        value: "As you can see, these scripts act as observers or listenners however you want to call them. When being initialized they look for a container instance. It is seen on:\n<code> SubscribeToValuesChange();</code>\nIf a container is found, then it subscribes to its UnityEvent.\n<code>container = SettingsContainerLocator.Get();\n\n        if (container != null)//if there is a settingsContainer, subscribe OnValuesChange method\n            container.SubscribeToSettingsChange(OnValuesChange);</code>\nThen, whenever a UnityEvent is invoked these listenners will pick their own values and apply changes.\nThis means that this tool gives more purpose than just storing data.  It makes it easier to pick up values stored and avoids spaguetti code."
     - rid: 7221127993205981472
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This tool provides all in all a lot of functionality. But as a developer
-          you do not require all tools at all times. That is why you can go to <a="settings:Project/Load
-          System">Project Settings</a> and change a lot of behaviours.
+        value: This tool provides all in all a lot of functionality. But as a developer you do not require all tools at all times. That is why you can go to <a="settings:Project/Load System">Project Settings</a> and change a lot of behaviours.
     - rid: 7221127993205981473
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -2044,42 +1671,31 @@ MonoBehaviour:
     - rid: 7221127993205981475
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Creates a backup copy of json file. If original file is corrupted
-          or not found a new GV will be made by this backup and it will make a copy
-          of this backup as the new original file. Read more in <a="Backups"> Backups</a>.
+        value: Creates a backup copy of json file. If original file is corrupted or not found a new GV will be made by this backup and it will make a copy of this backup as the new original file. Read more in <a="Backups"> Backups</a>.
     - rid: 7221127993205981476
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Apply created <a="Group Values Template">templates</a> in project
-          over referenced Group Values.
+        value: Apply created <a="Group Values Template">templates</a> in project over referenced Group Values.
     - rid: 7221127993205981477
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Allows selection between three different methods of encryption. Aes
-          256_Hmac Sha 256 is the safest among the three. You can always have none
-          if you do not mind keeping your json files safe. This encryption methods
-          are global and all loaders are updated when changes are made.
+        value: Allows selection between three different methods of encryption. Aes 256_Hmac Sha 256 is the safest among the three. You can always have none if you do not mind keeping your json files safe. This encryption methods are global and all loaders are updated when changes are made.
     - rid: 7221127993205981478
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This password is what encrypts and deciphers json files if a method
-          other than none is used. Pressing <a=""> Generate New Salt</a> creates
-          a new password.
+        value: This password is what encrypts and deciphers json files if a method other than none is used. Pressing <a=""> Generate New Salt</a> creates a new password.
     - rid: 7221127993205981479
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Adds to scriptting symbols the symbol LOG_LOADSYSTEM to stop annoying
-          loggings from the tool. You can use it as well.
+        value: Adds to scriptting symbols the symbol LOG_LOADSYSTEM to stop annoying loggings from the tool. You can use it as well.
     - rid: 7221127993205981480
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If you did not notice there are buttons with ? that lead you to this
-          documentation. If you want to disable those buttons click on the toggle.
+        value: If you did not notice there are buttons with ? that lead you to this documentation. If you want to disable those buttons click on the toggle.
     - rid: 7221127993205981481
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It contains all data in reference to debugging Group Values. For more
-          information read about <a="Debugging"> Debugging</a>.
+        value: It contains all data in reference to debugging Group Values. For more information read about <a="Debugging"> Debugging</a>.
     - rid: 7221127993205981482
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -2087,9 +1703,7 @@ MonoBehaviour:
     - rid: 7221127993205981483
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Which key is pressed in order to make the window appear. <a=\"\">IMPORTANT
-          NOTE</A>: If using the new Input System keep in mind to use in Active Input
-          Handling  \u201CBoth\u201D. Otherwise the key will not work."
+        value: "Which key is pressed in order to make the window appear. <a=\"\">IMPORTANT NOTE</A>: If using the new Input System keep in mind to use in Active Input Handling  \u201CBoth\u201D. Otherwise the key will not work."
     - rid: 7221127993205981484
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -2097,100 +1711,63 @@ MonoBehaviour:
     - rid: 7221127993205981485
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Sets Time.timeScale to 0 when openning the window. Keep it in mind
-          when using it as it can mess with time if other script is also messing
-          with timeScale.
+        value: Sets Time.timeScale to 0 when openning the window. Keep it in mind when using it as it can mess with time if other script is also messing with timeScale.
     - rid: 7221127993205981486
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Not the most important aspect inside the tool but keeps windows pretty
-          and organized. \nThere are four default themes to choose from. Minimal
-          uses the same colors as unity. Although my favourite is OceanBlue.\nThere
-          are buttons to edit the current theme, create a new one or regenerate defaults
-          (if you have erased them, you monster). They come with a bunch of settings
-          that you can adjust if you want a deep level of customization. Also text
-          size is customizable. "
+        value: "Not the most important aspect inside the tool but keeps windows pretty and organized. \nThere are four default themes to choose from. Minimal uses the same colors as unity. Although my favourite is OceanBlue.\nThere are buttons to edit the current theme, create a new one or regenerate defaults (if you have erased them, you monster). They come with a bunch of settings that you can adjust if you want a deep level of customization. Also text size is customizable. "
     - rid: 7221127993205981487
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Are you afraid that your data is not safe by exposing all your GV
-          information? Are you afraid that your data can be modified by clients?
-          You are right ! This is why this tool ensures safety by providing different
-          types of encryption. '
+        value: 'Are you afraid that your data is not safe by exposing all your GV information? Are you afraid that your data can be modified by clients? You are right ! This is why this tool ensures safety by providing different types of encryption. '
     - rid: 7221127993205981488
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Really easy, go to Project Settings->Group Values <a="settings:Project/Load
-          System">(click here to see)</a>. Then select your preferred encryption
-          method. A key will be randomly generated.
+        value: Really easy, go to Project Settings->Group Values <a="settings:Project/Load System">(click here to see)</a>. Then select your preferred encryption method. A key will be randomly generated.
     - rid: 7221127993205981489
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: As it name suggests it is a more user friendly class to save all your
-          data. If you are already using Group Values or intend to use it I recommend
-          skipping this.
+        value: As it name suggests it is a more user friendly class to save all your data. If you are already using Group Values or intend to use it I recommend skipping this.
     - rid: 7221127993205981490
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It is really simple as it works exactly as PlayerPrefs. You do not
-          have to create a Scriptable Object nor do you have to create entries. If
-          you are not familiarized with it here are some examples.
+        value: It is really simple as it works exactly as PlayerPrefs. You do not have to create a Scriptable Object nor do you have to create entries. If you are not familiarized with it here are some examples.
     - rid: 7221127993205981491
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'You only need a key and a value. Do not fear generics! If you want
-          to set a value for example, speed you only have to write this line of code:
+        value: 'You only need a key and a value. Do not fear generics! If you want to set a value for example, speed you only have to write this line of code:
 
-          <code>float
-          speed=5;
+          <code>float speed=5;
 
           SimpleGroupValues.Set("speed",speed);
 
-          //SimpleGroupValues.Set<float>("speed",speed);
-          works as well
+          //SimpleGroupValues.Set<float>("speed",speed); works as well
 
           </code>'
     - rid: 7221127993205981492
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "For this, you only need a key. As simple as this:\n<code>float speed=SimpleGroupValues.Get(\"speed\");\n//SimpleGroupValues.Get<float>(\"speed\",speed);
-          \n"
+        value: "For this, you only need a key. As simple as this:\n<code>float speed=SimpleGroupValues.Get(\"speed\");\n//SimpleGroupValues.Get<float>(\"speed\",speed); \n"
     - rid: 7221127993205981493
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Yes, absolutely there is a way to watch all your saved data(Unlike
-          PlayerPrefs (\xAC_\xAC) ). Go to <a=\"\">Tools->LoadSystem->SimpleGroupValues
-          Viewer</a><a=\"action:Tools/LoadSystem/SimpleGroupValues Viewer\"> (click
-          here to see)</a>."
+        value: "Yes, absolutely there is a way to watch all your saved data(Unlike PlayerPrefs (\xAC_\xAC) ). Go to <a=\"\">Tools->LoadSystem->SimpleGroupValues Viewer</a><a=\"action:Tools/LoadSystem/SimpleGroupValues Viewer\"> (click here to see)</a>."
     - rid: 7221127993205981494
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: SimpleGroupValues provides a ready to go solution for storing data
-          in with way more types than PlayerPrefs and gives the user the option to
-          see their created data. However, it does not incorporate all the advantages
-          that GroupValues brings to the table. It can not use <a="Group Values Template">
-          Templates </a> and do not give the user the control in general that Group
-          Values gives. Group Values allows you to make a more structured data storage
-          and is way more better.
+        value: SimpleGroupValues provides a ready to go solution for storing data in with way more types than PlayerPrefs and gives the user the option to see their created data. However, it does not incorporate all the advantages that GroupValues brings to the table. It can not use <a="Group Values Template"> Templates </a> and do not give the user the control in general that Group Values gives. Group Values allows you to make a more structured data storage and is way more better.
     - rid: 7221127993205981495
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Keep in mind what entry key and what value you are requesting when
-          setting or getting a value. You CAN NOT get a value you HAVE NOT set.
+        value: Keep in mind what entry key and what value you are requesting when setting or getting a value. You CAN NOT get a value you HAVE NOT set.
     - rid: 7221127993205981496
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: This is a tool that you may require when working with bigger data
-          amounts. It can provide lists of entries of the same type. It can count
-          how many type entries there are, return a list of keys for a value type,
-          make sums, calculate average (if type is numeric).
+        value: This is a tool that you may require when working with bigger data amounts. It can provide lists of entries of the same type. It can count how many type entries there are, return a list of keys for a value type, make sums, calculate average (if type is numeric).
     - rid: 7221127993205981497
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Here is a list of all the methods that come with this static class.
-          \nThese can be used to calculate statistics about your stored data.\n\nMost
-          method take always as argument GroupValues. You can also pass the <a=\"\">field
-          name</a> if you only need to know the result from a certain field."
+        value: "Here is a list of all the methods that come with this static class. \nThese can be used to calculate statistics about your stored data.\n\nMost method take always as argument GroupValues. You can also pass the <a=\"\">field name</a> if you only need to know the result from a certain field."
     - rid: 7221127993205981498
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
@@ -2202,13 +1779,11 @@ MonoBehaviour:
       data:
         value: 'Counts all entries of type type. Returns an integer.Example:
 
-          <code>int
-          speedCount=GroupValuesUtility.CountAll<int>(gv);</code>'
+          <code>int speedCount=GroupValuesUtility.CountAll<int>(gv);</code>'
     - rid: 7221127993205981500
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Sums all numeric type data. Can sum vectors up to Vector3 (VectorsInt
-          excluded).Example:
+        value: 'Sums all numeric type data. Can sum vectors up to Vector3 (VectorsInt excluded).Example:
 
           <code>
 
@@ -2218,28 +1793,23 @@ MonoBehaviour:
       data:
         value: 'Gets the max numeric type data. Example:
 
-          <code>float MaxSpeed
-          = GroupValuesUtility.Max<float>(gv);'
+          <code>float MaxSpeed = GroupValuesUtility.Max<float>(gv);'
     - rid: 7221127993205981502
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: 'Gets the max numeric type data. Example:
 
-          <code>float MinSpeed
-          = GroupValuesUtility.Min<float>(gv);'
+          <code>float MinSpeed = GroupValuesUtility.Min<float>(gv);'
     - rid: 7221127993205981503
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Calculates the numeric type average. Can calculate average of vectors
-          up to Vector3 (VectorsInt excluded). Example:
+        value: 'Calculates the numeric type average. Can calculate average of vectors up to Vector3 (VectorsInt excluded). Example:
 
-          <code>Vector3
-          averagePoints=GroupValuesUtility.Average<Vector3>(gv);'
+          <code>Vector3 averagePoints=GroupValuesUtility.Average<Vector3>(gv);'
     - rid: 7221127993205981504
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Calculates the numeric type Variance. Can calculate variance of vectors
-          up to Vector3 (VectorsInt excluded). Example:
+        value: 'Calculates the numeric type Variance. Can calculate variance of vectors up to Vector3 (VectorsInt excluded). Example:
 
           <code>float speedVariance=GroupValuesUtility.Variance<float>(gv);'
     - rid: 7221127993205981505
@@ -2247,43 +1817,27 @@ MonoBehaviour:
       data:
         value: 'Returns the square root of Variance<T>. Example:
 
-          <code>float 
-          speedStd=GroupValuesUtility.StdDev<float>(gv);</code>'
+          <code>float  speedStd=GroupValuesUtility.StdDev<float>(gv);</code>'
     - rid: 7221127993205981506
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Calculates the percentages of numeric types.\nFor example if you
-          have three different entries of type int. Entry1=300, Entry2=70 and Entry3=20.
-          In total they sum 390. So for Entry1 its percentage is 300/390 * 100 and
-          so on.\nUse FormatPercentages to see full information. Example:\n<code>GroupValues
-          gv;\nvar typedist = GroupValuesUtility.CalculatePercentages(gv);\n\nif
-          (typedist.Count > 0)\n{\n            Debug.Log($\"Type dist     \u2192
-          {GroupValuesUtility.FormatPercentages(gv)}\");\n}</code>"
+        value: "Calculates the percentages of numeric types.\nFor example if you have three different entries of type int. Entry1=300, Entry2=70 and Entry3=20. In total they sum 390. So for Entry1 its percentage is 300/390 * 100 and so on.\nUse FormatPercentages to see full information. Example:\n<code>GroupValues gv;\nvar typedist = GroupValuesUtility.CalculatePercentages(gv);\n\nif (typedist.Count > 0)\n{\n            Debug.Log($\"Type dist     \u2192 {GroupValuesUtility.FormatPercentages(gv)}\");\n}</code>"
     - rid: 7221127993205981507
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Returns most used words in your string entries. Use FormatMostUsedWords
-          to see full information. Example:\n<code>  \nGroupValues gv;\nvar strings
-          = GroupValuesUtility.GetAll<string>(gv);\nif (strings.Count > 0)\n           
-          Debug.Log($\"Words   \u2192 {GroupValuesUtility.FormatMostUsedWords(gv,
-          topN: 5)}\");\n</code>"
+        value: "Returns most used words in your string entries. Use FormatMostUsedWords to see full information. Example:\n<code>  \nGroupValues gv;\nvar strings = GroupValuesUtility.GetAll<string>(gv);\nif (strings.Count > 0)\n            Debug.Log($\"Words   \u2192 {GroupValuesUtility.FormatMostUsedWords(gv, topN: 5)}\");\n</code>"
     - rid: 7221127993205981508
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Returns the percentages of all entry types used in your GroupValues.
-          Use FormatTypeDistribution to see full information. Example:\n<code>\nGroupValues
-          gv;\nvar typedist = GroupValuesUtility.TypeDistribution(gv);\n\nif (typedist.Count
-          > 0)\n{\n            Debug.Log($\"Type dist     \u2192 {GroupValuesUtility.FormatTypeDistribution(gv)}\");\n}</code>"
+        value: "Returns the percentages of all entry types used in your GroupValues. Use FormatTypeDistribution to see full information. Example:\n<code>\nGroupValues gv;\nvar typedist = GroupValuesUtility.TypeDistribution(gv);\n\nif (typedist.Count > 0)\n{\n            Debug.Log($\"Type dist     \u2192 {GroupValuesUtility.FormatTypeDistribution(gv)}\");\n}</code>"
     - rid: 7221127993205981509
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Returns the median of numeric types. Can calculate median of vectors
-          up to Vector3 (VectorsInt excluded). Example:
+        value: 'Returns the median of numeric types. Can calculate median of vectors up to Vector3 (VectorsInt excluded). Example:
 
           <code>
 
-          GroupValues
-          gv;
+          GroupValues gv;
 
           float medianSpeed=GroupValuesUtility.Median<float>(gv);
 
@@ -2294,14 +1848,11 @@ MonoBehaviour:
     - rid: 7221127993205981510
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'Returns a normalized list of values between 0 and 1 (as floats) based
-          on min and max value. Can calculate normalization of vectors up to Vector3
-          (VectorsInt excluded). Example:
+        value: 'Returns a normalized list of values between 0 and 1 (as floats) based on min and max value. Can calculate normalization of vectors up to Vector3 (VectorsInt excluded). Example:
 
           <code>
 
-          GroupValues
-          gv;
+          GroupValues gv;
 
           List<float> speedsNorm=GroupValuesUtility.Normalize<float>(gv);
 
@@ -2309,190 +1860,111 @@ MonoBehaviour:
     - rid: 7221127993205981511
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Are you having troubles because some value is being changed? Maybe
-          you want to set a certain value without using the inspector. Maybe you
-          are inside the build and don't want to show all data in the ui, but you
-          want to see certain values being changed. How about you check out the debugging
-          window.
+        value: Are you having troubles because some value is being changed? Maybe you want to set a certain value without using the inspector. Maybe you are inside the build and don't want to show all data in the ui, but you want to see certain values being changed. How about you check out the debugging window.
     - rid: 7221127993205981512
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: By enabling it in project settings and pressing a key (F1 by default)
-          a window will pop up. In there you can select any GroupValues you wish
-          to see or modify values.
+        value: By enabling it in project settings and pressing a key (F1 by default) a window will pop up. In there you can select any GroupValues you wish to see or modify values.
     - rid: 7221127993205981513
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: It is fairly simple, go to <a="">Project Settings->Group Values</a>
-          <a="settings:Project/Load System">(click here to see)</a>.You also need
-          to activate <a="">Development Build on Build Settings</a>. Go to Enable
-          Overlay and set it to true. You can set the key you prefer. Whether you
-          want to have values only be read. In addition you can freeze time when
-          the window is open.
+        value: It is fairly simple, go to <a="">Project Settings->Group Values</a> <a="settings:Project/Load System">(click here to see)</a>.You also need to activate <a="">Development Build on Build Settings</a>. Go to Enable Overlay and set it to true. You can set the key you prefer. Whether you want to have values only be read. In addition you can freeze time when the window is open.
     - rid: 7221127993205981514
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'What if you want a scalable system when adding or removing entries
-          while keeping user data untouched? Migrating correctly your GroupValues
-          can answer to that question. But first you need to know how it works. Keep
-          in mind that migration is only needed once you have created your first
-          build. '
+        value: 'What if you want a scalable system when adding or removing entries while keeping user data untouched? Migrating correctly your GroupValues can answer to that question. But first you need to know how it works. Keep in mind that migration is only needed once you have created your first build. '
     - rid: 7221127993205981515
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Inside <a="Group Values Editor">Group Values Editor</a><a="action:Tools/LoadSystem/Group
-          Values Editor"> (click here to see)</a> when adding or removing an entry
-          or field a suggested bump message will appear. Accept suggested change
-          or manually change it.
+        value: Inside <a="Group Values Editor">Group Values Editor</a><a="action:Tools/LoadSystem/Group Values Editor"> (click here to see)</a> when adding or removing an entry or field a suggested bump message will appear. Accept suggested change or manually change it.
     - rid: 7221127993205981516
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: User values stored in the build are preserved and new or deleted data
-          is synchronized.
+        value: User values stored in the build are preserved and new or deleted data is synchronized.
     - rid: 7221127993205981517
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: KEEP IN MIND to update (Template from GV) your <a="Group Values Template">templates</a>
-          as well as they can <a="">override</a> your changes.
+        value: KEEP IN MIND to update (Template from GV) your <a="Group Values Template">templates</a> as well as they can <a="">override</a> your changes.
     - rid: 7221127993205981518
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: The backup system protects player save data from corruption. When
-          enabled, every time data is saved a backup copy is written first, then
-          the main file is written. This means there is always a valid previous version
-          available.
+        value: The backup system protects player save data from corruption. When enabled, every time data is saved a backup copy is written first, then the main file is written. This means there is always a valid previous version available.
     - rid: 7221127993205981519
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: 'On load, the system tries the main file first. If it is corrupted
-          or missing, it falls back to the backup automatically and restores the
-          main file from it. If both are missing or corrupted, default values from
-          the SO are used and both files are recreated.
+        value: 'On load, the system tries the main file first. If it is corrupted or missing, it falls back to the backup automatically and restores the main file from it. If both are missing or corrupted, default values from the SO are used and both files are recreated.
 
           Save order:
 
           <code>
 
-          1.
-          Write backup (.backup.json)
+          1. Write backup (.backup.json)
 
           2. Write main (.json)
 
           </code>
 
-          This
-          means if the game crashes mid-save, the backup always holds the last valid
-          state.'
+          This means if the game crashes mid-save, the backup always holds the last valid state.'
     - rid: 7221127993205981520
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Go to <a="settings:Project/Load System">Project Settings -> Load System</a>
-          and enable Use Backups. All LoaderMono components in the project will be
-          updated automatically.
+        value: Go to <a="settings:Project/Load System">Project Settings -> Load System</a> and enable Use Backups. All LoaderMono components in the project will be updated automatically.
     - rid: 7221127993205981521
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Each GroupValues has a version number (major.minor.patch and an optional
-          label). This version is saved in the JSON file and compared against the
-          SO version at load time. If they differ, a <a="Migrations">migration</a>
-          is triggered automatically to merge player data with the new structure.
+        value: Each GroupValues has a version number (major.minor.patch and an optional label). This version is saved in the JSON file and compared against the SO version at load time. If they differ, a <a="Migrations">migration</a> is triggered automatically to merge player data with the new structure.
     - rid: 7221127993205981522
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: At the bottom of the <a="Group Values Editor">Group Values Editor</a>
-          window there is a version bar showing the current version of the selected
-          GroupValues. You can edit Major, Minor, Patch and Label directly from there.
-          Changes are applied when you click Apply.
+        value: At the bottom of the <a="Group Values Editor">Group Values Editor</a> window there is a version bar showing the current version of the selected GroupValues. You can edit Major, Minor, Patch and Label directly from there. Changes are applied when you click Apply.
     - rid: 7221127993205981523
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: When clicking Apply after making structural changes (adding or removing
-          entries or fields), the editor will suggest a version bump automatically.
-          You can accept the suggestion or keep the current version. It is strongly
-          recommended to accept it so that the migration system can detect the change
-          and update player saves correctly.
+        value: When clicking Apply after making structural changes (adding or removing entries or fields), the editor will suggest a version bump automatically. You can accept the suggestion or keep the current version. It is strongly recommended to accept it so that the migration system can detect the change and update player saves correctly.
     - rid: 7221128000120815616
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "The final encryption key is derived by combining two elements: a
-          project-wide password salt (set in Project Settings) and a device key unique
-          to each installation. The device key is a randomly generated file stored
-          in persistentDataPath the first time the game runs. From that point on
-          it is always reused, making the encryption unique per user and per project.\nThis
-          means two players with the same build cannot read each other's save files,
-          and a save file cannot be moved to another device.\n<a=\"\">IMPORTANT NOTE</a>:
-          on PC the device key persists across reinstalls as long as persistentDataPath
-          is not manually deleted. On mobile platforms, uninstalling the app deletes
-          persistentDataPath along with the device key \u2014 if the player reinstalls,
-          a new key is generated and any previously encrypted save files become unreadable."
+        value: "The final encryption key is derived by combining two elements: a project-wide password salt (set in Project Settings) and a device key unique to each installation. The device key is a randomly generated file stored in persistentDataPath the first time the game runs. From that point on it is always reused, making the encryption unique per user and per project.\nThis means two players with the same build cannot read each other's save files, and a save file cannot be moved to another device.\n<a=\"\">IMPORTANT NOTE</a>: on PC the device key persists across reinstalls as long as persistentDataPath is not manually deleted. On mobile platforms, uninstalling the app deletes persistentDataPath along with the device key \u2014 if the player reinstalls, a new key is generated and any previously encrypted save files become unreadable."
     - rid: 7221128000120815635
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[SaveAs("OtherName")]</code>
 
-          Works the same as CustomLabel
-          but for variables inside custom data.
+          Works the same as CustomLabel but for variables inside custom data.
 
-          <code>[SaveAs("SPEED")]float
-          speed;</code>'
+          <code>[SaveAs("SPEED")]float speed;</code>'
     - rid: 7221128000120815660
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: If you are eager to use this tool to it's fullest potential you can
-          jump right into and create your first Group Values in <a="Getting Started">Getting
-          Started</a>. What are you waiting for?
+        value: If you are eager to use this tool to it's fullest potential you can jump right into and create your first Group Values in <a="Getting Started">Getting Started</a>. What are you waiting for?
     - rid: 7221128000120815661
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Right click in your Resources folder and go to Create->LoadSystem->Group
-          Values. A new GroupValues asset will be created. Open <a="Group Values
-          Editor">the editor</a><a="action:Tools/LoadSystem/Group Values Editor">
-          (click here to open)</a> and select your new asset. Add a field by clicking
-          '+ Add Field' and then add a few entries inside it with '+ Add Entry'.
-          Set some values and click Apply.
+        value: Right click in your Resources folder and go to Create->LoadSystem->Group Values. A new GroupValues asset will be created. Open <a="Group Values Editor">the editor</a><a="action:Tools/LoadSystem/Group Values Editor"> (click here to open)</a> and select your new asset. Add a field by clicking '+ Add Field' and then add a few entries inside it with '+ Add Entry'. Set some values and click Apply.
     - rid: 7221128000120815662
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "No loaders needed yet. Create a new class to try. Just reference
-          the SO directly:\n<code>\n[SerializeField] GroupValues myValues;\n\nvoid
-          Start()\n{\n    int speed = myValues.GetValue<int>(\"speed\");\n    myValues.SetValue<int>(\"speed\",
-          speed + 1);\n}\n</code>"
+        value: "No loaders needed yet. Create a new class to try. Just reference the SO directly:\n<code>\n[SerializeField] GroupValues myValues;\n\nvoid Start()\n{\n    int speed = myValues.GetValue<int>(\"speed\");\n    myValues.SetValue<int>(\"speed\", speed + 1);\n}\n</code>"
     - rid: 7221128000120815663
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Add a LoaderMono component to any GameObject in your scene. Set the
-          name to match your GroupValues asset. Press Save in the inspector to verify
-          the JSON file is created. In code in the class you created before(or a
-          new one), call LoadData() on Awake and SaveData() before closing the app:\n<code>\n[SerializeField]
-          LoaderMono loader;\n\nvoid Awake()\n{\n    loader.LoadData();\n}\n\nvoid
-          OnApplicationQuit()\n{\n    loader.SaveData();\n}\n</code>"
+        value: "Add a LoaderMono component to any GameObject in your scene. Set the name to match your GroupValues asset. Press Save in the inspector to verify the JSON file is created. In code in the class you created before(or a new one), call LoadData() on Awake and SaveData() before closing the app:\n<code>\n[SerializeField] LoaderMono loader;\n\nvoid Awake()\n{\n    loader.LoadData();\n}\n\nvoid OnApplicationQuit()\n{\n    loader.SaveData();\n}\n</code>"
     - rid: 7221128000120815664
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: "Instead of using string keys in code, declare a <a=\"GVEntryReference\">GVEntryReference</a>.
-          In the inspector select your GroupValues, then the field, then the entry.
-          No more risk of typos or broken references when renaming keys:\n<code>\n[SerializeField]
-          GVEntryReference speedReference;\n\nvoid Update()\n{\n    float speed =
-          speedReference.Get<float>();\n    speedReference.Set<float>(speed + 1);\n}\n</code>\n"
+        value: "Instead of using string keys in code, declare a <a=\"GVEntryReference\">GVEntryReference</a>. In the inspector select your GroupValues, then the field, then the entry. No more risk of typos or broken references when renaming keys:\n<code>\n[SerializeField] GVEntryReference speedReference;\n\nvoid Update()\n{\n    float speed = speedReference.Get<float>();\n    speedReference.Set<float>(speed + 1);\n}\n</code>\n"
     - rid: 7221128000120815665
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: In a build, save files are stored in persistentDataPath. Make sure
-          LoadData() is called at startup and SaveData() is called before the app
-          closes. If you want encryption go to <a="settings:Project/Load System">Project
-          Settings -> Load System</a> and select an encryption method before building.
-          If you want to add or remove entries after shipping read <a="Migrations">Migrations</a>
-          and <a="Versioning">Versioning</a>.
+        value: In a build, save files are stored in persistentDataPath. Make sure LoadData() is called at startup and SaveData() is called before the app closes. If you want encryption go to <a="settings:Project/Load System">Project Settings -> Load System</a> and select an encryption method before building. If you want to add or remove entries after shipping read <a="Migrations">Migrations</a> and <a="Versioning">Versioning</a>.
     - rid: 7933554929974640993
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
         value: '<code>[GVHide]</code>
 
-          As the name suggests hides values
-          on the inspector inside a Group Values.
+          As the name suggests hides values on the inspector inside a Group Values.
 
-          <code>[GVHide] UnityEvent
-          onSpeedChange;
+          <code>[GVHide] UnityEvent onSpeedChange;
 
           </code>
 
@@ -2500,7 +1972,4 @@ MonoBehaviour:
     - rid: 7933554929974640994
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: Makes text be read more easily. For example if you store a variable
-          with the name "hasBeenRead" it will transform it into "Has Been Read".
-          It works the same as the Unity Inspector. If it is bothering you can deactivate
-          it.
+        value: Makes text be read more easily. For example if you store a variable with the name "hasBeenRead" it will transform it into "Has Been Read". It works the same as the Unity Inspector. If it is bothering you can deactivate it.
