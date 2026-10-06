@@ -44,10 +44,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5101133473657735592}
   - component: {fileID: 7929584329366227658}
-  - component: {fileID: 4671579943017360526}
   - component: {fileID: 3534484578530863246}
   - component: {fileID: 114375834320470871}
   - component: {fileID: 5101558732390635820}
+  - component: {fileID: 6832394877923146477}
   m_Layer: 2
   m_Name: InteractionDetector
   m_TagString: Untagged
@@ -91,31 +91,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4671579943017360526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3902984767818365180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db2d53132f8c5248a5b1b60ed8eb1fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CompleteTaggedDetector
-  onTargetChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  moveWithCamera: 1
-  cameraGO: {fileID: 8651244830481758716}
-  range: 2.11
-  multipleTags: 0
-  singleTag: Interactable
-  checkedTags: []
-  checkOnStay: 0
-  setLayerToIgnoreRayCast: 1
-  itemsInTrigger: []
-  currentTarget: {fileID: 0}
 --- !u!114 &3534484578530863246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,12 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c7ceed987726a4a8c1d8c4dfa3acf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HighlighterScript
-  detector: {fileID: 4671579943017360526}
+  detector: {fileID: 0}
   defaultLayer: 0
   highlightLayer: 20
   returnToPreviousLayer: 1
   recursiveLayerChange: 1
-  duration: 1
 --- !u!114 &114375834320470871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6fbdf62c9927649a8d124c797a3b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractTextScript
-  detector: {fileID: 4671579943017360526}
+  detector: {fileID: 0}
   textInteract: {fileID: 581189816857570210}
 --- !u!54 &5101558732390635820
 Rigidbody:
@@ -175,6 +149,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6832394877923146477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902984767818365180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf25fcb0ea43f384cb745af18ce4617d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UtilsInGameAssembly::CompleteTaggedDetector
+  onTargetChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  moveWithCamera: 1
+  cameraGO: {fileID: 8651244830481758716}
+  range: 10
+  filter:
+    ignoreSelf: 1
+    ignoreChildren: 1
+    ignoreParents: 1
+    ignoreSpecificGameObjects: 1
+    specificGameObjectsToIgnore:
+    - {fileID: 8337793403557179945}
+    - {fileID: 4436562894102372}
+    - {fileID: 6209699811835590952}
+    selectOnlySpecificGameObjects: 0
+    specificGameObjectsToSelect: []
+    filterByTag: 1
+    targetTag: Interactable
+    useOtherTags: 0
+    otherTags: []
+    filterByLayer: 1
+    targetLayerMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+  checkOnStay: 0
+  setLayerToIgnoreRayCast: 1
+  itemsInTrigger: []
+  currentTarget: {fileID: 0}
 --- !u!1 &6209699811835590952
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +727,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1960417443339734425}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+--- !u!1 &4436562894102372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 5392867010968628518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3893363482100978120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -785,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3df9c30a434f74dbb696ef6db030e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
-  detector: {fileID: 4671579943017360526}
+  detector: {fileID: 0}
   grabPivot: {fileID: 2897625903508371000}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
@@ -800,6 +820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8337793403557179945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4135013735270702863, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 5392867010968628518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8337793403557179950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135013735270702856, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

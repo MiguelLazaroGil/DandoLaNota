@@ -19,44 +19,9 @@ public class HighlighterScript : MonoBehaviour
     private bool returnToPreviousLayer;
     [SerializeField, Tooltip("If true will change the highlighted's children's layers too.")]
     private bool recursiveLayerChange;
-    [Header("Highlight everything mechanic")]
-    [SerializeField, Range(0, 5)]
-    private float duration = 1f;
 
     private GameObject lastTarget;
-    private List<String> checkedTags;
-    private bool everyIsOutLined = false;
-    private void HighlightEverything()
-    {
-        if (!everyIsOutLined)
-        {
-            StartCoroutine(changeAllLayers());
-        }
-    }
-    private IEnumerator changeAllLayers()
-    {
-        everyIsOutLined = true;
-        foreach (string tag in checkedTags)
-        {
-            foreach (var item in GameObject.FindGameObjectsWithTag(tag))
-            {
-                changeLayer(item, highlightLayer);
-            }
-        }
-     
-      
-        yield return new WaitForSeconds(duration);
-        everyIsOutLined = false;
-
-        foreach (string tag in checkedTags)
-        {
-            foreach (var item in GameObject.FindGameObjectsWithTag(tag))
-            {
-                changeLayer(item, defaultLayer);
-            }
-        }
-     
-    }
+ 
     private void UpdateTarget(GameObject go)
     {
         GameObject newTarget = go;
@@ -94,7 +59,6 @@ public class HighlighterScript : MonoBehaviour
     private void Start()
     {
         lastTarget = null;
-        this.checkedTags = detector.checkedTags;
         detector.onTargetChanged.AddListener(UpdateTarget);
         lastLayer = defaultLayer;
     }

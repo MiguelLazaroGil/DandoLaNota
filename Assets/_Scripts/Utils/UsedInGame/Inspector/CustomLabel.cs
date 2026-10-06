@@ -11,7 +11,7 @@ public class CustomLabelAttribute : PropertyAttribute
     /// <summary>
     /// Si pones label vacío y hideLabel = true, no se dibuja etiqueta.
     /// </summary>
-    public CustomLabelAttribute(string label = "")
+    public CustomLabelAttribute(string label = "", bool applyToCollection = true) : base (applyToCollection)
     {
         this.label = label;
         this.hideLabel = false;
