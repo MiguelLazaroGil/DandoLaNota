@@ -73,3 +73,26 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# =========================
+# FMOD Studio
+# =========================
+
+# FMOD Studio cache
+/FMODStudio/.cache/
+
+# FMOD Studio user-specific settings
+/FMODStudio/.user/
+
+# FMOD Studio unsaved/temporary files
+/FMODStudio/.unsaved/
+
+# FMOD Unity generated cache
+/[Aa]ssets/Plugins/FMOD/Cache/
+
+# FMOD editor generated files
+/[Aa]ssets/Gizmos/FMOD/*
+/[Aa]ssets/Editor Default Resources/FMOD/*
+
+# FMOD logs
+fmod_editor.log
