@@ -1,14 +1,19 @@
 ﻿<Solution>
+  <Project Path="Utils.csproj" />
   <Project Path="LoadSystem.csproj" />
+  <Project Path="UtilsInGameAssembly.csproj" />
   <Project Path="DASamplesAssemblyDefinition.csproj" />
   <Project Path="TestingAssembly.csproj" />
-  <Project Path="Utils.csproj" />
   <Project Path="SceneUtilsAssembly.csproj" />
+  <Project Path="FMODUnityResonanceEditor.csproj" />
+  <Project Path="FMODUnityEditor.csproj" />
+  <Project Path="FMODUnity.csproj" />
+  <Project Path="FMODUnityHaptics.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.StarterAssets.Editor.csproj" />
   <Project Path="UtilsEditorAssembly.csproj" />
   <Project Path="Unity.StarterAssets.csproj" />
-  <Project Path="UtilsInGameAssembly.csproj" />
+  <Project Path="FMODUnityResonance.csproj" />
   <Project Path="DelayedActionsAssembly.csproj" />
   <Project Path="URPWizard.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
