@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MusicFaceExpresions : MonoBehaviour
+public class MusicianFaceExpresions : MonoBehaviour
 {
     public enum FaceExpresions { Iddle, Blink, Angry, Focus, Happy, Sad }
     [SerializeField]
@@ -19,6 +19,11 @@ public class MusicFaceExpresions : MonoBehaviour
     [SerializeField] private string texturePropertyName = "_BaseMap";
 
     // Permite probarlo también desde el menú contextual en tiempo de edición
+    public void ApplyExpression(FaceExpresions faceExpresion)
+    {
+        faceExpression = faceExpresion;
+        ApplyExpressionOffset();
+    }
     [ContextMenu("Apply Expression")]
     public void ApplyExpressionOffset()
     {

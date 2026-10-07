@@ -1,10 +1,10 @@
 ﻿<Solution>
+  <Project Path="Utils.csproj" />
   <Project Path="LoadSystem.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="DASamplesAssemblyDefinition.csproj" />
   <Project Path="TestingAssembly.csproj" />
-  <Project Path="Utils.csproj" />
   <Project Path="SceneUtilsAssembly.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.StarterAssets.Editor.csproj" />
   <Project Path="UtilsEditorAssembly.csproj" />
   <Project Path="Unity.StarterAssets.csproj" />
