@@ -488,7 +488,13 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Clarinet
+  - Flute
+  - Harp
+  - Percussion
+  - Trumpet
+  - Violin
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

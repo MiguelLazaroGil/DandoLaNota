@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{a79cd9d9-502d-405b-83fb-76133ccd7aae}">
 		<property name="assetPath">
-			<value>TrumpetDo.wav</value>
+			<value>Trumpet/TrumpetDo.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

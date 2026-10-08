@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{07c5cc5a-3ddd-4cf0-8845-fba7767f43f9}">
+		<property name="assetPath">
+			<value>Flute/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{346aab22-24f9-41d6-acce-f4da25af2ea3}</destination>
+		</relationship>
+	</object>
+</objects>

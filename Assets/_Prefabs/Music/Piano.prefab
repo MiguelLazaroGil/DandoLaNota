@@ -1,0 +1,378 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5850850066250800332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6746668961538724888}
+  - component: {fileID: 1725477868968303540}
+  m_Layer: 0
+  m_Name: Piano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6746668961538724888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850850066250800332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.59, z: -4.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1725477868968303540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850850066250800332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef524d447e52f482093db98ca5629d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractivePiano
+  currentInstrument: 0
+  trumpet:
+    notes:
+    - Guid:
+        Data1: -1946622270
+        Data2: 1092843883
+        Data3: 571586995
+        Data4: 956478593
+      Path: event:/Trumpet/TrumpetDo
+    - Guid:
+        Data1: -1438503157
+        Data2: 1074988011
+        Data3: 1366256016
+        Data4: 1115954618
+      Path: event:/Trumpet/TrumpetRe
+    - Guid:
+        Data1: -54835552
+        Data2: 1306345613
+        Data3: -2103537234
+        Data4: 873345709
+      Path: event:/Trumpet/TrumpetMi
+    - Guid:
+        Data1: 711584894
+        Data2: 1303543400
+        Data3: -632887422
+        Data4: -1441265482
+      Path: event:/Trumpet/TrumpetFa
+    - Guid:
+        Data1: -234508829
+        Data2: 1258523639
+        Data3: 629392268
+        Data4: 128688320
+      Path: event:/Trumpet/TrumpetSol
+    - Guid:
+        Data1: -570522370
+        Data2: 1304706768
+        Data3: -932550758
+        Data4: -607839406
+      Path: event:/Trumpet/TrumpetLa
+    - Guid:
+        Data1: 1413199599
+        Data2: 1274120910
+        Data3: -1393833331
+        Data4: -2062864963
+      Path: event:/Trumpet/TrumpetSi
+    - Guid:
+        Data1: -351532436
+        Data2: 1082368765
+        Data3: -1301577026
+        Data4: 620330857
+      Path: event:/Trumpet/TrumpetDoA
+    - Guid:
+        Data1: 739227433
+        Data2: 1154883455
+        Data3: 1729259437
+        Data4: -1644583061
+      Path: event:/Trumpet/TrumpetReA
+    - Guid:
+        Data1: 1264269128
+        Data2: 1092338664
+        Data3: -2036300632
+        Data4: -2111195006
+      Path: event:/Trumpet/TrumpetMiA
+  flute:
+    notes:
+    - Guid:
+        Data1: 401165668
+        Data2: 1135905412
+        Data3: -624632700
+        Data4: 1044850793
+      Path: event:/Flute/FluteDo
+    - Guid:
+        Data1: 129983677
+        Data2: 1256833416
+        Data3: -1342442845
+        Data4: 1645453421
+      Path: event:/Flute/FluteRe
+    - Guid:
+        Data1: -1224595853
+        Data2: 1111444502
+        Data3: 661127560
+        Data4: -1498574819
+      Path: event:/Flute/FluteMi
+    - Guid:
+        Data1: 102874369
+        Data2: 1203306648
+        Data3: -1020777812
+        Data4: -768214415
+      Path: event:/Flute/FluteFa
+    - Guid:
+        Data1: 1722249750
+        Data2: 1118460160
+        Data3: -632245327
+        Data4: 42773299
+      Path: event:/Flute/FluteSol
+    - Guid:
+        Data1: 1166021345
+        Data2: 1175076296
+        Data3: 1287404942
+        Data4: 1159678382
+      Path: event:/Flute/FluteLa
+    - Guid:
+        Data1: -1600775253
+        Data2: 1170643897
+        Data3: -1308349276
+        Data4: 1661951958
+      Path: event:/Flute/FluteSi
+    - Guid:
+        Data1: -520136326
+        Data2: 1296968514
+        Data3: 601633929
+        Data4: 973635999
+      Path: event:/Flute/FluteDoA
+    - Guid:
+        Data1: -1544299952
+        Data2: 1093487384
+        Data3: 7589786
+        Data4: -2099271191
+      Path: event:/Flute/FluteReA
+    - Guid:
+        Data1: -1061509220
+        Data2: 1113150926
+        Data3: -830680428
+        Data4: 1201123137
+      Path: event:/Flute/FluteMiA
+  clarinet:
+    notes:
+    - Guid:
+        Data1: -1204040346
+        Data2: 1152163979
+        Data3: -1602216821
+        Data4: -1941505339
+      Path: event:/Clarinet/ClarinetDo
+    - Guid:
+        Data1: -381114128
+        Data2: 1340425409
+        Data3: 1161642931
+        Data4: 696494374
+      Path: event:/Clarinet/ClarinetRe
+    - Guid:
+        Data1: -255151773
+        Data2: 1164606865
+        Data3: -1999580526
+        Data4: -1132860823
+      Path: event:/Clarinet/ClarinetMi
+    - Guid:
+        Data1: -1963713048
+        Data2: 1301690855
+        Data3: 1935632300
+        Data4: -1546906170
+      Path: event:/Clarinet/ClarinetFa
+    - Guid:
+        Data1: -237457913
+        Data2: 1119208015
+        Data3: 1972200328
+        Data4: -870618558
+      Path: event:/Clarinet/ClarinetSol
+    - Guid:
+        Data1: 405022809
+        Data2: 1235821124
+        Data3: 2068719019
+        Data4: -272091163
+      Path: event:/Clarinet/ClarinetLa
+    - Guid:
+        Data1: 45268889
+        Data2: 1205802943
+        Data3: 809006752
+        Data4: 852003271
+      Path: event:/Clarinet/ClarinetSi
+    - Guid:
+        Data1: 675926015
+        Data2: 1121541449
+        Data3: -64180037
+        Data4: 1237152602
+      Path: event:/Clarinet/ClarinetDoA
+    - Guid:
+        Data1: -435699691
+        Data2: 1202570852
+        Data3: -1433324889
+        Data4: 571573209
+      Path: event:/Clarinet/ClarinetReA
+    - Guid:
+        Data1: -129336973
+        Data2: 1250654414
+        Data3: -1193093729
+        Data4: 849988907
+      Path: event:/Clarinet/ClarinetMiA
+  violin:
+    notes:
+    - Guid:
+        Data1: 1062175716
+        Data2: 1307383509
+        Data3: 1099472830
+        Data4: -53844645
+      Path: event:/Violin/ViolinDo
+    - Guid:
+        Data1: 1525992652
+        Data2: 1102252908
+        Data3: -1626909019
+        Data4: -1100147292
+      Path: event:/Violin/ViolinRe
+    - Guid:
+        Data1: 1727402282
+        Data2: 1155447575
+        Data3: 1404452273
+        Data4: 210430946
+      Path: event:/Violin/ViolinMi
+    - Guid:
+        Data1: 482684754
+        Data2: 1124539069
+        Data3: 2132806051
+        Data4: 1681089449
+      Path: event:/Violin/ViolinFa
+    - Guid:
+        Data1: -988626424
+        Data2: 1250760787
+        Data3: -1920659015
+        Data4: 1549308657
+      Path: event:/Violin/ViolinSol
+    - Guid:
+        Data1: 134424162
+        Data2: 1141508298
+        Data3: -2104482406
+        Data4: 336743865
+      Path: event:/Violin/ViolinLa
+    - Guid:
+        Data1: 668820220
+        Data2: 1097050111
+        Data3: -559443010
+        Data4: -895749497
+      Path: event:/Violin/ViolinSi
+    - Guid:
+        Data1: -1791045170
+        Data2: 1277826340
+        Data3: 1551271854
+        Data4: 411382380
+      Path: event:/Violin/ViolinDoA
+    - Guid:
+        Data1: 1495866964
+        Data2: 1123077930
+        Data3: 924323217
+        Data4: 338364964
+      Path: event:/Violin/ViolinReA
+    - Guid:
+        Data1: -584718604
+        Data2: 1235468293
+        Data3: -988705914
+        Data4: -1646379145
+      Path: event:/Violin/ViolinMiA
+  harp:
+    notes:
+    - Guid:
+        Data1: -797936924
+        Data2: 1131723774
+        Data3: -1642908513
+        Data4: -380716189
+      Path: event:/Harp/HarpDo
+    - Guid:
+        Data1: 1906069576
+        Data2: 1253824624
+        Data3: 369751936
+        Data4: 794471138
+      Path: event:/Harp/HarpRe
+    - Guid:
+        Data1: 1607271819
+        Data2: 1155818238
+        Data3: 1898718083
+        Data4: 165584743
+      Path: event:/Harp/HarpMi
+    - Guid:
+        Data1: 536312300
+        Data2: 1162388283
+        Data3: -1010263619
+        Data4: 1320702593
+      Path: event:/Harp/HarpFa
+    - Guid:
+        Data1: 1529745164
+        Data2: 1175206335
+        Data3: 1267191208
+        Data4: 1273534567
+      Path: event:/Harp/HarpSol
+    - Guid:
+        Data1: 1734085331
+        Data2: 1135662495
+        Data3: -722635129
+        Data4: 1161320568
+      Path: event:/Harp/HarpLa
+    - Guid:
+        Data1: -79635724
+        Data2: 1315325094
+        Data3: -1902577009
+        Data4: 308348652
+      Path: event:/Harp/HarpSi
+    - Guid:
+        Data1: 819362931
+        Data2: 1275147711
+        Data3: 631652027
+        Data4: 109842075
+      Path: event:/Harp/HarpDoA
+    - Guid:
+        Data1: -1815624846
+        Data2: 1170704534
+        Data3: 1477637028
+        Data4: 479511930
+      Path: event:/Harp/HarpReA
+    - Guid:
+        Data1: 858584283
+        Data2: 1320532385
+        Data3: -1303870033
+        Data4: 7039113
+      Path: event:/Harp/HarpMiA
+  kickDrum:
+    Guid:
+      Data1: -1821894182
+      Data2: 1308852842
+      Data3: 2006879932
+      Data4: 229213661
+    Path: event:/Kick
+  cymbals:
+    Guid:
+      Data1: -1764285224
+      Data2: 1117427462
+      Data3: 587028924
+      Data4: -1205481886
+    Path: event:/Cymbals
+  triangle:
+    Guid:
+      Data1: -1037215426
+      Data2: 1213872189
+      Data3: 116056998
+      Data4: -316382562
+    Path: event:/Triangle

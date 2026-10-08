@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{f31b4a75-0f1d-4a39-a80b-3a6927693b4d}">
+		<property name="assetPath">
+			<value>Trumpet/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{346aab22-24f9-41d6-acce-f4da25af2ea3}</destination>
+		</relationship>
+	</object>
+</objects>
