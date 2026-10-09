@@ -7,8 +7,12 @@ public class AudienceManager : MonoBehaviour
     [Tooltip("Referencia al gestor de puntuación global de la música.")]
     [SerializeField] private MusicScoreManager scoreManager;
 
+    [Header("--- INTERVALO DE ACTUALIZACIÓN DE AUDIENCIA ---")]
+    [Tooltip("Tiempo en segundos entre cada refresco de la audiencia (ej: 0.5s para no refrescar constantemente cada frame).")]
+    [SerializeField] private float audienceUpdateInterval = 0.5f;
+
     [Header("--- ESTADO EN VIVO (LECTURA) ---")]
-    [Tooltip("Puntuación simulada (0 a 100) calculada a partir del ritmo actual y la media de calidad individual de los músicos.")]
+    [Tooltip("Puntuación simulada (0 a 100) calculada a partir del ritmo y la calidad individual.")]
     [SerializeField] private float pseudoScore = 100f;
 
     [Tooltip("Cantidad actual de audiencia presente en el espectáculo.")]
@@ -17,11 +21,11 @@ public class AudienceManager : MonoBehaviour
     [Tooltip("Media actual calculada entre todos los músicos activos.")]
     [SerializeField] private float averageMusicianQuality = 1.0f;
 
-    [Header("--- CONFIGURACIÓN DE AUDIENCIA ---")]
+    [Header("--- CONFIGURACIÓN BASE DE AUDIENCIA ---")]
     [Tooltip("Audiencia inicial al comenzar el nivel.")]
     [SerializeField] private float initialAudience = 500f;
 
-    [Tooltip("Máximo número de personas en la audiencia.")]
+    [Tooltip("Máximo número posible de personas en la audiencia.")]
     [SerializeField] private float maxAudience = 1000f;
 
     [Header("--- CÁLCULO DE PSEUDO-SCORE ---")]
@@ -31,17 +35,33 @@ public class AudienceManager : MonoBehaviour
     [Tooltip("Peso de la calidad media de los músicos (0 a 1) en la pseudo-score final.")]
     [SerializeField, Range(0f, 1f)] private float musicianQualityWeight = 0.5f;
 
-    [Header("--- DINÁMICA DE AUDIENCIA ---")]
+    [Header("--- DINÁMICA PORCENTUAL DE AUDIENCIA ---")]
     [Tooltip("Umbral de Pseudo-Score (0 a 100). Por encima se gana audiencia; por debajo, se pierde.")]
-    [SerializeField] private float neutralThresholdScore = 65f;
+    [SerializeField] private float neutralThresholdScore = 70f;
 
-    [Tooltip("Tasa de ganancia de espectadores por segundo cuando la música es buena.")]
-    [SerializeField] private float audienceGainRate = 15f;
+    [Tooltip("Porcentaje de la audiencia actual ganado por segundo a rendimiento máximo (ej: 0.05 = 5%/s).")]
+    [SerializeField, Range(0f, 1f)] private float baseGainPercentage = 0.05f;
 
-    [Tooltip("Tasa de pérdida de espectadores por segundo cuando la música es mala.")]
-    [SerializeField] private float audienceLossRate = 20f;
+    [Tooltip("Porcentaje de la audiencia actual perdido por segundo a rendimiento pésimo (ej: 0.08 = 8%/s).")]
+    [SerializeField, Range(0f, 1f)] private float baseLossPercentage = 0.08f;
 
-    private readonly List<IMusician> activeMusicians = new List<IMusician>();
+    [Tooltip("Mínimo absoluto de espectadores ganados/perdidos por segundo para evitar que se atasque con audiencia muy baja.")]
+    [SerializeField] private float minAbsoluteChangeRate = 2.0f;
+
+    [Tooltip("Desgaste natural del público por segundo (0.01 = 1%/s). Garantiza la presión continua 'ad infinitum'.")]
+    [SerializeField, Range(0f, 0.1f)] private float naturalFatigueDecay = 0.005f;
+
+    [Header("--- RALENTIZACIÓN EN EXTREMOS ---")]
+    [Tooltip("Multiplicador mínimo de velocidad cuando la audiencia está rozando el 0 o el máximo.")]
+    [SerializeField, Range(0.01f, 0.5f)] private float minExtremeSpeedFactor = 0.1f;
+
+    // Estado interno
+    private float intervalTimer = 0f;
+
+    //TODO: cambiar esto que es n
+    [RequireInterface(typeof(IMusician))]
+    public List<MonoBehaviour> _activeMusicians = new List<MonoBehaviour>();
+    private List<IMusician> activeMusicians => _activeMusicians.ConvertAll(mb => mb as IMusician);
 
     public float CurrentAudience => currentAudience;
     public float PseudoScore => pseudoScore;
@@ -53,7 +73,7 @@ public class AudienceManager : MonoBehaviour
 
         if (scoreManager == null)
         {
-            scoreManager = GetComponentInChildren<MusicScoreManager>();
+            scoreManager = FindFirstObjectByType<MusicScoreManager>();
         }
     }
 
@@ -61,14 +81,19 @@ public class AudienceManager : MonoBehaviour
     {
         float dt = Time.deltaTime;
 
+        // La pseudo-score se refresca visualmente cada frame
         CalculateAverageMusicianQuality();
         CalculatePseudoScore();
-        UpdateAudience(dt);
+
+        // La audiencia se actualiza por pulsos/intervalos parametrizados
+        intervalTimer += dt;
+        if (intervalTimer >= audienceUpdateInterval)
+        {
+            UpdateAudience(intervalTimer);
+            intervalTimer = 0f;
+        }
     }
 
-    /// <summary>
-    /// Registra un músico para incluirlo en la media de calidad.
-    /// </summary>
     public void RegisterMusician(IMusician musician)
     {
         if (musician != null && !activeMusicians.Contains(musician))
@@ -77,9 +102,6 @@ public class AudienceManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Desregistra a un músico (ej. si es expulsado o destruido).
-    /// </summary>
     public void UnregisterMusician(IMusician musician)
     {
         if (musician != null)
@@ -92,7 +114,6 @@ public class AudienceManager : MonoBehaviour
     {
         if (activeMusicians.Count == 0)
         {
-            // Si no hay músicos registrados, se mantiene en 1.0 por defecto
             averageMusicianQuality = 1.0f;
             return;
         }
@@ -119,31 +140,54 @@ public class AudienceManager : MonoBehaviour
     {
         if (scoreManager == null) return;
 
-        // 1. Calcular precisión del ritmo (100 = perfecto -> 1.0, 0 ó 200 -> 0.0)
         float rhythmFitness = 1f - (Mathf.Abs(scoreManager.CurrentRhythm - 100f) / 100f);
         rhythmFitness = Mathf.Clamp01(rhythmFitness);
 
-        // 2. Pseudo-Score normalizada (0.0 a 1.0) usando la media individual de los músicos
         float normalizedScore = (rhythmFitness * rhythmWeight) + (averageMusicianQuality * musicianQualityWeight);
-
-        // 3. Escalar a rango 0-100 para facilidaf de depuración e UI
         pseudoScore = normalizedScore * 100f;
     }
 
-    private void UpdateAudience(float dt)
+    private void UpdateAudience(float stepTime)
     {
+        // Ratio de audiencia actual (0.0 a 1.0)
+        float audienceRatio = Mathf.Clamp01(currentAudience / maxAudience);
+
+        // Factores de atenuación en límites:
+        // - Al acercarse a maxAudience (ratio -> 1), la ganancia cae progresivamente hacia minExtremeSpeedFactor.
+        // - Al acercarse a 0 (ratio -> 0), la pérdida cae progresivamente hacia minExtremeSpeedFactor.
+        float gainExtremeFactor = Mathf.Max(minExtremeSpeedFactor, 1f - audienceRatio);
+        float lossExtremeFactor = Mathf.Max(minExtremeSpeedFactor, audienceRatio);
+
         if (pseudoScore >= neutralThresholdScore)
         {
-            // Ganancia proporcional a cuánto se supera el umbral neutro
+            // Rendimiento positivo (0.0 a 1.0)
             float performanceBonus = (pseudoScore - neutralThresholdScore) / (100f - neutralThresholdScore);
-            currentAudience += performanceBonus * audienceGainRate * dt;
+
+            // Tasa porcentual + Suelo mínimo absoluto
+            float percentageGain = currentAudience * baseGainPercentage * performanceBonus;
+            float rawGainRate = Mathf.Max(minAbsoluteChangeRate, percentageGain);
+
+            // Aplicar atenuación al acercarse al máximo
+            float finalGain = rawGainRate * gainExtremeFactor * stepTime;
+            currentAudience += finalGain;
         }
         else
         {
-            // Pérdida proporcional a cuánto se cae por debajo del umbral neutro
+            // Rendimiento negativo (0.0 a 1.0)
             float performancePenalty = (neutralThresholdScore - pseudoScore) / neutralThresholdScore;
-            currentAudience -= performancePenalty * audienceLossRate * dt;
+
+            // Tasa porcentual + Suelo mínimo absoluto
+            float percentageLoss = currentAudience * baseLossPercentage * performancePenalty;
+            float rawLossRate = Mathf.Max(minAbsoluteChangeRate, percentageLoss);
+
+            // Aplicar atenuación al acercarse a 0
+            float finalLoss = rawLossRate * lossExtremeFactor * stepTime;
+            currentAudience -= finalLoss;
         }
+
+        // Desgaste natural continuo (fatiga/desinterés constante por el mero paso del tiempo)
+        float naturalLoss = currentAudience * naturalFatigueDecay * stepTime;
+        currentAudience -= naturalLoss;
 
         currentAudience = Mathf.Clamp(currentAudience, 0f, maxAudience);
     }
