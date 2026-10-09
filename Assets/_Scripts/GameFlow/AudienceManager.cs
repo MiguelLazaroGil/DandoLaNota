@@ -16,17 +16,17 @@ public class AudienceManager : MonoBehaviour
     [SerializeField] private float pseudoScore = 100f;
 
     [Tooltip("Cantidad actual de audiencia presente en el espectáculo.")]
-    [SerializeField] private float currentAudience = 500f;
+    [SerializeField] private float currentAudience = 50f;
 
     [Tooltip("Media actual calculada entre todos los músicos activos.")]
     [SerializeField] private float averageMusicianQuality = 1.0f;
 
     [Header("--- CONFIGURACIÓN BASE DE AUDIENCIA ---")]
     [Tooltip("Audiencia inicial al comenzar el nivel.")]
-    [SerializeField] private float initialAudience = 500f;
+    [SerializeField] private float initialAudience = 50f;
 
     [Tooltip("Máximo número posible de personas en la audiencia.")]
-    [SerializeField] private float maxAudience = 1000f;
+    [SerializeField] private float maxAudience = 100f;
 
     [Header("--- CÁLCULO DE PSEUDO-SCORE ---")]
     [Tooltip("Peso del ritmo (0 a 1) en la pseudo-score final.")]
@@ -37,7 +37,7 @@ public class AudienceManager : MonoBehaviour
 
     [Header("--- DINÁMICA PORCENTUAL DE AUDIENCIA ---")]
     [Tooltip("Umbral de Pseudo-Score (0 a 100). Por encima se gana audiencia; por debajo, se pierde.")]
-    [SerializeField] private float neutralThresholdScore = 70f;
+    [SerializeField] private float neutralThresholdScore = 85f;
 
     [Tooltip("Porcentaje de la audiencia actual ganado por segundo a rendimiento máximo (ej: 0.05 = 5%/s).")]
     [SerializeField, Range(0f, 1f)] private float baseGainPercentage = 0.05f;
@@ -46,7 +46,7 @@ public class AudienceManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float baseLossPercentage = 0.08f;
 
     [Tooltip("Mínimo absoluto de espectadores ganados/perdidos por segundo para evitar que se atasque con audiencia muy baja.")]
-    [SerializeField] private float minAbsoluteChangeRate = 2.0f;
+    [SerializeField] private float minAbsoluteChangeRate = 0.5f;
 
     [Tooltip("Desgaste natural del público por segundo (0.01 = 1%/s). Garantiza la presión continua 'ad infinitum'.")]
     [SerializeField, Range(0f, 0.1f)] private float naturalFatigueDecay = 0.005f;

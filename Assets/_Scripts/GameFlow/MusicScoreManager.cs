@@ -11,17 +11,17 @@ public class MusicScoreManager : MonoBehaviour
 
     [Header("--- CONTROL DE RITMO (0 a 200) ---")]
     [Tooltip("Velocidad a la que el ritmo se descontrola y se aleja del 100 por segundo cuando NO hay input.")]
-    [SerializeField] private float noInputRhythmDriftSpeed = 3f;
+    [SerializeField] private float noInputRhythmDriftSpeed = 0.5f;
 
     [Tooltip("Velocidad de respuesta/transición suave del ritmo hacia el valor indicado por el director.")]
-    [SerializeField] private float rhythmLerpSpeed = 2f;
+    [SerializeField] private float rhythmLerpSpeed = 0.4f;
 
     [Header("--- CONTROL DE CALIDAD GENERAL (0 a 1) ---")]
     [Tooltip("Pérdida de calidad general por segundo cuando NO se recibe ningún input.")]
     [SerializeField] private float noInputQualityDecayRate = 0.04f;
 
     [Tooltip("Velocidad de respuesta/transición suave de la calidad hacia el valor indicado por el director.")]
-    [SerializeField] private float qualityLerpSpeed = 2f;
+    [SerializeField] private float qualityLerpSpeed = 0.5f;
 
     [Tooltip("Factor de atenuación para eventos negativos (0.1 a 1). A menor calidad actual, menor es la bajada absoluta.")]
     [SerializeField, Range(0.1f, 1f)] private float eventDiminishingFactor = 0.5f;

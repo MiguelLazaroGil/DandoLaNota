@@ -2155,16 +2155,16 @@ MonoBehaviour:
   scoreManager: {fileID: 830903284}
   audienceUpdateInterval: 0.5
   pseudoScore: 100
-  currentAudience: 500
+  currentAudience: 50
   averageMusicianQuality: 1
-  initialAudience: 500
-  maxAudience: 1000
+  initialAudience: 50
+  maxAudience: 100
   rhythmWeight: 0.5
   musicianQualityWeight: 0.5
-  neutralThresholdScore: 65
+  neutralThresholdScore: 75
   baseGainPercentage: 0.05
   baseLossPercentage: 0.08
-  minAbsoluteChangeRate: 2
+  minAbsoluteChangeRate: 0.78
   naturalFatigueDecay: 0.005
   minExtremeSpeedFactor: 0.1
   _activeMusicians:
