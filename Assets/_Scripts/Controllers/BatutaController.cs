@@ -7,28 +7,28 @@ using UnityEngine.ProBuilder.Shapes;
 public class BatutaController : MonoBehaviour
 {
     [Header("Referencias")]
-    public FirstPersonController playerCOntroller;
+    public SimplePlayerController playerController;
     public GameObject modeloBatuta;
     public Transform mano;
-    [Tooltip("Arrastra aquí el PlayerCameraRoot o CuelloBatuta")]
+    [Tooltip("Arrastra aquï¿½ el PlayerCameraRoot o CuelloBatuta")]
     public Transform camaraPrincipal;
 
     [Header("Limitaciones Jugador (Modo Director)")]
     [Tooltip("Velocidad de movimiento al usar la batuta.")]
     public float velocidadCaminarDirector = 1.5f;
-    [Tooltip("Velocidad de giro de cámara al usar la batuta.")]
+    [Tooltip("Velocidad de giro de cï¿½mara al usar la batuta.")]
     public float velocidadRotacionDirector = 0.2f;
 
-    [Header("Cámara (Modo Director)")]
+    [Header("Cï¿½mara (Modo Director)")]
     public float sensibilidadCamara = 5f;
     public float suavizadoCamara = 5f;
 
-    [Header("Configuración de Fluidez (Brazo)")]
+    [Header("Configuraciï¿½n de Fluidez (Brazo)")]
     public float sensibilidadRaton = 0.005f;
     public float limiteDistancia = 0.6f;
     [Range(0.01f, 0.5f)] public float tiempoSuavizado = 0.1f;
 
-    [Header("Efecto de Muñeca (Batuta)")]
+    [Header("Efecto de Muï¿½eca (Batuta)")]
     public float multiplicadorInclinacion = 15f;
     public float velocidadRecuperacionMuneca = 30f;
 
@@ -45,16 +45,16 @@ public class BatutaController : MonoBehaviour
     private Quaternion rotacionReposoBatuta;
     private Quaternion rotacionInicialCamara;
 
-    //Guardamos las velocidades originales del jugador aquí para poder devolvérselas al guardar la batuta.
+    //Guardamos las velocidades originales del jugador aquï¿½ para poder devolvï¿½rselas al guardar la batuta.
     private float originalMoveSpeed;
-    private float originalSprintSpeed;
-    private float originalRotationSpeed;
+    // private float originalSprintSpeed;
+    // private float originalRotationSpeed;
 
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
 
-        //Suscripción a eventos del Input System
+        //Suscripciï¿½n a eventos del Input System
         inputActions.Player.SacarBatuta.performed += ctx => ActivarModoDirector();
         inputActions.Dirigir.GuardarBatuta.performed += ctx => DesactivarModoDirector();
 
@@ -67,14 +67,14 @@ public class BatutaController : MonoBehaviour
 
     private void Start()
     {
-        if (playerCOntroller != null)
+        if (playerController != null)
         {
-            originalMoveSpeed = playerCOntroller.MoveSpeed;
-            originalSprintSpeed = playerCOntroller.SprintSpeed;
-            originalRotationSpeed = playerCOntroller.RotationSpeed;
+            originalMoveSpeed = playerController.Speed;
+            // originalSprintSpeed = playerController.SprintSpeed;
+            // originalRotationSpeed = playerController.RotationSpeed;
         }
 
-        //Guardamos dónde están los objetos para saber a dónde deben volver cuando soltemos el ratón.
+        //Guardamos dï¿½nde estï¿½n los objetos para saber a dï¿½nde deben volver cuando soltemos el ratï¿½n.
         if (mano != null)
         {
             posicionInicialMano = mano.localPosition;
@@ -101,7 +101,7 @@ public class BatutaController : MonoBehaviour
 
     private void Update()
     {
-        //Si no estamos dirigiendo o faltan referencias, cortamos la ejecución aquí por rendimiento
+        //Si no estamos dirigiendo o faltan referencias, cortamos la ejecuciï¿½n aquï¿½ por rendimiento
         if (!modoDirectorActivo || mano == null || modeloBatuta == null) return;
 
         if (botonPulsado)
@@ -109,10 +109,10 @@ public class BatutaController : MonoBehaviour
             Vector3 desplazamiento = new Vector3(movimientoRaton.x, movimientoRaton.y, 0) * sensibilidadRaton;
             posicionObjetivoMano += desplazamiento;
 
-            //Para evitar que la mano salga de la pantalla, calculamos un vector desde el centro hasta la posición actual.
+            //Para evitar que la mano salga de la pantalla, calculamos un vector desde el centro hasta la posiciï¿½n actual.
             Vector3 distanciaDesdeCentro = posicionObjetivoMano - posicionInicialMano;
 
-            //Si ese vector es más largo que el límite, lo Clampeo 
+            //Si ese vector es mï¿½s largo que el lï¿½mite, lo Clampeo 
             if (distanciaDesdeCentro.magnitude > limiteDistancia)
             {
                 posicionObjetivoMano = posicionInicialMano + Vector3.ClampMagnitude(distanciaDesdeCentro, limiteDistancia);
@@ -132,15 +132,15 @@ public class BatutaController : MonoBehaviour
             tiempoSuavizado
         );
 
-        //Aprovechamos la velocidad que calculó el SmoothDamp arriba para inclinar la muñeca.
-        //Multiplicamos la velocidad por un factor para inclinar la muñeca más o menos según queramos.
+        //Aprovechamos la velocidad que calculï¿½ el SmoothDamp arriba para inclinar la muï¿½eca.
+        //Multiplicamos la velocidad por un factor para inclinar la muï¿½eca mï¿½s o menos segï¿½n queramos.
         float inclinacionVertical = velocidadActualMano.y * multiplicadorInclinacion;
         float inclinacionHorizontal = -velocidadActualMano.x * multiplicadorInclinacion;
 
-        //Calculamos la rotación objetivo de la batuta combinando la rotación de reposo con la inclinación calculada.
+        //Calculamos la rotaciï¿½n objetivo de la batuta combinando la rotaciï¿½n de reposo con la inclinaciï¿½n calculada.
         Quaternion rotacionObjetivo = rotacionReposoBatuta * Quaternion.Euler(inclinacionVertical, inclinacionHorizontal, 0);
 
-        //Slerp suaviza la rotación de la batuta hacia la rotación objetivo, usando un factor de velocidad para controlar la rapidez del movimiento.
+        //Slerp suaviza la rotaciï¿½n de la batuta hacia la rotaciï¿½n objetivo, usando un factor de velocidad para controlar la rapidez del movimiento.
         modeloBatuta.transform.localRotation = Quaternion.Slerp(
             modeloBatuta.transform.localRotation,
             rotacionObjetivo,
@@ -159,14 +159,15 @@ public class BatutaController : MonoBehaviour
 
         if (modeloBatuta != null) modeloBatuta.SetActive(true);
 
-        if (playerCOntroller != null)
+        if (playerController != null)
         {
-            playerCOntroller.MoveSpeed = velocidadCaminarDirector;
-            playerCOntroller.RotationSpeed = velocidadRotacionDirector;
-            playerCOntroller.SprintSpeed = velocidadCaminarDirector;
+            playerController.Speed = velocidadCaminarDirector;
+
+            // playerController.RotationSpeed = velocidadRotacionDirector;
+            // playerController.SprintSpeed = velocidadCaminarDirector;
         }
 
-        //Guardamos dónde miraba la cámara para poder restaurarla al salir del modo director.
+        //Guardamos dï¿½nde miraba la cï¿½mara para poder restaurarla al salir del modo director.
         if (camaraPrincipal != null) rotacionInicialCamara = camaraPrincipal.localRotation;
     }
 
@@ -189,12 +190,12 @@ public class BatutaController : MonoBehaviour
 
         if (camaraPrincipal != null) camaraPrincipal.localRotation = rotacionInicialCamara;
 
-        //le devolvemos al FirstPersonController las velocidades originales que tenía antes de activar el modo director.
-        if (playerCOntroller != null)
+        //le devolvemos al FirstPersonController las velocidades originales que tenï¿½a antes de activar el modo director.
+        if (playerController != null)
         {
-            playerCOntroller.MoveSpeed = originalMoveSpeed;
-            playerCOntroller.SprintSpeed = originalSprintSpeed;
-            playerCOntroller.RotationSpeed = originalRotationSpeed;
+            playerController.Speed = originalMoveSpeed;
+            // playerController.SprintSpeed = originalSprintSpeed;
+            // playerController.RotationSpeed = originalRotationSpeed;
         }
     }
 }

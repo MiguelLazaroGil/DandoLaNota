@@ -257,6 +257,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+--- !u!114 &767037601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6832394877923146477, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+  m_PrefabInstance: {fileID: 1235316354146955919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf25fcb0ea43f384cb745af18ce4617d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UtilsInGameAssembly::CompleteTaggedDetector
 --- !u!1 &874605735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1246,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1960417443339734425, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 767037601}
     - target: {fileID: 2621871318756487323, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1279,6 +1294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerEntero
       objectReference: {fileID: 0}
+    - target: {fileID: 3534484578530863246, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 767037601}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

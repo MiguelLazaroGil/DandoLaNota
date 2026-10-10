@@ -19,6 +19,7 @@ public class SpringDownForceDouble : MonoBehaviour
 
 
 
+
     private void Start()
     {
         if (rb == null)

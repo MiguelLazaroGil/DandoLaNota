@@ -1,6 +1,7 @@
 using System.Collections;
 using IK.ProceduralAnimations.Walking;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
 
 public class MusicianAnimatorHandler : MonoBehaviour
@@ -16,6 +17,8 @@ public class MusicianAnimatorHandler : MonoBehaviour
     public MusicianHandMovement handMovement;
     [SerializeField]
     public ProceduralWalkerPlayer walker;
+    private bool IsMoving = false;
+
 
     void OnEnable()
     {
@@ -30,6 +33,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
         Stand();
 
     }
+
     void OnDisable()
     {
         StopCoroutine(Blinking());
@@ -37,7 +41,14 @@ public class MusicianAnimatorHandler : MonoBehaviour
 
     void Update()
     {
-
+        if (IsMoving)
+        {
+            Walk();
+        }
+        else
+        {
+            Stand();
+        }
     }
     private IEnumerator Blinking()
     {
@@ -56,6 +67,12 @@ public class MusicianAnimatorHandler : MonoBehaviour
     public void Blink()
     {
         faceExpresions.ApplyExpression(MusicianFaceExpresions.FaceExpresions.Blink);
+    }
+    public void onMove(InputAction.CallbackContext ctx)
+    {
+        Vector2 move = ctx.ReadValue<Vector2>();
+        IsMoving = move.sqrMagnitude > 0.001f;
+
     }
     [ContextMenu("Walk")]
     public void Walk()
