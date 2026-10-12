@@ -493,6 +493,7 @@ MonoBehaviour:
   - Flute
   - Harp
   - Percussion
+  - Tema1
   - Trumpet
   - Violin
   BanksToLoad: []
@@ -507,7 +508,7 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131861
-  HideSetupWizard: 1
+  HideSetupWizard: 0
   LastEventReferenceScanVersion: 131861
   Platforms:
   - {fileID: -9047981075134398206}
