@@ -5,7 +5,7 @@
 			<value>HarpSol</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{7ae29eb7-19be-4b51-bdc0-9fd8f05067f7}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{826a69a1-071e-4478-91cb-56509522ae98}">
 		<relationship name="effects">
 			<destination>{939e0fe5-4506-4c0e-9d3f-7770305d5298}</destination>
+			<destination>{617c120b-132e-4972-b961-436e2d5930a2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cd3fe672-5297-4200-906e-af5f84266473}" />
 	<object class="MixerBusFader" id="{5c2c4215-b1d0-44c3-8d54-3670ac5414ae}" />
 	<object class="MixerBusFader" id="{939e0fe5-4506-4c0e-9d3f-7770305d5298}" />
+	<object class="SpatialiserEffect" id="{617c120b-132e-4972-b961-436e2d5930a2}" />
 </objects>

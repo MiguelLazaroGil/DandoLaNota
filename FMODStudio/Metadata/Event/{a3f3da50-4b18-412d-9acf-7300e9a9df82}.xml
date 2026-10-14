@@ -5,7 +5,7 @@
 			<value>FluteReA</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a09c3145-ac3b-497d-9860-820738aae09f}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{0a993cf8-bf31-4247-9664-db7e43984de0}">
 		<relationship name="effects">
 			<destination>{c2956b95-9f67-4b44-8215-65856f2421e6}</destination>
+			<destination>{c43a0a2c-777e-4184-9518-5c1b0dc65324}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8d9612d0-1dfa-4b81-b6b3-3b213df75bbd}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{c2956b95-9f67-4b44-8215-65856f2421e6}" />
+	<object class="SpatialiserEffect" id="{c43a0a2c-777e-4184-9518-5c1b0dc65324}" />
 </objects>

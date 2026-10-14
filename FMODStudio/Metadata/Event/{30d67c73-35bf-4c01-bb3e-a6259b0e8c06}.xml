@@ -5,7 +5,7 @@
 			<value>HarpDoA</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{7ae29eb7-19be-4b51-bdc0-9fd8f05067f7}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{9e9ad250-64b6-4bcb-974e-bca455c40d50}">
 		<relationship name="effects">
 			<destination>{d1ece917-0d22-482b-ab25-2fc43dcd022f}</destination>
+			<destination>{b57f1969-145c-4bab-b813-200ff08850cd}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bf14e759-e524-4107-a1e2-f96171b479ce}" />
 	<object class="MixerBusFader" id="{53b151f2-d460-46d3-9ebc-16224808abbe}" />
 	<object class="MixerBusFader" id="{d1ece917-0d22-482b-ab25-2fc43dcd022f}" />
+	<object class="SpatialiserEffect" id="{b57f1969-145c-4bab-b813-200ff08850cd}" />
 </objects>

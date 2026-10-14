@@ -26,7 +26,8 @@ public class InteractivePiano : MonoBehaviour
         Cymbals,
         Triangle
     }
-
+    [Header("3D Audio")]
+    [SerializeField] private Transform pianoTransform;
     [Header("Active Instrument")]
     [FormerlySerializedAs("instrumentoActual")]
     public Instrument currentInstrument = Instrument.Trumpet;
@@ -103,7 +104,7 @@ public class InteractivePiano : MonoBehaviour
             EventReference sound = GetPercussionEvent();
 
             if (!sound.IsNull)
-                RuntimeManager.PlayOneShot(sound);
+                RuntimeManager.PlayOneShot(sound, pianoTransform.position);
 
             return;
         }
@@ -119,13 +120,19 @@ public class InteractivePiano : MonoBehaviour
         // Harp notes play without early release
         if (currentInstrument == Instrument.Harp)
         {
-            RuntimeManager.PlayOneShot(notes[index]);
+            RuntimeManager.PlayOneShot(notes[index], pianoTransform.position);
             return;
         }
 
         EventInstance instance =
             RuntimeManager.CreateInstance(notes[index]);
-
+        if (pianoTransform != null)
+        {
+            RuntimeManager.AttachInstanceToGameObject(
+                instance,
+                pianoTransform.gameObject
+            );
+        }
         instance.setParameterByName("Release", 0f);
         instance.start();
 

@@ -5,7 +5,7 @@
 			<value>Cymbals</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{653306cd-d187-48ce-bbc7-7706497796be}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{dac4e0fe-f035-472e-9f38-adfa15ad895d}">
 		<relationship name="effects">
 			<destination>{c0d14cdd-ef98-4dc7-aa56-a353593797c6}</destination>
+			<destination>{fe165aa4-594f-4196-b9fb-e426ea417ebd}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c3e3fc40-2bed-4ce4-a32d-40359450524e}" />
 	<object class="MixerBusFader" id="{8cfa62e5-735b-45ec-97d4-45ec562a3d5f}" />
 	<object class="MixerBusFader" id="{c0d14cdd-ef98-4dc7-aa56-a353593797c6}" />
+	<object class="SpatialiserEffect" id="{fe165aa4-594f-4196-b9fb-e426ea417ebd}" />
 </objects>

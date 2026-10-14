@@ -34,10 +34,10 @@ public class BatutaController : MonoBehaviour
 
     //Variables de estado
     private InputSystem_Actions inputActions;
-    public bool modoDirectorActivo { get; private set; } = false;
+    public bool modoDirectorActivo { get; private set; } = true;
     private Vector2 movimientoRaton;
     private bool botonPulsado = false;
-
+    public bool BotonPulsado => botonPulsado; 
     //mates
     private Vector3 posicionInicialMano;
     private Vector3 posicionObjetivoMano; 
@@ -152,6 +152,8 @@ public class BatutaController : MonoBehaviour
     private void ActivarModoDirector()
     {
         modoDirectorActivo = true;
+        OrchestraAudioManager.Instance.readytoPlay = true;
+        MusicClockFMOD.Instance.IniciarReloj();
 
         //Desactivamos el script de movimiento original para que no interfiera con el control de la batuta.
         inputActions.Player.Disable();

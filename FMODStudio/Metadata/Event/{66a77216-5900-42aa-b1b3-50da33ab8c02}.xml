@@ -5,7 +5,7 @@
 			<value>FluteSol</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a09c3145-ac3b-497d-9860-820738aae09f}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{b44a1b8e-5c57-4502-a1de-77f0472e37fe}">
 		<relationship name="effects">
 			<destination>{fbaaef57-7565-4f4b-81ac-dfb4680a5a5d}</destination>
+			<destination>{b5310200-7501-4096-8383-d143f27c7d92}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a35b19cc-98b1-4139-9134-1714c5390ce9}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{fbaaef57-7565-4f4b-81ac-dfb4680a5a5d}" />
+	<object class="SpatialiserEffect" id="{b5310200-7501-4096-8383-d143f27c7d92}" />
 </objects>

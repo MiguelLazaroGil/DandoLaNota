@@ -253,13 +253,14 @@ GameObject:
   m_Component:
   - component: {fileID: 483411978}
   - component: {fileID: 483411977}
+  - component: {fileID: 483411979}
   m_Layer: 0
   m_Name: OrchestraAudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &483411977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrchestraAudioManager
   musicScoreManager: {fileID: 1245710442}
+  musicClock: {fileID: 483411979}
   musicians:
   - name: Trumpetist
     audioEvent:
@@ -310,6 +312,11 @@ MonoBehaviour:
   maxDeviation: 0.2
   changeInterval: 2
   pitchSmoothing: 1.5
+  loopDuration: 19.2
+  synchronizationStrength: 0.35
+  maxSynchronizationPitch: 0.08
+  synchronizationScoreRange: 50
+  synchronizationDeadZone: 0.015
 --- !u!4 &483411978
 Transform:
   m_ObjectHideFlags: 0
@@ -325,6 +332,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &483411979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483411976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb946e2ca4340f048bd931d5b826fb7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicClockFMOD
+  clockEvent:
+    Guid:
+      Data1: 248611725
+      Data2: 1288600107
+      Data3: -1505038692
+      Data4: -1137255204
+    Path: event:/Tema1/ClockT1
+  metronomoActivado: 1
+  duracionLoop: 19.2
+  automaticVolume: 1
+  maxScoreDeviation: 60
+  volumeFadeSpeed: 1.5
+  musicScoreManager: {fileID: 1245710442}
 --- !u!1 &573061616
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +641,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &740901189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6746668961538724888, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+  m_PrefabInstance: {fileID: 2415207395043712807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741677658
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,12 +867,62 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8651244830481758716, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2135064740}
+    - targetCorrespondingSourceObject: {fileID: 4414602790205852530, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1146970513}
   m_SourcePrefab: {fileID: 100100000, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+--- !u!4 &1146970509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897625903508371000, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+  m_PrefabInstance: {fileID: 1146970508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146970510 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8651244830481758716, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
   m_PrefabInstance: {fileID: 1146970508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1146970511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4414602790205852530, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+  m_PrefabInstance: {fileID: 1146970508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1146970512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2211241806592997767, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+  m_PrefabInstance: {fileID: 1146970508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146970511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e917666132a36c1408fbe43274b2eb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatutaController
+--- !u!114 &1146970513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146970511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636d33ccb05915942957cd69d442631d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmTracker
+  batutaController: {fileID: 1146970512}
+  mano: {fileID: 1146970509}
+  bpm: 100
+  toleranciaTiempo: 0.18
+  musicScoreManager: {fileID: 1245710442}
+  distanciaMinima: 0.12
+  precisionDireccion: 0.75
+  velocidadInicio: 0.12
+  porcentajeFrenado: 0.3
+  framesFrenado: 2
+  toleranciaDireccionEsperada: 0.4
+  minimoEjeEsperado: 0.45
+  margenDeteccion: 0.12
+  iniciarAlActivarDirector: 1
 --- !u!1 &1245710440
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,12 +969,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicScoreManager
   currentRhythm: 100
   currentQuality: 1
-  noInputRhythmDriftSpeed: 0.5
-  rhythmLerpSpeed: 0.4
+  noInputRhythmDriftSpeed: 2
+  rhythmLerpSpeed: 2
+  baseCorrection: 2
+  streakBonus: 0.5
+  maxCorrection: 7
   noInputQualityDecayRate: 0.04
   qualityLerpSpeed: 0.5
   eventDiminishingFactor: 0.5
-  inputTimeoutDuration: 0.4
+  inputTimeoutDuration: 1
 --- !u!1 &1936983876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1132,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1725477868968303540, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+      propertyPath: pianoTransform
+      value: 
+      objectReference: {fileID: 740901189}
+    - target: {fileID: 1725477868968303540, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+      propertyPath: currentInstrument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5850850066250800332, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
       propertyPath: m_Name
       value: Piano

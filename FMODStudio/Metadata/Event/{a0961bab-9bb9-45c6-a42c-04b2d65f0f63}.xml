@@ -5,7 +5,7 @@
 			<value>FluteSi</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a09c3145-ac3b-497d-9860-820738aae09f}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{d96da05b-97d0-41bf-8dfb-085c156270ea}">
 		<relationship name="effects">
 			<destination>{413ff4e5-d2cd-4daa-bf94-64100e995c28}</destination>
+			<destination>{fc58f39e-a7a5-4be6-8aa8-6bd005147152}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d0be7d14-f333-481a-b4cf-fd384423c978}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{413ff4e5-d2cd-4daa-bf94-64100e995c28}" />
+	<object class="SpatialiserEffect" id="{fc58f39e-a7a5-4be6-8aa8-6bd005147152}" />
 </objects>

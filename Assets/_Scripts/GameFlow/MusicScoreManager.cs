@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class MusicScoreManager : MonoBehaviour
@@ -6,29 +7,39 @@ public class MusicScoreManager : MonoBehaviour
     [Tooltip("Ritmo actual de la obra (0 a 200). 100 es el ritmo perfecto.")]
     [SerializeField] private float currentRhythm = 100f;
 
-    [Tooltip("Calidad general del ritmo y direcci髇 (0 a 1).")]
+    [Tooltip("Calidad general del ritmo y direcci贸n (0 a 1).")]
     [SerializeField] private float currentQuality = 1.0f;
 
     [Header("--- CONTROL DE RITMO (0 a 200) ---")]
     [Tooltip("Velocidad a la que el ritmo se descontrola y se aleja del 100 por segundo cuando NO hay input.")]
     [SerializeField] private float noInputRhythmDriftSpeed = 0.5f;
 
-    [Tooltip("Velocidad de respuesta/transici髇 suave del ritmo hacia el valor indicado por el director.")]
+    [Tooltip("Velocidad de respuesta/transici贸n suave del ritmo hacia el valor indicado por el director.")]
     [SerializeField] private float rhythmLerpSpeed = 0.4f;
 
+    [Header("--- CORRECCI脫N DE RITMO POR ACIERTOS ---")]
+    [Tooltip("Correcci贸n inicial del ritmo por cada pulso acertado.")]
+    [SerializeField] private float baseCorrection = 2f;
+
+    [Tooltip("Correcci贸n adicional por cada acierto consecutivo.")]
+    [SerializeField] private float streakBonus = 0.5f;
+
+    [Tooltip("Correcci贸n m谩xima que puede aplicarse por pulso.")]
+    [SerializeField] private float maxCorrection = 7f;
+
     [Header("--- CONTROL DE CALIDAD GENERAL (0 a 1) ---")]
-    [Tooltip("P閞dida de calidad general por segundo cuando NO se recibe ning鷑 input.")]
+    [Tooltip("P茅rdida de calidad general por segundo cuando NO se recibe ning煤n input.")]
     [SerializeField] private float noInputQualityDecayRate = 0.04f;
 
-    [Tooltip("Velocidad de respuesta/transici髇 suave de la calidad hacia el valor indicado por el director.")]
+    [Tooltip("Velocidad de respuesta/transici贸n suave de la calidad hacia el valor indicado por el director.")]
     [SerializeField] private float qualityLerpSpeed = 0.5f;
 
-    [Tooltip("Factor de atenuaci髇 para eventos negativos (0.1 a 1). A menor calidad actual, menor es la bajada absoluta.")]
+    [Tooltip("Factor de atenuaci贸n para eventos negativos (0.1 a 1). A menor calidad actual, menor es la bajada absoluta.")]
     [SerializeField, Range(0.1f, 1f)] private float eventDiminishingFactor = 0.5f;
 
     [Header("--- TIMING DE INPUTS ---")]
-    [Tooltip("Tiempo m醲imo en segundos sin recibir datos antes de considerar que el director ha dejado de dar marcas.")]
-    [SerializeField] private float inputTimeoutDuration = 0.4f;
+    [Tooltip("Tiempo m谩ximo en segundos sin recibir datos antes de considerar que el director ha dejado de dar marcas.")]
+    [SerializeField] private float inputTimeoutDuration = 1f;
 
     // Estado interno
     private float targetRhythm = 100f;
@@ -36,10 +47,15 @@ public class MusicScoreManager : MonoBehaviour
     private float timeSinceLastInput = 999f;
     private bool hasActiveInput = false;
 
-    // Propiedades p鷅licas de acceso
+    // Propiedades p煤blicas de acceso
     public float CurrentRhythm => currentRhythm;
     public float CurrentQuality => currentQuality;
     public bool HasActiveInput => hasActiveInput;
+
+    private void Awake()
+    {
+        targetRhythm = currentRhythm;
+    }
 
     private void Update()
     {
@@ -58,6 +74,26 @@ public class MusicScoreManager : MonoBehaviour
         targetRhythm = Mathf.Clamp(rhythm, 0f, 200f);
         targetQuality = Mathf.Clamp01(quality);
         timeSinceLastInput = 0f;
+    }
+
+    /// <summary>
+    /// Acerca progresivamente el ritmo a 100 seg煤n la racha de aciertos.
+    /// </summary>
+    public void CorrectRhythm(int streak)
+    {
+        float correction = Mathf.Min(
+            baseCorrection + Mathf.Max(0, streak - 1) * streakBonus,
+            maxCorrection
+        );
+
+        targetRhythm = Mathf.MoveTowards(
+            targetRhythm,
+            100f,
+            correction
+        );
+
+        timeSinceLastInput = 0f;
+        hasActiveInput = true;
     }
 
     /// <summary>
@@ -90,7 +126,10 @@ public class MusicScoreManager : MonoBehaviour
             }
             currentRhythm = Mathf.Clamp(currentRhythm, 0f, 200f);
 
-            // Degradaci髇 continua de calidad general
+            // Evita que al volver a recibir input se recupere un objetivo desactualizado
+            targetRhythm = currentRhythm;
+
+            // Degradaci贸n continua de calidad general
             currentQuality = Mathf.Max(0f, currentQuality - (noInputQualityDecayRate * dt));
         }
     }

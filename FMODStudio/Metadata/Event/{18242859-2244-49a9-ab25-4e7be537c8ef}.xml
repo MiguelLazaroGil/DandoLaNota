@@ -5,7 +5,7 @@
 			<value>ClarinetLa</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{42abe0f0-50ff-40cb-967c-1d5ea048834f}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{e509799f-532c-4d4e-a8a5-405ba77e792c}">
 		<relationship name="effects">
 			<destination>{7df4abac-aec8-4f91-ad49-beed77628077}</destination>
+			<destination>{22001296-0f0b-4514-aa29-6cceb0777b8a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{47be1ea0-2dce-40aa-a591-a6d12e4cf3ed}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{7df4abac-aec8-4f91-ad49-beed77628077}" />
+	<object class="SpatialiserEffect" id="{22001296-0f0b-4514-aa29-6cceb0777b8a}" />
 </objects>

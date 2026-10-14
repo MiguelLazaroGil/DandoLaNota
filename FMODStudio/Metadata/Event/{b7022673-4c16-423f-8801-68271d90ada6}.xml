@@ -5,7 +5,7 @@
 			<value>FluteMi</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a09c3145-ac3b-497d-9860-820738aae09f}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{4c9d229e-fb59-431f-ac10-49a64b331b9a}">
 		<relationship name="effects">
 			<destination>{93152b65-1369-445e-bca9-18470cfdd095}</destination>
+			<destination>{1ff6d94b-f5d8-4b6b-84c2-297a2628ba19}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6c400073-87a1-463b-bcfc-8dbf0702d7ca}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{93152b65-1369-445e-bca9-18470cfdd095}" />
+	<object class="SpatialiserEffect" id="{1ff6d94b-f5d8-4b6b-84c2-297a2628ba19}" />
 </objects>

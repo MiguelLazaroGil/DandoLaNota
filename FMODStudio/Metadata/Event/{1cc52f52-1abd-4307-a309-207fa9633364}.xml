@@ -5,7 +5,7 @@
 			<value>ViolinFa</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e5c126b2-d4d7-44d6-87c8-4174899d8b15}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{f962afa3-5f0a-49e8-97c1-bbe2da3a1a16}">
 		<relationship name="effects">
 			<destination>{e00a9beb-9623-4b25-904a-353a0df3e9cf}</destination>
+			<destination>{2b7876af-f30e-43db-b98a-67851399fb2d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{28643f98-fe6b-41c5-ac3a-71d0da888dd4}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{e00a9beb-9623-4b25-904a-353a0df3e9cf}" />
+	<object class="SpatialiserEffect" id="{2b7876af-f30e-43db-b98a-67851399fb2d}" />
 </objects>

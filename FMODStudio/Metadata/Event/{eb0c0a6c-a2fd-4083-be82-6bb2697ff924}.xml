@@ -5,7 +5,7 @@
 			<value>TrumpetDoA</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c2de3f02-257b-4148-a53c-0914e1c241a7}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{0b86f45b-4ce8-4641-bf6a-dfc904f0ad10}">
 		<relationship name="effects">
 			<destination>{8d1a3679-02c7-4e7e-97d9-94826a8d968b}</destination>
+			<destination>{bfa5d62e-3ea4-44d7-9014-ec08f1c2e903}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{da3f63f3-6404-4391-bae3-4d4b8c68c0b8}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{8d1a3679-02c7-4e7e-97d9-94826a8d968b}" />
+	<object class="SpatialiserEffect" id="{bfa5d62e-3ea4-44d7-9014-ec08f1c2e903}" />
 </objects>

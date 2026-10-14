@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{615be038-4b75-4488-bbe8-f0aebd57fde3}">
+		<property name="name">
+			<value>ActiveMetronome</value>
+		</property>
+		<relationship name="folder">
+			<destination>{5df9e21c-a6a0-4b77-8295-c8a77c5cfbba}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{242ec6cc-8803-40cc-9a88-3512b2964a61}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{242ec6cc-8803-40cc-9a88-3512b2964a61}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

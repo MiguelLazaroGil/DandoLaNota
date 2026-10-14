@@ -5,7 +5,7 @@
 			<value>TrumpetSi</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c2de3f02-257b-4148-a53c-0914e1c241a7}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{ddf44901-98ea-4246-a3ef-3b790faee345}">
 		<relationship name="effects">
 			<destination>{947591ad-01a6-436f-97b7-7b2cd5bc4e49}</destination>
+			<destination>{788dbe6a-93d5-43a5-ad1a-45805d600db7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{25b05bf3-8062-494e-b716-69911ff9a1a0}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{947591ad-01a6-436f-97b7-7b2cd5bc4e49}" />
+	<object class="SpatialiserEffect" id="{788dbe6a-93d5-43a5-ad1a-45805d600db7}" />
 </objects>

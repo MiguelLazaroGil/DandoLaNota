@@ -5,7 +5,7 @@
 			<value>ViolinSol</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e5c126b2-d4d7-44d6-87c8-4174899d8b15}</destination>
@@ -169,6 +169,7 @@
 	<object class="MixerBusEffectChain" id="{0a36d86e-7ebf-4b59-b734-329b0fcdbb48}">
 		<relationship name="effects">
 			<destination>{d892eb73-9f1b-43ea-8516-6a246f141e06}</destination>
+			<destination>{6a2cebda-eead-4874-a7c0-a7711028f456}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bd16a6d7-51cf-4fd6-b258-fe3bc6a60686}" />
@@ -185,4 +186,5 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{d892eb73-9f1b-43ea-8516-6a246f141e06}" />
+	<object class="SpatialiserEffect" id="{6a2cebda-eead-4874-a7c0-a7711028f456}" />
 </objects>
