@@ -419,9 +419,68 @@ MonoBehaviour:
           m_StringArgument: TrumpetAnimation
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 242526299}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onHoverExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &242526299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242526280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: 1366907634
+      Data2: 1124953990
+      Data3: -1189611632
+      Data4: 1805679857
+    Path: event:/Trumpet2D/TrumpetRe2D
+  volume: 0.6
+  cooldown: 1
+--- !u!1 &250282305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8954501875410238073, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+  m_PrefabInstance: {fileID: 1851034594238402767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &250282312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250282305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: 1397366374
+      Data2: 1176754180
+      Data3: 285969306
+      Data4: -739762044
+    Path: event:/Violin2D/ViolinDo2D
+  volume: 1
+  cooldown: 0.8
 --- !u!114 &389838580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +639,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &698943604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2591691649612374397, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+  m_PrefabInstance: {fileID: 1851034594238402767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &698943611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698943604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: 1640609611
+      Data2: 1342137127
+      Data3: -1913549671
+      Data4: 1803609223
+    Path: event:/Violin2D/ViolinMi2D
+  volume: 1
+  cooldown: 0.8
 --- !u!65 &746660344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -601,6 +686,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5816705, y: 0.07283569, z: 0.07850364}
   m_Center: {x: -0.26781905, y: 0.031860646, z: 0.009113807}
+--- !u!1 &772424718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6659885670435014829, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+  m_PrefabInstance: {fileID: 1851034594238402767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &772424725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772424718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: -1701554712
+      Data2: 1295086613
+      Data3: 727355836
+      Data4: -1042690744
+    Path: event:/Violin2D/ViolinRe2D
+  volume: 1
+  cooldown: 0.8
 --- !u!1 &837412792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,6 +3626,92 @@ Transform:
   - {fileID: 543450653163597253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1351963049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6647222475744189081, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+  m_PrefabInstance: {fileID: 1851034594238402767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351963056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351963049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: 346098984
+      Data2: 1325547971
+      Data3: 132853689
+      Data4: 984849822
+    Path: event:/Trumpet2D/TrumpetDo2D
+  volume: 0.6
+  cooldown: 1
+--- !u!114 &1351963057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351963049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121cb04ebcd6cf84b8357ad234f490b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelectTrigger
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3469287836946670177}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrumpetAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3469287836946670177}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrumpetAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1351963056}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1806144097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,6 +4091,92 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2060518284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8685385318116912524, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+  m_PrefabInstance: {fileID: 1851034594238402767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2060518291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060518284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c41a151c4c04e2b804502095407ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  soundEvent:
+    Guid:
+      Data1: -786982550
+      Data2: 1280786000
+      Data3: -1127566200
+      Data4: 1995604562
+    Path: event:/Trumpet2D/TrumpetMi2D
+  volume: 0.6
+  cooldown: 1
+--- !u!114 &2060518292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060518284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121cb04ebcd6cf84b8357ad234f490b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelectTrigger
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3469287836946670177}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrumpetAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3469287836946670177}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrumpetAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2060518291}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &18570109737193378
 Transform:
   m_ObjectHideFlags: 0
@@ -6672,9 +6955,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8076509615136969786, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1851034594238402793}
+    - targetCorrespondingSourceObject: {fileID: 6647222475744189081, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1351963057}
+    - targetCorrespondingSourceObject: {fileID: 6647222475744189081, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1351963056}
     - targetCorrespondingSourceObject: {fileID: 1394209113785580093, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242526292}
+    - targetCorrespondingSourceObject: {fileID: 1394209113785580093, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 242526299}
+    - targetCorrespondingSourceObject: {fileID: 8685385318116912524, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2060518292}
+    - targetCorrespondingSourceObject: {fileID: 8685385318116912524, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2060518291}
+    - targetCorrespondingSourceObject: {fileID: 8954501875410238073, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 250282312}
+    - targetCorrespondingSourceObject: {fileID: 6659885670435014829, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 772424725}
+    - targetCorrespondingSourceObject: {fileID: 2591691649612374397, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 698943611}
   m_SourcePrefab: {fileID: 100100000, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
 --- !u!1 &1851034594238402771 stripped
 GameObject:
