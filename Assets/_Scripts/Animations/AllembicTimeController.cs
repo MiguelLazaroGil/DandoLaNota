@@ -8,13 +8,14 @@ public class AlembicTimeController : MonoBehaviour
     [Header("Config")]
     [Tooltip("Total time in seconds.")]
     [SerializeField] private float duration = 2.0f;
+    public float Duration => duration;
 
     [Tooltip("If active it plays in reverse.")]
     [SerializeField] public bool playReverse = false;
 
     [Tooltip("Plays on awake")]
     [SerializeField] private bool playOnAwake = true;
-    [SerializeField] UnityEvent onEndAnimation;
+    [SerializeField] public UnityEvent onEndAnimation;
     private AlembicStreamPlayer alembicPlayer;
     private float elapsedTime = 0f;
     private float startTime;

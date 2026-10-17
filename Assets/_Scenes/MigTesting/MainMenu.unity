@@ -481,6 +481,78 @@ MonoBehaviour:
     Path: event:/Violin2D/ViolinDo2D
   volume: 1
   cooldown: 0.8
+--- !u!114 &250282319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250282305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121cb04ebcd6cf84b8357ad234f490b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelectTrigger
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 250282312}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 250282312}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &389838580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +737,78 @@ MonoBehaviour:
     Path: event:/Violin2D/ViolinMi2D
   volume: 1
   cooldown: 0.8
+--- !u!114 &698943618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698943604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121cb04ebcd6cf84b8357ad234f490b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelectTrigger
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 698943611}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 698943611}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &746660344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -712,6 +856,78 @@ MonoBehaviour:
     Path: event:/Violin2D/ViolinRe2D
   volume: 1
   cooldown: 0.8
+--- !u!114 &772424732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772424718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121cb04ebcd6cf84b8357ad234f490b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelectTrigger
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 772424725}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7679156978169548245}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Violinanim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 772424725}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.6
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &837412792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7114,43 +7330,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6081118403504599641}
+      objectReference: {fileID: 1749708454}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1749708454}
+      objectReference: {fileID: 6081118403504599641}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 250282312}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayCurtainAnimation
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayFade
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseCurtainAndLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CurtainControllerScript, Assembly-CSharp
+      value: CanvasGroupFadeCurve, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CanvasGroupFadeCurve, Assembly-CSharp
+      value: CurtainControllerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UIButtonSound, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -7161,11 +7397,99 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062086183102738570, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1749708454}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6081118403504599641}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 772424725}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayFade
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseCurtainAndLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CanvasGroupFadeCurve, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CurtainControllerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UIButtonSound, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3147760883433353535, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
@@ -7292,8 +7616,81 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1993056114}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1749708454}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6081118403504599641}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 698943611}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayFade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseCurtainAndLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CanvasGroupFadeCurve, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CurtainControllerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UIButtonSound, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391525468798374295, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 930881775709836590, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+    - {fileID: 8069946278889584343, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7354,12 +7751,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8954501875410238073, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       insertIndex: -1
       addedObject: {fileID: 250282312}
+    - targetCorrespondingSourceObject: {fileID: 8954501875410238073, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 250282319}
     - targetCorrespondingSourceObject: {fileID: 6659885670435014829, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       insertIndex: -1
       addedObject: {fileID: 772424725}
+    - targetCorrespondingSourceObject: {fileID: 6659885670435014829, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 772424732}
     - targetCorrespondingSourceObject: {fileID: 2591691649612374397, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698943611}
+    - targetCorrespondingSourceObject: {fileID: 2591691649612374397, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 698943618}
   m_SourcePrefab: {fileID: 100100000, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
 --- !u!1 &1851034594238402771 stripped
 GameObject:
@@ -8975,7 +9381,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948698273219240759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9758,9 +10164,9 @@ MonoBehaviour:
       createCurveRenderers: 0
     mediaStartTime: 0
     mediaEndTime: 0
-  startTime: 6
+  startTime: 7
   endTime: 11.25
-  currentTime: 5.25
+  currentTime: 4.25
   vertexMotionScale: 1
 --- !u!4 &3587064020930856414
 Transform:
@@ -12480,7 +12886,7 @@ Transform:
   m_GameObject: {fileID: 425576101832487831}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24064802, y: 0.8955271, z: 0.32519674, w: 0.18538274}
-  m_LocalPosition: {x: -2.581402, y: 3.1407971, z: 0.6002438}
+  m_LocalPosition: {x: -2.581402, y: 3.140797, z: 0.6002438}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12867,8 +13273,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CurtainControllerScript
   controller: {fileID: 6081118403504599643}
   curtains: {fileID: 3134101166653950857}
-  positionOffset: {x: 0, y: 0, z: 0}
+  simpleSceneArrayLoader: {fileID: 6081118403504599642}
+  positionOffset: {x: -0.0055856, y: 0, z: -0.0423578}
   moveDuration: 2
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6081118403504599642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14249,8 +14680,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7679156978169548244}
+  - component: {fileID: 7679156978169548245}
   m_Layer: 0
-  m_Name: Violin1
+  m_Name: Violin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15104,7 +15536,7 @@ Transform:
   m_GameObject: {fileID: 7050957209268803438}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6456668, y: -0.6457305, z: 0.28826955, w: -0.28817922}
-  m_LocalPosition: {x: 3.3644533, y: 2.1103692, z: -8.35}
+  m_LocalPosition: {x: 3.3644533, y: 2.110369, z: -8.35}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -15112,6 +15544,28 @@ Transform:
   - {fileID: 8737580503717577270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0.009, y: -228.11, z: -89.998}
+--- !u!95 &7679156978169548245
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050957209268803438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 842ecf66e6047b84192c70b61fb10afb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7681575481560990647
 GameObject:
   m_ObjectHideFlags: 0

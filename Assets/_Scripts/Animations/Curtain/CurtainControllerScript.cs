@@ -7,9 +7,12 @@ public class CurtainControllerScript : MonoBehaviour
 {
     [SerializeField] AlembicTimeController controller;
     [SerializeField] MeshRenderer curtains;
+    [SerializeField] SimpleSceneArrayLoader simpleSceneArrayLoader;
     [SerializeField]
     Vector3 positionOffset = new Vector3(0f, 0f, 0f);
     [SerializeField] private float moveDuration = 1.0f;
+    [Tooltip("Animation curve for spacial movement")]
+    [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     private Vector3 baseLocalPosition;
     private Coroutine currentAnimationRoutine;
 
@@ -17,13 +20,20 @@ public class CurtainControllerScript : MonoBehaviour
     {
         // Guardamos la posición Z local original al iniciar
         baseLocalPosition = transform.localPosition;
+        curtains.enabled = true;
     }
 
     private void Start() // al cargarse en escena están cerradas y se abren
     {
         PlayCurtainAnimation(false);
     }
+    public void CloseCurtainAndLoadScene(int idx)
+    {
+        PlayCurtainAnimation(true);
+        controller.onEndAnimation.AddListener(() => simpleSceneArrayLoader.LoadSceneAt(idx));
 
+
+    }
     public void PlayCurtainAnimation(bool close)
     {
         if (!curtains) return;
@@ -38,42 +48,55 @@ public class CurtainControllerScript : MonoBehaviour
 
 
 
-        // Lanzamos la corrutina que mueve la Z de forma suave y luego ejecuta el Alembic
-        currentAnimationRoutine = StartCoroutine(MovePositionAndPlayRoutine(close));
+        currentAnimationRoutine = StartCoroutine(CurtainSequenceRoutine(close));
+    }
+    private IEnumerator CurtainSequenceRoutine(bool close)
+    {
+        if (close)
+        {
+
+            yield return StartCoroutine(MovePositionRoutine(baseLocalPosition + positionOffset, baseLocalPosition));
+
+            controller.playReverse = false;
+            controller.PlayAlembic();
+
+        }
+        else
+        {
+
+            controller.playReverse = true;
+            controller.PlayAlembic();
+
+
+            yield return new WaitForSeconds(controller.Duration);
+
+
+            yield return StartCoroutine(MovePositionRoutine(baseLocalPosition, baseLocalPosition + positionOffset));
+        }
     }
 
-    private IEnumerator MovePositionAndPlayRoutine(bool open)
+    private IEnumerator MovePositionRoutine(Vector3 startPos, Vector3 targetPos)
     {
-        Vector3 startPos = transform.localPosition;
-
-        // Si se abren, el destino es la posición base más el offset completo en Vector3.
-        // Si se cierran, volvemos a la posición base original.
-        Vector3 targetPos = open ? (baseLocalPosition + positionOffset) : baseLocalPosition;
-
         float elapsed = 0f;
-        controller.playReverse = !open;
 
-        // Bucle de interpolación suave durante el intervalo de tiempo especificado
         while (elapsed < moveDuration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / moveDuration);
-            float smoothT = Mathf.SmoothStep(0f, 1f, t); // Curva suave (Easing)
 
-            transform.localPosition = Vector3.Lerp(startPos, targetPos, smoothT);
+            // Evaluamos la AnimationCurve en lugar de SmoothStep directo
+            float curveT = moveCurve.Evaluate(t);
+
+            transform.localPosition = Vector3.Lerp(startPos, targetPos, curveT);
 
             yield return null;
         }
 
         // Aseguramos la posición final exacta
         transform.localPosition = targetPos;
-
-        // Gestionamos el renderizado de las cortinas
-
-
-        // Una vez finalizado por completo el desplazamiento vectorial, activamos el Alembic
-        controller.PlayAlembic();
     }
-
-
+    void OnDestroy()
+    {
+        controller.onEndAnimation.RemoveAllListeners();
+    }
 }
