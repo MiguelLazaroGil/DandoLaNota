@@ -5,7 +5,7 @@
 			<value>ViolinMi2D</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c21ffad1-126f-469a-9bdf-d48c8f9bcc41}</destination>
@@ -69,10 +69,6 @@
 			<destination>{ede6d7e0-9d26-41be-a90a-dc2447c2a91d}</destination>
 			<destination>{b1ae0893-4f76-4459-9e87-856f6afa2504}</destination>
 		</relationship>
-		<relationship name="markers">
-			<destination>{9c73a3f0-dfe3-42b5-be47-68cd67700ddd}</destination>
-			<destination>{ce13c425-323f-4c25-81b6-e60d59aa1c8b}</destination>
-		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{818bc7d6-7d45-445d-9ec9-26f7859ad18e}">
 		<relationship name="preset">
@@ -100,7 +96,7 @@
 	</object>
 	<object class="SingleSound" id="{ede6d7e0-9d26-41be-a90a-dc2447c2a91d}">
 		<property name="start">
-			<value>2.4000000000000004</value>
+			<value>1.40625</value>
 		</property>
 		<property name="length">
 			<value>0.59999999999999964</value>
@@ -117,7 +113,7 @@
 			<value>0.80000000000000004</value>
 		</property>
 		<property name="length">
-			<value>1.6000000000000003</value>
+			<value>0.60624999999999996</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>0.80000000000000004</value>
@@ -132,59 +128,12 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a12c48fc-590a-4d31-bacd-6a2b2cf0ae9a}" />
-	<object class="NamedMarker" id="{9c73a3f0-dfe3-42b5-be47-68cd67700ddd}">
-		<property name="position">
-			<value>2.4000000000000004</value>
-		</property>
-		<property name="name">
-			<value>Marker A</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{a32a03c2-7f08-4ba0-98e3-9ee333b8d758}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{2c881809-11c3-4780-bf1f-72d113f96420}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionRegion" id="{ce13c425-323f-4c25-81b6-e60d59aa1c8b}">
-		<property name="position">
-			<value>0.80000000000000004</value>
-		</property>
-		<property name="length">
-			<value>1.6000000000000003</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{a32a03c2-7f08-4ba0-98e3-9ee333b8d758}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{2c881809-11c3-4780-bf1f-72d113f96420}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{9c73a3f0-dfe3-42b5-be47-68cd67700ddd}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{8a76905d-fd2f-4ebc-b8c5-041d06595c85}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{92207c34-cc32-4e78-a705-b2f638ad90e9}">
 		<relationship name="effects">
 			<destination>{6681f44d-336f-4550-add9-8668b2f89933}</destination>
-			<destination>{33415771-7593-4b32-90c5-3996d5260c18}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a3dd85bc-be7b-4494-9c8d-52f5a53595fe}" />
 	<object class="MixerBusFader" id="{86cd66f3-f148-4886-8b8d-e5dbdceac982}" />
-	<object class="ParameterCondition" id="{8a76905d-fd2f-4ebc-b8c5-041d06595c85}">
-		<property name="minimum">
-			<value>1</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3d5a3148-6d9d-4a70-a851-eb18abd5ee28}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusFader" id="{6681f44d-336f-4550-add9-8668b2f89933}" />
-	<object class="SpatialiserEffect" id="{33415771-7593-4b32-90c5-3996d5260c18}" />
 </objects>

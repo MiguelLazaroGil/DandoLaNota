@@ -480,7 +480,7 @@ MonoBehaviour:
       Data4: -739762044
     Path: event:/Violin2D/ViolinDo2D
   volume: 1
-  cooldown: 0.8
+  cooldown: 2
 --- !u!114 &250282319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
       Data4: 1803609223
     Path: event:/Violin2D/ViolinMi2D
   volume: 1
-  cooldown: 0.8
+  cooldown: 2
 --- !u!114 &698943618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +855,7 @@ MonoBehaviour:
       Data4: -1042690744
     Path: event:/Violin2D/ViolinRe2D
   volume: 1
-  cooldown: 0.8
+  cooldown: 2
 --- !u!114 &772424732
 MonoBehaviour:
   m_ObjectHideFlags: 0
