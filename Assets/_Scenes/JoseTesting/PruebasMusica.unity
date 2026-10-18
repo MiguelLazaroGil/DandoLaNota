@@ -130,11 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf25fcb0ea43f384cb745af18ce4617d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UtilsInGameAssembly::CompleteTaggedDetector
---- !u!4 &286819014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1806191716466595306, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 1760086901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &470040330
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,11 +499,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &579240693 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2792081671097580135, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 1760086901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &681407631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,26 +1002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
-    - target: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806191716466595306, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0159
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806191716466595306, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0239
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806191716466595306, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.021
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940443589593937783, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_Weight
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6353852289616517668, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: musicScoreManager
+      value: 
+      objectReference: {fileID: 1245710442}
     - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1072,155 +1046,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7512966435341176405, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512966435341176405, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: limiteDistancia
-      value: 0.009
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512966435341176405, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: sensibilidadRaton
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661844082290078089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661844082290078089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661844082290078094, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 8728837105295018890, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: FreezeX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8728837105295018890, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: FreezeZ
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8728837105295018890, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: _uprightJointSpringDamper
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8728837105295018890, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: _uprightJointSpringStrength
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7512966435341176405, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7134472455000938881, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1809048245}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
---- !u!4 &1762205041 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7134472455000938881, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 1760086901}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1762205046 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3195662627754106183, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 1760086901}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0207805a72a9b544a87785085ef5e56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimplePlayerController
---- !u!1 &1809048244
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1809048245}
-  - component: {fileID: 1809048247}
-  - component: {fileID: 1809048246}
-  m_Layer: 2
-  m_Name: DirectorController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1809048245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809048244}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1762205041}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1809048246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809048244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636d33ccb05915942957cd69d442631d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RhythmTracker
-  batutaController: {fileID: 1809048247}
-  mano: {fileID: 286819014}
-  bpm: 100
-  toleranciaTiempo: 0.18
-  musicScoreManager: {fileID: 1245710442}
-  distanciaMinima: 0.12
-  precisionDireccion: 0.75
-  velocidadInicio: 0.12
-  porcentajeFrenado: 0.3
-  framesFrenado: 2
-  toleranciaDireccionEsperada: 0.4
-  minimoEjeEsperado: 0.45
-  margenDeteccion: 0.12
-  iniciarAlActivarDirector: 1
---- !u!114 &1809048247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809048244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e917666132a36c1408fbe43274b2eb50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatutaController
-  playerController: {fileID: 1762205046}
-  modeloBatuta: {fileID: 2025968260}
-  mano: {fileID: 286819014}
-  camaraPrincipal: {fileID: 579240693}
-  velocidadCaminarDirector: 1.5
-  velocidadRotacionDirector: 0.2
-  sensibilidadCamara: 5
-  suavizadoCamara: 26
-  sensibilidadRaton: 0.005
-  limiteDistancia: 0.009
-  tiempoSuavizado: 0.1
-  multiplicadorInclinacion: 7
-  velocidadRecuperacionMuneca: 30
 --- !u!1 &1936983876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,11 +1178,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &2025968260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8544960913186788944, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 1760086901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2135064739 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8651244830481758718, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}

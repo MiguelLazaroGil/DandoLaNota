@@ -30,8 +30,10 @@ public class RolyPoly : MonoBehaviour
             _rb = GetComponent<Rigidbody>();
 
     }
+    //Changed to only look in plane XZ
     public void UpdateTargetRot(Vector3 lookDirection)
     {
+        lookDirection = new Vector3(lookDirection.x, 0f, lookDirection.z);
         _uprightJointTargetRot = Quaternion.LookRotation(lookDirection) * offsetRotation;
     }
 
@@ -82,7 +84,7 @@ public class RolyPoly : MonoBehaviour
         float rotRadians = rotDegrees * Mathf.Deg2Rad;
 
         // 5. Aplicamos el torque con la corrección ya filtrada
-        _rb.AddTorque((rotAxis * (rotRadians * _uprightJointSpringStrength)) 
+        _rb.AddTorque((rotAxis * (rotRadians * _uprightJointSpringStrength))
         - (_rb.angularVelocity * _uprightJointSpringDamper));
     }
 
