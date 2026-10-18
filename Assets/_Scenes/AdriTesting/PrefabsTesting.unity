@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 72bfde73751b5274baa0f6b4ba2f8439, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 5cf265ee5def4924da05fa3b91935da8, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4374,30 +4374,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
-    - target: {fileID: 1987272755770324962, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 73843e230353b724e863c4516c7e13d8, type: 2}
-    - target: {fileID: 2262461255541621593, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
-    - target: {fileID: 3527249381243069286, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: stepHeight
-      value: 0.6
+    - target: {fileID: 4940443589593937783, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_Weight
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5610284533313227457, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
-    - target: {fileID: 5610284533313227457, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    - target: {fileID: 6370864016038290781, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: b6ec4f2a1377ad54fb33748a84ffe786, type: 2}
-    - target: {fileID: 6309612232543859931, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
+      objectReference: {fileID: 2100000, guid: d4488dbf8568fec4d94f988e1be054b0, type: 2}
     - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
