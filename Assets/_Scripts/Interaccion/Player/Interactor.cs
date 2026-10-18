@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactor : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class Interactor : MonoBehaviour
 
     [SerializeField, ReadOnly]
     Grabbable currentGrabbedObj;
+
+    [Header("Eventos")]
+    public UnityEvent<Grabbable> OnGrabSuccess;
+    public UnityEvent<Grabbable> OnDropSuccess;
+
+    public UnityEvent<Interactable> OnInteractionInHandSuccess;
+    public UnityEvent<Interactable> OnInteractionOtherSuccess;
 
     private void Awake()
     {
@@ -42,22 +50,29 @@ public class Interactor : MonoBehaviour
        //Si es grabbable se coge antes
         Grabbable grabbable = temp.GetComponent<Grabbable>();
         if (Grab(grabbable))
+
         {
+            OnGrabSuccess?.Invoke(grabbable);
             //Si ya lo ha cogido nada más
             return;
         }
 
         //Interacción con objeto no cogible
         Interactable interactable = temp.GetComponent<Interactable>();
-        InteractWith(interactable);
+        if(InteractWith(interactable))
+        {
+            OnInteractionOtherSuccess?.Invoke(interactable);
+        }
     }
     public void TryDrop()
     {
         if(!isGrabbing) return;
 
         currentGrabbedObj.Drop();
-        currentGrabbedObj = null;
+
         isGrabbing = false;
+        OnDropSuccess?.Invoke(currentGrabbedObj);
+        currentGrabbedObj = null;
 
 
     }
@@ -88,7 +103,10 @@ public class Interactor : MonoBehaviour
     {
 
         Interactable interactable = currentGrabbedObj.GetComponent<Interactable>();
-        InteractWith(interactable);
+       if(InteractWith(interactable))
+        {
+            OnInteractionInHandSuccess?.Invoke(interactable);
+        }
         return;
     }
 
