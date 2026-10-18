@@ -62,7 +62,7 @@ public class FirstPersonCameraController : MonoBehaviour
         // Si hay input del ratón o gamepad
         if (look.sqrMagnitude >= _threshold)
         {
-            float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            float deltaTimeMultiplier =  Time.deltaTime;
 
             // 1. Acumulamos el movimiento vertical y horizontal de la cámara
             _cinemachineTargetPitch += - look.y * RotationSpeed * deltaTimeMultiplier;

@@ -376,9 +376,9 @@ MonoBehaviour:
   offsetRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   _uprightJointSpringStrength: 1
   _uprightJointSpringDamper: 1
-  FreezeX: 1
+  FreezeX: 0
   FreezeY: 0
-  FreezeZ: 1
+  FreezeZ: 0
   thresholdX: 1
   thresholdY: 1
   thresholdZ: 1
@@ -813,7 +813,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 4835078630258379571, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
-  - {fileID: 5666030329399677832, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
+  - {fileID: 2100000, guid: d4488dbf8568fec4d94f988e1be054b0, type: 2}
   - {fileID: 4217796364934669478, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1048,6 +1048,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6502306276818590334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2469268089966947641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603511310587410145}
+  - component: {fileID: 752620284568480379}
+  - component: {fileID: 6353852289616517668}
+  m_Layer: 2
+  m_Name: DirectorController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1603511310587410145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469268089966947641}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7134472455000938881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752620284568480379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469268089966947641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e917666132a36c1408fbe43274b2eb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatutaController
+  playerController: {fileID: 3195662627754106183}
+  modeloBatuta: {fileID: 8544960913186788944}
+  mano: {fileID: 1806191716466595306}
+  camaraPrincipal: {fileID: 2792081671097580135}
+  velocidadCaminarDirector: 1.5
+  velocidadRotacionDirector: 0.2
+  sensibilidadCamara: 0.57
+  suavizadoCamara: 26
+  sensibilidadRaton: 0.005
+  limiteDistancia: 0.009
+  tiempoSuavizado: 0.1
+  multiplicadorInclinacion: 7
+  velocidadRecuperacionMuneca: 30
+--- !u!114 &6353852289616517668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469268089966947641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636d33ccb05915942957cd69d442631d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmTracker
+  batutaController: {fileID: 752620284568480379}
+  mano: {fileID: 1806191716466595306}
+  bpm: 100
+  toleranciaTiempo: 0.18
+  musicScoreManager: {fileID: 0}
+  distanciaMinima: 0.012
+  precisionDireccion: 0.75
+  velocidadInicio: 0.012
+  porcentajeFrenado: 0.3
+  framesFrenado: 2
+  toleranciaDireccionEsperada: 0.4
+  minimoEjeEsperado: 0.45
+  margenDeteccion: 0.12
+  iniciarAlActivarDirector: 1
 --- !u!1 &2665588307225783478
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,7 +3528,6 @@ GameObject:
   - component: {fileID: 7514656515351085879}
   - component: {fileID: 3380991143687020966}
   - component: {fileID: 1676137418951491129}
-  - component: {fileID: 7512966435341176405}
   m_Layer: 2
   m_Name: PlayerInput
   m_TagString: Player
@@ -3468,6 +3551,7 @@ Transform:
   - {fileID: 2792081671097580135}
   - {fileID: 8461147108989214982}
   - {fileID: 8716976742406068187}
+  - {fileID: 1603511310587410145}
   m_Father: {fileID: 7197365511321013618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4815658302819561280
@@ -3740,35 +3824,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3df9c30a434f74dbb696ef6db030e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
-  detector: {fileID: 0}
+  detector: {fileID: 7947331420608036555}
   grabPivot: {fileID: 1806191716466595306}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
---- !u!114 &7512966435341176405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7514656515351085883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e917666132a36c1408fbe43274b2eb50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatutaController
-  playerController: {fileID: 3195662627754106183}
-  modeloBatuta: {fileID: 8544960913186788944}
-  mano: {fileID: 1806191716466595306}
-  camaraPrincipal: {fileID: 2792081671097580135}
-  velocidadCaminarDirector: 1.5
-  velocidadRotacionDirector: 0.2
-  sensibilidadCamara: 5
-  suavizadoCamara: 26
-  sensibilidadRaton: 0.005
-  limiteDistancia: 0.05
-  tiempoSuavizado: 0.1
-  multiplicadorInclinacion: 7
-  velocidadRecuperacionMuneca: 30
 --- !u!1 &7627852366314883009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +3982,7 @@ Transform:
   m_GameObject: {fileID: 7975655545440072292}
   serializedVersion: 2
   m_LocalRotation: {x: -0.061908036, y: 0.000000118980765, z: 0.0000000073800415, w: 0.9980819}
-  m_LocalPosition: {x: -0.004899995, y: 0.023916664, z: 0.020985264}
+  m_LocalPosition: {x: -0.0159, y: 0.0239, z: 0.021}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4450,7 +4509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Animation.Rigging::UnityEngine.Animations.Rigging.Rig
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
 --- !u!1001 &346202361013849707
 PrefabInstance:

@@ -90,12 +90,15 @@ public class RhythmTracker : MonoBehaviour
     private void LateUpdate()
     {
         if (batutaController == null || mano == null)
+        {
+           
             return;
-
+        }
         bool directorActivo = batutaController.modoDirectorActivo;
 
         if (directorActivo != directorAnterior)
         {
+           
             directorAnterior = directorActivo;
 
             if (directorActivo && iniciarAlActivarDirector)
