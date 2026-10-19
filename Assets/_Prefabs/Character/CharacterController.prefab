@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 4012883291380726142}
   - component: {fileID: 6891435217087737458}
   - component: {fileID: 8728837105295018890}
+  - component: {fileID: 4251547158921675309}
   m_Layer: 10
   m_Name: RIG-BodyBones
   m_TagString: Untagged
@@ -319,7 +320,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198750407697722089}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -354,8 +355,8 @@ MonoBehaviour:
   rayVector: {x: 0, y: -1, z: 0}
   legsSeparation: 0.5
   height: 2.5
-  SpringStrength: 30
-  SpringDamper: 1.5
+  SpringStrength: 130
+  SpringDamper: 50
   IgnoreMask:
     serializedVersion: 2
     m_Bits: 1028
@@ -374,7 +375,7 @@ MonoBehaviour:
   _rb: {fileID: 4012883291380726142}
   _uprightJointTargetRot: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   offsetRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
-  _uprightJointSpringStrength: 1
+  _uprightJointSpringStrength: 5
   _uprightJointSpringDamper: 1
   FreezeX: 0
   FreezeY: 0
@@ -382,6 +383,29 @@ MonoBehaviour:
   thresholdX: 1
   thresholdY: 1
   thresholdZ: 1
+--- !u!114 &4251547158921675309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198750407697722089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5771dbc6f5720d40aa76fc7ea2d2bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundDetectorRaycast
+  Height: 2.23
+  useMultipleRays: 1
+  IgnoreMask:
+    serializedVersion: 2
+    m_Bits: 1542
+  nRays: 4
+  radius: 0.41
+  rayVector: {x: 0, y: -1, z: 0}
+  onLanding:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1369382122408669297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,6 +3757,7 @@ GameObject:
   - component: {fileID: 7134472455000938881}
   - component: {fileID: 4815658302819561280}
   - component: {fileID: 3195662627754106183}
+  - component: {fileID: 6226887903674982978}
   - component: {fileID: 7514656515351085879}
   - component: {fileID: 3380991143687020966}
   - component: {fileID: 1676137418951491129}
@@ -3799,6 +3824,24 @@ MonoBehaviour:
   rb: {fileID: 4012883291380726142}
   speed: 6
   cameraTransform: {fileID: 8661844082290078089}
+--- !u!114 &6226887903674982978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7514656515351085883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984fcf8b7b2c9904abe0fba59f72bd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpController
+  jumpHeight: 3
+  maxJumpTime: 0.5
+  heaviness: 1
+  JumpBufferTime: 0.25
+  groundDetector: {fileID: 4251547158921675309}
+  _rb: {fileID: 4012883291380726142}
 --- !u!114 &7514656515351085879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3893,7 +3936,19 @@ MonoBehaviour:
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6226887903674982978}
+        m_TargetAssemblyTypeName: JumpController, Assembly-CSharp
+        m_MethodName: onJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -4036,6 +4091,18 @@ MonoBehaviour:
   grabPivot: {fileID: 1806191716466595306}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
+  OnGrabSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionInHandSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionOtherSuccess:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7627852366314883009
 GameObject:
   m_ObjectHideFlags: 0

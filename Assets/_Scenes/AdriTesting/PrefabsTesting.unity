@@ -4374,6 +4374,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
+    - target: {fileID: 4012883291380726142, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891435217087737458, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: SpringDamper
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891435217087737458, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: SpringStrength
+      value: 130
+      objectReference: {fileID: 0}
     - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4414,11 +4426,105 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6654246099890531921}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JumpController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728837105295018890, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: _uprightJointSpringStrength
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1198750407697722089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6654246099890531920}
+    - targetCorrespondingSourceObject: {fileID: 7514656515351085883, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 6654246099890531921}
   m_SourcePrefab: {fileID: 100100000, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+--- !u!1 &6654246099890531917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1198750407697722089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  m_PrefabInstance: {fileID: 6654246099890531916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &6654246099890531918 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4012883291380726142, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  m_PrefabInstance: {fileID: 6654246099890531916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6654246099890531919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7514656515351085883, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  m_PrefabInstance: {fileID: 6654246099890531916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6654246099890531920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654246099890531917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5771dbc6f5720d40aa76fc7ea2d2bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundDetectorRaycast
+  Height: 2.23
+  useMultipleRays: 1
+  IgnoreMask:
+    serializedVersion: 2
+    m_Bits: 1536
+  nRays: 4
+  radius: 0.41
+  rayVector: {x: 0, y: -1, z: 0}
+  onLanding:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6654246099890531921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654246099890531919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984fcf8b7b2c9904abe0fba59f72bd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpController
+  jumpHeight: 3
+  maxJumpTime: 0.5
+  heaviness: 1
+  JumpBufferTime: 0.25
+  groundDetector: {fileID: 6654246099890531920}
+  _rb: {fileID: 6654246099890531918}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
