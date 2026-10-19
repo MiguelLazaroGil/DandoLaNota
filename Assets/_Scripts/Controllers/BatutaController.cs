@@ -34,7 +34,7 @@ public class BatutaController : MonoBehaviour
 
     //Variables de estado
     private InputSystem_Actions inputActions;
-    public bool modoDirectorActivo { get; private set; } = true;
+    public bool modoDirectorActivo { get; private set; } = false;
     private Vector2 movimientoRaton;
     private bool botonPulsado = false;
     public bool BotonPulsado => botonPulsado; 

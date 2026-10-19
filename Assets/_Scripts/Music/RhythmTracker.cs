@@ -1,5 +1,4 @@
 
-using System;
 using UnityEngine;
 
 public class RhythmTracker : MonoBehaviour
@@ -7,6 +6,7 @@ public class RhythmTracker : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private BatutaController batutaController;
     [SerializeField] private Transform mano;
+    [SerializeField] private MusicClockFMOD musicClockFMOD;
 
     [Header("Configuracion musical")]
     [SerializeField, Min(1f)] private float bpm = 100f;
@@ -15,6 +15,27 @@ public class RhythmTracker : MonoBehaviour
     private float toleranciaTiempo = 0.18f;
     [Header("Puntuacion musical")]
     [SerializeField] private MusicScoreManager musicScoreManager;
+
+    [Tooltip("Desviacion relativa respecto al BPM ideal a partir de la cual la calidad sera 0. Por ejemplo, 0.5 significa un 50%.")]
+    [SerializeField, Range(0.05f, 2f)]
+    private float desviacionRelativaCalidadCero = 0.5f;
+
+    [Tooltip("Fraccion del intervalo entre pulsos a la que la calidad de sincronizacion sera 0. 0.5 equivale a estar justo a mitad entre dos pulsos.")]
+    [SerializeField, Range(0.05f, 0.5f)]
+    private float desfaseRelativoCalidadCero = 0.5f;
+
+    [Tooltip("Margen en segundos respecto al pulso de FMOD con calidad de sincronizacion perfecta. 0.04 son 40 ms.")]
+    [SerializeField, Range(0f, 0.1f)]
+    private float margenPrecisionPerfecta = 0.04f;
+
+    [Header("Correccion por racha")]
+    [Tooltip("Parte del cambio hacia el ritmo medido que se aplica sin racha (0 a 1).")]
+    [SerializeField, Range(0.05f, 1f)]
+    private float factorCorreccionBase = 0.35f;
+
+    [Tooltip("Aumento de la correccion por cada movimiento acertado consecutivamente.")]
+    [SerializeField, Range(0f, 0.2f)]
+    private float bonusCorreccionRacha = 0.06f;
 
     [Header("Deteccion de gestos")]
     [SerializeField, Min(0.01f)]
@@ -43,6 +64,9 @@ public class RhythmTracker : MonoBehaviour
     [SerializeField, Range(0f, 0.3f)]
     private float margenDeteccion = 0.12f;
 
+    [Tooltip("Segundos entre el comienzo del evento FMOD y su primer pulso. Normalmente 0.")]
+    [SerializeField] private float desfaseInicialMetronomo = 0f;
+
     [Header("Pruebas")]
     [SerializeField]
     private bool iniciarAlActivarDirector = true;
@@ -64,9 +88,16 @@ public class RhythmTracker : MonoBehaviour
     };
 
     // Reloj musical
-    private double tiempoInicio;
     private double duracionPulso;
-    private int ultimoPulsoEvaluado;
+
+    // Medicion de BPM: cuatro movimientos por actualizacion.
+    private double ultimoInstanteGesto = -1d;
+    private int movimientosEnBloque;
+    private int intervalosEnBloque;
+    private double sumaIntervalos;
+    private float sumaCalidadFase;
+    private int muestrasFase;
+    private bool avisoRelojMostrado;
 
     // Patron de direccion
     private bool patronSincronizado;
@@ -113,7 +144,7 @@ public class RhythmTracker : MonoBehaviour
         double ahora = Time.realtimeSinceStartupAsDouble;
         Vector2 posicionActual = ObtenerPosicion();
 
-        // Comprobamos pulsos musicales perdidos.
+        // Comprobamos si lleva demasiado tiempo sin marcar.
         ComprobarPulsosPerdidos(ahora);
 
         // Solo analizamos la batuta con el clic mantenido.
@@ -223,49 +254,20 @@ public class RhythmTracker : MonoBehaviour
         if (direccionDetectada == -1)
             return;
 
-        // Calculamos a que pulso musical se aproxima.
-        double tiempoRelativo =
-            instanteGesto - tiempoInicio;
-
-        int pulsoMasCercano = Math.Max(
-            1,
-            (int)Math.Round(
-                tiempoRelativo / duracionPulso,
-                MidpointRounding.AwayFromZero
-            )
-        );
-
-        double tiempoEsperado =
-            pulsoMasCercano * duracionPulso;
-
-        float error = (float)Math.Abs(
-            tiempoRelativo - tiempoEsperado
-        );
-
-        // No evaluamos dos gestos en el mismo pulso.
-        if (pulsoMasCercano <= ultimoPulsoEvaluado)
+        // Evitamos contar varias veces una misma marca por oscilaciones pequenas.
+        if (ultimoInstanteGesto >= 0d &&
+            instanteGesto - ultimoInstanteGesto < duracionPulso * 0.25d)
             return;
 
-        // El movimiento debe coincidir con el pulso.
-        if (error > toleranciaTiempo)
-        {
-            Debug.Log(
-                $"GESTO FUERA DE RITMO | Error: {error:F3} s"
-            );
+        // Medimos el desfase respecto al reloj REAL de FMOD, no respecto
+        // al momento en el que se activo el modo Director.
+        bool hayTiempoMusical = ObtenerCalidadFase(
+            instanteGesto,
+            out float errorFase,
+            out float calidadFase
+        );
 
-            return;
-        }
-
-        // Si habia pulsos pendientes, perdemos el patron.
-        if (pulsoMasCercano > ultimoPulsoEvaluado + 1)
-        {
-            if (patronSincronizado)
-                PerderSincronizacion("Pulso perdido");
-        }
-
-        ultimoPulsoEvaluado = pulsoMasCercano;
-
-        // Primera entrada o reincorporacion.
+        // Primera entrada o reincorporacion: cualquier direccion es valida.
         if (!patronSincronizado)
         {
             patronSincronizado = true;
@@ -273,35 +275,231 @@ public class RhythmTracker : MonoBehaviour
             siguienteDireccion =
                 (direccionDetectada + 1) % 4;
 
-            aciertosConsecutivos = 1;
-            if (musicScoreManager != null)
-            {
-                musicScoreManager.CorrectRhythm(aciertosConsecutivos);
-            }
+            aciertosConsecutivos = hayTiempoMusical &&
+                errorFase <= toleranciaTiempo ? 1 : 0;
 
             Debug.Log(
                 $"ENTRADA: {nombres[direccionDetectada]} | " +
-                $"Error: {error:F3} s | " +
+                $"Desfase: {(hayTiempoMusical ? errorFase.ToString("F3") : "sin reloj")} s | " +
                 $"Siguiente: {nombres[siguienteDireccion]}"
             );
-
-            return;
-        }
-
-        // Evaluacion de la secuencia.
-        if (direccionDetectada == siguienteDireccion)
-        {
-            RegistrarAcierto(direccionDetectada, error);
-
-            siguienteDireccion =
-                (siguienteDireccion + 1) % 4;
         }
         else
         {
-            RegistrarFallo(
-                $"Direccion incorrecta: " +
-                $"{nombres[direccionDetectada]}. " +
-                $"Esperada: {nombres[siguienteDireccion]}"
+            // Mantenemos el patron de cuatro direcciones.
+            if (direccionDetectada != siguienteDireccion)
+            {
+                RegistrarFallo(
+                    $"Direccion incorrecta: " +
+                    $"{nombres[direccionDetectada]}. " +
+                    $"Esperada: {nombres[siguienteDireccion]}"
+                );
+                return;
+            }
+
+            siguienteDireccion =
+                (siguienteDireccion + 1) % 4;
+
+            // Para mantener una racha hacen falta TANTO el intervalo correcto
+            // como coincidir con el pulso del metronomo de FMOD.
+            if (ultimoInstanteGesto >= 0d)
+            {
+                float intervalo =
+                    (float)(instanteGesto - ultimoInstanteGesto);
+
+                float errorIntervalo =
+                    Mathf.Abs(intervalo - (float)duracionPulso);
+
+                if (errorIntervalo <= toleranciaTiempo &&
+                    hayTiempoMusical && errorFase <= toleranciaTiempo)
+                {
+                    RegistrarAcierto(direccionDetectada, errorIntervalo);
+                }
+                else
+                {
+                    aciertosConsecutivos = 0;
+
+                    Debug.Log(
+                        $"GESTO FUERA DE RITMO: {nombres[direccionDetectada]} | " +
+                        $"Error intervalo: {errorIntervalo:F3} s | " +
+                        $"Desfase metronomo: {(hayTiempoMusical ? errorFase.ToString("F3") : "sin reloj")} s"
+                    );
+                }
+            }
+            else
+            {
+                aciertosConsecutivos = hayTiempoMusical &&
+                    errorFase <= toleranciaTiempo ? 1 : 0;
+            }
+        }
+
+        // Aunque un gesto este adelantado o retrasado, medimos su tempo real.
+        RegistrarMovimiento(instanteGesto, hayTiempoMusical, calidadFase);
+    }
+
+    private bool ObtenerCalidadFase(
+        double instanteGesto,
+        out float errorFase,
+        out float calidadFase)
+    {
+        errorFase = 0f;
+        calidadFase = 0f;
+
+        if (musicClockFMOD == null)
+            musicClockFMOD = MusicClockFMOD.Instance;
+
+        if (musicClockFMOD == null ||
+            !musicClockFMOD.TryObtenerTiempo(out double tiempoMusical))
+        {
+            if (!avisoRelojMostrado)
+            {
+                Debug.LogWarning(
+                    "RhythmTracker: no hay tiempo musical disponible en FMOD. " +
+                    "No se enviara calidad hasta que el reloj este reproduciendo."
+                );
+                avisoRelojMostrado = true;
+            }
+
+            return false;
+        }
+
+        avisoRelojMostrado = false;
+
+        // La deteccion sucede al frenar, pero tiempoPico representa el instante
+        // del gesto: retrocedemos el reloj musical ese pequeno retraso.
+        double retrasoDeteccion =
+            Time.realtimeSinceStartupAsDouble - instanteGesto;
+
+        double tiempoEnElGesto = tiempoMusical - retrasoDeteccion;
+
+        // Distancia temporal al pulso musical MAS CERCANO. La fase se obtiene
+        // directamente de la linea de tiempo del evento FMOD.
+        double fase =
+            (tiempoEnElGesto - desfaseInicialMetronomo) % duracionPulso;
+
+        if (fase < 0d)
+            fase += duracionPulso;
+
+        double diferencia = MathMin(fase, duracionPulso - fase);
+        errorFase = (float)diferencia;
+
+        // Un desfase de hasta 40 ms no penaliza. Fuera de ese margen,
+        // la calidad desciende gradualmente hasta 0 en el limite configurado.
+        float limiteCalidadCero = (float)duracionPulso * desfaseRelativoCalidadCero;
+        float margenPerfectoAplicado = Mathf.Min(margenPrecisionPerfecta, limiteCalidadCero - 0.0001f);
+
+        calidadFase = Mathf.Clamp01(
+            1f - Mathf.Max(0f, errorFase - margenPerfectoAplicado) /
+            (limiteCalidadCero - margenPerfectoAplicado)
+        );
+
+        return true;
+    }
+
+    private static double MathMin(double a, double b)
+    {
+        return a < b ? a : b;
+    }
+
+    private void RegistrarMovimiento(
+        double instanteGesto,
+        bool hayTiempoMusical,
+        float calidadFase)
+    {
+        // El primer bloque contiene 3 intervalos (4 marcas).
+        // Los siguientes contienen 4, aprovechando el ultimo gesto anterior.
+        if (ultimoInstanteGesto >= 0d)
+        {
+            sumaIntervalos += instanteGesto - ultimoInstanteGesto;
+            intervalosEnBloque++;
+        }
+
+        ultimoInstanteGesto = instanteGesto;
+        movimientosEnBloque++;
+
+        if (hayTiempoMusical)
+        {
+            sumaCalidadFase += calidadFase;
+            muestrasFase++;
+        }
+
+        if (movimientosEnBloque < 4)
+            return;
+
+        // No premiamos un ritmo sin haber podido comprobar su sincronizacion.
+        if (intervalosEnBloque > 0 && sumaIntervalos > 0d &&
+            muestrasFase == 4)
+        {
+            float bpmJugador =
+                (float)(60d * intervalosEnBloque / sumaIntervalos);
+
+            float calidadFaseMedia = sumaCalidadFase / muestrasFase;
+
+            EnviarRitmoAlScore(bpmJugador, calidadFaseMedia);
+        }
+
+        // Comenzamos un bloque nuevo, manteniendo el ultimo gesto como referencia.
+        movimientosEnBloque = 0;
+        intervalosEnBloque = 0;
+        sumaIntervalos = 0d;
+        sumaCalidadFase = 0f;
+        muestrasFase = 0;
+    }
+
+    private void EnviarRitmoAlScore(float bpmJugador, float calidadFaseMedia)
+    {
+        // El tempo ideal siempre equivale a 100, independientemente del BPM musical.
+        float ritmoNormalizado =
+            Mathf.Clamp(100f * bpmJugador / bpm, 0f, 200f);
+
+        // Calidad de tempo: diferencia entre los BPM tocados y los de la cancion.
+        float errorRelativo =
+            Mathf.Abs(bpmJugador - bpm) / bpm;
+
+        float calidadTempo = Mathf.Clamp01(
+            1f - errorRelativo / desviacionRelativaCalidadCero
+        );
+
+        // Calidad final: penaliza tanto la velocidad como el desfase con FMOD.
+        // Si el jugador toca a BPM perfectos pero a contratiempo, se penaliza.
+        float calidadNormalizada =
+            Mathf.Clamp01(calidadTempo * calidadFaseMedia);
+
+        if (musicScoreManager != null)
+        {
+            // Una racha alta se acerca mas al nuevo ritmo medido en cada envio.
+            // El Lerp suave definitivo sigue haciendose en MusicScoreManager.
+            float factorCorreccion = Mathf.Clamp01(
+                factorCorreccionBase +
+                Mathf.Max(0, aciertosConsecutivos - 1) * bonusCorreccionRacha
+            );
+
+            float ritmoEnviado = Mathf.Lerp(
+                musicScoreManager.CurrentRhythm,
+                ritmoNormalizado,
+                factorCorreccion
+            );
+
+            musicScoreManager.ReceiveDirectorInput(
+                ritmoEnviado,
+                calidadNormalizada
+            );
+
+            Debug.Log(
+                $"BPM MEDIDOS: {bpmJugador:F1} / {bpm:F1} | " +
+                $"Ritmo normalizado: {ritmoNormalizado:F1} | " +
+                $"Ritmo enviado: {ritmoEnviado:F1} | " +
+                $"Calidad BPM: {calidadTempo:F2} | " +
+                $"Calidad metronomo: {calidadFaseMedia:F2} | " +
+                $"Calidad final: {calidadNormalizada:F2} | " +
+                $"Racha: {aciertosConsecutivos}"
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                $"BPM MEDIDOS: {bpmJugador:F1} | " +
+                "Falta asignar MusicScoreManager en RhythmTracker."
             );
         }
     }
@@ -361,25 +559,16 @@ public class RhythmTracker : MonoBehaviour
 
     private void ComprobarPulsosPerdidos(double ahora)
     {
-        double tiempoTranscurrido = ahora - tiempoInicio;
+        if (!patronSincronizado || ultimoInstanteGesto < 0d)
+            return;
 
-        // Margen adicional para terminar de detectar el frenado.
-        double margenTotal =
-            toleranciaTiempo + margenDeteccion;
+        // No cortamos la medicion por ir mas lento que el tempo ideal.
+        // Solo perdemos el patron tras una pausa prolongada (4 pulsos + margen).
+        double maxTiempoSinMarcas =
+            duracionPulso * 4d + margenDeteccion;
 
-        int siguientePulso = ultimoPulsoEvaluado + 1;
-
-        while (tiempoTranscurrido >
-               siguientePulso * duracionPulso + margenTotal)
-        {
-            if (patronSincronizado)
-            {
-                PerderSincronizacion("Pulso perdido");
-            }
-
-            ultimoPulsoEvaluado++;
-            siguientePulso++;
-        }
+        if (ahora - ultimoInstanteGesto > maxTiempoSinMarcas)
+            PerderSincronizacion("Demasiado tiempo sin marcar");
     }
 
     private void PerderSincronizacion(string motivo)
@@ -387,6 +576,7 @@ public class RhythmTracker : MonoBehaviour
         patronSincronizado = false;
         siguienteDireccion = 0;
         aciertosConsecutivos = 0;
+        ReiniciarMedicion();
 
         Debug.Log(
             $"SINCRONIZACION PERDIDA: {motivo}. " +
@@ -404,11 +594,6 @@ public class RhythmTracker : MonoBehaviour
             $"Racha: {aciertosConsecutivos}"
         );
 
-        if (musicScoreManager != null)
-        {
-            musicScoreManager.CorrectRhythm(aciertosConsecutivos);
-        }
-
         if (aciertosConsecutivos % 4 == 0)
         {
             Debug.Log("SECUENCIA PERFECTA DE 4 MOVIMIENTOS");
@@ -417,8 +602,23 @@ public class RhythmTracker : MonoBehaviour
 
     private void RegistrarFallo(string motivo)
     {
+        // Un gesto en otra direccion corta la secuencia actual.
+        patronSincronizado = false;
+        siguienteDireccion = 0;
         aciertosConsecutivos = 0;
-        Debug.Log($"FALLO: {motivo}");
+        ReiniciarMedicion();
+
+        Debug.Log($"FALLO: {motivo}. El siguiente gesto sera una nueva entrada.");
+    }
+
+    private void ReiniciarMedicion()
+    {
+        ultimoInstanteGesto = -1d;
+        movimientosEnBloque = 0;
+        intervalosEnBloque = 0;
+        sumaIntervalos = 0d;
+        sumaCalidadFase = 0f;
+        muestrasFase = 0;
     }
 
     private void ReiniciarGesto()
@@ -435,13 +635,16 @@ public class RhythmTracker : MonoBehaviour
             return;
 
         duracionPulso = 60.0 / bpm;
-        tiempoInicio = Time.realtimeSinceStartupAsDouble;
 
-        ultimoPulsoEvaluado = 0;
+        if (musicClockFMOD == null)
+            musicClockFMOD = MusicClockFMOD.Instance;
+
+        avisoRelojMostrado = false;
 
         patronSincronizado = false;
         siguienteDireccion = 0;
         aciertosConsecutivos = 0;
+        ReiniciarMedicion();
 
         posicionAnterior = ObtenerPosicion();
 
@@ -459,6 +662,7 @@ public class RhythmTracker : MonoBehaviour
         seguimientoActivo = false;
         patronSincronizado = false;
         aciertosConsecutivos = 0;
+        ReiniciarMedicion();
 
         ReiniciarGesto();
     }
