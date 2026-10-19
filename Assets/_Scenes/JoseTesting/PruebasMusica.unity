@@ -933,6 +933,7 @@ MonoBehaviour:
   musicScoreManager: {fileID: 1245710442}
   desviacionRelativaCalidadCero: 0.5
   desfaseRelativoCalidadCero: 0.5
+  margenPrecisionPerfecta: 0.04
   factorCorreccionBase: 0.35
   bonusCorreccionRacha: 0.06
   distanciaMinima: 0.12
@@ -1211,50 +1212,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &1987958651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987958653}
-  - component: {fileID: 1987958652}
-  m_Layer: 0
-  m_Name: Mouse
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1987958652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987958651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a2fae46657b41548f27a7a81488ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!4 &1987958653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987958651}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0484, y: 1.26482, z: -4.50235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2135064739 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8651244830481758718, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
@@ -1353,4 +1310,3 @@ SceneRoots:
   - {fileID: 2415207395043712807}
   - {fileID: 483411978}
   - {fileID: 1760086901}
-  - {fileID: 1987958653}
