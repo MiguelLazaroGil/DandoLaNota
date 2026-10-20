@@ -45,7 +45,7 @@ public class MusicScoreManager : MonoBehaviour
 
     [Header("--- TIMING DE INPUTS ---")]
     [Tooltip("Tiempo máximo en segundos sin recibir datos antes de considerar que el director ha dejado de dar marcas.")]
-    [SerializeField] private float inputTimeoutDuration = 1f;
+    [SerializeField] private float inputTimeoutDuration = 4f;
 
     // Estado interno
     private float targetRhythm = 100f;

@@ -388,7 +388,6 @@ MonoBehaviour:
   batutaController: {fileID: 1146970512}
   mano: {fileID: 1146970509}
   musicClockFMOD: {fileID: 0}
-  bpm: 100
   toleranciaTiempo: 0.18
   musicScoreManager: {fileID: 1245710442}
   desviacionRelativaCalidadCero: 0.5
@@ -462,7 +461,7 @@ MonoBehaviour:
   eventDiminishingFactor: 0.5
   currentDirectorQuality: 1
   orchestraQuality: 1
-  inputTimeoutDuration: 1
+  inputTimeoutDuration: 4
 --- !u!1001 &1760086901
 PrefabInstance:
   m_ObjectHideFlags: 0
