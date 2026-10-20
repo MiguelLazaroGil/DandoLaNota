@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
@@ -14,6 +13,7 @@ public class MusicClockFMOD : MonoBehaviour
     [SerializeField] private bool metronomoActivado = true;
 
     // Duracion exacta del loop musical, en segundos.
+    // OrchestraAudioManager la configura automaticamente al iniciar cada cancion.
     [SerializeField, Min(0.01f)]
     private float duracionLoop = 19.2f;
 
@@ -27,8 +27,10 @@ public class MusicClockFMOD : MonoBehaviour
     private float volumeFadeSpeed = 1.5f;
 
     private float currentVolume = 0f;
+
     [Header("Score System")]
     [SerializeField] private MusicScoreManager musicScoreManager;
+
     private EventInstance clockInstance;
     private bool reproduciendo;
 
@@ -48,31 +50,41 @@ public class MusicClockFMOD : MonoBehaviour
 
         Instance = this;
     }
+
     private void Update()
-{
-    if (!reproduciendo || !automaticVolume || musicScoreManager == null)
-        return;
-
-    float scoreDifference =
-        Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
-
-    // Calculamos el volumen según la distancia respecto al ritmo perfecto.
-    float targetVolume = Mathf.Clamp01(
-        scoreDifference / maxScoreDeviation
-    );
-
-    // Suavizamos los cambios de volumen.
-    currentVolume = Mathf.MoveTowards(
-        currentVolume,
-        targetVolume,
-        volumeFadeSpeed * Time.deltaTime
-    );
-
-    if (clockInstance.isValid())
     {
-        clockInstance.setVolume(currentVolume);
+        if (!reproduciendo || !automaticVolume || musicScoreManager == null)
+            return;
+
+        float scoreDifference =
+            Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
+
+        // Calculamos el volumen segun la distancia respecto al ritmo perfecto.
+        float targetVolume = Mathf.Clamp01(
+            scoreDifference / maxScoreDeviation
+        );
+
+        // Suavizamos los cambios de volumen.
+        currentVolume = Mathf.MoveTowards(
+            currentVolume,
+            targetVolume,
+            volumeFadeSpeed * Time.deltaTime
+        );
+
+        if (clockInstance.isValid())
+        {
+            clockInstance.setVolume(currentVolume);
+        }
     }
-}
+
+    /// <summary>
+    /// La duracion del loop se configura UNA VEZ desde OrchestraAudioManager,
+    /// antes de comenzar a reproducir esta cancion.
+    /// </summary>
+    public void ConfigurarDuracionLoop(float segundos)
+    {
+        duracionLoop = Mathf.Max(0.01f, segundos);
+    }
 
     public void IniciarReloj()
     {
@@ -90,6 +102,22 @@ public class MusicClockFMOD : MonoBehaviour
             "ActiveMetronome",
             metronomoActivado ? 1f : 0f
         );
+        // Establecemos el volumen inicial segun el estado de la orquesta.
+        if (automaticVolume && musicScoreManager != null)
+        {
+            float scoreDifference =
+                Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
+
+            currentVolume = Mathf.Clamp01(
+                scoreDifference / maxScoreDeviation
+            );
+        }
+        else
+        {
+            currentVolume = 1f;
+        }
+
+        clockInstance.setVolume(currentVolume);
 
         FMOD.RESULT resultado = clockInstance.start();
 

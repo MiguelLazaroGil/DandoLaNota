@@ -1,22 +1,6 @@
-
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 using FMOD.Studio;
-
-[System.Serializable]
-public class MusicianAudio
-{
-    public string name;
-    public EventReference audioEvent;
-
-    [Header("3D Audio Position")]
-    public Transform musicianTransform;
-
-    [HideInInspector] public EventInstance instance;
-    [HideInInspector] public float currentPitch = 1f;
-    [HideInInspector] public float targetPitch = 1f;
-}
 
 public class OrchestraAudioManager : MonoBehaviour
 {
@@ -28,8 +12,16 @@ public class OrchestraAudioManager : MonoBehaviour
     [Header("Music Clock")]
     [SerializeField] private MusicClockFMOD musicClock;
 
-    [Header("Instruments")]
-    [SerializeField] private List<MusicianAudio> musicians = new();
+    [Header("Cancion de este nivel")]
+    [Tooltip("BPM reales de la cancion. RhythmTracker los lee automaticamente.")]
+    [SerializeField, Min(1f)] private float songBpm = 100f;
+
+    [Tooltip("Duracion exacta del loop musical en segundos, la misma que en FMOD.")]
+    [SerializeField, Min(0.1f)] private float loopDuration = 19.2f;
+
+    [Header("Instrument Groups")]
+    [Tooltip("Un InstrumentGroup por tipo de instrumento (Trompetas, Violines, etc.).")]
+    [SerializeField] private List<InstrumentGroup> instrumentGroups = new();
 
     [Header("Desynchronization")]
     [SerializeField, Range(0f, 0.5f)]
@@ -42,19 +34,15 @@ public class OrchestraAudioManager : MonoBehaviour
     private float pitchSmoothing = 1.5f;
 
     [Header("Progressive Synchronization")]
-    [Tooltip("Duración exacta del loop musical en segundos.")]
-    [SerializeField, Min(0.1f)]
-    private float loopDuration = 19.2f;
-
-    [Tooltip("Corrección de velocidad por cada segundo de desfase.")]
+    [Tooltip("Correccion de velocidad por cada segundo de desfase.")]
     [SerializeField, Min(0f)]
     private float synchronizationStrength = 0.35f;
 
-    [Tooltip("Máxima variación de pitch para corregir el desfase.")]
+    [Tooltip("Maxima variacion de pitch para corregir el desfase.")]
     [SerializeField, Range(0f, 0.2f)]
     private float maxSynchronizationPitch = 0.08f;
 
-    [Tooltip("Distancia respecto a 100 a partir de la cual comienza la recuperación.")]
+    [Tooltip("Distancia respecto a 100 a partir de la cual comienza la recuperacion.")]
     [SerializeField, Range(1f, 100f)]
     private float synchronizationScoreRange = 50f;
 
@@ -62,16 +50,25 @@ public class OrchestraAudioManager : MonoBehaviour
     [SerializeField, Min(0f)]
     private float synchronizationDeadZone = 0.015f;
 
+    [Header("Calidad global de la orquesta (lectura)")]
+    [SerializeField, Range(0f, 1f)]
+    private float orchestraQuality = 1f;
+
     private float changeTimer;
     private bool isPlaying;
 
     public bool IsPlaying => isPlaying;
+    public float SongBpm => songBpm;
+    public float SongLoopDuration => loopDuration;
+    public float OrchestraQuality => orchestraQuality;
+    public float GlobalQuality => musicScoreManager != null
+        ? musicScoreManager.CurrentQuality
+        : orchestraQuality;
 
     // Mantiene la sintaxis que ya utilizabas.
     public bool readytoPlay
     {
         get => isPlaying;
-
         set
         {
             if (value && !isPlaying)
@@ -90,6 +87,10 @@ public class OrchestraAudioManager : MonoBehaviour
         }
 
         Instance = this;
+
+        // Si los grupos son hijos del manager, permite descubrirlos automaticamente.
+        if (instrumentGroups.Count == 0)
+            instrumentGroups.AddRange(GetComponentsInChildren<InstrumentGroup>(true));
     }
 
     private void Update()
@@ -106,7 +107,7 @@ public class OrchestraAudioManager : MonoBehaviour
         }
 
         UpdatePitches();
-        
+        UpdateOrchestraQuality();
     }
 
     public void StartOrchestra()
@@ -120,7 +121,6 @@ public class OrchestraAudioManager : MonoBehaviour
             return;
         }
 
-        // Buscamos el reloj si no esta asignado.
         if (musicClock == null)
             musicClock = MusicClockFMOD.Instance;
 
@@ -130,7 +130,11 @@ public class OrchestraAudioManager : MonoBehaviour
             return;
         }
 
-        // El reloj siempre empieza antes que los musicos.
+        // La duracion del loop se configura aqui, una sola vez por cancion.
+        // Es la misma que usa el manager para resincronizar los grupos.
+        musicClock.ConfigurarDuracionLoop(loopDuration);
+
+        // El reloj siempre empieza antes que los grupos instrumentales.
         musicClock.IniciarReloj();
 
         if (!musicClock.EstaReproduciendo)
@@ -139,49 +143,17 @@ public class OrchestraAudioManager : MonoBehaviour
             return;
         }
 
-        int musicosIniciados = 0;
+        int gruposIniciados = 0;
 
-        foreach (MusicianAudio musician in musicians)
+        foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (musician.audioEvent.IsNull)
-                continue;
-
-            musician.instance =
-                RuntimeManager.CreateInstance(musician.audioEvent);
-
-            if (musician.musicianTransform != null)
-            {
-                RuntimeManager.AttachInstanceToGameObject(
-                    musician.instance,
-                    musician.musicianTransform.gameObject
-                );
-            }
-
-            musician.currentPitch = 1f;
-            musician.targetPitch = 1f;
-
-            musician.instance.setPitch(1f);
-
-            FMOD.RESULT resultado = musician.instance.start();
-
-            if (resultado == FMOD.RESULT.OK)
-            {
-                musicosIniciados++;
-            }
-            else
-            {
-                Debug.LogError(
-                    $"Could not start {musician.name}: {resultado}"
-                );
-
-                musician.instance.release();
-                musician.instance = default;
-            }
+            if (group != null && group.StartGroup())
+                gruposIniciados++;
         }
 
-        if (musicosIniciados == 0)
+        if (gruposIniciados == 0)
         {
-            Debug.LogError("No musicians could start.");
+            Debug.LogError("No instrument groups could start.");
             musicClock.DetenerReloj();
             return;
         }
@@ -189,25 +161,21 @@ public class OrchestraAudioManager : MonoBehaviour
         isPlaying = true;
         changeTimer = 0f;
 
+        // Alineamos inicialmente los grupos con el reloj.
+        SynchronizeOrchestra();
+
         CalculateNewPitches();
+        UpdateOrchestraQuality();
 
         Debug.Log("Orchestra and MusicClock started.");
     }
 
     public void StopOrchestra()
     {
-        foreach (MusicianAudio musician in musicians)
+        foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (!musician.instance.isValid())
-                continue;
-
-            musician.instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            musician.instance.release();
-
-            musician.instance = default;
-
-            musician.currentPitch = 1f;
-            musician.targetPitch = 1f;
+            if (group != null)
+                group.StopGroup();
         }
 
         if (musicClock != null)
@@ -216,6 +184,10 @@ public class OrchestraAudioManager : MonoBehaviour
         isPlaying = false;
         changeTimer = 0f;
 
+        orchestraQuality = 1f;
+        if (musicScoreManager != null)
+            musicScoreManager.SetOrchestraQuality(1f);
+
         Debug.Log("Orchestra and MusicClock stopped.");
     }
 
@@ -223,123 +195,94 @@ public class OrchestraAudioManager : MonoBehaviour
     {
         float score = musicScoreManager.CurrentRhythm;
 
-        // 100 = perfect synchronization.
-        // 0 and 200 = maximum deviation.
-        float desynchronization =
-            Mathf.Abs(score - 100f) / 100f;
-
+        // 100 = sincronizacion perfecta; 0 y 200 = desviacion maxima.
+        float desynchronization = Mathf.Abs(score - 100f) / 100f;
         float deviation = desynchronization * maxDeviation;
 
-        foreach (MusicianAudio musician in musicians)
+        foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (!musician.instance.isValid())
-                continue;
-
-            musician.targetPitch = Random.Range(
-                1f - deviation,
-                1f + deviation
-            );
+            if (group != null && group.IsPlaying)
+                group.CalculateNewPitch(deviation);
         }
     }
-
 
     private void UpdatePitches()
     {
         if (musicClock == null || loopDuration <= 0f)
             return;
 
-        if (!musicClock.TryObtenerPosicionTimeline(
-            out int clockPosition))
+        if (!musicClock.TryObtenerPosicionTimeline(out int clockPosition))
             return;
 
         float clockTime = clockPosition / 1000f;
+        float scoreDifference = Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
 
-        float score = musicScoreManager.CurrentRhythm;
-
-        // Cuanto más cerca de 100, mayor es la sincronización.
-        float scoreDifference = Mathf.Abs(score - 100f);
-
+        // El grupo se resincroniza mas rapido cuanto mas cerca esta el director de 100.
         float synchronizationFactor = 1f - Mathf.Clamp01(
             scoreDifference / synchronizationScoreRange
         );
 
-        foreach (MusicianAudio musician in musicians)
+        foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (!musician.instance.isValid())
+            if (group == null || !group.IsPlaying)
                 continue;
 
-            if (musician.instance.getTimelinePosition(
-                out int musicianPosition) != FMOD.RESULT.OK)
-                continue;
-
-            float musicianTime = musicianPosition / 1000f;
-
-            // Calculamos el desfase considerando el loop circular.
-            float timeDifference = musicianTime - clockTime;
-
-            timeDifference = Mathf.Repeat(
-                timeDifference + loopDuration * 0.5f,
-                loopDuration
-            ) - loopDuration * 0.5f;
-
-            // Corrección de velocidad adicional.
-            float pitchCorrection = 0f;
-
-            if (Mathf.Abs(timeDifference) > synchronizationDeadZone)
-            {
-                pitchCorrection = Mathf.Clamp(
-                    -timeDifference * synchronizationStrength,
-                    -maxSynchronizationPitch,
-                    maxSynchronizationPitch
-                );
-
-                pitchCorrection *= synchronizationFactor;
-            }
-
-            // Combinamos el pitch de desincronización
-            // con el pitch de recuperación temporal.
-            float finalTargetPitch =
-                musician.targetPitch + pitchCorrection;
-
-            musician.currentPitch = Mathf.MoveTowards(
-                musician.currentPitch,
-                finalTargetPitch,
-                pitchSmoothing * Time.deltaTime
+            group.UpdateGroup(
+                Time.deltaTime,
+                clockTime,
+                loopDuration,
+                synchronizationFactor,
+                synchronizationStrength,
+                maxSynchronizationPitch,
+                synchronizationDeadZone,
+                pitchSmoothing
             );
-
-            musician.instance.setPitch(musician.currentPitch);
         }
     }
 
+    private void UpdateOrchestraQuality()
+    {
+        float totalQuality = 0f;
+        int totalMusicians = 0;
 
-    // Sincroniza los musicos con el reloj maestro FMOD.
+        // Media ponderada por cantidad de musicos, no por numero de grupos.
+        foreach (InstrumentGroup group in instrumentGroups)
+        {
+            if (group == null || !group.IsPlaying)
+                continue;
+
+            totalQuality += group.GetTotalMusicianQuality();
+            totalMusicians += group.GetMusicianCount();
+        }
+
+        orchestraQuality = totalMusicians > 0
+            ? totalQuality / totalMusicians
+            : 1f;
+
+        // Actualizamos la calidad global del MusicScoreManager.
+        // RhythmTracker sigue controlando exclusivamente la calidad de direccion.
+        musicScoreManager.SetOrchestraQuality(orchestraQuality);
+    }
+
+    // Sincronizacion manual inmediata con el reloj maestro FMOD.
     public void SynchronizeOrchestra()
     {
         if (!isPlaying || musicClock == null)
             return;
 
-        if (!musicClock.TryObtenerPosicionTimeline(
-            out int position))
+        if (!musicClock.TryObtenerPosicionTimeline(out int position))
         {
             Debug.LogWarning("Could not read MusicClock timeline.");
             return;
         }
 
-        foreach (MusicianAudio musician in musicians)
+        foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (!musician.instance.isValid())
-                continue;
-
-            musician.instance.setTimelinePosition(position);
-
-            musician.currentPitch = 1f;
-            musician.targetPitch = 1f;
-
-            musician.instance.setPitch(1f);
+            if (group != null && group.IsPlaying)
+                group.SynchronizeWithClock(position);
         }
 
         changeTimer = 0f;
-
         Debug.Log("Orchestra synchronized with MusicClock.");
     }
 

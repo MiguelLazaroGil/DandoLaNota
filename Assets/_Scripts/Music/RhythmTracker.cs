@@ -8,8 +8,8 @@ public class RhythmTracker : MonoBehaviour
     [SerializeField] private Transform mano;
     [SerializeField] private MusicClockFMOD musicClockFMOD;
 
-    [Header("Configuracion musical")]
-    [SerializeField, Min(1f)] private float bpm = 100f;
+    // Los BPM se obtienen del OrchestraAudioManager de esta escena.
+    private float bpm = 100f;
 
     [SerializeField, Range(0.05f, 0.3f)]
     private float toleranciaTiempo = 0.18f;
@@ -634,6 +634,15 @@ public class RhythmTracker : MonoBehaviour
         if (mano == null)
             return;
 
+        // Cada nivel configura sus BPM en el prefab OrchestraAudioManager.
+        OrchestraAudioManager orchestra = OrchestraAudioManager.Instance;
+        if (orchestra == null)
+        {
+            Debug.LogError("RhythmTracker: no se encontro OrchestraAudioManager para obtener los BPM de la cancion.");
+            return;
+        }
+
+        bpm = orchestra.SongBpm;
         duracionPulso = 60.0 / bpm;
 
         if (musicClockFMOD == null)
