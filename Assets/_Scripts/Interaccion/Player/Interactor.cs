@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
@@ -23,12 +24,16 @@ public class Interactor : MonoBehaviour
 
     private void Awake()
     {
-        if(grabPivot == null)
+        if (grabPivot == null)
         {
-            grabPivot= this.transform;
+            grabPivot = this.transform;
         }
     }
 
+    public void TryInteract(InputAction.CallbackContext ctx)
+    {
+        TryInteract();
+    }
     public void TryInteract()
     {
         //Si tienes objeto en la mano, lo usas
@@ -47,26 +52,26 @@ public class Interactor : MonoBehaviour
         var temp = detector.GetTarget();
 
 
-       //Si es grabbable se coge antes
+        //Si es grabbable se coge antes
         Grabbable grabbable = temp.GetComponent<Grabbable>();
         if (Grab(grabbable))
 
         {
             OnGrabSuccess?.Invoke(grabbable);
-            //Si ya lo ha cogido nada más
+            //Si ya lo ha cogido nada mï¿½s
             return;
         }
 
-        //Interacción con objeto no cogible
+        //Interacciï¿½n con objeto no cogible
         Interactable interactable = temp.GetComponent<Interactable>();
-        if(InteractWith(interactable))
+        if (InteractWith(interactable))
         {
             OnInteractionOtherSuccess?.Invoke(interactable);
         }
     }
     public void TryDrop()
     {
-        if(!isGrabbing) return;
+        if (!isGrabbing) return;
 
         currentGrabbedObj.Drop();
 
@@ -79,7 +84,7 @@ public class Interactor : MonoBehaviour
 
     public bool Grab(Grabbable grabbable)
     {
-        if(grabbable != null)
+        if (grabbable != null)
         {
             isGrabbing = true;
             currentGrabbedObj = grabbable;
@@ -103,7 +108,7 @@ public class Interactor : MonoBehaviour
     {
 
         Interactable interactable = currentGrabbedObj.GetComponent<Interactable>();
-       if(InteractWith(interactable))
+        if (InteractWith(interactable))
         {
             OnInteractionInHandSuccess?.Invoke(interactable);
         }
