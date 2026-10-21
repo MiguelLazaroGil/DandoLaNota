@@ -7,7 +7,9 @@ using UnityEngine.ProBuilder.Shapes;
 public class BatutaController : MonoBehaviour
 {
     [Header("Referencias")]
+    [SerializeField]
     public SimplePlayerController playerController;
+    [SerializeField]
     public FirstPersonCameraController cameraController;
     public GameObject modeloBatuta;
     public Transform mano;

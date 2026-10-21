@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 557227814}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2300,6 +2300,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3df9c30a434f74dbb696ef6db030e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
+--- !u!114 &979581740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4815658302819561280, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  m_PrefabInstance: {fileID: 6654246099890531916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ef0e2755ba5b549a10d1bfd570418f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirstPersonCameraController
 --- !u!1 &997045030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,6 +3574,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1357322681}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1640621878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4497581094653199082, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  m_PrefabInstance: {fileID: 6654246099890531916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1714984693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,6 +3786,37 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0085477885, y: -0.001162552, z: -0.024207193}
     m_Extent: {x: 0.0037220414, y: 0.0042093433, z: 0.0068218745}
   m_DirtyAABB: 0
+--- !u!1 &1773983191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773983192}
+  m_Layer: 10
+  m_Name: GrabPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773983192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773983191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.06190822, y: 0.0000000091395895, z: -0.000000009065093, w: 0.99808186}
+  m_LocalPosition: {x: 0, y: -0.004757721, z: 0.024643598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1640621878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778982968
 GameObject:
   m_ObjectHideFlags: 0
@@ -10640,10 +10687,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 752620284568480379, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 979581740}
     - target: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
+    - target: {fileID: 1676137418951491129, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: grabPivot
+      value: 
+      objectReference: {fileID: 1773983192}
     - target: {fileID: 3384404265937708874, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_Weight
       value: 1
@@ -10710,7 +10765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7514656515351085879, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10735,6 +10790,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4497581094653199082, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1773983192}
     - targetCorrespondingSourceObject: {fileID: 2977187513051052498, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 526898279}
