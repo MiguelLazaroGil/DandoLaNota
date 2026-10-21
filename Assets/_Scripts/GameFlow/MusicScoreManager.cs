@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class MusicScoreManager : MonoBehaviour
@@ -7,7 +6,7 @@ public class MusicScoreManager : MonoBehaviour
     [Tooltip("Ritmo actual de la obra (0 a 200). 100 es el ritmo perfecto.")]
     [SerializeField] private float currentRhythm = 100f;
 
-    [Tooltip("Calidad general del ritmo y dirección (0 a 1).")]
+    [Tooltip("Calidad global de la direccion y de todos los musicos (0 a 1).")]
     [SerializeField] private float currentQuality = 1.0f;
 
     [Header("--- CONTROL DE RITMO (0 a 200) ---")]
@@ -37,9 +36,16 @@ public class MusicScoreManager : MonoBehaviour
     [Tooltip("Factor de atenuación para eventos negativos (0.1 a 1). A menor calidad actual, menor es la bajada absoluta.")]
     [SerializeField, Range(0.1f, 1f)] private float eventDiminishingFactor = 0.5f;
 
+    [Header("--- CALIDAD DIRECCION Y MUSICOS (LECTURA) ---")]
+    [Tooltip("Calidad suavizada de BPM y metrónomo recibida desde RhythmTracker (0 a 1).")]
+    [SerializeField, Range(0f, 1f)] private float currentDirectorQuality = 1f;
+
+    [Tooltip("Media de las calidades individuales recibida desde OrchestraAudioManager (0 a 1).")]
+    [SerializeField, Range(0f, 1f)] private float orchestraQuality = 1f;
+
     [Header("--- TIMING DE INPUTS ---")]
     [Tooltip("Tiempo máximo en segundos sin recibir datos antes de considerar que el director ha dejado de dar marcas.")]
-    [SerializeField] private float inputTimeoutDuration = 1f;
+    [SerializeField] private float inputTimeoutDuration = 4f;
 
     // Estado interno
     private float targetRhythm = 100f;
@@ -50,11 +56,16 @@ public class MusicScoreManager : MonoBehaviour
     // Propiedades públicas de acceso
     public float CurrentRhythm => currentRhythm;
     public float CurrentQuality => currentQuality;
+    public float CurrentDirectorQuality => currentDirectorQuality;
+    public float OrchestraQuality => orchestraQuality;
     public bool HasActiveInput => hasActiveInput;
 
     private void Awake()
     {
         targetRhythm = currentRhythm;
+        currentDirectorQuality = Mathf.Clamp01(currentQuality);
+        orchestraQuality = Mathf.Clamp01(orchestraQuality);
+        currentQuality = Mathf.Clamp01(currentDirectorQuality * orchestraQuality);
     }
 
     private void Update()
@@ -74,6 +85,15 @@ public class MusicScoreManager : MonoBehaviour
         targetRhythm = Mathf.Clamp(rhythm, 0f, 200f);
         targetQuality = Mathf.Clamp01(quality);
         timeSinceLastInput = 0f;
+    }
+
+    /// <summary>
+    /// Recibe la media de las calidades de todos los musicos activos.
+    /// </summary>
+    public void SetOrchestraQuality(float quality)
+    {
+        orchestraQuality = Mathf.Clamp01(quality);
+        currentQuality = Mathf.Clamp01(currentDirectorQuality * orchestraQuality);
     }
 
     /// <summary>
@@ -102,8 +122,9 @@ public class MusicScoreManager : MonoBehaviour
     public void TriggerNegativeEvent(float severity0To100)
     {
         float severityNormalized = Mathf.Clamp01(severity0To100 / 100f);
-        float qualityLoss = currentQuality * severityNormalized * eventDiminishingFactor;
-        currentQuality = Mathf.Clamp01(currentQuality - qualityLoss);
+        float qualityLoss = currentDirectorQuality * severityNormalized * eventDiminishingFactor;
+        currentDirectorQuality = Mathf.Clamp01(currentDirectorQuality - qualityLoss);
+        currentQuality = Mathf.Clamp01(currentDirectorQuality * orchestraQuality);
     }
 
     private void UpdateRhythmAndQuality(float dt)
@@ -111,7 +132,7 @@ public class MusicScoreManager : MonoBehaviour
         if (hasActiveInput)
         {
             currentRhythm = Mathf.Lerp(currentRhythm, targetRhythm, dt * rhythmLerpSpeed);
-            currentQuality = Mathf.Lerp(currentQuality, targetQuality, dt * qualityLerpSpeed);
+            currentDirectorQuality = Mathf.Lerp(currentDirectorQuality, targetQuality, dt * qualityLerpSpeed);
         }
         else
         {
@@ -130,7 +151,10 @@ public class MusicScoreManager : MonoBehaviour
             targetRhythm = currentRhythm;
 
             // Degradación continua de calidad general
-            currentQuality = Mathf.Max(0f, currentQuality - (noInputQualityDecayRate * dt));
+            currentDirectorQuality = Mathf.Max(0f, currentDirectorQuality - (noInputQualityDecayRate * dt));
         }
+
+        // Calidad global = calidad de direccion (BPM x fase) x calidad de los musicos.
+        currentQuality = Mathf.Clamp01(currentDirectorQuality * orchestraQuality);
     }
 }

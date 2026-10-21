@@ -62,12 +62,11 @@ public class FirstPersonCameraController : MonoBehaviour
         // Si hay input del ratón o gamepad
         if (look.sqrMagnitude >= _threshold)
         {
-            float deltaTimeMultiplier =  Time.deltaTime;
 
             // 1. Acumulamos el movimiento vertical y horizontal de la cámara
-            _cinemachineTargetPitch += - look.y * RotationSpeed * deltaTimeMultiplier;
+            _cinemachineTargetPitch += - look.y * RotationSpeed;
 
-            float rawYawInput = look.x * RotationSpeed * deltaTimeMultiplier;
+            float rawYawInput = look.x * RotationSpeed;
             _cinemachineTargetYaw += rawYawInput;
 
             // Limitamos el ángulo vertical (Pitch) de la cámara
