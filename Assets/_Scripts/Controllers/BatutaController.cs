@@ -172,13 +172,15 @@ public class BatutaController : MonoBehaviour
     private void ActivarModoDirector()
     {
         modoDirectorActivo = true;
-        OrchestraAudioManager.Instance.readytoPlay = true;
-        MusicClockFMOD.Instance.IniciarReloj();
 
         //Desactivamos el script de movimiento original para que no interfiera con el control de la batuta.
         inputActions.Player.Disable();
         inputActions.Dirigir.Enable();
 
+        if (TutorialManager.Instance != null && !TutorialManager.Instance.PuedeSacarBatuta)
+        {
+            return;
+        }
         if (modeloBatuta != null) modeloBatuta.SetActive(true);
 
         if (playerController != null)
