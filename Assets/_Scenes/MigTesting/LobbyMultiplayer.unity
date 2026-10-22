@@ -2919,6 +2919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 880168266}
   - component: {fileID: 880168267}
+  - component: {fileID: 880168268}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2968,6 +2969,21 @@ MonoBehaviour:
   playerListContainer: {fileID: 176100070}
   playerEntryPrefab: {fileID: 7986185316861571651, guid: 72c8b00fdb082e44693aedf0b3cc9c40, type: 3}
   startGameButton: {fileID: 2050484749}
+--- !u!114 &880168268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880168265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce7504db8887dc4fbfcae4a32bd071f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadSceneMultiplayer
+  sceneToLoad:
+    sceneAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    index: 8
 --- !u!1 &1016569819
 GameObject:
   m_ObjectHideFlags: 0
@@ -5000,7 +5016,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2050484750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 880168268}
+        m_TargetAssemblyTypeName: LoadSceneMultiplayer, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2050484750
 MonoBehaviour:
   m_ObjectHideFlags: 0

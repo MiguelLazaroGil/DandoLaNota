@@ -176,13 +176,4 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
-    public void OnClickStartGame()
-    {
-        if (NetworkManager.Singleton.IsServer)
-        {
-            LobbyCameraManager.Instance?.HideLobbyCamera();
-            LobbyPlayerState.Instance.ResolveRolesBeforeStart();
-            NetworkManager.Singleton.SceneManager.LoadScene("GameLevelScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
-        }
-    }
 }
