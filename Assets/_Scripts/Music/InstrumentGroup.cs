@@ -242,8 +242,14 @@ public class InstrumentGroup : MonoBehaviour
         return count > 0 ? GetTotalMusicianQuality() / count : 1f;
     }
 
+    public void PausarGrupo(bool pausar)
+    {
+        if (isPlaying && instance.isValid())
+            instance.setPaused(pausar);
+    }
     private void OnDestroy()
     {
         StopGroup();
     }
+
 }

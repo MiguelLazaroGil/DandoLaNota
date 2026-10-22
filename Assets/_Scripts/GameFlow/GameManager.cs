@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,8 +8,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private OrchestraAudioManager orchestraAudioManager;
     [SerializeField] private MusicClockFMOD musicClock;
+    [SerializeField] private RhythmTracker rhythmTracker;
 
     public bool MusicaIniciada { get; private set; }
+    public bool JuegoPausado { get; private set; }
 
     private void Awake()
     {
@@ -50,12 +51,19 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        // OrchestraAudioManager.StartOrchestra() ya arranca MusicClockFMOD.
+        // No llamamos de nuevo a IniciarReloj(), porque reiniciaria la timeline.
         orchestraAudioManager.readytoPlay = true;
-        musicClock.IniciarReloj();
+        MusicaIniciada = orchestraAudioManager.IsPlaying && musicClock.EstaReproduciendo;
 
-        MusicaIniciada = true;
+        // Si se inicia mediante DEBUG mientras hay un menu, debe nacer pausada.
+        if (MusicaIniciada && JuegoPausado)
+            orchestraAudioManager.PausarOrquesta(true);
 
-        Debug.Log("GameManager: Musica iniciada.");
+        if (MusicaIniciada)
+            Debug.Log("GameManager: Musica iniciada.");
+        else
+            Debug.LogError("GameManager: No se ha podido iniciar la orquesta.");
     }
 
     // Permite probar el inicio desde el Inspector durante Play Mode.
@@ -65,16 +73,41 @@ public class GameManager : MonoBehaviour
         if (Application.isPlaying)
             IniciarMusica();
     }
+
     public void UnpauseGame()
     {
+        if (!JuegoPausado)
+            return;
+
+        // Reanudamos el mismo evento FMOD donde se quedo: no reiniciamos nada.
+        if (orchestraAudioManager != null)
+            orchestraAudioManager.PausarOrquesta(false);
+
+        if (rhythmTracker != null)
+            rhythmTracker.PausarSeguimiento(false);
+
         Time.timeScale = 1f;
+        JuegoPausado = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     public void PauseGame()
     {
+        if (JuegoPausado)
+            return;
+
+        // Pausamos el reloj y todos los grupos FMOD de forma conjunta.
+        if (orchestraAudioManager != null)
+            orchestraAudioManager.PausarOrquesta(true);
+
+        // El tracker utiliza tiempo real; debemos pausarlo expresamente.
+        if (rhythmTracker != null)
+            rhythmTracker.PausarSeguimiento(true);
+
         Time.timeScale = 0f;
+        JuegoPausado = true;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

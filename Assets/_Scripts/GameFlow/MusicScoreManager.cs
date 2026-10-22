@@ -70,6 +70,8 @@ public class MusicScoreManager : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
         float dt = Time.deltaTime;
         timeSinceLastInput += dt;
         hasActiveInput = timeSinceLastInput < inputTimeoutDuration;

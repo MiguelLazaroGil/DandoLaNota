@@ -39,6 +39,8 @@ public class MusicClockFMOD : MonoBehaviour
     private bool primeraLectura;
 
     public bool EstaReproduciendo => reproduciendo;
+    private bool pausado;
+    public bool EstaPausado => pausado;
 
     private void Awake()
     {
@@ -53,6 +55,8 @@ public class MusicClockFMOD : MonoBehaviour
 
     private void Update()
     {
+        if (pausado)
+            return;
         if (!reproduciendo || !automaticVolume || musicScoreManager == null)
             return;
 
@@ -120,6 +124,7 @@ public class MusicClockFMOD : MonoBehaviour
         clockInstance.setVolume(currentVolume);
 
         FMOD.RESULT resultado = clockInstance.start();
+        pausado = false;
 
         if (resultado != FMOD.RESULT.OK)
         {
@@ -206,7 +211,17 @@ public class MusicClockFMOD : MonoBehaviour
             clockInstance.clearHandle();
         }
 
+        pausado = false;
         reproduciendo = false;
+    }
+
+    public void PausarReloj(bool pausar)
+    {
+        if (!reproduciendo || !clockInstance.isValid())
+            return;
+
+        if (clockInstance.setPaused(pausar) == FMOD.RESULT.OK)
+            pausado = pausar;
     }
 
     private void OnDestroy()

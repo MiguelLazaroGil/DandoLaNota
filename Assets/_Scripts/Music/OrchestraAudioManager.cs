@@ -58,6 +58,7 @@ public class OrchestraAudioManager : MonoBehaviour
     private bool isPlaying;
 
     public bool IsPlaying => isPlaying;
+    private bool pausada;
     public float SongBpm => songBpm;
     public float SongLoopDuration => loopDuration;
     public float OrchestraQuality => orchestraQuality;
@@ -95,7 +96,7 @@ public class OrchestraAudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying || musicScoreManager == null)
+        if (!isPlaying ||pausada|| musicScoreManager == null)
             return;
 
         changeTimer += Time.deltaTime;
@@ -160,6 +161,7 @@ public class OrchestraAudioManager : MonoBehaviour
 
         isPlaying = true;
         changeTimer = 0f;
+        pausada = false;
 
         // Alineamos inicialmente los grupos con el reloj.
         SynchronizeOrchestra();
@@ -188,6 +190,7 @@ public class OrchestraAudioManager : MonoBehaviour
         if (musicScoreManager != null)
             musicScoreManager.SetOrchestraQuality(1f);
 
+        pausada = false;
         Debug.Log("Orchestra and MusicClock stopped.");
     }
 
@@ -284,6 +287,23 @@ public class OrchestraAudioManager : MonoBehaviour
 
         changeTimer = 0f;
         Debug.Log("Orchestra synchronized with MusicClock.");
+    }
+
+    public void PausarOrquesta(bool pausar)
+    {
+        if (!isPlaying || pausada == pausar)
+            return;
+
+        if (musicClock != null)
+            musicClock.PausarReloj(pausar);
+
+        foreach (InstrumentGroup group in instrumentGroups)
+        {
+            if (group != null)
+                group.PausarGrupo(pausar);
+        }
+
+        pausada = pausar;
     }
 
     private void OnDestroy()

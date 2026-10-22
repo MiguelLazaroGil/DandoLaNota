@@ -118,18 +118,23 @@ public class RhythmTracker : MonoBehaviour
     private int contadorFrenado;
     private double tiempoPico;
 
+    private bool seguimientoPausado;
+    private double comienzoPausa;
+
     private void LateUpdate()
     {
+        if (seguimientoPausado || Time.timeScale == 0f)
+            return;
         if (batutaController == null || mano == null)
         {
-           
+
             return;
         }
         bool directorActivo = batutaController.modoDirectorActivo;
 
         if (directorActivo != directorAnterior)
         {
-           
+
             directorAnterior = directorActivo;
 
             if (directorActivo && iniciarAlActivarDirector)
@@ -674,6 +679,34 @@ public class RhythmTracker : MonoBehaviour
         ReiniciarMedicion();
 
         ReiniciarGesto();
+    }
+
+    public void PausarSeguimiento(bool pausar)
+    {
+        if (seguimientoPausado == pausar)
+            return;
+
+        seguimientoPausado = pausar;
+
+        if (pausar)
+        {
+            comienzoPausa = Time.realtimeSinceStartupAsDouble;
+            ReiniciarGesto();
+        }
+        else
+        {
+            double duracionPausa = Time.realtimeSinceStartupAsDouble - comienzoPausa;
+
+            // El tiempo real siguió avanzando durante el menú.
+            // Desplazar esta referencia evita contar la pausa como tiempo entre golpes.
+            if (ultimoInstanteGesto >= 0d)
+                ultimoInstanteGesto += duracionPausa;
+
+            if (mano != null)
+                posicionAnterior = ObtenerPosicion();
+
+            ReiniciarGesto();
+        }
     }
 
     private Vector2 ObtenerPosicion()
