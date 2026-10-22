@@ -4273,8 +4273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyAvatarSpawner
   ShowTopMostFoldoutHeaderGroup: 1
-  directorPrefab: {fileID: 843643802184795946, guid: e152f192e7131834787dcaec89429f3f, type: 3}
-  ghostPrefab: {fileID: 843643802184795946, guid: 2c56920309a465941a18f2cb6badbdca, type: 3}
+  directorPrefab: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+  ghostPrefab: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
 --- !u!1 &1720128981
 GameObject:
   m_ObjectHideFlags: 0

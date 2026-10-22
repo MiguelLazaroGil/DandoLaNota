@@ -40,6 +40,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7197365511321013618}
+  - component: {fileID: 5781811428189647317}
+  - component: {fileID: 2829820098978754380}
+  - component: {fileID: 2959032433859986364}
+  - component: {fileID: 2308097210662604973}
+  - component: {fileID: 135828598541907079}
   m_Layer: 0
   m_Name: CharacterController
   m_TagString: Untagged
@@ -66,6 +71,131 @@ Transform:
   - {fileID: 7134472455000938881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5781811428189647317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 3745418015
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &2829820098978754380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcff9c20b3db65d408e42ad2182f7a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerNetworkSetup
+  ShowTopMostFoldoutHeaderGroup: 1
+  scripts: []
+  gameobjects:
+  - {fileID: 8661844082290078092}
+  - {fileID: 178082455123511573}
+  - {fileID: 7514656515351085883}
+  rigidbodies:
+  - {fileID: 4012883291380726142}
+  - {fileID: 4103699158611623112}
+  playerMeshHidder: {fileID: 135828598541907079}
+--- !u!114 &2959032433859986364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e566995ecf18e9a4a8b99f0e3eb98eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPosition
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &2308097210662604973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887913005afb3cc40a0d1dec07456acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClientNetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 1
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &135828598541907079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241e044f786a81340a455479b7220006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMeshHidder
+  hiddenMeshes:
+  - {fileID: 1934795652201832430}
+  - {fileID: 1984629782442125562}
+  - {fileID: 1798831873085681764}
+  - {fileID: 4897292685504903428}
 --- !u!1 &963237010087062058
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +375,9 @@ GameObject:
   - component: {fileID: 4012883291380726142}
   - component: {fileID: 6891435217087737458}
   - component: {fileID: 8728837105295018890}
+  - component: {fileID: 7355670253500283720}
   - component: {fileID: 4251547158921675309}
+  - component: {fileID: 3874953417653131881}
   m_Layer: 10
   m_Name: RIG-BodyBones
   m_TagString: Untagged
@@ -354,7 +486,7 @@ MonoBehaviour:
   rb: {fileID: 4012883291380726142}
   rayVector: {x: 0, y: -1, z: 0}
   legsSeparation: 0.5
-  height: 2.5
+  height: 2.6
   SpringStrength: 130
   SpringDamper: 50
   IgnoreMask:
@@ -383,6 +515,24 @@ MonoBehaviour:
   thresholdX: 1
   thresholdY: 1
   thresholdZ: 1
+--- !u!114 &7355670253500283720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198750407697722089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b650629091153564084bfd2315ab4c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RolyPolyGuard
+  deactivateScripts:
+  - {fileID: 8728837105295018890}
+  - {fileID: 6891435217087737458}
+  maxTiltAngle: 50
+  disableDuration: 2
+  coolDownDuration: 4
 --- !u!114 &4251547158921675309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +556,52 @@ MonoBehaviour:
   onLanding:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3874953417653131881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198750407697722089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887913005afb3cc40a0d1dec07456acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClientNetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 1
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &1369382122408669297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1400,7 @@ MonoBehaviour:
   musicClockFMOD: {fileID: 0}
   toleranciaTiempo: 0.18
   musicScoreManager: {fileID: 0}
+  scoreBridge: {fileID: 0}
   desviacionRelativaCalidadCero: 0.5
   desfaseRelativoCalidadCero: 0.5
   margenPrecisionPerfecta: 0.04
@@ -3929,8 +4126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonCameraController
   playerTransform: {fileID: 5366491068157851965}
   playerRotationSpeed: 10
-  TopTransformClamp: 60
-  BottomTransformClamp: -10
+  TopTransformClamp: 90
+  BottomTransformClamp: -30
   CinemachineCameraTarget: {fileID: 2792081671097580128}
   TopClamp: 90
   BottomClamp: -90
@@ -5061,7 +5258,7 @@ GameObject:
   - component: {fileID: 356633162010670353}
   - component: {fileID: 2262461255541621593}
   m_Layer: 10
-  m_Name: RHand
+  m_Name: LHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5243,15 +5440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.7300608
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.375
+      value: 1.6149998
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.9035723
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w

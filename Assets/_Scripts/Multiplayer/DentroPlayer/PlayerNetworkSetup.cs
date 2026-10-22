@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -5,29 +6,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerNetworkSetup : NetworkBehaviour
 {
-    [SerializeField] private AudioListener audioListener;
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private List<MonoBehaviour> otherScripts = new List<MonoBehaviour>();
-    [SerializeField] private List<GameObject> otherGameobjects = new List<GameObject>();
+
+    [SerializeField] private List<MonoBehaviour> scripts = new();
+    [SerializeField] private List<GameObject> gameobjects = new();
+    [SerializeField] private List<Rigidbody> rigidbodies = new();
+    [SerializeField] private PlayerMeshHidder playerMeshHidder;
     public override void OnNetworkSpawn()
     {
         if (IsOwner)
         {
             this.name = gameObject.name + "jugador activo";
-            // Activar componentes locales solo para el jugador que controla este personaje
-            if (playerCamera != null) playerCamera.enabled = true;
-            if (audioListener != null) audioListener.enabled = true;
-            if (playerInput != null) playerInput.enabled = true;
-            foreach (var script in otherScripts)
+
+            foreach (var script in scripts)
             {
                 script.enabled = true;
             }
-            foreach (var go in otherGameobjects)
+            foreach (var go in gameobjects)
             {
                 go.SetActive(true);
             }
-            // 2. Ocultar la cámara estática del Lobby/Menú
+            playerMeshHidder.HideMeshes();
+
+            // 2. Ocultar la cï¿½mara estï¿½tica del Lobby/Menï¿½
             LobbyCameraManager.Instance?.HideLobbyCamera();
 
             // 3. Posicionar en un SpawnPoint de la sala
@@ -35,25 +35,30 @@ public class PlayerNetworkSetup : NetworkBehaviour
         }
         else
         {
-            // Desactivar en copias de otros jugadores para evitar conflicto de cámaras/inputs
-            if (playerCamera != null) playerCamera.enabled = false;
-            if (audioListener != null) audioListener.enabled = false;
-            if (playerInput != null) playerInput.enabled = false;
-            foreach (var script in otherScripts)
+
+            foreach (var script in scripts)
             {
                 script.enabled = false;
             }
-            foreach(var go in otherGameobjects)
+            foreach (var go in gameobjects)
             {
                 go.SetActive(false);
             }
+            // Para los demï¿½s jugadores, desactivamos la fï¿½sica pura para que mande la red
+            foreach (var rb in rigidbodies)
+            {
+                rb.isKinematic = true;
+            }
+            playerMeshHidder.ShowMeshes();
+
+
         }
     }
     public override void OnNetworkDespawn()
     {
         if (IsOwner)
         {
-            // Al salir de la sala o destruirse el avatar local, reactivar la cámara estática del menú
+            // Al salir de la sala o destruirse el avatar local, reactivar la cï¿½mara estï¿½tica del menï¿½
             LobbyCameraManager.Instance?.ShowLobbyCamera();
         }
     }
