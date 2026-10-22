@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ee8ebf9da1147419db87732ba5ae55, type: 3}
+  m_Name: Accion_EructoPedo
+  m_EditorClassIdentifier: Assembly-CSharp::ActionBurpOrFart
+  actionName: Eruscto Pedo
+  icon: {fileID: 6995180988234750447, guid: f8dd4b2c8ca7cbc41aa5d9e73eb4c892, type: 3}
+  energyCost: 15
+  isContinuous: 0
+  playerOnly: 0
+  audioClips:
+  - {fileID: 8300000, guid: 13342d208c09f30408ff1ca4f7c7004d, type: 3}
+  - {fileID: 8300000, guid: 39fc1db44874d1444a3f2e6f6fe57df8, type: 3}
