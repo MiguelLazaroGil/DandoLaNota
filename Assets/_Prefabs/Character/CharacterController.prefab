@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3745418015
+  GlobalObjectIdHash: 3664601286
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -111,11 +111,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNetworkSetup
   ShowTopMostFoldoutHeaderGroup: 1
-  scripts: []
+  scripts:
+  - {fileID: 4815658302819561280}
+  - {fileID: 6226887903674982978}
+  - {fileID: 7514656515351085879}
+  - {fileID: 1676137418951491129}
   gameobjects:
   - {fileID: 8661844082290078092}
   - {fileID: 178082455123511573}
-  - {fileID: 7514656515351085883}
   rigidbodies:
   - {fileID: 4012883291380726142}
   - {fileID: 4103699158611623112}
@@ -286,6 +289,8 @@ MonoBehaviour:
   faceExpresions: {fileID: 3366252591207644846}
   handMovement: {fileID: 4868248328646910278}
   walker: {fileID: 3527249381243069286}
+  movementTransform: {fileID: 1382905955589196541}
+  movementThresHold: 0.01
 --- !u!114 &3366252591207644846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +460,7 @@ Rigidbody:
   m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: -0.03, z: -0.21}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -464,7 +469,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -507,14 +512,15 @@ MonoBehaviour:
   _rb: {fileID: 4012883291380726142}
   _uprightJointTargetRot: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   offsetRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
-  _uprightJointSpringStrength: 5
-  _uprightJointSpringDamper: 1
+  _uprightJointSpringStrength: 8
+  _uprightJointSpringDamper: 6
   FreezeX: 0
   FreezeY: 0
   FreezeZ: 0
   thresholdX: 1
   thresholdY: 1
   thresholdZ: 1
+  onlyYShortRotation: 1
 --- !u!114 &7355670253500283720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,8 +536,8 @@ MonoBehaviour:
   deactivateScripts:
   - {fileID: 8728837105295018890}
   - {fileID: 6891435217087737458}
-  maxTiltAngle: 50
-  disableDuration: 2
+  maxTiltAngle: 115
+  disableDuration: 2.5
   coolDownDuration: 4
 --- !u!114 &4251547158921675309
 MonoBehaviour:
@@ -1681,6 +1687,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 1
+  speedMult: 1.5
   stepSize: 0.003
   stepHeight: 0.6
   raycastDistance: 1
@@ -3091,6 +3098,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4497581094653199082}
+  - component: {fileID: 9059524404935005816}
   m_Layer: 10
   m_Name: ORG-spine.006
   m_TagString: Untagged
@@ -3119,6 +3127,27 @@ Transform:
   - {fileID: 3369326484887734928}
   m_Father: {fileID: 6963848129828299187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9059524404935005816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374290698352532694}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.017040908, y: 0.013153476, z: 0.013957966}
+  m_Center: {x: -6.9927975e-16, y: 0.011356678, z: -0.0007124631}
 --- !u!1 &5469524823841548203
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,7 +4113,6 @@ GameObject:
   - component: {fileID: 3195662627754106183}
   - component: {fileID: 6226887903674982978}
   - component: {fileID: 7514656515351085879}
-  - component: {fileID: 3380991143687020966}
   - component: {fileID: 1676137418951491129}
   m_Layer: 2
   m_Name: PlayerInput
@@ -4197,18 +4225,6 @@ MonoBehaviour:
       - m_Target: {fileID: 3195662627754106183}
         m_TargetAssemblyTypeName: SimplePlayerController, Assembly-CSharp
         m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5747143639069815635}
-        m_TargetAssemblyTypeName: MusicianAnimatorHandler, Assembly-CSharp
-        m_MethodName: onMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4360,8 +4376,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676137418951491129}
         m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: TryDrop
-        m_Mode: 1
+        m_MethodName: OnReleaseObjectInput
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4377,57 +4393,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 8661844082290078094}
---- !u!114 &3380991143687020966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7514656515351085883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe410ca0df272f40833faef44dbbf1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlatscreenInteractionController
-  otherInput: {fileID: 7514656515351085879}
-  OnInteractEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1676137418951491129}
-        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: TryInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDropEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1676137418951491129}
-        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: TryDrop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDisablePlayerInputEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  OnEnablePlayerInputEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  isInteracting: 0
-  isDropping: 0
 --- !u!114 &1676137418951491129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4444,6 +4409,10 @@ MonoBehaviour:
   grabPivot: {fileID: 878346852844896672}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
+  minHoldTimeForThrow: 0.3
+  maxHoldTime: 3
+  parabolaHeight: 1
+  maxAmplitude: 10
   OnGrabSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -4602,7 +4571,7 @@ Transform:
   m_GameObject: {fileID: 7871045240478421185}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.881784e-16, y: 0.013574719, z: 0.026142359}
+  m_LocalPosition: {x: -0, y: 0.0136, z: 0.0321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4618,10 +4587,10 @@ ParentConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0.56, z: 1.335975}
-  m_RotationAtRest: {x: 7.098683, y: 0, z: 0}
+  m_TranslationAtRest: {x: 0, y: 0.0136, z: 0.0321}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.6787338, z: 1.3071172}
+  - {x: 0, y: 0.6799989, z: 1.6050003}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -4631,7 +4600,7 @@ ParentConstraint:
   m_AffectRotationY: 1
   m_AffectRotationZ: 1
   m_Active: 1
-  m_IsLocked: 1
+  m_IsLocked: 0
   m_Sources:
   - sourceTransform: {fileID: 8164216485439835547}
     weight: 1
@@ -5440,15 +5409,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7300608
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6149998
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9035723
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w

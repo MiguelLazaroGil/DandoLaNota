@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class RolyPoly : MonoBehaviour
     [SerializeField] private float thresholdX = 1f; // Tolerancia en grados para el eje X
     [SerializeField] private float thresholdY = 1f; // Tolerancia en grados para el eje Y
     [SerializeField] private float thresholdZ = 1f; // Tolerancia en grados para el eje Z
+    [SerializeField] private bool onlyYShortRotation = true;
 
     void Start()
     {
@@ -49,7 +51,16 @@ public class RolyPoly : MonoBehaviour
     public void UpdateUprightForce()
     {
         Quaternion characterCurrent = transform.rotation;
-        Quaternion toGoal = ShortestRotation(_uprightJointTargetRot, characterCurrent);
+        Quaternion toGoal;
+        if (onlyYShortRotation)
+        {
+            toGoal = ShortestRotation(_uprightJointTargetRot, characterCurrent);
+        }
+        else
+        {
+            toGoal = ShortestRotationY(_uprightJointTargetRot, characterCurrent);
+        }
+
         Vector3 euler = toGoal.eulerAngles;
         float ex = Mathf.DeltaAngle(0, euler.x);
         float ey = Mathf.DeltaAngle(0, euler.y);
@@ -104,5 +115,30 @@ public class RolyPoly : MonoBehaviour
 
         return deltaRotation;
     }
+    protected Quaternion ShortestRotationY(Quaternion to, Quaternion from)
+    {
+        // 1. Obtenemos el Forward de ambas rotaciones y lo aplanamos en el plano XZ (Eje Y)
+        Vector3 forwardTo = to * Vector3.forward;
+        Vector3 forwardFrom = from * Vector3.forward;
 
+        forwardTo.y = 0f;
+        forwardTo.Normalize();
+        forwardFrom.y = 0f;
+        forwardFrom.Normalize();
+
+        if (forwardTo == Vector3.zero) forwardTo = Vector3.forward;
+        if (forwardFrom == Vector3.zero) forwardFrom = Vector3.forward;
+
+        // Rotación puramente en el eje Y (Yaw) por el camino más corto
+        Quaternion shortYaw = Quaternion.FromToRotation(forwardFrom, forwardTo);
+
+        // 2. Aplicamos ese Yaw corto al estado actual para alinear la dirección horizontal
+        Quaternion intermediateRot = shortYaw * from;
+
+        // 3. Calculamos la diferencia restante hacia el objetivo 'to'. 
+        // Esto aporta la corrección necesaria en X y Z (inclinación) para levantar al personaje.
+        Quaternion delta = to * Quaternion.Inverse(intermediateRot);
+
+        return delta;
+    }
 }

@@ -17,6 +17,7 @@ namespace IK.ProceduralAnimations.Walking
         [SerializeField] AnimationCurve horizontalCurve;
         [SerializeField] AnimationCurve verticalCurve;
         [SerializeField] float speed = 0.5f;
+        [SerializeField] float speedMult = 1f;
         [SerializeField] float stepSize = .5f;
         [SerializeField] float stepHeight = 0.5f;
         [SerializeField] float raycastDistance = 2.0f;
@@ -61,7 +62,7 @@ namespace IK.ProceduralAnimations.Walking
             if (IsMoving && IsGrounded)//MOVING
             {
 
-                moveSpeed = speed;
+                moveSpeed = speed * speedMult;
                 restPoseTimer = 0f;
                 movingPoseTimer += Time.fixedDeltaTime;
                 float timeVal = movingPoseTimer * moveSpeed;

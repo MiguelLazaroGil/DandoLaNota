@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using IK.ProceduralAnimations.Walking;
 using UnityEngine;
@@ -17,9 +18,14 @@ public class MusicianAnimatorHandler : MonoBehaviour
     public MusicianHandMovement handMovement;
     [SerializeField]
     public ProceduralWalkerPlayer walker;
+    [SerializeField]
+    public Transform movementTransform;
+    [SerializeField]
+    public float movementThresHold = 0.1f;
     private bool IsMoving = false;
-
-
+    private bool backWards = false;
+    private Vector3 oldPos;
+    private Vector3 newPos;
     void OnEnable()
     {
         if (faceExpresions == null) return;
@@ -31,6 +37,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
 
         if (walker == null) return;
         Stand();
+        oldPos = movementTransform.position;
 
     }
 
@@ -41,6 +48,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
 
     void Update()
     {
+        HandleMovement();
         if (IsMoving)
         {
             Walk();
@@ -50,6 +58,17 @@ public class MusicianAnimatorHandler : MonoBehaviour
             Stand();
         }
     }
+
+    private void HandleMovement()
+    {
+        newPos = movementTransform.position;
+        Vector3 deltaPos = newPos - oldPos;
+        deltaPos.y = 0;
+        IsMoving = deltaPos.sqrMagnitude > movementThresHold;
+        oldPos = newPos;
+        
+    }
+
     private IEnumerator Blinking()
     {
         while (true)

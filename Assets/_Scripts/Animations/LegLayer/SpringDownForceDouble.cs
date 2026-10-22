@@ -24,6 +24,7 @@ public class SpringDownForceDouble : MonoBehaviour
     {
         if (rb == null)
             rb = GetComponent<Rigidbody>();
+       
     }
     void FixedUpdate()
     {
