@@ -7,7 +7,10 @@ using UnityEngine.ProBuilder.Shapes;
 public class BatutaController : MonoBehaviour
 {
     [Header("Referencias")]
+    [SerializeField]
     public SimplePlayerController playerController;
+    [SerializeField]
+    public FirstPersonCameraController cameraController;
     public GameObject modeloBatuta;
     public Transform mano;
     [Tooltip("Arrastra aqu� el PlayerCameraRoot o CuelloBatuta")]
@@ -37,13 +40,14 @@ public class BatutaController : MonoBehaviour
     public bool modoDirectorActivo { get; private set; } = false;
     private Vector2 movimientoRaton;
     private bool botonPulsado = false;
-    public bool BotonPulsado => botonPulsado; 
+    public bool BotonPulsado => botonPulsado;
     //mates
     private Vector3 posicionInicialMano;
-    private Vector3 posicionObjetivoMano; 
+    private Vector3 posicionObjetivoMano;
     private Vector3 velocidadActualMano; //Variable requerida por SmoothDamp. Unity la usa internamente para calcular la inercia frame a frame.
     private Quaternion rotacionReposoBatuta;
     private Quaternion rotacionInicialCamara;
+    private float sensibilidadCamaraOriginal;
 
     //Guardamos las velocidades originales del jugador aqu� para poder devolv�rselas al guardar la batuta.
     private float originalMoveSpeed;
@@ -58,8 +62,20 @@ public class BatutaController : MonoBehaviour
         inputActions.Player.SacarBatuta.performed += ctx => ActivarModoDirector();
         inputActions.Dirigir.GuardarBatuta.performed += ctx => DesactivarModoDirector();
 
-        inputActions.Dirigir.BotonBatuta.performed += ctx => botonPulsado = true;
-        inputActions.Dirigir.BotonBatuta.canceled += ctx => botonPulsado = false;
+        inputActions.Dirigir.BotonBatuta.performed += ctx =>
+        {
+            botonPulsado = true;
+
+            if (cameraController != null)
+                cameraController.RotationSpeed = sensibilidadCamara;
+        };
+        inputActions.Dirigir.BotonBatuta.canceled += ctx =>
+        {
+            botonPulsado = false;
+
+            if (cameraController != null)
+                cameraController.RotationSpeed = sensibilidadCamaraOriginal;
+        };
 
         inputActions.Dirigir.MoverBatuta.performed += ctx => movimientoRaton = ctx.ReadValue<Vector2>();
         inputActions.Dirigir.MoverBatuta.canceled += ctx => movimientoRaton = Vector2.zero;
@@ -85,6 +101,10 @@ public class BatutaController : MonoBehaviour
         {
             rotacionReposoBatuta = modeloBatuta.transform.localRotation;
             modeloBatuta.SetActive(false);
+        }
+        if (cameraController != null)
+        {
+            sensibilidadCamaraOriginal = cameraController.RotationSpeed;
         }
     }
 
@@ -152,13 +172,15 @@ public class BatutaController : MonoBehaviour
     private void ActivarModoDirector()
     {
         modoDirectorActivo = true;
-        OrchestraAudioManager.Instance.readytoPlay = true;
-        MusicClockFMOD.Instance.IniciarReloj();
 
         //Desactivamos el script de movimiento original para que no interfiera con el control de la batuta.
         inputActions.Player.Disable();
         inputActions.Dirigir.Enable();
 
+        if (TutorialManager.Instance != null && !TutorialManager.Instance.PuedeSacarBatuta)
+        {
+            return;
+        }
         if (modeloBatuta != null) modeloBatuta.SetActive(true);
 
         if (playerController != null)
@@ -199,5 +221,12 @@ public class BatutaController : MonoBehaviour
             // playerController.SprintSpeed = originalSprintSpeed;
             // playerController.RotationSpeed = originalRotationSpeed;
         }
+        if (cameraController != null)
+        {
+            cameraController.RotationSpeed = sensibilidadCamaraOriginal;
+        }
+        botonPulsado = false;
+
+
     }
 }

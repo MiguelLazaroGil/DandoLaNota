@@ -42,7 +42,7 @@ public class RolyPoly : MonoBehaviour
         UpdateTargetRot(copyTransform.forward);
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateUprightForce();
     }

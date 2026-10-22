@@ -53,11 +53,11 @@ public class Interactor : MonoBehaviour
 
         {
             OnGrabSuccess?.Invoke(grabbable);
-            //Si ya lo ha cogido nada más
+            //Si ya lo ha cogido nada mï¿½s
             return;
         }
 
-        //Interacción con objeto no cogible
+        //Interacciï¿½n con objeto no cogible
         Interactable interactable = temp.GetComponent<Interactable>();
         if(InteractWith(interactable))
         {
