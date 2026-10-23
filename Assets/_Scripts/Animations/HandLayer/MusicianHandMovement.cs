@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MusicianHandMovement : MonoBehaviour
 {
-    public enum HandAnimations { Rest, Walk, Clap,ThumbsUp, SayHello, PlayViolin }
+    public enum HandAnimations { Rest, Walk, Clap, ThumbsUp, SayHello, PlayViolin }
     public Animator HandAnimator;
     public List<AnimationClip> handAnimationClips;
+    public enum HandGrabAnimations { GrabBox }
+    public List<AnimationClip> grabAnimationClips;
     private AnimationClip currentClip;
     public void Start()
     {
@@ -16,6 +18,13 @@ public class MusicianHandMovement : MonoBehaviour
     {
         StopClip();
         currentClip = handAnimationClips[(int)handAnimation];
+        HandAnimator.Play(currentClip.name);
+        HandAnimator.speed = 1f;
+    }
+    public void PlayHandGrabAnimation(HandGrabAnimations handGrabAnimations)
+    {
+        StopClip();
+        currentClip = grabAnimationClips[(int)handGrabAnimations];
         HandAnimator.Play(currentClip.name);
         HandAnimator.speed = 1f;
     }
@@ -31,4 +40,5 @@ public class MusicianHandMovement : MonoBehaviour
 
 
     }
+
 }

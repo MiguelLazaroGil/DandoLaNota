@@ -1,14 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Grabbable : MonoBehaviour
 {
+    [Header("Events")]
     public UnityEvent OnGrabbed;
     public UnityEvent OnDropped;
+    [Header("When dropped/thrown")]
     [SerializeField, Range(1, 20)] int velocitySamples = 6;
     [SerializeField] float throwMultiplier = 1f;
     [SerializeField] float maxThrowSpeed = 20f;          // m/s
     [SerializeField] float maxThrowAngularSpeed = 30f;
+    [Header("When grabbed transform configuration")]
+    [SerializeField] bool IsworldPositionStaying = false;
+    [SerializeField] Vector3 grabPositionOffset = Vector3.zero;
+    [SerializeField] Vector3 grabRotationOffset = Vector3.zero;
+    [SerializeField] List<Collider> myColliders = new();
     Rigidbody rb;
     Transform originalParent;
     bool usedGravity;
@@ -30,7 +40,9 @@ public class Grabbable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         linSamples = new Vector3[velocitySamples];
         angSamples = new Vector3[velocitySamples];
+        
     }
+    List<Collider> combinedColliders = new List<Collider>();
     public void Grab(Transform pivot)
     {
         if (IsHeld) return;
@@ -44,9 +56,41 @@ public class Grabbable : MonoBehaviour
             rb.useGravity = false;
             rb.isKinematic = true;
         }
+        if (pivot != null)
+        {
+            // 1. Buscar en el propio carrier y todos sus hijos
+            Transform childTransform = pivot.transform.parent;
+            Collider[] childColliders = childTransform.GetComponentsInChildren<Collider>(true);
+            combinedColliders.AddRange(childColliders);
 
-        transform.SetParent(pivot);
-        transform.position = pivot.position;
+            // 2. Subir por la jerarquía de padres por si hay colisionadores más arriba
+
+            Collider[] parentColliders = pivot.GetComponentsInParent<Collider>(true);
+
+            // Convertimos la lista final al array que gestiona las colisiones
+            combinedColliders.AddRange(parentColliders);
+
+            // foreach (var col in combinedColliders)
+            // {
+            //     Debug.Log(col.name);
+
+            // }
+            // 3. Aplicar el IgnoreCollision con todos los colliders del portador
+            foreach (var carrierCol in combinedColliders)
+            {
+                foreach (var myCol in myColliders)
+                {
+                    if (carrierCol != null && myCol != null)
+                    {
+                        Physics.IgnoreCollision(carrierCol, myCol, true);
+                    }
+                }
+            }
+        }
+
+        transform.SetParent(pivot, IsworldPositionStaying);
+        transform.localPosition = grabPositionOffset;
+        transform.localRotation = Quaternion.Euler(grabRotationOffset);
 
         ResetSamples();
         OnGrabbed?.Invoke();
@@ -63,7 +107,6 @@ public class Grabbable : MonoBehaviour
         if (!IsHeld) return;
         IsHeld = false;
 
-        transform.SetParent(originalParent, worldPositionStays: true);
 
         if (rb)
         {
@@ -85,6 +128,18 @@ public class Grabbable : MonoBehaviour
                 rb.angularVelocity = w;
             }
         }
+        foreach (var carrierCol in combinedColliders)
+        {
+            foreach (var myCol in myColliders)
+            {
+                if (carrierCol != null && myCol != null)
+                {
+                    Physics.IgnoreCollision(carrierCol, myCol, false);
+                }
+            }
+        }
+        combinedColliders.Clear();
+        transform.SetParent(originalParent, worldPositionStays: IsworldPositionStaying);
 
         OnDropped?.Invoke();
     }

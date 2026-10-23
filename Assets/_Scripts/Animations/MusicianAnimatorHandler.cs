@@ -23,6 +23,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
     [SerializeField]
     public float movementThresHold = 0.1f;
     private bool IsMoving = false;
+    private bool IsGrabbing = false;
     private bool backWards = false;
     private Vector3 oldPos;
     private Vector3 newPos;
@@ -58,6 +59,21 @@ public class MusicianAnimatorHandler : MonoBehaviour
             Stand();
         }
     }
+    public void onGrab(Grabbable grabbobject)
+    {
+        IsGrabbing = true;
+        switch (grabbobject.name)
+        {
+            case "Box":
+            default:
+                handMovement.PlayHandGrabAnimation(MusicianHandMovement.HandGrabAnimations.GrabBox);
+                break;
+        }
+    }
+    public void onDrop()
+    {
+        IsGrabbing = false;
+    }
 
     private void HandleMovement()
     {
@@ -66,7 +82,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
         deltaPos.y = 0;
         IsMoving = deltaPos.sqrMagnitude > movementThresHold;
         oldPos = newPos;
-        
+
     }
 
     private IEnumerator Blinking()
@@ -99,13 +115,15 @@ public class MusicianAnimatorHandler : MonoBehaviour
 
         walker.IsMoving = true;
         walker.IsGrounded = true;
-        handMovement.PlayHandAnimation(MusicianHandMovement.HandAnimations.Walk);
+        if (!IsGrabbing)
+            handMovement.PlayHandAnimation(MusicianHandMovement.HandAnimations.Walk);
     }
     [ContextMenu("Stand")]
     public void Stand()
     {
         walker.IsMoving = false;
-        handMovement.PlayHandAnimation(MusicianHandMovement.HandAnimations.Rest);
+        if (!IsGrabbing)
+            handMovement.PlayHandAnimation(MusicianHandMovement.HandAnimations.Rest);
     }
     [ContextMenu("Clapp")]
     public void Clapp()

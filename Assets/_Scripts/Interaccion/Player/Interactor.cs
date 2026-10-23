@@ -11,6 +11,7 @@ public class Interactor : MonoBehaviour
     Transform grabPivot;
     [SerializeField, ReadOnly]
     bool isGrabbing;
+    public bool IsGrabbing { get => isGrabbing; }
 
     [SerializeField, ReadOnly]
     Grabbable currentGrabbedObj;
@@ -79,7 +80,7 @@ public class Interactor : MonoBehaviour
 
 
         if (!isGrabbing) return;
-      
+
         // 1. Cuando el jugador empieza a presionar el botón
         if (ctx.started)
         {
