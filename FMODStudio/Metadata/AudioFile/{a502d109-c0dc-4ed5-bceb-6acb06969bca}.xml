@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{a502d109-c0dc-4ed5-bceb-6acb06969bca}">
+		<property name="assetPath">
+			<value>Tema4/Tema4-Clarinete.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>141.17433106575965</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{346aab22-24f9-41d6-acce-f4da25af2ea3}</destination>
+		</relationship>
+	</object>
+</objects>
