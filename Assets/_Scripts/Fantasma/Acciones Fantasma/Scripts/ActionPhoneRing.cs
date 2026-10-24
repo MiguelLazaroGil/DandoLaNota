@@ -6,7 +6,7 @@ public class ActionPhoneRing : SabotageAction
 {
     public AudioClip audioLlamada;
 
-    public override void Execute(GhostEntity ghost, Musician target)
+    public override void Execute(Musician target)
     {
         target.PlaySound(audioLlamada);
         target.ShowPhoneUI(true);

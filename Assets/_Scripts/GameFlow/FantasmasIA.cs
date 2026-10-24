@@ -64,9 +64,9 @@ public class FantasmasIA : MonoBehaviour
     private float targetDelay;
     private bool lastStepWasAction;
 
-    private MusicoController lastEnemyWhoActed;
+    private Musician lastEnemyWhoActed;
 
-    public List<MusicoController> registeredEnemies = new List<MusicoController>();
+    public List<Musician> registeredEnemies = new List<Musician>();
     private readonly Dictionary<Type, float> categoryLastUsedTime = new Dictionary<Type, float>();
 
 
@@ -120,8 +120,8 @@ public class FantasmasIA : MonoBehaviour
     // Estructura auxiliar para almacenar candidatos válidos
     private struct ActionCandidate
     {
-        public MusicoAccion action;
-        public MusicoController enemy;
+        public SabotageAction action;
+        public Musician enemy;
         public float utility;
     }
 
@@ -149,20 +149,20 @@ public class FantasmasIA : MonoBehaviour
         // 1. Recolectar todos los candidatos válidos
         for (int i = registeredEnemies.Count - 1; i >= 0; i--)
         {
-            MusicoController enemy = registeredEnemies[i];
+            Musician enemy = registeredEnemies[i];
             if (enemy == null || !enemy.IsAvailable) continue;
             if (preventSameEnemyConsecutive && enemy == lastEnemyWhoActed) continue;
 
-            foreach (var action in enemy.Actions)
+            foreach (var action in enemy.availableActions)
             {
-                if (action == null || action.EnergyCost > currentEnergy || !action.IsValid(enemy)) continue;
+                if (action == null || action.energyCost > currentEnergy ||action.playerOnly) continue;
 
                 // Ponderación: Utilidad base * Multiplicador Global Tipo * Multiplicador Individual
-                float rawUtility = action.GetRawUtility(enemy);
+                float rawUtility = action.GetRawUtility();
                 float globalMultiplier = GetCategoryUtilityMultiplier(action.GetType());
-                float individualMultiplier = action.GetIndividualUtilityMultiplier();
 
-                float finalUtility = rawUtility * globalMultiplier * individualMultiplier;
+
+                float finalUtility = rawUtility * globalMultiplier;
 
                 if (finalUtility >= minUtilityThreshold)
                 {
@@ -198,9 +198,9 @@ public class FantasmasIA : MonoBehaviour
         }
 
         // 3. Ejecutar acción elegida
-        currentEnergy -= selectedCandidate.action.EnergyCost;
+        currentEnergy -= selectedCandidate.action.energyCost;
         categoryLastUsedTime[selectedCandidate.action.GetType()] = Time.time; // Global
-        selectedCandidate.action.MarkAsUsed();                                 // Individual del enemigo
+
 
         lastEnemyWhoActed = selectedCandidate.enemy;
         selectedCandidate.action.Execute(selectedCandidate.enemy);

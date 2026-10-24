@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Fantasma/Acciones/6. Mover Musico (Solo Player)")]
 public class ActionMoveMusician : SabotageAction
 {
-    public override void Execute(GhostEntity ghost, Musician target)
+    public override void Execute( Musician target)
     {
         target.SetPlayingState(Musician.PlayingState.PlayingBadly);
         Debug.Log("te mueves jiji");

@@ -13,6 +13,9 @@ public class Musician : MonoBehaviour
     public List<SabotageAction> availableActions = new List<SabotageAction>();
 
     public GhostEntity PossessingGhost { get; set; }
+
+    //todo: asignar bien available
+    public bool IsAvailable = true;
     public bool IsPossessed => PossessingGhost != null;
 
     public void SetPlayingState(PlayingState newState) => currentState = newState;

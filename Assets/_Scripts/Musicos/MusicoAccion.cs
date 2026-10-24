@@ -30,11 +30,11 @@ public abstract class MusicoAccion : MonoBehaviour
     public float EnergyCost => energyCost;
 
     // ¿La acción es físicamente posible según el contexto del enemigo? (distancia, raycast, etc.)
-    public abstract bool IsValid(MusicoController owner);
+    public abstract bool IsValid(Musician owner);
 
     // Utilidad bruta calculada por la situación local del enemigo
-    public abstract float GetRawUtility(MusicoController owner);
+    public abstract float GetRawUtility(Musician owner);
 
     // Lógica real de la acción
-    public abstract void Execute(MusicoController owner);
+    public abstract void Execute(Musician owner);
 }

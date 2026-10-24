@@ -6,7 +6,7 @@ public class ActionWrongInstrument : SabotageAction
 {
     public GameObject fakeInstrumentPrefab;
 
-    public override void Execute(GhostEntity ghost, Musician target)
+    public override void Execute(Musician target)
     {
         target.SwapToFakeInstrument(fakeInstrumentPrefab);
         Debug.Log($"{target.name} tiene intrumento que no es, bromita");
