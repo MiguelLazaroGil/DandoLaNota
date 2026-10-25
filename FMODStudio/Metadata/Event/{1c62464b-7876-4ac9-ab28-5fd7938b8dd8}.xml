@@ -5,7 +5,7 @@
 			<value>Tema3Violin</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{81ab53c1-a2a9-4372-ba05-b66ddda0ea8b}</destination>
@@ -76,8 +76,11 @@
 	</object>
 	<object class="SingleSound" id="{4ad1ef64-9c81-405d-92d3-f672cd9c34ed}">
 		<property name="length">
-			<value>132.25786848072562</value>
+			<value>132</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{206b4f3e-cb25-4e2f-a094-fd31a4103fc8}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{c9158820-bc19-450e-ae13-70370de11759}</destination>
 		</relationship>
@@ -91,9 +94,38 @@
 	<object class="MixerBusEffectChain" id="{93bd4f11-0af4-46bf-a50b-24aaa15738c6}">
 		<relationship name="effects">
 			<destination>{32b1336b-c86b-46ec-9686-ce7417a83cf6}</destination>
+			<destination>{2a97f05f-997d-4d3c-a538-8c83e998e945}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{529e3b79-14de-41ee-8afe-161726cbf7bb}" />
+	<object class="FadeCurve" id="{206b4f3e-cb25-4e2f-a094-fd31a4103fc8}">
+		<relationship name="startPoint">
+			<destination>{2007504e-8cd3-4bcd-b107-d5e2389f4e7b}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2bb43a6b-9578-492c-9af4-3723a0e3cec5}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{bee056c7-e61c-44e1-bdd8-ff82c1907c0a}" />
 	<object class="MixerBusFader" id="{32b1336b-c86b-46ec-9686-ce7417a83cf6}" />
+	<object class="SpatialiserEffect" id="{2a97f05f-997d-4d3c-a538-8c83e998e945}" />
+	<object class="AutomationPoint" id="{2007504e-8cd3-4bcd-b107-d5e2389f4e7b}">
+		<property name="position">
+			<value>130.5</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2bb43a6b-9578-492c-9af4-3723a0e3cec5}">
+		<property name="position">
+			<value>132</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

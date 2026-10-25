@@ -5,7 +5,7 @@
 			<value>Tema2Violin</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -76,8 +76,11 @@
 	</object>
 	<object class="SingleSound" id="{1c85fc99-195a-4bb7-bcce-933a64afb4d6}">
 		<property name="length">
-			<value>145.63256235827666</value>
+			<value>144</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{63df7172-326d-4834-a135-b320c8de25fc}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{854a6710-63a1-4388-8a96-edfb6795205a}</destination>
 		</relationship>
@@ -91,9 +94,38 @@
 	<object class="MixerBusEffectChain" id="{818316ba-044b-4de5-885d-0cc386653e59}">
 		<relationship name="effects">
 			<destination>{97cfae53-72d7-42d2-89cd-a787e21d218b}</destination>
+			<destination>{d853bbb4-d62b-45f4-8de2-a758791895a5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ca25b85a-cae0-4469-b947-974d96b4f005}" />
+	<object class="FadeCurve" id="{63df7172-326d-4834-a135-b320c8de25fc}">
+		<relationship name="startPoint">
+			<destination>{9e7a8047-2f60-46c0-b455-cea061441da0}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{9d000097-9304-490c-afb9-afa10740d1d8}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{2044dbab-6536-4d16-a78c-a4a8893ac48c}" />
 	<object class="MixerBusFader" id="{97cfae53-72d7-42d2-89cd-a787e21d218b}" />
+	<object class="SpatialiserEffect" id="{d853bbb4-d62b-45f4-8de2-a758791895a5}" />
+	<object class="AutomationPoint" id="{9e7a8047-2f60-46c0-b455-cea061441da0}">
+		<property name="position">
+			<value>143</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9d000097-9304-490c-afb9-afa10740d1d8}">
+		<property name="position">
+			<value>144</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

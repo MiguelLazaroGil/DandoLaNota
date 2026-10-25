@@ -5,7 +5,7 @@
 			<value>Tema5Trumpet</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{61d86d94-592a-4980-a05d-13f3d7e0a120}</destination>
@@ -76,7 +76,7 @@
 	</object>
 	<object class="SingleSound" id="{3c06e779-9e24-438a-be93-efef8f8fc2e5}">
 		<property name="length">
-			<value>166.43764172335602</value>
+			<value>168</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ec0023f4-4e31-4f27-8b68-5c7e3f193019}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{fe8e45f3-b4a0-4bf1-9c4d-2a0e37cb8402}">
 		<relationship name="effects">
 			<destination>{a38d6d69-28e0-4c18-8539-2a8054b206d8}</destination>
+			<destination>{1db86265-b28e-4018-ac83-ededd26be58a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{afe8b89a-e6c7-4c71-ae2f-ae37c1906033}" />
 	<object class="MixerBusFader" id="{50942c50-eb26-40a7-8f71-a19717c510ff}" />
 	<object class="MixerBusFader" id="{a38d6d69-28e0-4c18-8539-2a8054b206d8}" />
+	<object class="SpatialiserEffect" id="{1db86265-b28e-4018-ac83-ededd26be58a}" />
 </objects>

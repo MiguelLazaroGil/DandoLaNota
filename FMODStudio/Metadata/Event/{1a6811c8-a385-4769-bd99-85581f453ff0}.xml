@@ -5,7 +5,7 @@
 			<value>Tema2Kick</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{0ea4eb13-4be3-436b-8a39-74a944ef3cd3}">
 		<relationship name="effects">
 			<destination>{60ee75ac-7ff9-4966-9682-4668d3280abf}</destination>
+			<destination>{0968f9cc-7ca5-4516-93a0-4a033116f8ca}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{94291ab0-0b2d-4173-be77-d7c6d56b152f}" />
 	<object class="MixerBusFader" id="{c17ac03c-1c55-4310-bdc7-76982ef83325}" />
 	<object class="MixerBusFader" id="{60ee75ac-7ff9-4966-9682-4668d3280abf}" />
+	<object class="SpatialiserEffect" id="{0968f9cc-7ca5-4516-93a0-4a033116f8ca}" />
 </objects>

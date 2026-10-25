@@ -5,7 +5,7 @@
 			<value>Tema2Flute</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{c3f7ac6a-b067-4bc2-91f4-c505470f6a43}">
 		<relationship name="effects">
 			<destination>{d545d34b-576a-4906-a6f3-66c50f127502}</destination>
+			<destination>{149e729b-9e02-4523-bab2-43fd05f7764b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{996ecb72-8cc9-4abd-8542-46b54ecc8a63}" />
 	<object class="MixerBusFader" id="{f8122975-de7b-483f-8529-9563cd6e6829}" />
 	<object class="MixerBusFader" id="{d545d34b-576a-4906-a6f3-66c50f127502}" />
+	<object class="SpatialiserEffect" id="{149e729b-9e02-4523-bab2-43fd05f7764b}" />
 </objects>

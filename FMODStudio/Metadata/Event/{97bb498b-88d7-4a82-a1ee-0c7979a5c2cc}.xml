@@ -5,7 +5,7 @@
 			<value>Tema2Triangle</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{e7e7d4b0-c7e4-478b-b03a-9e2dc077b1fa}">
 		<relationship name="effects">
 			<destination>{6b265fb4-2a76-4bf5-9e74-ed15872c84b9}</destination>
+			<destination>{45f5b657-42d4-4867-a76f-38ac50b3fe74}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e4097338-d3aa-4311-92af-92f0fa444a40}" />
 	<object class="MixerBusFader" id="{fee461f9-ccd3-4866-b14d-4141c422a53a}" />
 	<object class="MixerBusFader" id="{6b265fb4-2a76-4bf5-9e74-ed15872c84b9}" />
+	<object class="SpatialiserEffect" id="{45f5b657-42d4-4867-a76f-38ac50b3fe74}" />
 </objects>

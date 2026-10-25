@@ -5,7 +5,7 @@
 			<value>Tema4Violin</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{038a190a-8b77-4989-9405-90a4b874c01a}</destination>
@@ -76,7 +76,7 @@
 	</object>
 	<object class="SingleSound" id="{9b88dc83-8a8d-4306-8825-d9334f735c51}">
 		<property name="length">
-			<value>139.68825396825397</value>
+			<value>140</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ccb05f83-1559-4d91-8d0a-6c634e26810c}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{491542ef-de3d-4569-b25a-af227a723214}">
 		<relationship name="effects">
 			<destination>{578cbfec-0da9-454a-9e83-aee985c2b428}</destination>
+			<destination>{a2edc053-f023-40a3-8852-62c550d96fc5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e5eee5b6-7940-4250-9d91-92ee3900ff7d}" />
 	<object class="MixerBusFader" id="{d88ddfef-81cf-4172-a573-131028e69ba7}" />
 	<object class="MixerBusFader" id="{578cbfec-0da9-454a-9e83-aee985c2b428}" />
+	<object class="SpatialiserEffect" id="{a2edc053-f023-40a3-8852-62c550d96fc5}" />
 </objects>

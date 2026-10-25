@@ -5,7 +5,7 @@
 			<value>Tema3Harp</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{81ab53c1-a2a9-4372-ba05-b66ddda0ea8b}</destination>
@@ -76,8 +76,11 @@
 	</object>
 	<object class="SingleSound" id="{6802cdd0-7aba-408b-8342-55b2bab6ebfc}">
 		<property name="length">
-			<value>132.25786848072562</value>
+			<value>132</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{380ff8a2-95c9-4138-9387-5d63579e6b26}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{139e5bb3-9efb-4690-ab39-268752a6e586}</destination>
 		</relationship>
@@ -91,9 +94,38 @@
 	<object class="MixerBusEffectChain" id="{efd511df-ac57-413a-a6a6-0ba960d16a92}">
 		<relationship name="effects">
 			<destination>{a1b3d3c8-533a-432a-b29e-6f745259ba3c}</destination>
+			<destination>{276bfe02-2cfc-4c71-865d-89be37d82cd4}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d33488d7-2d6f-4ee0-bcb7-7d9c68956358}" />
+	<object class="FadeCurve" id="{380ff8a2-95c9-4138-9387-5d63579e6b26}">
+		<relationship name="startPoint">
+			<destination>{a14ba292-ed74-460a-b906-3051cd78c142}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{10023201-7bd8-4212-9f38-6b0a5acdc565}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{afc52150-5c7e-4eed-af38-4ca27f89fe9a}" />
 	<object class="MixerBusFader" id="{a1b3d3c8-533a-432a-b29e-6f745259ba3c}" />
+	<object class="SpatialiserEffect" id="{276bfe02-2cfc-4c71-865d-89be37d82cd4}" />
+	<object class="AutomationPoint" id="{a14ba292-ed74-460a-b906-3051cd78c142}">
+		<property name="position">
+			<value>131.15710040715791</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{10023201-7bd8-4212-9f38-6b0a5acdc565}">
+		<property name="position">
+			<value>132</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

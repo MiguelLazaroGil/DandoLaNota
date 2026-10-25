@@ -4,7 +4,7 @@ using UnityEngine;
 public class GhostEntity : MonoBehaviour
 {
 
-    [Header("Energía / Maná")]
+    [Header("Energï¿½a / Manï¿½")]
     public float maxEnergy = 100f;
     public float currentEnergy = 50f;
     public float baseRegenRate = 5f;
@@ -26,14 +26,14 @@ public class GhostEntity : MonoBehaviour
     {
         matchTime += Time.deltaTime;
 
-        // Regenerar energía (aumenta con el tiempo de partida)
+        // Regenerar energï¿½a (aumenta con el tiempo de partida)
         if (!IsStunned && activeContinuousAction == null)
         {
             float currentRegen = baseRegenRate + (regenScalingPerMinute * (matchTime / 60f));
             currentEnergy = Mathf.Min(maxEnergy, currentEnergy + currentRegen * Time.deltaTime);
         }
 
-        // Si hay una acción continua activa (ej. mover al músico)
+        // Si hay una acciï¿½n continua activa (ej. mover al mï¿½sico)
         if (activeContinuousAction != null && CurrentMusician != null)
         {
             activeContinuousAction.OnUpdateAction(this, CurrentMusician);
@@ -67,30 +67,30 @@ public class GhostEntity : MonoBehaviour
         if (!action.isContinuous)
         {
             if (ConsumeEnergy(action.energyCost))
-                action.Execute(this, CurrentMusician);
+                action.Execute(CurrentMusician);
         }
         else
         {
             activeContinuousAction = action;
-            action.Execute(this, CurrentMusician);
+            action.Execute(CurrentMusician);
         }
     }
 
-    // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estás cooked)
+    // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estï¿½s cooked)
     public void RequestVoluntaryExit()
     {
         if (CurrentMusician != null && !IsExiting)
-            StartCoroutine(VoluntaryExitRoutine()); // perdón miguel
+            StartCoroutine(VoluntaryExitRoutine()); // perdï¿½n miguel
     }
 
     // perdon miguel esto me lo ha hecho el chati, yo no se corrutinas ni delayed actions :c
     private IEnumerator VoluntaryExitRoutine()
     {
         IsExiting = true;
-        Debug.Log("Saliendo del músico... ¡No dejes que el director te golpee!");
+        Debug.Log("Saliendo del mï¿½sico... ï¿½No dejes que el director te golpee!");
         yield return new WaitForSeconds(exitCastTime);
 
-        if (CurrentMusician != null) // Si no nos golpeó el director durante la espera
+        if (CurrentMusician != null) // Si no nos golpeï¿½ el director durante la espera
         {
             LeaveMusicianClean();
         }

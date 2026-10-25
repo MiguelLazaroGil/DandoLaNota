@@ -2,11 +2,11 @@ using UnityEngine;
 
 public abstract class MusicoAccion : MonoBehaviour
 {
-    [Header("Configuración de Acción")]
+    [Header("Configuraciï¿½n de Acciï¿½n")]
     [SerializeField] private float energyCost = 10f;
     [SerializeField] protected float baseUtility = 50f;
  
-    [Header("Cooldown / Penalización Individual")]
+    [Header("Cooldown / Penalizaciï¿½n Individual")]
     [SerializeField] private float individualCooldownDuration = 6f;
     [SerializeField, Range(0f, 1f)] private float minIndividualUtilityMultiplier = 0.1f;
 
@@ -22,19 +22,19 @@ public abstract class MusicoAccion : MonoBehaviour
         float timeSinceUse = Time.time - lastTimeUsed;
         if (timeSinceUse >= individualCooldownDuration) return 1.0f;
 
-        // Recuperación progresiva de la utilidad
+        // Recuperaciï¿½n progresiva de la utilidad
         float progress = timeSinceUse / individualCooldownDuration;
         return Mathf.Lerp(minIndividualUtilityMultiplier, 1.0f, progress);
     }
 
     public float EnergyCost => energyCost;
 
-    // ¿La acción es físicamente posible según el contexto del enemigo? (distancia, raycast, etc.)
+    // ï¿½La acciï¿½n es fï¿½sicamente posible segï¿½n el contexto del enemigo? (distancia, raycast, etc.)
     public abstract bool IsValid(Musician owner);
 
-    // Utilidad bruta calculada por la situación local del enemigo
+    // Utilidad bruta calculada por la situaciï¿½n local del enemigo
     public abstract float GetRawUtility(Musician owner);
 
-    // Lógica real de la acción
+    // Lï¿½gica real de la acciï¿½n
     public abstract void Execute(Musician owner);
 }

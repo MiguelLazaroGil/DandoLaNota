@@ -5,7 +5,7 @@
 			<value>Tema2Trumpet</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -76,8 +76,11 @@
 	</object>
 	<object class="SingleSound" id="{464acdd0-9c30-4e8d-ac19-d0669a617093}">
 		<property name="length">
-			<value>145.63256235827666</value>
+			<value>144</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{eaa77493-db64-408e-a20b-b9013522d2a7}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{81e8188b-3406-45af-8420-ba6b043a579d}</destination>
 		</relationship>
@@ -91,9 +94,38 @@
 	<object class="MixerBusEffectChain" id="{e759e9b7-f63b-43c8-9c8a-b9337ae764b1}">
 		<relationship name="effects">
 			<destination>{ce1407b3-f5e6-4d43-8910-2aa680157dec}</destination>
+			<destination>{92a50183-ab35-49c2-896c-2a2bc90a3af5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cc44b3f5-f701-4087-9cbe-05391d1ba13a}" />
+	<object class="FadeCurve" id="{eaa77493-db64-408e-a20b-b9013522d2a7}">
+		<relationship name="startPoint">
+			<destination>{740c28fe-e910-4438-a937-1c610d6729d0}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{3c17a509-707f-470d-83ed-0711bf188719}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{e4985c32-6c2b-47f3-816b-65b6872cdeab}" />
 	<object class="MixerBusFader" id="{ce1407b3-f5e6-4d43-8910-2aa680157dec}" />
+	<object class="SpatialiserEffect" id="{92a50183-ab35-49c2-896c-2a2bc90a3af5}" />
+	<object class="AutomationPoint" id="{740c28fe-e910-4438-a937-1c610d6729d0}">
+		<property name="position">
+			<value>143.4375</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{3c17a509-707f-470d-83ed-0711bf188719}">
+		<property name="position">
+			<value>144</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

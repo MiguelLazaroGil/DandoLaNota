@@ -5,7 +5,7 @@
 			<value>Tema5Cymbals</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{61d86d94-592a-4980-a05d-13f3d7e0a120}</destination>
@@ -76,7 +76,7 @@
 	</object>
 	<object class="SingleSound" id="{7103da93-7c9b-4802-9784-99ad21cad72b}">
 		<property name="length">
-			<value>165.51725623582766</value>
+			<value>168</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{429ec917-b713-4200-a6c6-b59cb7318e44}</destination>
@@ -91,9 +91,11 @@
 	<object class="MixerBusEffectChain" id="{f381921d-ba05-4f7d-9148-148c9363b019}">
 		<relationship name="effects">
 			<destination>{35a0a5e0-c46d-4a23-b6da-12148c5bce75}</destination>
+			<destination>{34260db8-79eb-4d45-a81b-5002515e0661}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f6209e2e-9faa-480d-913d-cf0dfdaffee5}" />
 	<object class="MixerBusFader" id="{c8bff532-cb11-4acf-b72c-df5255f33819}" />
 	<object class="MixerBusFader" id="{35a0a5e0-c46d-4a23-b6da-12148c5bce75}" />
+	<object class="SpatialiserEffect" id="{34260db8-79eb-4d45-a81b-5002515e0661}" />
 </objects>

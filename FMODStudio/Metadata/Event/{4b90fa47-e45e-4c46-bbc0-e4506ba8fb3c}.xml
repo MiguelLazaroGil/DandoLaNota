@@ -5,7 +5,7 @@
 			<value>Tema2Harp</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f0a82a97-2727-40c5-a98f-fa61de8ccf42}</destination>
@@ -76,8 +76,11 @@
 	</object>
 	<object class="SingleSound" id="{e83470aa-92d9-4ecb-a1e7-3c4578e3e2c3}">
 		<property name="length">
-			<value>145.63256235827666</value>
+			<value>144</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3165df94-c730-4552-9d8a-c0751b34bdd0}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{c897d1e5-f971-4f13-9e6c-4547a2a15c85}</destination>
 		</relationship>
@@ -91,9 +94,38 @@
 	<object class="MixerBusEffectChain" id="{c9345885-c9ef-45db-93c2-e2eb3ac064de}">
 		<relationship name="effects">
 			<destination>{1dfdd90b-894a-41eb-9f0e-b405b2e81397}</destination>
+			<destination>{730d9626-9f2f-4142-a5b5-ce646c1210f2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1663e4ea-ae4f-403a-99a8-bec8d04b7d3b}" />
+	<object class="FadeCurve" id="{3165df94-c730-4552-9d8a-c0751b34bdd0}">
+		<relationship name="startPoint">
+			<destination>{70dc1ad4-115c-482b-9b88-0cd6d7289f26}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{4a36b692-1975-4e55-a25a-717fb4e79685}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{ec3696fb-4e85-4384-9f3b-ff4459a71f14}" />
 	<object class="MixerBusFader" id="{1dfdd90b-894a-41eb-9f0e-b405b2e81397}" />
+	<object class="SpatialiserEffect" id="{730d9626-9f2f-4142-a5b5-ce646c1210f2}" />
+	<object class="AutomationPoint" id="{70dc1ad4-115c-482b-9b88-0cd6d7289f26}">
+		<property name="position">
+			<value>143.5</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{4a36b692-1975-4e55-a25a-717fb4e79685}">
+		<property name="position">
+			<value>144</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 </objects>

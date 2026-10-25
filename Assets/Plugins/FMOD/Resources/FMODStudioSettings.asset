@@ -492,9 +492,14 @@ MonoBehaviour:
   - Clarinet
   - Flute
   - Harp
+  - Menu
   - Percussion
   - Piano
   - Tema1
+  - Tema2
+  - Tema3
+  - Tema4
+  - Tema5
   - Trumpet
   - Violin
   BanksToLoad: []
