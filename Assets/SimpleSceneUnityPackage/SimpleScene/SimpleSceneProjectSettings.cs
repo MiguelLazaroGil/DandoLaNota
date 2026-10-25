@@ -656,20 +656,26 @@ namespace MLG.SimpleSceneTool
             {
                 return;
             }
-
-            GameObject prefabContents = PrefabUtility.LoadPrefabContents(path);
             try
             {
-                bool changed = false;
-                ScanGameObject(prefabContents, prefabAsset, item.rootScene, ref changed);
-                if (changed)
+
+                GameObject prefabContents = PrefabUtility.LoadPrefabContents(path);
+                try
                 {
-                    PrefabUtility.SaveAsPrefabAsset(prefabContents, path);
+                    bool changed = false;
+                    ScanGameObject(prefabContents, prefabAsset, item.rootScene, ref changed);
+                    if (changed)
+                    {
+                        PrefabUtility.SaveAsPrefabAsset(prefabContents, path);
+                    }
                 }
-            }
-            finally
+                finally
+                {
+                    PrefabUtility.UnloadPrefabContents(prefabContents);
+                }
+            }catch (Exception e)
             {
-                PrefabUtility.UnloadPrefabContents(prefabContents);
+
             }
         }
 
@@ -895,13 +901,22 @@ namespace MLG.SimpleSceneTool
             EnqueueAsset(mainAsset, rootScene);
         }
 
-        private static bool IsPrefab(Object asset)
-        {
-            GameObject gameObject = asset as GameObject;
-            return gameObject != null && PrefabUtility.GetPrefabAssetType(gameObject) != PrefabAssetType.NotAPrefab;
-        }
+    private static bool IsPrefab(Object asset)
+    {
+        GameObject gameObject = asset as GameObject;
+        if (gameObject == null) return false;
 
-        private static bool IsPrefabInstanceRoot(GameObject gameObject)
+        // 1. Debe ser un asset guardado en la ventana Project (no una instancia de la escena)
+        if (!PrefabUtility.IsPartOfPrefabAsset(gameObject)) return false;
+
+        // 2. Solo prefabs editables (excluye modelos 3D importados como FBX/OBJ)
+        PrefabAssetType type = PrefabUtility.GetPrefabAssetType(gameObject);
+        if (type != PrefabAssetType.Regular && type != PrefabAssetType.Variant) return false;
+
+        // 3. Debe ser el GameObject raíz del asset (no un hijo interno) y el asset principal
+        return gameObject.transform.parent == null && AssetDatabase.IsMainAsset(gameObject);
+    }
+    private static bool IsPrefabInstanceRoot(GameObject gameObject)
         {
             if (!PrefabUtility.IsPartOfPrefabInstance(gameObject))
             {

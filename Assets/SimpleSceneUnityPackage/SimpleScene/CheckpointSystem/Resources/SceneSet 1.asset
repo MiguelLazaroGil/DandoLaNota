@@ -16,4 +16,4 @@ MonoBehaviour:
   excludeFromBuild: 0
   scenes:
   - sceneAsset: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
-    index: 6
+    index: 7

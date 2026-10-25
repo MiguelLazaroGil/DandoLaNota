@@ -59,7 +59,6 @@ public class NetworkLobbyManager : MonoBehaviour
         }
     }
 
-    // --- CREAR SALA (HOST) ---
     public async Task<bool> CreateLobbyAndHostAsync(string lobbyName, int maxPlayers, bool isPrivate, string password = null)
     {
         try
@@ -101,7 +100,6 @@ public class NetworkLobbyManager : MonoBehaviour
         }
     }
 
-    // --- BUSCAR SALAS PÚBLICAS ---
     public async Task<List<Lobby>> GetPublicLobbiesAsync()
     {
         try
@@ -125,7 +123,6 @@ public class NetworkLobbyManager : MonoBehaviour
         }
     }
 
-    // --- UNIRSE A SALA (CLIENTE) ---
     public async Task<bool> JoinLobbyAsync(Lobby lobby, string password = null)
     {
         try
@@ -158,7 +155,6 @@ public class NetworkLobbyManager : MonoBehaviour
         }
     }
 
-    // --- SALIR O CERRAR SALA ---
     public async void LeaveOrDestroyLobby()
     {
         if (_heartbeatCoroutine != null) StopCoroutine(_heartbeatCoroutine);

@@ -28,7 +28,11 @@ public struct PlayerLobbyData : INetworkSerializable, IEquatable<PlayerLobbyData
         serializer.SerializeValue(ref ClientId);
         serializer.SerializeValue(ref PlayerName);
         serializer.SerializeValue(ref PingMs);
-        serializer.SerializeValue(ref Role);
+
+        // Convertir enum a byte para asegurar la transmisión correcta por la red
+        byte roleByte = (byte)Role;
+        serializer.SerializeValue(ref roleByte);
+        Role = (PlayerRole)roleByte;
     }
 
     public bool Equals(PlayerLobbyData other)

@@ -25,7 +25,7 @@ public class PlayerNetworkSetup : NetworkBehaviour
             {
                 go.SetActive(true);
             }
-            playerMeshHidder.HideMeshes();
+            playerMeshHidder?.HideMeshes();
 
             // 2. Ocultar la c�mara est�tica del Lobby/Men�
             LobbyCameraManager.Instance?.HideLobbyCamera();
@@ -49,7 +49,7 @@ public class PlayerNetworkSetup : NetworkBehaviour
             {
                 rb.isKinematic = true;
             }
-            playerMeshHidder.ShowMeshes();
+            playerMeshHidder?.ShowMeshes();
 
 
         }

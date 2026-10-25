@@ -287,9 +287,9 @@ MonoBehaviour:
   categoryCooldownDuration: 15.83
   minCategoryUtilityMultiplier: 0.1
   registeredEnemies:
-  - {fileID: 747436620}
-  - {fileID: 1373991174}
-  - {fileID: 944027261}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &83888561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1390,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 1
+  speedMult: 1
   stepSize: 0.003
   stepHeight: 0.8
   raycastDistance: 1
@@ -1613,6 +1614,10 @@ MonoBehaviour:
   FreezeX: 0
   FreezeY: 0
   FreezeZ: 0
+  thresholdX: 1
+  thresholdY: 1
+  thresholdZ: 1
+  onlyYShortRotation: 1
 --- !u!114 &247728503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,6 +1964,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 1
+  speedMult: 1
   stepSize: 0.003
   stepHeight: 0.8
   raycastDistance: 1
@@ -2624,6 +2630,90 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0085477885, y: -0.001162552, z: -0.024207193}
     m_Extent: {x: 0.0037220414, y: 0.0042093433, z: 0.0068218745}
   m_DirtyAABB: 0
+--- !u!1001 &453007375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.31985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.98885
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621871318756487323, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418179787573688441, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_Name
+      value: GhostPlayerEntero
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402662892777329134, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402662892777329134, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3630272572
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402662892777329134, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1918186763
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515900706517374839, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+      propertyPath: playerMeshHidder
+      value: 
+      objectReference: {fileID: 453007380}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+--- !u!114 &453007380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2806260739011019776, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+  m_PrefabInstance: {fileID: 453007375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241e044f786a81340a455479b7220006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMeshHidder
 --- !u!1 &458383003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,6 +3269,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 4 b
   utilityValue: 50
   isValid: 1
@@ -3956,6 +4047,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 4
   utilityValue: 50
   isValid: 1
@@ -4117,6 +4209,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 6 B
   utilityValue: 50
   isValid: 1
@@ -4306,10 +4399,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicoControler
   isAvailable: 1
   actions:
-  - {fileID: 1623705448}
-  - {fileID: 687160736}
-  - {fileID: 2056508582}
-  - {fileID: 821946112}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &768591679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4714,6 +4807,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 6
   utilityValue: 50
   isValid: 1
@@ -5440,10 +5534,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicoControler
   isAvailable: 1
   actions:
-  - {fileID: 1868870161}
-  - {fileID: 1963368879}
-  - {fileID: 1975305319}
-  - {fileID: 1421899490}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &944027262
 Transform:
   m_ObjectHideFlags: 0
@@ -5854,6 +5948,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 2 b
   utilityValue: 50
   isValid: 1
@@ -6759,6 +6854,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2908cd730b7982f4e94f8eb2907094fd, type: 2}
   - {fileID: 7400000, guid: 9dec1730868ca154ebafe7d81ecbe621, type: 2}
   - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  grabAnimationClips: []
 --- !u!114 &1133185389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6794,6 +6890,8 @@ MonoBehaviour:
   faceExpresions: {fileID: 1133185389}
   handMovement: {fileID: 1133185388}
   walker: {fileID: 245345763}
+  movementTransform: {fileID: 0}
+  movementThresHold: 0.1
 --- !u!4 &1133185391
 Transform:
   m_ObjectHideFlags: 0
@@ -7085,6 +7183,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 1
+  speedMult: 1
   stepSize: 0.003
   stepHeight: 0.8
   raycastDistance: 1
@@ -7375,6 +7474,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2908cd730b7982f4e94f8eb2907094fd, type: 2}
   - {fileID: 7400000, guid: 9dec1730868ca154ebafe7d81ecbe621, type: 2}
   - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  grabAnimationClips: []
 --- !u!114 &1202037262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7410,6 +7510,8 @@ MonoBehaviour:
   faceExpresions: {fileID: 1202037262}
   handMovement: {fileID: 1202037261}
   walker: {fileID: 302757134}
+  movementTransform: {fileID: 0}
+  movementThresHold: 0.1
 --- !u!4 &1202037264
 Transform:
   m_ObjectHideFlags: 0
@@ -7945,6 +8047,14 @@ MonoBehaviour:
           m_StringArgument: "T\xFA me dejaste caer...   "
           m_BoolArgument: 0
         m_CallState: 2
+  velocitySamples: 6
+  throwMultiplier: 1
+  maxThrowSpeed: 20
+  maxThrowAngularSpeed: 30
+  IsworldPositionStaying: 0
+  grabPositionOffset: {x: 0, y: 0, z: 0}
+  grabRotationOffset: {x: 0, y: 0, z: 0}
+  myColliders: []
 --- !u!114 &1221315490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8203,6 +8313,10 @@ MonoBehaviour:
   FreezeX: 0
   FreezeY: 0
   FreezeZ: 0
+  thresholdX: 1
+  thresholdY: 1
+  thresholdZ: 1
+  onlyYShortRotation: 1
 --- !u!114 &1238456810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8530,6 +8644,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2908cd730b7982f4e94f8eb2907094fd, type: 2}
   - {fileID: 7400000, guid: 9dec1730868ca154ebafe7d81ecbe621, type: 2}
   - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  grabAnimationClips: []
 --- !u!114 &1304638372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8565,6 +8680,8 @@ MonoBehaviour:
   faceExpresions: {fileID: 1304638372}
   handMovement: {fileID: 1304638371}
   walker: {fileID: 1176115051}
+  movementTransform: {fileID: 0}
+  movementThresHold: 0.1
 --- !u!4 &1304638374
 Transform:
   m_ObjectHideFlags: 0
@@ -8928,10 +9045,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicoControler
   isAvailable: 1
   actions:
-  - {fileID: 1012372314}
-  - {fileID: 566044231}
-  - {fileID: 1795360226}
-  - {fileID: 734577406}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1373991175
 Transform:
   m_ObjectHideFlags: 0
@@ -9142,6 +9259,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 6 C
   utilityValue: 50
   isValid: 1
@@ -10024,6 +10142,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: 'SimpleMusicoAction executed 2 a '
   utilityValue: 50
   isValid: 1
@@ -10220,6 +10339,10 @@ MonoBehaviour:
   FreezeX: 0
   FreezeY: 0
   FreezeZ: 0
+  thresholdX: 1
+  thresholdY: 1
+  thresholdZ: 1
+  onlyYShortRotation: 1
 --- !u!114 &1712598455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10393,15 +10516,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.382602
       objectReference: {fileID: 0}
     - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.375
+      value: -0.5550847
       objectReference: {fileID: 0}
     - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
       propertyPath: m_LocalPosition.z
+      value: -15.5923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.09041394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: m_LocalRotation.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9959043
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651244830481758713, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651244830481758718, guid: b391b4496b3f9254cbab8cb2400875ce, type: 3}
+      propertyPath: field of view
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11061,6 +11204,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 5 B
   utilityValue: 50
   isValid: 1
@@ -11348,6 +11492,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 2 c
   utilityValue: 50
   isValid: 1
@@ -12195,6 +12340,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 4 C
   utilityValue: 50
   isValid: 1
@@ -12277,6 +12423,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 5 C
   utilityValue: 50
   isValid: 1
@@ -12430,6 +12577,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 245345764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1998013009
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_Name
+      value: CharacterController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910081156743256689, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 0.67999935
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910081156743256689, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: 1.6049957
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781811428189647317, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781811428189647317, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1842030163
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781811428189647317, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781811428189647317, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3157294880
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.23401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05301
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.49627
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661844082290078089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.085840225
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661844082290078089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661844082290078089, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4925804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661844082290078094, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
 --- !u!1 &2000241545
 GameObject:
   m_ObjectHideFlags: 0
@@ -12702,6 +12946,7 @@ MonoBehaviour:
   baseUtility: 50
   individualCooldownDuration: 6
   minIndividualUtilityMultiplier: 0.1
+  lastTimeUsed: -999
   actionExecuted: SimpleMusicoAction executed 5
   utilityValue: 50
   isValid: 1
@@ -13387,3 +13632,5 @@ SceneRoots:
   - {fileID: 1202037264}
   - {fileID: 1304638374}
   - {fileID: 246573492}
+  - {fileID: 453007375}
+  - {fileID: 1998013009}

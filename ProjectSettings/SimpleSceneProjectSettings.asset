@@ -35,12 +35,18 @@ MonoBehaviour:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
   - scene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     outgoingScenes:
+    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
   - scene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
   - scene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
@@ -53,6 +59,11 @@ MonoBehaviour:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   - scene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
@@ -112,6 +123,16 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
       referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+      gameObjectPath: 'LobbyUICanvas[7]/Scripts[0]'
+      componentType: LoadSceneMultiplayer
+      propertyPath: sceneToLoad
+      referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     referenceCount: 1
@@ -132,6 +153,16 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
       referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      gameObjectPath: 'CharacterController[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
+      referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     referenceCount: 1
@@ -141,6 +172,16 @@ MonoBehaviour:
       gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      gameObjectPath: 'CharacterController[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
@@ -162,6 +203,16 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
       referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      gameObjectPath: 'CharacterController[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
+      referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     targetScene: {fileID: 102900000, guid: efb1c4989bd9e1a47acff6f53aed8054, type: 3}
     referenceCount: 1
@@ -176,7 +227,7 @@ MonoBehaviour:
   - rootScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     targetAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
-    gameObjectPath: 'MainMenu[2]'
+    gameObjectPath: 'MainMenu[3]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
@@ -211,14 +262,35 @@ MonoBehaviour:
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
-    gameObjectPath: 'PauseMenu[2]'
+    gameObjectPath: 'PauseMenu[1]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 11400000, guid: 1323c8ead021a3442bbd4375a830b0ad, type: 2}
+    gameObjectPath: 'NetworkManager[4]'
+    componentType: Unity.Netcode.NetworkManager
+    propertyPath: 'NetworkConfig.Prefabs.NetworkPrefabsLists.Array.data[0]'
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'GameSpawnManager[10]'
+    componentType: LobbyAvatarSpawner
+    propertyPath: directorPrefab
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[1]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     sourceAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
-    gameObjectPath: 'PauseMenu[2]'
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'CharacterController[20]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
@@ -236,6 +308,13 @@ MonoBehaviour:
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'CharacterController[5]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     sourceAsset: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     targetAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
@@ -249,6 +328,13 @@ MonoBehaviour:
     gameObjectPath: 'GameObject[5]'
     componentType: MLG.SimpleSceneTool.CheckpointSystem.ChangeSceneSet
     propertyPath: sceneSet
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 11400000, guid: 1323c8ead021a3442bbd4375a830b0ad, type: 2}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 
+    componentType: Unity.Netcode.NetworkPrefabsList
+    propertyPath: List.Array.data[2].Prefab
     referenceCount: 1
   externalReferences:
   - sourceAsset: {fileID: 11400000, guid: 4dcb3f7ff0adf984884516b4c826a32b, type: 2}

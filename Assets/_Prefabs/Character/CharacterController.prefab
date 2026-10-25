@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2959032433859986364}
   - component: {fileID: 2308097210662604973}
   - component: {fileID: 135828598541907079}
+  - component: {fileID: 6221683638562413702}
   m_Layer: 0
   m_Name: CharacterController
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3664601286
+  GlobalObjectIdHash: 3157294880
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   - {fileID: 6226887903674982978}
   - {fileID: 7514656515351085879}
   - {fileID: 1676137418951491129}
+  - {fileID: 3195662627754106183}
   gameobjects:
   - {fileID: 8661844082290078092}
   - {fileID: 178082455123511573}
@@ -199,6 +201,24 @@ MonoBehaviour:
   - {fileID: 1984629782442125562}
   - {fileID: 1798831873085681764}
   - {fileID: 4897292685504903428}
+--- !u!114 &6221683638562413702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843643802184795946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd8151bb202a694db87a1bfb41083d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisibilityController
+  ShowTopMostFoldoutHeaderGroup: 1
+  playerCamera: {fileID: 8661844082290078094}
+  ghostLayerName: Ghost
+  lobbyScene:
+    sceneAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    index: 2
 --- !u!1 &963237010087062058
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +347,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2908cd730b7982f4e94f8eb2907094fd, type: 2}
   - {fileID: 7400000, guid: 9dec1730868ca154ebafe7d81ecbe621, type: 2}
   - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  grabAnimationClips: []
 --- !u!95 &5145107157387173887
 Animator:
   serializedVersion: 7
@@ -4590,7 +4611,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0, y: 0.0136, z: 0.0321}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.6799989, z: 1.6050003}
+  - {x: 0, y: 0.67999935, z: 1.6050014}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -5477,7 +5498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1049783
+      value: 1053879
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Name

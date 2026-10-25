@@ -29,7 +29,6 @@ public class LobbyPlayerState : NetworkBehaviour
 
         if (IsClient)
         {
-            // Nada más aparecer en la red, enviamos nuestro nombre de la UI al servidor
             string myName = LobbyUIManager.Instance != null ? LobbyUIManager.Instance.GetCurrentPlayerName() : "";
             SetPlayerNameRpc(myName);
         }
@@ -37,55 +36,26 @@ public class LobbyPlayerState : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
-        if (IsServer)
+        if (IsServer && NetworkManager.Singleton != null)
         {
-            if (NetworkManager.Singleton != null)
-            {
-                NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
-            }
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
             ConnectedPlayers.Clear();
         }
     }
 
-    private void OnClientDisconnected(ulong clientId)
+    // Método invocado por PlayerLobbyBootstrapper al spawnear en el Servidor
+    public PlayerRole GetOrAssignInitialRole(ulong clientId)
     {
-        if (!IsServer) return;
-
-        if (LobbyAvatarSpawner.Instance != null)
-        {
-            LobbyAvatarSpawner.Instance.DespawnAvatarForClient(clientId);
-        }
-
+        // 1. Si el cliente ya fue añadido previamente por el RPC de nombre
         for (int i = 0; i < ConnectedPlayers.Count; i++)
         {
             if (ConnectedPlayers[i].ClientId == clientId)
             {
-                ConnectedPlayers.RemoveAt(i);
-                break;
-            }
-        }
-    }
-
-    // --- REGISTRO Y ACTUALIZACIÓN DE JUGADOR MEDIANTE RPC ---
-    [Rpc(SendTo.Server)]
-    public void SetPlayerNameRpc(string playerName, RpcParams rpcParams = default)
-    {
-        ulong senderId = rpcParams.Receive.SenderClientId;
-        string finalName = string.IsNullOrWhiteSpace(playerName) ? "" : playerName;
-
-        // 1. Si el jugador ya existe en la lista, actualizamos su nombre
-        for (int i = 0; i < ConnectedPlayers.Count; i++)
-        {
-            if (ConnectedPlayers[i].ClientId == senderId)
-            {
-                var data = ConnectedPlayers[i];
-                data.PlayerName = finalName;
-                ConnectedPlayers[i] = data; // Replicación automática vía NetworkList
-                return;
+                return ConnectedPlayers[i].Role;
             }
         }
 
-        // 2. Si no existe, determinamos su rol e instanciamos su entrada por primera vez
+        // 2. Comprobar si ya existe un Director en la lista
         bool hasDirector = false;
         foreach (var p in ConnectedPlayers)
         {
@@ -97,18 +67,44 @@ public class LobbyPlayerState : NetworkBehaviour
         }
 
         PlayerRole initialRole = hasDirector ? PlayerRole.Ghost : PlayerRole.Director;
+        ConnectedPlayers.Add(new PlayerLobbyData(clientId, "", 0, initialRole));
 
-        // Añadir a la lista con el nombre directamente
-        ConnectedPlayers.Add(new PlayerLobbyData(senderId, finalName, 0, initialRole));
-
-        // Spawnear avatar del personaje en el lobby
-        if (LobbyAvatarSpawner.Instance != null)
-        {
-            LobbyAvatarSpawner.Instance.SpawnAvatarForClient(senderId, initialRole);
-        }
+        return initialRole;
     }
 
-    // --- CAMBIAR ROL (DIRECTOR / FANTASMA) ---
+    [Rpc(SendTo.Server)]
+    public void SetPlayerNameRpc(string playerName, RpcParams rpcParams = default)
+    {
+        ulong senderId = rpcParams.Receive.SenderClientId;
+        string finalName = string.IsNullOrWhiteSpace(playerName) ? "" : playerName;
+
+        // Si el jugador ya está registrado en la lista, actualizamos únicamente su nombre
+        for (int i = 0; i < ConnectedPlayers.Count; i++)
+        {
+            if (ConnectedPlayers[i].ClientId == senderId)
+            {
+                var data = ConnectedPlayers[i];
+                data.PlayerName = finalName;
+                ConnectedPlayers[i] = data; // Replica el cambio a la red
+                return;
+            }
+        }
+
+        // Si el RPC llegó antes que el Bootstrapper, determinamos el rol y lo añadimos
+        bool hasDirector = false;
+        foreach (var p in ConnectedPlayers)
+        {
+            if (p.Role == PlayerRole.Director)
+            {
+                hasDirector = true;
+                break;
+            }
+        }
+
+        PlayerRole initialRole = hasDirector ? PlayerRole.Ghost : PlayerRole.Director;
+        ConnectedPlayers.Add(new PlayerLobbyData(senderId, finalName, 0, initialRole));
+    }
+
     [Rpc(SendTo.Server)]
     public void RequestToggleRoleRpc(RpcParams rpcParams = default)
     {
@@ -131,7 +127,6 @@ public class LobbyPlayerState : NetworkBehaviour
         }
     }
 
-    // --- FORZAR DIRECTOR DESDE EL HOST ---
     [Rpc(SendTo.Server)]
     public void ForceSetDirectorRpc(ulong targetClientId)
     {
@@ -153,7 +148,6 @@ public class LobbyPlayerState : NetworkBehaviour
         }
     }
 
-    // --- RESOLUCIÓN DE ROLES ANTES DE CARGAR ESCENA DE JUEGO ---
     public void ResolveRolesBeforeStart()
     {
         if (!IsServer) return;
@@ -188,7 +182,25 @@ public class LobbyPlayerState : NetworkBehaviour
         }
     }
 
-    // --- MEDICIÓN DE PING (RTT) ---
+    private void OnClientDisconnected(ulong clientId)
+    {
+        if (!IsServer) return;
+
+        if (LobbyAvatarSpawner.Instance != null)
+        {
+            LobbyAvatarSpawner.Instance.DespawnAvatarForClient(clientId);
+        }
+
+        for (int i = 0; i < ConnectedPlayers.Count; i++)
+        {
+            if (ConnectedPlayers[i].ClientId == clientId)
+            {
+                ConnectedPlayers.RemoveAt(i);
+                break;
+            }
+        }
+    }
+
     private IEnumerator UpdatePingCoroutine()
     {
         var wait = new WaitForSeconds(1.0f);
