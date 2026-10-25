@@ -65,6 +65,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2792767492738392597}
   - {fileID: 2757860628084364819}
   - {fileID: 8661844082290078089}
   - {fileID: 178082455123511530}
@@ -327,6 +328,9 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 2908cd730b7982f4e94f8eb2907094fd, type: 2}
   - {fileID: 7400000, guid: 9dec1730868ca154ebafe7d81ecbe621, type: 2}
   - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  - {fileID: 7400000, guid: 935e2e4995dd06c478931b53451b3acc, type: 2}
+  grabAnimationClips:
+  - {fileID: 7400000, guid: db46d66af6dcc0d44aa8a6e7d33a5e4c, type: 2}
 --- !u!95 &5145107157387173887
 Animator:
   serializedVersion: 7
@@ -383,6 +387,7 @@ GameObject:
   - component: {fileID: 7355670253500283720}
   - component: {fileID: 4251547158921675309}
   - component: {fileID: 3874953417653131881}
+  - component: {fileID: 2145590360119472775}
   m_Layer: 10
   m_Name: RIG-BodyBones
   m_TagString: Untagged
@@ -489,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpringDownForceDouble
   rb: {fileID: 4012883291380726142}
+  originOffset: {x: 0, y: 0, z: 0}
   rayVector: {x: 0, y: -1, z: 0}
   legsSeparation: 0.5
   height: 2.6
@@ -496,7 +502,7 @@ MonoBehaviour:
   SpringDamper: 50
   IgnoreMask:
     serializedVersion: 2
-    m_Bits: 1028
+    m_Bits: 525316
 --- !u!114 &8728837105295018890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +543,7 @@ MonoBehaviour:
   - {fileID: 8728837105295018890}
   - {fileID: 6891435217087737458}
   maxTiltAngle: 115
-  disableDuration: 2.5
+  disableDuration: 0.5
   coolDownDuration: 4
 --- !u!114 &4251547158921675309
 MonoBehaviour:
@@ -555,7 +561,7 @@ MonoBehaviour:
   useMultipleRays: 1
   IgnoreMask:
     serializedVersion: 2
-    m_Bits: 1542
+    m_Bits: 525830
   nRays: 4
   radius: 0.41
   rayVector: {x: 0, y: -1, z: 0}
@@ -608,6 +614,19 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &2145590360119472775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198750407697722089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ced52bbc7aab242865c1da020f6b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToSpawn
+  rb: {fileID: 4012883291380726142}
 --- !u!1 &1369382122408669297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792081671097580135}
   - component: {fileID: 7829132221350139128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
@@ -2194,6 +2213,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8164216485439835547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4683533618926636027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2792767492738392597}
+  - component: {fileID: 5918734116753473534}
+  m_Layer: 10
+  m_Name: PivotAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2792767492738392597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683533618926636027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.06190806, y: -0.00000018689434, z: 0.000000011592501, w: 0.9980819}
+  m_LocalPosition: {x: -0.00000038266222, y: 0.5244436, z: 1.631731}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7197365511321013618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1773428102 &5918734116753473534
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683533618926636027}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: -0.75711274, z: 3.263462}
+  m_RotationAtRest: {x: 7.098683, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 878346852844896672}
+    weight: 1
 --- !u!1 &4752841525140125509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,7 +4484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   detector: {fileID: 7947331420608036555}
-  grabPivot: {fileID: 878346852844896672}
+  grabPivot: {fileID: 2792767492738392597}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
   minHoldTimeForThrow: 0.3
@@ -4428,12 +4506,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5747143639069815635}
+        m_TargetAssemblyTypeName: MusicianAnimatorHandler, Assembly-CSharp
+        m_MethodName: onGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDropSuccess:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683156994125711117}
-        m_TargetAssemblyTypeName: HandGrabber, Assembly-CSharp
-        m_MethodName: Drop
+      - m_Target: {fileID: 5747143639069815635}
+        m_TargetAssemblyTypeName: MusicianAnimatorHandler, Assembly-CSharp
+        m_MethodName: onDrop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5371,7 +5461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Animation.Rigging::UnityEngine.Animations.Rigging.Rig
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
 --- !u!114 &5683156994125711117
 MonoBehaviour:
@@ -5395,6 +5485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7197365511321013618}
     m_Modifications:
+    - target: {fileID: 6649558419134552556, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6649558419134552556, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_RendererIndex
       value: 0
@@ -5477,7 +5571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1049783
+      value: 1574071
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Name
@@ -5594,6 +5688,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1386922626876414841}
+    - targetCorrespondingSourceObject: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3225281466068234592}
   m_SourcePrefab: {fileID: 100100000, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
 --- !u!4 &178082455123511530 stripped
 Transform:
@@ -5618,3 +5715,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotateWithFollowTarget
   Damping: 0
+--- !u!114 &3225281466068234592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178082455123511573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    UseFollowTarget:
+      Enabled: 1
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    MaximumRaycast: 10
+    Damping: 0.5
