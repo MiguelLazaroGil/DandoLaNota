@@ -1,8 +1,22 @@
+
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public enum ModoJuego
+    {
+        Tutorial,
+        NivelNormal,
+        Infinito
+    }
+
+    [Header("Configuracion del nivel")]
+    [SerializeField] private ModoJuego modoJuego = ModoJuego.Tutorial;
+
+    [Tooltip("Solo para niveles normales. El modo infinito gestiona su propia musica.")]
+    [SerializeField] private bool iniciarMusicaAutomaticamente = true;
 
     [Header("Managers")]
     [SerializeField] private TutorialManager tutorialManager;
@@ -10,8 +24,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MusicClockFMOD musicClock;
     [SerializeField] private RhythmTracker rhythmTracker;
 
-    public bool MusicaIniciada { get; private set; }
+    public ModoJuego ModoActual => modoJuego;
+
+    public bool MusicaIniciada =>
+        orchestraAudioManager != null &&
+        musicClock != null &&
+        orchestraAudioManager.IsPlaying &&
+        musicClock.EstaReproduciendo;
+
     public bool JuegoPausado { get; private set; }
+
+    // El tutorial limita cuando puede sacarse la batuta.
+    // En los otros niveles puede utilizarse libremente.
+    public bool PuedeSacarBatuta =>
+        !JuegoPausado &&
+        (modoJuego != ModoJuego.Tutorial ||
+         (tutorialManager != null && tutorialManager.PuedeSacarBatuta));
 
     private void Awake()
     {
@@ -23,25 +51,72 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        // La musica no debe comenzar automaticamente.
+        // Evita heredar una pausa de la escena anterior.
+        Time.timeScale = 1f;
+        JuegoPausado = false;
+
+        // La musica no debe comenzar automaticamente desde la orquesta.
         if (orchestraAudioManager != null)
             orchestraAudioManager.readytoPlay = false;
     }
 
     private void Start()
     {
+        switch (modoJuego)
+        {
+            case ModoJuego.Tutorial:
+                IniciarModoTutorial();
+                break;
+
+            case ModoJuego.NivelNormal:
+                IniciarNivelNormal();
+                break;
+
+            case ModoJuego.Infinito:
+                IniciarModoInfinito();
+                break;
+        }
+    }
+
+    private void IniciarModoTutorial()
+    {
         PauseGame();
-        MusicaIniciada = false;
 
         if (tutorialManager != null)
             tutorialManager.IniciarTutorial();
         else
             Debug.LogError("GameManager: Falta TutorialManager.");
+
+        // TutorialManager decidira cuando comenzar la musica.
     }
 
-    // El tutorial decidira cuando llamar a este metodo.
+    private void IniciarNivelNormal()
+    {
+        ConfigurarCursorJuego();
+
+        if (iniciarMusicaAutomaticamente)
+            IniciarMusica();
+    }
+
+    private void IniciarModoInfinito()
+    {
+        ConfigurarCursorJuego();
+
+        // InfiniteLevelManager decide cuando comenzar cada cancion.
+        // No iniciamos la musica aqui.
+    }
+
+    // Utilizado por TutorialManager y por los niveles normales.
     public void IniciarMusica()
     {
+        if (modoJuego == ModoJuego.Infinito)
+        {
+            Debug.LogWarning(
+                "GameManager: InfiniteLevelManager controla la musica."
+            );
+            return;
+        }
+
         if (MusicaIniciada)
             return;
 
@@ -51,22 +126,33 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // OrchestraAudioManager.StartOrchestra() ya arranca MusicClockFMOD.
-        // No llamamos de nuevo a IniciarReloj(), porque reiniciaria la timeline.
-        orchestraAudioManager.readytoPlay = true;
-        MusicaIniciada = orchestraAudioManager.IsPlaying && musicClock.EstaReproduciendo;
+        // Permite reiniciar una pista normal que ya haya terminado.
+        if (orchestraAudioManager.IsPlaying)
+            orchestraAudioManager.StopOrchestra();
 
-        // Si se inicia mediante DEBUG mientras hay un menu, debe nacer pausada.
-        if (MusicaIniciada && JuegoPausado)
+        // StartOrchestra ya inicia MusicClockFMOD.
+        orchestraAudioManager.readytoPlay = true;
+
+        if (!MusicaIniciada)
+        {
+            Debug.LogError(
+                "GameManager: No se ha podido iniciar la orquesta."
+            );
+            return;
+        }
+
+        // Si ya tenia la batuta activa, actualizamos
+        // el seguimiento al reloj que acaba de comenzar.
+        if (rhythmTracker != null && rhythmTracker.SeguimientoActivo)
+            rhythmTracker.IniciarSeguimiento();
+
+        // Si se inicia mientras hay un menu, la musica nace pausada.
+        if (JuegoPausado)
             orchestraAudioManager.PausarOrquesta(true);
 
-        if (MusicaIniciada)
-            Debug.Log("GameManager: Musica iniciada.");
-        else
-            Debug.LogError("GameManager: No se ha podido iniciar la orquesta.");
+        Debug.Log("GameManager: Musica iniciada.");
     }
 
-    // Permite probar el inicio desde el Inspector durante Play Mode.
     [ContextMenu("DEBUG/Iniciar musica")]
     private void DebugIniciarMusica()
     {
@@ -74,12 +160,32 @@ public class GameManager : MonoBehaviour
             IniciarMusica();
     }
 
+    public void PauseGame()
+    {
+        if (JuegoPausado)
+            return;
+
+        // Pausamos todos los eventos FMOD.
+        if (orchestraAudioManager != null)
+            orchestraAudioManager.PausarOrquesta(true);
+
+        // El tracker utiliza tiempo real y debe pausarse expresamente.
+        if (rhythmTracker != null)
+            rhythmTracker.PausarSeguimiento(true);
+
+        Time.timeScale = 0f;
+        JuegoPausado = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void UnpauseGame()
     {
         if (!JuegoPausado)
             return;
 
-        // Reanudamos el mismo evento FMOD donde se quedo: no reiniciamos nada.
+        // Reanudamos los mismos eventos desde su posicion anterior.
         if (orchestraAudioManager != null)
             orchestraAudioManager.PausarOrquesta(false);
 
@@ -89,27 +195,22 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         JuegoPausado = false;
 
+        ConfigurarCursorJuego();
+    }
+
+    private void ConfigurarCursorJuego()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
-    public void PauseGame()
+    public void ChangeScene(string sceneName)
     {
-        if (JuegoPausado)
-            return;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
 
-        // Pausamos el reloj y todos los grupos FMOD de forma conjunta.
-        if (orchestraAudioManager != null)
-            orchestraAudioManager.PausarOrquesta(true);
-
-        // El tracker utiliza tiempo real; debemos pausarlo expresamente.
-        if (rhythmTracker != null)
-            rhythmTracker.PausarSeguimiento(true);
-
-        Time.timeScale = 0f;
-        JuegoPausado = true;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 }

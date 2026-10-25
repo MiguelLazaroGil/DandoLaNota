@@ -122,6 +122,7 @@ public class RhythmTracker : MonoBehaviour
     private bool seguimientoPausado;
     private double comienzoPausa;
 
+    public bool SeguimientoActivo => seguimientoActivo;
     private void LateUpdate()
     {
         if (seguimientoPausado || Time.timeScale == 0f)
