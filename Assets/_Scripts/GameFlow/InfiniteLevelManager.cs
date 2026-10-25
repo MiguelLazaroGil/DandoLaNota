@@ -43,6 +43,10 @@ public class InfiniteLevelManager : MonoBehaviour
     [SerializeField] private bool iniciarAutomaticamente = true;
     [SerializeField] private bool evitarRepetirCancion = true;
 
+    [Header("Inicio de la primera canción")]
+    [SerializeField, Min(0f)]
+    private float tiempoEsperaInicial = 5f;
+
     [Header("Transiciones")]
     [SerializeField, Min(0f)]
     private float tiempoSilencioEntreCanciones = 3f;
@@ -57,6 +61,8 @@ public class InfiniteLevelManager : MonoBehaviour
     [SerializeField] private int cancionesCompletadas;
     [SerializeField] private float tiempoCancion;
     [SerializeField] private bool nivelActivo;
+    
+    private bool iniciandoNivel;
 
     private CancionInfinita cancionActual;
     private bool partidaTerminada;
@@ -66,30 +72,31 @@ public class InfiniteLevelManager : MonoBehaviour
     public bool NivelActivo => nivelActivo;
 
     private void Start()
-{
-    if (GameManager.Instance == null)
     {
-        Debug.LogError("InfiniteLevelManager: Falta GameManager.");
-        enabled = false;
-        return;
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("InfiniteLevelManager: Falta GameManager.");
+            enabled = false;
+            return;
+        }
+
+        if (GameManager.Instance.ModoActual != GameManager.ModoJuego.Infinito)
+        {
+            enabled = false;
+            return;
+        }
+
+        if (panelDerrota != null)
+            panelDerrota.SetActive(false);
+
+        if (iniciarAutomaticamente)
+            IniciarNivel();
     }
 
-    if (GameManager.Instance.ModoActual != GameManager.ModoJuego.Infinito)
-    {
-        enabled = false;
-        return;
-    }
-
-    if (panelDerrota != null)
-        panelDerrota.SetActive(false);
-
-    if (iniciarAutomaticamente)
-        IniciarNivel();
-}
 
     public void IniciarNivel()
     {
-        if (nivelActivo || partidaTerminada)
+        if (nivelActivo || partidaTerminada || iniciandoNivel)
             return;
 
         if (orchestra == null || musicClock == null ||
@@ -99,7 +106,6 @@ public class InfiniteLevelManager : MonoBehaviour
             return;
         }
 
-        // Siempre comenzamos por el Tema 4.
         CancionInfinita primeraCancion =
             canciones.Find(c => c != null && c.numeroTema == 4);
 
@@ -110,11 +116,32 @@ public class InfiniteLevelManager : MonoBehaviour
         }
 
         cancionesCompletadas = 0;
+        iniciandoNivel = true;
+
         audienceManager.ActivarSimulacion(false);
 
-        if (ReproducirCancion(primeraCancion))
-            nivelActivo = true;
+        if (musicScoreManager != null)
+            musicScoreManager.enabled = false;
+
+        StartCoroutine(EsperarPrimeraCancion(primeraCancion));
     }
+
+    private IEnumerator EsperarPrimeraCancion(CancionInfinita cancion)
+    {
+        yield return new WaitForSeconds(tiempoEsperaInicial);
+
+        if (partidaTerminada)
+            yield break;
+
+        if (musicScoreManager != null)
+            musicScoreManager.enabled = true;
+
+        if (ReproducirCancion(cancion))
+            nivelActivo = true;
+
+        iniciandoNivel = false;
+    }
+
 
 
 
