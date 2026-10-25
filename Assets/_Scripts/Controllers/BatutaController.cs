@@ -177,7 +177,8 @@ public class BatutaController : MonoBehaviour
         inputActions.Player.Disable();
         inputActions.Dirigir.Enable();
 
-        if (TutorialManager.Instance != null && !TutorialManager.Instance.PuedeSacarBatuta)
+        if (GameManager.Instance != null &&
+    !GameManager.Instance.PuedeSacarBatuta)
         {
             return;
         }

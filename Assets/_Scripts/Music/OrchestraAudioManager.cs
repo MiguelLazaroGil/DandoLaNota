@@ -66,6 +66,7 @@ public class OrchestraAudioManager : MonoBehaviour
     public float GlobalQuality => musicScoreManager != null
         ? musicScoreManager.CurrentQuality
         : orchestraQuality;
+    public IReadOnlyList<InstrumentGroup> Grupos => instrumentGroups;
 
     // Mantiene la sintaxis que ya utilizabas.
     public bool readytoPlay
@@ -97,7 +98,7 @@ public class OrchestraAudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying ||pausada|| musicScoreManager == null)
+        if (!isPlaying || pausada || musicScoreManager == null)
             return;
 
         changeTimer += Time.deltaTime;
@@ -117,7 +118,7 @@ public class OrchestraAudioManager : MonoBehaviour
         if (isPlaying)
             return;
 
- 
+
         if (musicScoreManager == null)
         {
             Debug.LogError("MusicScoreManager is missing.");
@@ -150,7 +151,7 @@ public class OrchestraAudioManager : MonoBehaviour
 
         foreach (InstrumentGroup group in instrumentGroups)
         {
-            if (group != null && group.StartGroup())
+            if (group != null && group.TieneEventoAsignado && group.StartGroup())
                 gruposIniciados++;
         }
 
@@ -306,6 +307,27 @@ public class OrchestraAudioManager : MonoBehaviour
         }
 
         pausada = pausar;
+    }
+
+    public void ConfigurarCancion(float bpm, float duracion)
+    {
+        if (isPlaying)
+        {
+            Debug.LogWarning("Deten la orquesta antes de configurarla.");
+            return;
+        }
+
+        songBpm = Mathf.Max(1f, bpm);
+        loopDuration = Mathf.Max(0.01f, duracion);
+    }
+
+    public void EstablecerVolumenOrquesta(float volumen)
+    {
+        foreach (InstrumentGroup group in instrumentGroups)
+        {
+            if (group != null && group.IsPlaying)
+                group.EstablecerVolumen(volumen);
+        }
     }
 
     private void OnDestroy()

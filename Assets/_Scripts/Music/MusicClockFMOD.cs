@@ -17,6 +17,10 @@ public class MusicClockFMOD : MonoBehaviour
     [SerializeField, Min(0.01f)]
     private float duracionLoop = 19.2f;
 
+    [Header("Volumen del metronomo")]
+    [Tooltip("Multiplicador del volumen del evento FMOD. 1 = volumen original; 0 = silencio; 2 = doble amplitud.")]
+    [SerializeField, Range(0f, 2f)] private float volumenMetronomo = 1f;
+
     [Header("Automatic Metronome Volume")]
     [SerializeField] private bool automaticVolume = true;
 
@@ -26,6 +30,7 @@ public class MusicClockFMOD : MonoBehaviour
     [SerializeField, Min(0.1f)]
     private float volumeFadeSpeed = 1.5f;
 
+    // Volumen calculado automaticamente (0..1), antes del multiplicador del Inspector.
     private float currentVolume = 0f;
 
     [Header("Score System")]
@@ -55,30 +60,39 @@ public class MusicClockFMOD : MonoBehaviour
 
     private void Update()
     {
-        if (pausado)
-            return;
-        if (!reproduciendo || !automaticVolume || musicScoreManager == null)
+        if (pausado || !reproduciendo)
             return;
 
-        float scoreDifference =
-            Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
-
-        // Calculamos el volumen segun la distancia respecto al ritmo perfecto.
-        float targetVolume = Mathf.Clamp01(
-            scoreDifference / maxScoreDeviation
-        );
-
-        // Suavizamos los cambios de volumen.
-        currentVolume = Mathf.MoveTowards(
-            currentVolume,
-            targetVolume,
-            volumeFadeSpeed * Time.deltaTime
-        );
-
-        if (clockInstance.isValid())
+        if (automaticVolume && musicScoreManager != null)
         {
-            clockInstance.setVolume(currentVolume);
+            float scoreDifference =
+                Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
+
+            // Calculamos el volumen segun la distancia respecto al ritmo perfecto.
+            float targetVolume = Mathf.Clamp01(
+                scoreDifference / maxScoreDeviation
+            );
+
+            // Suavizamos los cambios de volumen.
+            currentVolume = Mathf.MoveTowards(
+                currentVolume,
+                targetVolume,
+                volumeFadeSpeed * Time.deltaTime
+            );
         }
+        else
+        {
+            currentVolume = 1f;
+        }
+
+        // El volumen del Inspector siempre se aplica, incluso si automaticVolume esta desactivado.
+        AplicarVolumen();
+    }
+
+    private void AplicarVolumen()
+    {
+        if (clockInstance.isValid())
+            clockInstance.setVolume(currentVolume * volumenMetronomo);
     }
 
     /// <summary>
@@ -121,7 +135,7 @@ public class MusicClockFMOD : MonoBehaviour
             currentVolume = 1f;
         }
 
-        clockInstance.setVolume(currentVolume);
+        AplicarVolumen();
 
         FMOD.RESULT resultado = clockInstance.start();
         pausado = false;
@@ -222,6 +236,29 @@ public class MusicClockFMOD : MonoBehaviour
 
         if (clockInstance.setPaused(pausar) == FMOD.RESULT.OK)
             pausado = pausar;
+    }
+
+    public void ConfigurarEvento(EventReference nuevoEvento)
+    {
+        if (reproduciendo)
+        {
+            Debug.LogWarning("Deten el reloj antes de cambiar su evento.");
+            return;
+        }
+
+        clockEvent = nuevoEvento;
+    }
+
+    public bool HaTerminadoEvento()
+    {
+        if (!reproduciendo || !clockInstance.isValid())
+            return false;
+
+        FMOD.RESULT resultado =
+            clockInstance.getPlaybackState(out PLAYBACK_STATE estado);
+
+        return resultado == FMOD.RESULT.OK &&
+               estado == PLAYBACK_STATE.STOPPED;
     }
 
     private void OnDestroy()
