@@ -62,7 +62,7 @@ public class AlembicTimeController : MonoBehaviour
         if (!isPlaying || alembicPlayer == null) return;
 
         // Avanzamos el temporizador interno
-        elapsedTime += Time.deltaTime;
+        elapsedTime += Time.unscaledDeltaTime;
         float progress = Mathf.Clamp01(elapsedTime / duration);
 
         float targetTime;

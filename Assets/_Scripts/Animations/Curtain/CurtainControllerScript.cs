@@ -10,7 +10,7 @@ public class CurtainControllerScript : MonoBehaviour
     [SerializeField] private float moveDuration = 1.0f;
     [Tooltip("Animation curve for spacial movement")]
     [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-    
+
     private Vector3 baseLocalPosition;
     private Coroutine currentAnimationRoutine;
 
@@ -32,7 +32,7 @@ public class CurtainControllerScript : MonoBehaviour
 
         while (controller == null || controller.Duration <= 0f)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             if (elapsed > timeout) break;
             yield return null;
         }
@@ -87,7 +87,7 @@ public class CurtainControllerScript : MonoBehaviour
 
         while (elapsed < moveDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / moveDuration);
             float curveT = moveCurve.Evaluate(t);
 
