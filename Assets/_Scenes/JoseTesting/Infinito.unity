@@ -3296,6 +3296,7 @@ MonoBehaviour:
         Path: event:/Tema5/Tema5Triangle
   iniciarAutomaticamente: 1
   evitarRepetirCancion: 1
+  tiempoEsperaInicial: 5
   tiempoSilencioEntreCanciones: 3
   panelDerrota: {fileID: 1377222438}
   temaActualNumero: 0
@@ -3885,8 +3886,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 280528388}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
+        m_MethodName: ChangeSceneToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

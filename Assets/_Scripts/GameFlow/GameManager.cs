@@ -197,16 +197,50 @@ public class GameManager : MonoBehaviour
 
         ConfigurarCursorJuego();
     }
+    public void ExitGame()
+    {
+        if (!JuegoPausado)
+            return;
 
+        // Reanudamos los mismos eventos desde su posicion anterior.
+        if (orchestraAudioManager != null)
+            orchestraAudioManager.PausarOrquesta(false);
+
+        if (rhythmTracker != null)
+            rhythmTracker.PausarSeguimiento(false);
+
+        Time.timeScale = 1f;
+        JuegoPausado = false;
+    }
     private void ConfigurarCursorJuego()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    public void ChangeScene(string sceneName)
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-    }
+   
+public void ChangeScene(string sceneName)
+{
+    // Restauramos el tiempo antes de cambiar de escena.
+    Time.timeScale = 1f;
+    JuegoPausado = false;
+
+    // Detenemos el seguimiento.
+    if (rhythmTracker != null)
+        rhythmTracker.DetenerSeguimiento();
+
+    // Detenemos la musica y liberamos las instancias FMOD.
+    if (orchestraAudioManager != null)
+        orchestraAudioManager.StopOrchestra();
+
+    // Cargamos la nueva escena.
+    UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+}
+
+public void ChangeSceneToMainMenu()
+{
+    ChangeScene("MainMenu");
+}
+
 
     private void OnDestroy()
     {
