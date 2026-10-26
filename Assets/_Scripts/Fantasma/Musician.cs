@@ -5,6 +5,7 @@ public class Musician : MonoBehaviour
 {
     public enum PlayingState { PlayingWell, PlayingBadly, Sabotaging }
     public PlayingState currentState = PlayingState.PlayingWell;
+    public MusicianQuality quality;
 
     [Header("Configuración de Posesión")]
     public Transform cameraFirstPersonPoint;

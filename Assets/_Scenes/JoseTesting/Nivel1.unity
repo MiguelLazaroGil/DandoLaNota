@@ -237,6 +237,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &40265826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5160576691199555915, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &120429212
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +857,17 @@ Transform:
   - {fileID: 1811331702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199104225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6854294726067191589, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &203055780
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +913,15 @@ MonoBehaviour:
   minAbsoluteChangeRate: 1.5
   naturalFatigueDecay: 0.005
   minExtremeSpeedFactor: 0.5
-  _activeMusicians: []
+  _activeMusicians:
+  - {fileID: 1307605886}
+  - {fileID: 1507578850}
+  - {fileID: 199104225}
+  - {fileID: 1154788462}
+  - {fileID: 2072703921}
+  - {fileID: 1257012899}
+  - {fileID: 1366210132}
+  - {fileID: 40265826}
 --- !u!4 &203055782
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,6 +1066,71 @@ MonoBehaviour:
   orchestraAudioManager: {fileID: 1109185333}
   musicClock: {fileID: 1109185332}
   rhythmTracker: {fileID: 1821211994}
+--- !u!1 &296125816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296125817}
+  - component: {fileID: 296125818}
+  m_Layer: 0
+  m_Name: FantasmaIA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &296125817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296125816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1774487638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296125818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296125816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4d1166b56ed1145bd25f49f7679e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FantasmasIA
+  initialQuietTime: 5
+  currentEnergy: 0
+  maxEnergy: 100
+  initialEnergyRate: 2
+  energyGrowthRate: 0.05
+  overdriveTriggerPercentage: 0.95
+  overdriveDelayMultiplier: 0.3
+  overdriveConsecutiveChance: 0.6
+  overdriveEndEnergyThreshold: 10
+  isOverdriveActive: 0
+  initialMinDelay: 3
+  absoluteMinDelay: 0.4
+  delayDecayRate: 0.02
+  randomDelayVariance: 1
+  consecutiveActionChance: 0.15
+  preventSameEnemyConsecutive: 1
+  randomSelectionChance: 0.3
+  minUtilityThreshold: 5
+  categoryCooldownDuration: 10
+  minCategoryUtilityMultiplier: 0.1
+  registeredEnemies: []
 --- !u!114 &308976063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4815658302819561280, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
@@ -1607,6 +1702,14 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 394957804229143593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 1393824466}
+    - target: {fileID: 394957804229143593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
+      propertyPath: audienceManager
+      value: 
+      objectReference: {fileID: 203055781}
     - target: {fileID: 3495849325373870041, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 84
@@ -2301,6 +2404,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e33d4ad0e8ccd499735faddc4bd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrchestraAudioManager
+--- !u!114 &1154788462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4155938687002675733, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1001 &1249307143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2870,6 +2984,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+--- !u!114 &1257012899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6326145172630407882, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &1304961225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +3070,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304961225}
   m_CullTransparentMesh: 1
+--- !u!114 &1307605886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8068455145488937178, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &1322069057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8661844082290078092, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
@@ -3077,6 +3213,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 193976809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &1366210132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 684737125987965078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &1377222438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3607,17 @@ Transform:
   - {fileID: 120429213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1507578850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9156778265992932913, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1 &1665108393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,6 +4010,7 @@ Transform:
   - {fileID: 203055782}
   - {fileID: 1393824467}
   - {fileID: 1931303456}
+  - {fileID: 296125817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811331701
@@ -4318,6 +4477,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2072703921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6802238028809552844, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicianQuality : MonoBehaviour
+public class MusicianQuality : MonoBehaviour, IMusician
 {
     [Header("Calidad individual (lectura)")]
     [SerializeField, Range(0f, 1f)]
@@ -34,6 +34,8 @@ public class MusicianQuality : MonoBehaviour
     public float TargetQuality => targetQuality;
     public float Desync => desync;
     public float BaseQuality => baseQuality;
+
+    public float IndividualQuality => MusicianQualityValue;
 
     private void Awake()
     {
