@@ -20,7 +20,7 @@ public class GeneralTesting : MonoBehaviour
     }
     private void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             on0Pressed?.Invoke();
@@ -49,7 +49,7 @@ public class GeneralTesting : MonoBehaviour
         {
             on6Pressed?.Invoke();
         }
-        */
+        
 
     }
     public void Print(string text)

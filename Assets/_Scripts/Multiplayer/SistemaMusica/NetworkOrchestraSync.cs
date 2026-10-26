@@ -12,6 +12,10 @@ public class NetworkOrchestraSync : NetworkBehaviour
             OrchestraAudioManager.Instance.StartOrchestra();
         }
     }
+    public void SendStart()
+    {
+        StartOrchestraClientRpc(NetworkManager.Singleton.ServerTime.Time+ 0.5);
+    }
 
     [Rpc(SendTo.ClientsAndHost)]
     public void StopOrchestraClientRpc()

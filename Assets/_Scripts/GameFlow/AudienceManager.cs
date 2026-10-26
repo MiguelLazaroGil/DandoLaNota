@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AudienceManager : MonoBehaviour
@@ -59,10 +60,8 @@ public class AudienceManager : MonoBehaviour
     // Estado interno
     private float intervalTimer = 0f;
 
-    //TODO: cambiar esto que es n
-    [RequireInterface(typeof(IMusician))]
-    public List<MonoBehaviour> _activeMusicians = new List<MonoBehaviour>();
-    private List<IMusician> activeMusicians => _activeMusicians.ConvertAll(mb => mb as IMusician);
+
+    private List<IMusician> activeMusicians = new List<IMusician>();
 
     public float CurrentAudience => currentAudience;
     public float PseudoScore => pseudoScore;
@@ -73,7 +72,8 @@ public class AudienceManager : MonoBehaviour
     private void Start()
     {
         currentAudience = initialAudience;
-
+        var _activeMusicians = orchestraManager.gameObject.GetComponentsInChildren<IMusician>();
+        activeMusicians = activeMusicians.ToList<IMusician>();
         if (scoreManager == null)
         {
             scoreManager = FindFirstObjectByType<MusicScoreManager>();

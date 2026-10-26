@@ -548,6 +548,10 @@ PrefabInstance:
       propertyPath: m_TranslationOffsets.Array.data[0].z
       value: 1.605
       objectReference: {fileID: 0}
+    - target: {fileID: 3225281466068234592, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+      propertyPath: CameraRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3638639108646476070, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -2382,11 +2386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012263286238220896, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -726
+      value: 675
       objectReference: {fileID: 0}
     - target: {fileID: 8012263286238220896, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 299
+      value: 323
       objectReference: {fileID: 0}
     - target: {fileID: 8012263286238220896, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2921,6 +2925,10 @@ PrefabInstance:
     - target: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: songBpm
       value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: maxDeviation
+      value: 0.049
       objectReference: {fileID: 0}
     - target: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: musicScoreManager
