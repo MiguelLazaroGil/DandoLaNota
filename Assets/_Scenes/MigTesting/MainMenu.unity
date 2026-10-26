@@ -7612,6 +7612,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1993056114}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 6081118403504599641}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: CloseCurtainAndLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: CurtainControllerScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929481676484811331, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8346988590833261152, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -13313,12 +13345,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleSceneArrayLoader
   simpleScenes:
-  - sceneAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    index: 3
-  - sceneAsset: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
-    index: 4
-  - sceneAsset: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
-    index: 5
+  - sceneAsset: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    index: 9
+  - sceneAsset: {fileID: 102900000, guid: a7f56514ba0c2d146b953b0d36790f12, type: 3}
+    index: 10
+  - sceneAsset: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    index: 11
+  - sceneAsset: {fileID: 102900000, guid: af657050968b07b4eb10a787793c089c, type: 3}
+    index: 12
 --- !u!114 &6081118403504599643
 MonoBehaviour:
   m_ObjectHideFlags: 0
