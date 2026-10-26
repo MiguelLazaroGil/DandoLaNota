@@ -21,10 +21,16 @@ public class AlembicTimeController : MonoBehaviour
     private float startTime;
     private float endTime;
     private bool isPlaying = false;
+    public float alembicStart { get => startTime; }
+    public float alembicEnd { get => endTime; }
+
+    public float TimeAlembic { get => elapsedTime; set => elapsedTime = value; }
 
     private void Awake()
     {
         alembicPlayer = GetComponent<AlembicStreamPlayer>();
+        alembicPlayer.enabled = false;
+        alembicPlayer.enabled = true;
 
         if (alembicPlayer != null)
         {
@@ -56,7 +62,7 @@ public class AlembicTimeController : MonoBehaviour
         if (!isPlaying || alembicPlayer == null) return;
 
         // Avanzamos el temporizador interno
-        elapsedTime += Time.deltaTime;
+        elapsedTime += Time.unscaledDeltaTime;
         float progress = Mathf.Clamp01(elapsedTime / duration);
 
         float targetTime;

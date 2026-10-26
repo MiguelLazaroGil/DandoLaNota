@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3157294880
+  GlobalObjectIdHash: 3664601286
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -202,6 +202,11 @@ MonoBehaviour:
   - {fileID: 1984629782442125562}
   - {fileID: 1798831873085681764}
   - {fileID: 4897292685504903428}
+  - {fileID: 8291914574735075562}
+  - {fileID: 8024165995966642932}
+  - {fileID: 4839110606555549670}
+  - {fileID: 5805866937925793581}
+  - {fileID: 5722137725949767267}
 --- !u!114 &6221683638562413702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +568,7 @@ MonoBehaviour:
   - {fileID: 8728837105295018890}
   - {fileID: 6891435217087737458}
   maxTiltAngle: 115
-  disableDuration: 0.5
+  disableDuration: 2
   coolDownDuration: 4
 --- !u!114 &4251547158921675309
 MonoBehaviour:
@@ -2508,7 +2513,7 @@ GameObject:
   - component: {fileID: 381593809328193954}
   - component: {fileID: 4750870077001179725}
   - component: {fileID: 2967637023811673456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HairType3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2929,7 +2934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4565484651777548105}
   - component: {fileID: 6718895579583809945}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: ORG-face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2963,6 +2968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3be30f793594b438636dc03cb2697a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomHairStyle
+  ShowTopMostFoldoutHeaderGroup: 1
   HairStyles:
   - {fileID: 5722137725949767267}
   - {fileID: 5805866937925793581}
@@ -3197,6 +3203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4497581094653199082}
   - component: {fileID: 9059524404935005816}
+  - component: {fileID: 1645087935510757291}
   m_Layer: 10
   m_Name: ORG-spine.006
   m_TagString: Untagged
@@ -3246,6 +3253,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.017040908, y: 0.013153476, z: 0.013957966}
   m_Center: {x: -6.9927975e-16, y: 0.011356678, z: -0.0007124631}
+--- !u!114 &1645087935510757291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374290698352532694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0830497eba646746901403985732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoftNeckConstraint
+  baseTransform: {fileID: 8164216485439835547}
+  maxVerticalAngle: 45
+  maxHorizontalAngle: 180
+  maxTwistAngle: 0
+  flexibility: 30
 --- !u!1 &5469524823841548203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,7 +3500,7 @@ GameObject:
   - component: {fileID: 8137466973623445609}
   - component: {fileID: 7688493171233913001}
   - component: {fileID: 5314080718081314364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HairType2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4700,7 +4724,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0, y: 0.0136, z: 0.0321}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.67999935, z: 1.6050014}
+  - {x: 0, y: 0.6799989, z: 1.6050003}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -4804,7 +4828,7 @@ GameObject:
   - component: {fileID: 6531035027014307854}
   - component: {fileID: 2574284761140016960}
   - component: {fileID: 3437031713776250362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HairType4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4988,7 +5012,7 @@ GameObject:
   - component: {fileID: 2421115694887475086}
   - component: {fileID: 8967019635131041541}
   - component: {fileID: 2322529135833545759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HairType5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5591,7 +5615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1053879
+      value: 1578167
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Name
