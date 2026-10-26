@@ -9,35 +9,33 @@ public class RandomHairStyle : NetworkBehaviour
     [SerializeField]
     List<Material> HairColors;
 
-    public override void OnNetworkSpawn()
+    private void OnEnable()
     {
-        // En multijugador se aplica cuando el objeto nace en la red
-        ApplyRandomHair();
-    }
-
-    private void Start()
-    {
-        // En offline (o si no hay red activa) se aplica normalmente en Start
+        // 1. MODO OFFLINE: Si no hay red o no se está escuchando, ejecuta el código original intacto
         if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
         {
-            ApplyRandomHair();
+            ExecuteOriginalHairLogic();
         }
     }
 
-    private void ApplyRandomHair()
+    public override void OnNetworkSpawn()
     {
-        DeactivateHairStyles();
-
-        // Guardamos el estado actual del Random para no alterar otros scripts del juego
-        Random.State previousState = UnityEngine.Random.state;
-
-        // Si el objeto está en red, usamos su NetworkObjectId (idéntica en todos los clientes) como semilla
+        // 2. MODO MULTIJUGADOR: Se ejecuta al nacer en la red usando la semilla sincronizada
         if (IsSpawned)
         {
+            Random.State previousState = UnityEngine.Random.state;
             UnityEngine.Random.InitState((int)NetworkObjectId);
-        }
 
-        // --- CÓDIGO ORIGINAL SIN CAMBIOS ---
+            ExecuteOriginalHairLogic();
+
+            UnityEngine.Random.state = previousState;
+        }
+    }
+
+    // Código original aislado en una función limpia
+    private void ExecuteOriginalHairLogic()
+    {
+        DeactivateHairStyles();
         int randomHairStyleIdx = UnityEngine.Random.Range(0, HairStyles.Count + 1);
         if (randomHairStyleIdx < HairStyles.Count)
         {
@@ -45,14 +43,14 @@ public class RandomHairStyle : NetworkBehaviour
             int randomMatStyleIdx = UnityEngine.Random.Range(0, HairColors.Count);
             HairStyles[randomHairStyleIdx].gameObject.GetComponent<MeshRenderer>().material = HairColors[randomMatStyleIdx];
         }
-
-        // Restauramos el estado del Random
-        UnityEngine.Random.state = previousState;
     }
 
     private void DeactivateHairStyles()
     {
         foreach (var hair in HairStyles)
-            hair.gameObject.SetActive(false);
+        {
+            if (hair != null)
+                hair.gameObject.SetActive(false);
+        }
     }
 }
