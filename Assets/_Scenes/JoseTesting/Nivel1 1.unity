@@ -3924,6 +3924,10 @@ PrefabInstance:
       value: 240419020
       objectReference: {fileID: 0}
     - target: {fileID: 411065319319820321, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+      propertyPath: volumenMetronomo
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 411065319319820321, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
       propertyPath: musicScoreManager
       value: 
       objectReference: {fileID: 1393824466}

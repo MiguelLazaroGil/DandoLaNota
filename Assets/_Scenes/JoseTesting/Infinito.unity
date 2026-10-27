@@ -876,7 +876,6 @@ MonoBehaviour:
   minAbsoluteChangeRate: 1.5
   naturalFatigueDecay: 0.005
   minExtremeSpeedFactor: 0.5
-  _activeMusicians: []
 --- !u!4 &203055782
 Transform:
   m_ObjectHideFlags: 0
@@ -2101,6 +2100,10 @@ PrefabInstance:
     - target: {fileID: 2519833636651839024, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 315387419
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: volumenMetronomo
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: musicScoreManager
