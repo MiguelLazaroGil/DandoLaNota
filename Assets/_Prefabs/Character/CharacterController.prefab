@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3157294880
+  GlobalObjectIdHash: 3664601286
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -905,8 +905,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
-  - {fileID: 2100000, guid: b6ec4f2a1377ad54fb33748a84ffe786, type: 2}
+  - {fileID: 2100000, guid: 3e1b674019493794aaf450e320b53aef, type: 2}
+  - {fileID: 2100000, guid: a58bc6323d3be6a468cd9de55f2c9443, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1083,7 +1083,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 4835078630258379571, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
-  - {fileID: 2100000, guid: d4488dbf8568fec4d94f988e1be054b0, type: 2}
+  - {fileID: 2100000, guid: 3a251d0b44802954bb75fac6e05f7d16, type: 2}
   - {fileID: 4217796364934669478, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1230,7 +1230,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b15995b1c36c2dd48ad33e5fa13653c8, type: 2}
+  - {fileID: 2100000, guid: 83e69da90e055814cb226edbf91f42ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2268,7 +2268,7 @@ Transform:
   m_GameObject: {fileID: 4683533618926636027}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06190806, y: -0.00000018689434, z: 0.000000011592501, w: 0.9980819}
-  m_LocalPosition: {x: 0, y: 0.52444386, z: 1.631731}
+  m_LocalPosition: {x: -0.00000038266222, y: 0.5244436, z: 1.631731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2517,7 +2517,7 @@ GameObject:
   - component: {fileID: 381593809328193954}
   - component: {fileID: 4750870077001179725}
   - component: {fileID: 2967637023811673456}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: HairType3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2809,7 +2809,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7c872a9441c7ce43b6507d6148fce9b, type: 2}
+  - {fileID: 2100000, guid: 355290959558aaf479281cf46baa3967, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2980,10 +2980,10 @@ MonoBehaviour:
   - {fileID: 8024165995966642932}
   - {fileID: 8291914574735075562}
   HairColors:
-  - {fileID: 2100000, guid: 73843e230353b724e863c4516c7e13d8, type: 2}
-  - {fileID: 2100000, guid: 860c2315e0b13144fb550d493c9094af, type: 2}
-  - {fileID: 2100000, guid: 1e23176f1b6a0cf4b867727727f052b7, type: 2}
-  - {fileID: 2100000, guid: 7db7562f6ee8d884a99d7539a911f5a7, type: 2}
+  - {fileID: 2100000, guid: c88b152f7a72f8548bfe154b1d77ce07, type: 2}
+  - {fileID: 2100000, guid: b9bd7507b6534fd4da00a31e8de1d8fe, type: 2}
+  - {fileID: 2100000, guid: 4c03d1e1b50c9774ca4b79c065b6d341, type: 2}
+  - {fileID: 2100000, guid: 17b4c1aec52344e4eb0ddd2a7d18ac1c, type: 2}
 --- !u!1 &5159230052189282018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,7 +3383,7 @@ GameObject:
   - component: {fileID: 3369326484887734928}
   - component: {fileID: 3426567468249646225}
   - component: {fileID: 1987272755770324962}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: HairType1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3504,7 +3504,7 @@ GameObject:
   - component: {fileID: 8137466973623445609}
   - component: {fileID: 7688493171233913001}
   - component: {fileID: 5314080718081314364}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: HairType2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4759,7 +4759,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0, y: 0.0136, z: 0.0321}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.67999935, z: 1.6050014}
+  - {x: 0, y: 0.6799989, z: 1.6050003}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -4863,7 +4863,7 @@ GameObject:
   - component: {fileID: 6531035027014307854}
   - component: {fileID: 2574284761140016960}
   - component: {fileID: 3437031713776250362}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: HairType4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5047,7 +5047,7 @@ GameObject:
   - component: {fileID: 2421115694887475086}
   - component: {fileID: 8967019635131041541}
   - component: {fileID: 2322529135833545759}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: HairType5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5102,7 +5102,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e23176f1b6a0cf4b867727727f052b7, type: 2}
+  - {fileID: 2100000, guid: b9bd7507b6534fd4da00a31e8de1d8fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5335,8 +5335,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
-  - {fileID: -5051187978070213085, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
+  - {fileID: 2100000, guid: 3e1b674019493794aaf450e320b53aef, type: 2}
+  - {fileID: 2100000, guid: 23b78f48d587e5a4bb94474160658097, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5443,8 +5443,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90b88a547e811444eae8e87fbf138c22, type: 2}
-  - {fileID: -5051187978070213085, guid: ba9674d30273e9040aeb55cc0a04c66c, type: 3}
+  - {fileID: 2100000, guid: 3e1b674019493794aaf450e320b53aef, type: 2}
+  - {fileID: 2100000, guid: 23b78f48d587e5a4bb94474160658097, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5583,15 +5583,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.16641
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.0834103
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
