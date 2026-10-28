@@ -17,11 +17,13 @@ public class SpotLightCone : MonoBehaviour
     [SerializeField] bool copyColorFromLight = true;
     [Tooltip("Ocultar el cono cuando la luz está apagada")]
     [SerializeField] bool hideWhenLightOff = true;
-    [Tooltip("Fracción del rango de la luz que ocupa el cono visible")]
-    [SerializeField, Range(0.1f, 1f)] float rangeScale = 0.8f;
+    [Tooltip("Multiplicador del rango de la luz para la longitud del cono (puede pasar de 1)")]
+    [SerializeField, Range(0.1f, 5f)] float rangeScale = 0.8f;
+    [Tooltip("Ignorar el rango de la luz y usar 'Length' como longitud fija (sigue copiando ángulo y color)")]
+    [SerializeField] bool useCustomLength = false;
 
-    [Header("Geometría manual (si no hay Spot Light)")]
-    [SerializeField] float length = 5f;
+    [Header("Geometría manual (sin Spot Light, o con Use Custom Length)")]
+    [SerializeField, Min(0.01f)] float length = 5f;
     [SerializeField, Range(1f, 179f)] float angle = 30f;
 
     [Header("Forma")]
@@ -78,7 +80,7 @@ public class SpotLightCone : MonoBehaviour
         bool hasSpot = spotLight != null && spotLight.type == LightType.Spot;
         if (hasSpot)
         {
-            len = spotLight.range * rangeScale;
+            len = useCustomLength ? length : spotLight.range * rangeScale;
             ang = spotLight.spotAngle;
         }
 
