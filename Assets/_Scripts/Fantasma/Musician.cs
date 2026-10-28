@@ -19,6 +19,24 @@ public class Musician : MonoBehaviour
     public bool IsAvailable = true;
     public bool IsPossessed => PossessingGhost != null;
 
+    // Punto donde se coloca la cámara al poseer (si no has asignado uno, usa el propio transform)
+    public Transform CameraPoint => cameraFirstPersonPoint != null ? cameraFirstPersonPoint : transform;
+
+    // Componente opcional que permite moverlo (null si el músico no lo tiene)
+    public MusicianMovement Movement { get; private set; }
+
+    private void Awake()
+    {
+        Movement = GetComponent<MusicianMovement>();
+    }
+
+    // Devuelve la acción de sabotaje en esa posición, o null si no existe
+    public SabotageAction GetAction(int index)
+    {
+        if (index < 0 || index >= availableActions.Count) return null;
+        return availableActions[index];
+    }
+
     public void SetPlayingState(PlayingState newState) => currentState = newState;
 
     public void PlaySound(AudioClip clip)

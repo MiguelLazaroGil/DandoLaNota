@@ -644,6 +644,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: far clip plane
       value: 500
       objectReference: {fileID: 0}
@@ -927,6 +931,22 @@ MonoBehaviour:
   grabPivot: {fileID: 2897625903508371000}
   isGrabbing: 0
   currentGrabbedObj: {fileID: 0}
+  minHoldTimeForThrow: 0.1
+  maxHoldTime: 3
+  parabolaHeight: 1
+  maxAmplitude: 10
+  OnGrabSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionInHandSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionOtherSuccess:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2211241806592997767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,7 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e917666132a36c1408fbe43274b2eb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatutaController
-  playerCOntroller: {fileID: 4414602790205852533}
+  playerController: {fileID: 0}
+  cameraController: {fileID: 0}
   modeloBatuta: {fileID: 7300629977525576534}
   mano: {fileID: 2897625903508371000}
   camaraPrincipal: {fileID: 8337793403557179950}
@@ -952,17 +973,6 @@ MonoBehaviour:
   tiempoSuavizado: 0.1
   multiplicadorInclinacion: 7
   velocidadRecuperacionMuneca: 30
---- !u!114 &4414602790205852533 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 5392867010968628518}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414602790205852530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4414602790205852542 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

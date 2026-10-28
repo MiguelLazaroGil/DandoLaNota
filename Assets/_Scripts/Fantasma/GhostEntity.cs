@@ -4,7 +4,7 @@ using UnityEngine;
 public class GhostEntity : MonoBehaviour
 {
 
-    [Header("Energ�a / Man�")]
+    [Header("Energía / Maná")]
     public float maxEnergy = 100f;
     public float currentEnergy = 50f;
     public float baseRegenRate = 5f;
@@ -19,6 +19,14 @@ public class GhostEntity : MonoBehaviour
     public bool IsStunned { get; private set; }
     public bool IsExiting { get; private set; }
 
+    // Acción continua que se está ejecutando ahora mismo (null si no hay ninguna)
+    public SabotageAction ActiveContinuousAction => activeContinuousAction;
+
+    // Eventos para que otros scripts (GhostController, UI, audio...) reaccionen
+    // sin necesidad de SendMessage.
+    public event System.Action<Musician> MusicianPossessed;
+    public event System.Action<Musician> MusicianLeft;
+
     private SabotageAction activeContinuousAction;
     private float matchTime;
 
@@ -26,17 +34,20 @@ public class GhostEntity : MonoBehaviour
     {
         matchTime += Time.deltaTime;
 
-        // Regenerar energ�a (aumenta con el tiempo de partida)
+        // Regenerar energía (aumenta con el tiempo de partida)
         if (!IsStunned && activeContinuousAction == null)
         {
             float currentRegen = baseRegenRate + (regenScalingPerMinute * (matchTime / 60f));
             currentEnergy = Mathf.Min(maxEnergy, currentEnergy + currentRegen * Time.deltaTime);
         }
 
-        // Si hay una acci�n continua activa (ej. mover al m�sico)
+        // Compatibilidad: OnUpdateAction está marcado como obsoleto, pero si alguna acción
+        // antigua lo sigue usando, se llama igual. Si ya no lo usa ninguna, puedes borrar este bloque.
         if (activeContinuousAction != null && CurrentMusician != null)
         {
+#pragma warning disable CS0618
             activeContinuousAction.OnUpdateAction(this, CurrentMusician);
+#pragma warning restore CS0618
         }
     }
 
@@ -49,6 +60,7 @@ public class GhostEntity : MonoBehaviour
 
     public bool TryPossess(Musician target)
     {
+        if (target == null || !target.IsAvailable) return false;
         if (IsStunned || CurrentMusician != null || target.IsPossessed) return false;
         if (!ConsumeEnergy(possessInitialCost)) return false;
 
@@ -56,41 +68,62 @@ public class GhostEntity : MonoBehaviour
         target.PossessingGhost = this;
         target.SetPlayingState(Musician.PlayingState.PlayingWell); // Empieza fingiendo que toca bien
 
-        SendMessage("OnPossessMusician", target, SendMessageOptions.DontRequireReceiver);
+        MusicianPossessed?.Invoke(target);
         return true;
     }
 
-    public void ExecuteSabotage(SabotageAction action)
+    // Devuelve true si la acción se ha ejecutado / iniciado
+    public bool ExecuteSabotage(SabotageAction action)
     {
-        if (CurrentMusician == null || IsExiting) return;
+        if (action == null || CurrentMusician == null || IsExiting) return false;
 
         if (!action.isContinuous)
         {
-            if (ConsumeEnergy(action.energyCost))
-                action.Execute(CurrentMusician);
-        }
-        else
-        {
-            activeContinuousAction = action;
+            if (!ConsumeEnergy(action.energyCost)) return false;
             action.Execute(CurrentMusician);
+            return true;
         }
+
+        if (activeContinuousAction == action) return true; // Ya estaba activa
+
+        StopContinuousAction(); // Solo puede haber una acción continua a la vez
+        activeContinuousAction = action;
+        action.Execute(CurrentMusician);
+        return true;
     }
 
-    // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, est�s cooked)
+    // Para la acción continua activa (el controller lo llama al volver a elegirla en la rueda,
+    // y se llama solo al salir del músico)
+    public void StopContinuousAction()
+    {
+        if (activeContinuousAction == null) return;
+
+        SabotageAction action = activeContinuousAction;
+        activeContinuousAction = null;
+
+        action.Stop(CurrentMusician);
+#pragma warning disable CS0618 // Compatibilidad con acciones antiguas que aún sobrescriban StopAction
+        action.StopAction(this, CurrentMusician);
+#pragma warning restore CS0618
+    }
+
+    // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estás cooked)
     public void RequestVoluntaryExit()
     {
         if (CurrentMusician != null && !IsExiting)
-            StartCoroutine(VoluntaryExitRoutine()); // perd�n miguel
+            StartCoroutine(VoluntaryExitRoutine()); // perdón miguel
     }
 
     // perdon miguel esto me lo ha hecho el chati, yo no se corrutinas ni delayed actions :c
+    // (Una corrutina es una función que se puede "pausar": el yield return de abajo
+    //  espera exitCastTime segundos y luego continúa por donde iba.)
     private IEnumerator VoluntaryExitRoutine()
     {
         IsExiting = true;
-        Debug.Log("Saliendo del m�sico... �No dejes que el director te golpee!");
+        Debug.Log("Saliendo del músico... ¡No dejes que el director te golpee!");
         yield return new WaitForSeconds(exitCastTime);
 
-        if (CurrentMusician != null) // Si no nos golpe� el director durante la espera
+        if (CurrentMusician != null) // Si no nos golpeó el director durante la espera
         {
             LeaveMusicianClean();
         }
@@ -108,17 +141,18 @@ public class GhostEntity : MonoBehaviour
 
     private void LeaveMusicianClean()
     {
-        if (activeContinuousAction != null)
-        {
-            activeContinuousAction.StopAction(this, CurrentMusician);
-            activeContinuousAction = null;
-        }
+        if (CurrentMusician == null) return;
+
+        StopContinuousAction();
 
         Musician oldMusician = CurrentMusician;
-        CurrentMusician.PossessingGhost = null;
+        oldMusician.PossessingGhost = null;
         CurrentMusician = null;
 
-        SendMessage("OnLeaveMusician", oldMusician, SendMessageOptions.DontRequireReceiver);
+        // El músico vuelve a tocar normal al quedarse sin fantasma
+        oldMusician.SetPlayingState(Musician.PlayingState.PlayingWell);
+
+        MusicianLeft?.Invoke(oldMusician);
     }
 
     private IEnumerator StunCooldownRoutine()

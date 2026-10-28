@@ -9,7 +9,7 @@ public abstract class SabotageAction : ScriptableObject
 
     [Header("Reglas de Gameplay")]
     public float energyCost = 15f;
-    public bool isContinuous = false; 
+    public bool isContinuous = false;
     public bool playerOnly = false;
     [Tooltip("Cuanto baja la calidad del musico en puntos básicos")]
     public float utility = 100f;
@@ -19,6 +19,11 @@ public abstract class SabotageAction : ScriptableObject
         return utility;
     }
     public abstract void Execute(Musician target);
+
+    // NUEVO: se llama cuando una acción continua termina (el jugador la apaga desde la rueda
+    // o sale del músico). Sobrescríbelo para limpiar el efecto (ej. StopNegativeEffect).
+    public virtual void Stop(Musician target) { }
+
     public void ApplyNegativeEffect(Musician target)
     {
         MusicianQuality quality = target.quality;
