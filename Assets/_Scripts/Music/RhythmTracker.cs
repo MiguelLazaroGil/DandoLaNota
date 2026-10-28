@@ -8,6 +8,13 @@ public class RhythmTracker : MonoBehaviour
     [SerializeField] private Transform mano;
     [SerializeField] private MusicClockFMOD musicClockFMOD;
 
+    [Header("Efectos visuales")]
+    [SerializeField] private GameObject vfxAcierto;
+    [SerializeField] private GameObject vfxFallo;
+    [Tooltip("Punto donde aparecen los VFX. Si no se asigna, se usa la mano.")]
+    [SerializeField] private Transform puntoVFX;
+    [SerializeField, Min(0.1f)] private float duracionVFX = 3f;
+
     // Los BPM se obtienen del OrchestraAudioManager de esta escena.
     private float bpm = 100f;
 
@@ -326,6 +333,9 @@ public class RhythmTracker : MonoBehaviour
                 {
                     aciertosConsecutivos = 0;
 
+                    if (hayTiempoMusical)
+                        ReproducirVFX(vfxFallo);
+
                     Debug.Log(
                         $"GESTO FUERA DE RITMO: {nombres[direccionDetectada]} | " +
                         $"Error intervalo: {errorIntervalo:F3} s | " +
@@ -597,6 +607,7 @@ public class RhythmTracker : MonoBehaviour
     private void RegistrarAcierto(int direccion, float error)
     {
         aciertosConsecutivos++;
+        ReproducirVFX(vfxAcierto);
 
         Debug.Log(
             $"CORRECTO: {nombres[direccion]} | " +
@@ -619,6 +630,21 @@ public class RhythmTracker : MonoBehaviour
         ReiniciarMedicion();
 
         Debug.Log($"FALLO: {motivo}. El siguiente gesto sera una nueva entrada.");
+        ReproducirVFX(vfxFallo);
+    }
+
+    private void ReproducirVFX(GameObject prefab)
+    {
+        if (prefab == null)
+            return;
+
+        Transform origen = puntoVFX != null ? puntoVFX : mano;
+        if (origen == null)
+            return;
+
+        // Instanciamos para permitir varios efectos simultaneos sin interrumpirlos.
+        GameObject instancia = Instantiate(prefab, origen.position, origen.rotation);
+        Destroy(instancia, duracionVFX);
     }
 
     private void ReiniciarMedicion()
