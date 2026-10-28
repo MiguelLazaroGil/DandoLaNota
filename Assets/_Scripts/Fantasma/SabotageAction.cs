@@ -24,12 +24,12 @@ public abstract class SabotageAction : ScriptableObject
     // o sale del músico). Sobrescríbelo para limpiar el efecto (ej. StopNegativeEffect).
     public virtual void Stop(Musician target) { }
 
-    public void ApplyNegativeEffect(Musician target)
+    protected void ApplyNegativeEffect(Musician target)
     {
         MusicianQuality quality = target.quality;
         quality.StartNegativeAction(this.name, utility / 100);
     }
-    public void StopNegativeEffect(Musician target)
+    protected void StopNegativeEffect(Musician target)
     {
 
         MusicianQuality quality = target.quality;
