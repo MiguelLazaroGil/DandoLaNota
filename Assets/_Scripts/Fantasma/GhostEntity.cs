@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class GhostEntity : MonoBehaviour
@@ -80,7 +81,7 @@ public class GhostEntity : MonoBehaviour
         if (!action.isContinuous)
         {
             if (!ConsumeEnergy(action.energyCost)) return false;
-            action.Execute(CurrentMusician);
+            action.ApplySabotagge(CurrentMusician);
             return true;
         }
 
@@ -88,7 +89,7 @@ public class GhostEntity : MonoBehaviour
 
         StopContinuousAction(); // Solo puede haber una acción continua a la vez
         activeContinuousAction = action;
-        action.Execute(CurrentMusician);
+        action.ApplySabotagge(CurrentMusician);
         return true;
     }
 
@@ -101,10 +102,13 @@ public class GhostEntity : MonoBehaviour
         SabotageAction action = activeContinuousAction;
         activeContinuousAction = null;
 
-        action.Stop(CurrentMusician);
+        action.StopSabotagge(CurrentMusician);
+
+
 #pragma warning disable CS0618 // Compatibilidad con acciones antiguas que aún sobrescriban StopAction
         action.StopAction(this, CurrentMusician);
 #pragma warning restore CS0618
+
     }
 
     // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estás cooked)
@@ -123,9 +127,10 @@ public class GhostEntity : MonoBehaviour
         Debug.Log("Saliendo del músico... ¡No dejes que el director te golpee!");
         yield return new WaitForSeconds(exitCastTime);
 
-        if (CurrentMusician != null) // Si no nos golpeó el director durante la espera
+        if (CurrentMusician != null) // Si no nos golpeó el director durante la espera  // MIG: esto sobra poque Paras todas las corrutinas cuando te golpean, asi que esto no se ejecuta
         {
-            LeaveMusicianClean();
+            CurrentMusician.RestoreMusician(); //esto es lo que hará que el musico recupere su buena musica etc
+            LeaveMusician(); //esto no afectará al musico
         }
         IsExiting = false;
     }
@@ -135,24 +140,19 @@ public class GhostEntity : MonoBehaviour
     {
         StopAllCoroutines(); // Cancela tu huida si estabas intentando salir
         IsExiting = false;
-        LeaveMusicianClean();
+        LeaveMusician(); 
         StartCoroutine(StunCooldownRoutine());
     }
 
-    private void LeaveMusicianClean()
+    private void LeaveMusician() //ya no accede al musico, todo lo que hacía ahora lo hace el musico en si mismo
     {
         if (CurrentMusician == null) return;
 
-        StopContinuousAction();
-
         Musician oldMusician = CurrentMusician;
-        oldMusician.PossessingGhost = null;
         CurrentMusician = null;
-
-        // El músico vuelve a tocar normal al quedarse sin fantasma
-        oldMusician.SetPlayingState(Musician.PlayingState.PlayingWell);
-
         MusicianLeft?.Invoke(oldMusician);
+
+        
     }
 
     private IEnumerator StunCooldownRoutine()

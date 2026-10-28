@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Fantasma/Acciones/1. Tocar a Destiempo")]
 public class ActionOffbeat : SabotageAction
 {
-    public override void Execute(Musician target)
+    protected override void Execute(Musician target)
     {
         target.SetPlayingState(Musician.PlayingState.PlayingBadly);
         Debug.Log($"{target.name} está tocando a destiempo (sutil)");

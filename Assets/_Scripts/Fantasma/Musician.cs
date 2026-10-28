@@ -12,11 +12,13 @@ public class Musician : MonoBehaviour
     public Transform sheetMusicTransform;
     public AudioSource musicianAudio;
     public List<SabotageAction> availableActions = new List<SabotageAction>();
+    [ReadOnly]
+    public SabotageAction currentAction = null;
 
     public GhostEntity PossessingGhost { get; set; }
 
     //todo: asignar bien available
-    public bool IsAvailable = true;
+    public bool IsAvailable => currentAction == null;
     public bool IsPossessed => PossessingGhost != null;
 
     // Punto donde se coloca la cámara al poseer (si no has asignado uno, usa el propio transform)
@@ -50,13 +52,33 @@ public class Musician : MonoBehaviour
     // Llamar a este método cuando la batuta del Director golpea a este músico
     public void OnHitByConductor()
     {
-        if (IsPossessed)
-        {
-            PossessingGhost.GetHitByConductor();
-        }
-        else
+        if (IsAvailable)
         {
             Debug.Log("¡El Director golpeó a un músico inocente! Penalización para el director.");
+            //Hacer algo visual
+            return;
         }
+
+        if (IsPossessed) //esto es multijugador 
+        {
+            PossessingGhost.GetHitByConductor();   
+        }
+
+        RestoreMusician();
+    }
+    public void RestoreMusician()
+    {
+        currentAction.StopSabotagge(this);
+        currentAction = null; //por si acaso lol
+
+        PossessingGhost = null;
+
+        SetPlayingState(PlayingState.PlayingWell);
+        EventosRecuperarse();
+    }
+    private void EventosRecuperarse()
+    {
+        //hacer cualquier cosa jaja
+        Debug.Log("ya no estoy controlado, vuelvo a tocar normal" + this.name);
     }
 }

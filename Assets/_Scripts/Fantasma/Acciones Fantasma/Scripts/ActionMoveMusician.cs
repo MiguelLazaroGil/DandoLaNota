@@ -13,7 +13,7 @@ public class ActionMoveMusician : SabotageAction
         playerOnly = true;
     }
 
-    public override void Execute(Musician target)
+    protected override void Execute(Musician target)
     {
         if (target.Movement == null)
         {
@@ -25,7 +25,7 @@ public class ActionMoveMusician : SabotageAction
         ApplyNegativeEffect(target); // Si se levanta de la silla, toca peor
     }
 
-    public override void Stop(Musician target)
+    protected override void Stop(Musician target)
     {
         if (target.Movement == null) return;
 

@@ -203,7 +203,7 @@ public class FantasmasIA : MonoBehaviour
 
 
         lastEnemyWhoActed = selectedCandidate.enemy;
-        selectedCandidate.action.Execute(selectedCandidate.enemy);
+        selectedCandidate.action.ApplySabotagge(selectedCandidate.enemy);
 
         lastStepWasAction = true;
         CalculateNextDelay();
