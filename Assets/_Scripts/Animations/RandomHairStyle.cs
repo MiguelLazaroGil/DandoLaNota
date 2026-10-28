@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class RandomHairStyle : NetworkBehaviour
 {
+    [SerializeField] bool isDirector = false;
     [SerializeField]
     List<GameObject> HairStyles;
+    [SerializeField]
+    GameObject DirectorHairStyle;
     [SerializeField]
     List<Material> HairColors;
 
     private void OnEnable()
     {
-        // 1. MODO OFFLINE: Si no hay red o no se está escuchando, ejecuta el código original intacto
+        // 1. MODO OFFLINE: Si no hay red o no se estï¿½ escuchando, ejecuta el cï¿½digo original intacto
         if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
         {
             ExecuteOriginalHairLogic();
@@ -32,10 +35,17 @@ public class RandomHairStyle : NetworkBehaviour
         }
     }
 
-    // Código original aislado en una función limpia
+    // Cï¿½digo original aislado en una funciï¿½n limpia
     private void ExecuteOriginalHairLogic()
     {
         DeactivateHairStyles();
+        if (isDirector)
+        {
+            DirectorHairStyle.SetActive(true);
+            int randomMatStyleIdx = UnityEngine.Random.Range(0, HairColors.Count);
+            DirectorHairStyle.gameObject.GetComponent<MeshRenderer>().material = HairColors[randomMatStyleIdx];
+            return;
+        }
         int randomHairStyleIdx = UnityEngine.Random.Range(0, HairStyles.Count + 1);
         if (randomHairStyleIdx < HairStyles.Count)
         {
@@ -52,5 +62,6 @@ public class RandomHairStyle : NetworkBehaviour
             if (hair != null)
                 hair.gameObject.SetActive(false);
         }
+        DirectorHairStyle.SetActive(false);
     }
 }
