@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -59,6 +61,23 @@ public class NetworkLobbyManager : MonoBehaviour
         }
     }
 
+    // Convierte cualquier contraseña a un Hash SHA256 de 64 caracteres para superar la restricción de UGS
+    public static string HashPassword(string rawPassword)
+    {
+        if (string.IsNullOrEmpty(rawPassword)) return null;
+
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawPassword));
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                sb.Append(b.ToString("x2"));
+            }
+            return sb.ToString();
+        }
+    }
+
     public async Task<bool> CreateLobbyAndHostAsync(string lobbyName, int maxPlayers, bool isPrivate, string password = null)
     {
         try
@@ -75,13 +94,17 @@ public class NetworkLobbyManager : MonoBehaviour
                 allocation.ConnectionData
             );
 
+            string hashedPassword = HashPassword(password);
+            bool hasPassword = !string.IsNullOrEmpty(hashedPassword);
+
             CreateLobbyOptions options = new CreateLobbyOptions
             {
-                IsPrivate = isPrivate,
-                Password = string.IsNullOrEmpty(password) ? null : password,
+                IsPrivate = false, // Se mantiene descubrible para permitir unión por nombre desde la pestaña privada
+                Password = hasPassword ? hashedPassword : null,
                 Data = new Dictionary<string, DataObject>
                 {
-                    { "JOIN_CODE", new DataObject(DataObject.VisibilityOptions.Member, joinCode) }
+                    { "JOIN_CODE", new DataObject(DataObject.VisibilityOptions.Member, joinCode) },
+                    { "HAS_PASSWORD", new DataObject(DataObject.VisibilityOptions.Public, hasPassword ? "true" : "false") }
                 }
             };
 
@@ -127,7 +150,9 @@ public class NetworkLobbyManager : MonoBehaviour
     {
         try
         {
-            JoinLobbyByIdOptions options = new JoinLobbyByIdOptions { Password = password };
+            string hashedPassword = HashPassword(password);
+            JoinLobbyByIdOptions options = new JoinLobbyByIdOptions { Password = hashedPassword };
+
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, options);
             _currentLobbyId = joinedLobby.Id;
 
@@ -189,7 +214,28 @@ public class NetworkLobbyManager : MonoBehaviour
         LobbyCameraManager.Instance?.ShowLobbyCamera();
         LobbyUIManager.Instance?.ReturnToMainPanel();
     }
+    public async Task MarkLobbyAsInGameAsync()
+    {
+        Debug.Log("Marking as in game");
+        if (string.IsNullOrEmpty(_currentLobbyId) || !NetworkManager.Singleton.IsServer) return;
 
+        try
+        {
+            UpdateLobbyOptions options = new UpdateLobbyOptions
+            {
+                Data = new Dictionary<string, DataObject>
+            {
+                { "IS_IN_GAME", new DataObject(DataObject.VisibilityOptions.Public, "true") }
+            }
+            };
+
+            await LobbyService.Instance.UpdateLobbyAsync(_currentLobbyId, options);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning($"Aviso al actualizar estado de lobby a En Partida: {e.Message}");
+        }
+    }
     private void OnClientDisconnected(ulong clientId)
     {
         if (clientId == NetworkManager.Singleton.LocalClientId || !NetworkManager.Singleton.IsConnectedClient)

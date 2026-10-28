@@ -32,10 +32,9 @@ public class LoadSceneMultiplayer : MonoBehaviour
             return;
         }
 
-        LobbyPlayerState.Instance.ResolveRolesBeforeStart();
-        string sceneName = Path.GetFileNameWithoutExtension(scenePath);
+        LobbyPlayerState.Instance.ResolveRolesBeforeStart(); 
 
-        NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        NetworkManager.Singleton.SceneManager.LoadScene(scenePath, LoadSceneMode.Single);
     }
 
 }

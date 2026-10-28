@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -14,7 +15,7 @@ public class LobbyPlayerState : NetworkBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-
+        DontDestroyOnLoad(gameObject);
         ConnectedPlayers = new NetworkList<PlayerLobbyData>();
     }
 
@@ -164,14 +165,14 @@ public class LobbyPlayerState : NetworkBehaviour
 
         if (directorIndices.Count == 0)
         {
-            int randomIndex = Random.Range(0, ConnectedPlayers.Count);
+            int randomIndex = UnityEngine.Random.Range(0, ConnectedPlayers.Count);
             var data = ConnectedPlayers[randomIndex];
             data.Role = PlayerRole.Director;
             ConnectedPlayers[randomIndex] = data;
         }
         else if (directorIndices.Count > 1)
         {
-            int chosenDirectorIndex = directorIndices[Random.Range(0, directorIndices.Count)];
+            int chosenDirectorIndex = directorIndices[UnityEngine.Random.Range(0, directorIndices.Count)];
 
             for (int i = 0; i < ConnectedPlayers.Count; i++)
             {
@@ -207,22 +208,30 @@ public class LobbyPlayerState : NetworkBehaviour
 
         while (IsServer)
         {
-            var transport = NetworkManager.Singleton.NetworkConfig.NetworkTransport;
-
-            for (int i = 0; i < ConnectedPlayers.Count; i++)
+            try
             {
-                var data = ConnectedPlayers[i];
-                if (data.ClientId == NetworkManager.Singleton.LocalClientId)
-                {
-                    data.PingMs = 0;
-                }
-                else
-                {
-                    data.PingMs = transport.GetCurrentRtt(data.ClientId);
-                }
-                ConnectedPlayers[i] = data;
-            }
 
+                var transport = NetworkManager.Singleton.NetworkConfig.NetworkTransport;
+
+                for (int i = 0; i < ConnectedPlayers.Count; i++)
+                {
+                    var data = ConnectedPlayers[i];
+                    if (data.ClientId == NetworkManager.Singleton.LocalClientId)
+                    {
+                        data.PingMs = 0;
+                    }
+                    else
+                    {
+                        data.PingMs = transport.GetCurrentRtt(data.ClientId);
+                    }
+                    ConnectedPlayers[i] = data;
+                }
+
+            }
+            catch (Exception e)
+            {
+
+            }
             yield return wait;
         }
     }

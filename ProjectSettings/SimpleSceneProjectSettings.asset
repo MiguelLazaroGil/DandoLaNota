@@ -129,7 +129,7 @@ MonoBehaviour:
     references:
     - rootSource: {fileID: 0}
       sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-      gameObjectPath: 'LobbyUICanvas[7]/Scripts[0]'
+      gameObjectPath: 'LobbyUICanvas[8]/Scripts[0]'
       componentType: LoadSceneMultiplayer
       propertyPath: sceneToLoad
       referenceCount: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'GameSpawnManager[10]'
+    gameObjectPath: 'GameSpawnManager[11]'
     componentType: LobbyAvatarSpawner
     propertyPath: directorPrefab
     referenceCount: 1
@@ -315,6 +315,13 @@ MonoBehaviour:
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    targetAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    gameObjectPath: 'Orquesta[10]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     sourceAsset: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     targetAsset: {fileID: 11400000, guid: cae97cae3cf266747b10882933ff7367, type: 2}
@@ -334,7 +341,63 @@ MonoBehaviour:
     targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
     gameObjectPath: 
     componentType: Unity.Netcode.NetworkPrefabsList
-    propertyPath: List.Array.data[2].Prefab
+    propertyPath: List.Array.data[3].Prefab
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Arpas[0]/Arpador1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Trompetas[1]/Trompetista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Clarinetes[2]/Clarinetista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Violines[3]/Violinista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Flautas[4]/Flautista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Platillos[5]/Platillista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Bombo[6]/Bombero1[0]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
+    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    gameObjectPath: 'Orquesta[0]/Triangulo[7]/Triangulista1[0]'
+    componentType: 
+    propertyPath: Prefab instance
     referenceCount: 1
   externalReferences:
   - sourceAsset: {fileID: 11400000, guid: 4dcb3f7ff0adf984884516b4c826a32b, type: 2}

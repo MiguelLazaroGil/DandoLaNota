@@ -9,24 +9,29 @@ public class LobbyUIManager : MonoBehaviour
 {
     public static LobbyUIManager Instance { get; private set; }
 
-    [Header("Paneles")]
-    [SerializeField] private GameObject mainLobbyPanel;
+    [Header("Paneles Principales")]
+    [SerializeField] private GameObject preLobbyWhole;
+    [SerializeField] private GameObject publicLobbyPanel;
+    [SerializeField] private GameObject privateLobbyPanel;
     [SerializeField] private GameObject roomPanel;
 
-    [Header("Campos de Entrada")]
+    [Header("Nombre de Jugador (Global)")]
     [SerializeField] private TMP_InputField nameInputField;
-    [SerializeField] private TMP_InputField createLobbyNameInput;
-    [SerializeField] private TMP_InputField createPasswordInput;
-    [SerializeField] private Toggle isPrivateToggle;
 
-    [Header("Contenedores de Lista UI")]
+    [Header("Panel Público")]
+    [SerializeField] private TMP_InputField publicCreateLobbyNameInput;
     [SerializeField] private Transform lobbyListContainer;
     [SerializeField] private GameObject lobbyEntryPrefab;
+
+    [Header("Panel Privado")]
+    [SerializeField] private TMP_InputField privateLobbyNameInput;
+    [SerializeField] private TMP_InputField privatePasswordInput;
+
+    [Header("Panel de Sala (En Lobby)")]
     [SerializeField] private Transform playerListContainer;
     [SerializeField] private GameObject playerEntryPrefab;
-
-    [Header("Botones")]
     [SerializeField] private Button startGameButton;
+    [SerializeField] private LoadSceneMultiplayer sceneLoader;
 
     private static string _sessionKey;
     private string PlayerNameKey
@@ -91,27 +96,57 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
-    public void ReturnToMainPanel()
+    public void ShowPublicTab()
     {
-        mainLobbyPanel.SetActive(true);
+        preLobbyWhole.SetActive(true);
+        publicLobbyPanel.SetActive(true);
+        privateLobbyPanel.SetActive(false);
+        roomPanel.SetActive(false);
+        OnClickRefreshLobbies();
+    }
+
+    public void ShowPrivateTab()
+    {
+        preLobbyWhole.SetActive(true);
+        publicLobbyPanel.SetActive(false);
+        privateLobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
     }
 
-    public async void OnClickCreateLobby()
+    public void ReturnToMainPanel()
+    {
+        roomPanel.SetActive(false);
+        ShowPublicTab();
+    }
+
+    private void EnterRoomPanel(bool isHost)
+    {
+        preLobbyWhole.SetActive(false);
+        publicLobbyPanel.SetActive(false);
+        privateLobbyPanel.SetActive(false);
+        roomPanel.SetActive(true);
+        startGameButton.gameObject.SetActive(isHost);
+    }
+
+    public async void OnClickCreatePublicLobby()
     {
         string currentName = GetCurrentPlayerName();
         PlayerPrefs.SetString(PlayerNameKey, currentName);
 
-        string lobbyName = string.IsNullOrEmpty(createLobbyNameInput.text) ? "Sala de " + currentName : createLobbyNameInput.text;
-        string password = createPasswordInput.text;
-        bool isPrivate = isPrivateToggle.isOn;
+        string lobbyName = string.IsNullOrEmpty(publicCreateLobbyNameInput.text)
+            ? "Sala de " + currentName
+            : publicCreateLobbyNameInput.text;
 
-        bool success = await NetworkLobbyManager.Instance.CreateLobbyAndHostAsync(lobbyName, 4, isPrivate, password);
+        bool success = await NetworkLobbyManager.Instance.CreateLobbyAndHostAsync(
+            lobbyName: lobbyName,
+            maxPlayers: 8,
+            isPrivate: false,
+            password: null
+        );
+
         if (success)
         {
-            mainLobbyPanel.SetActive(false);
-            roomPanel.SetActive(true);
-            startGameButton.gameObject.SetActive(true);
+            EnterRoomPanel(isHost: true);
         }
     }
 
@@ -123,8 +158,16 @@ public class LobbyUIManager : MonoBehaviour
 
         foreach (Lobby lobby in lobbies)
         {
+            if (lobby.Data != null && lobby.Data.TryGetValue("HAS_PASSWORD", out var passwordData) && passwordData.Value == "true")
+            {
+                continue;
+            }
+
+            bool isInGame = lobby.Data != null && lobby.Data.TryGetValue("IS_IN_GAME", out var inGameData) && inGameData.Value == "true";
+            string statusTag = isInGame ? " [EN PARTIDA]" : "";
+
             GameObject entry = Instantiate(lobbyEntryPrefab, lobbyListContainer);
-            entry.GetComponentInChildren<TMP_Text>().text = $"{lobby.Name} ({lobby.Players.Count}/{lobby.MaxPlayers})";
+            entry.GetComponentInChildren<TMP_Text>().text = $"{lobby.Name} ({lobby.Players.Count}/{lobby.MaxPlayers}){statusTag}";
 
             entry.GetComponent<Button>().onClick.AddListener(async () =>
             {
@@ -133,22 +176,78 @@ public class LobbyUIManager : MonoBehaviour
                 bool joined = await NetworkLobbyManager.Instance.JoinLobbyAsync(lobby);
                 if (joined)
                 {
-                    mainLobbyPanel.SetActive(false);
-                    roomPanel.SetActive(true);
-                    startGameButton.gameObject.SetActive(false);
+                    EnterRoomPanel(isHost: false);
                 }
             });
         }
     }
 
+    public async void OnClickJoinOrCreatePrivateLobby()
+    {
+        string currentName = GetCurrentPlayerName();
+        PlayerPrefs.SetString(PlayerNameKey, currentName);
+
+        string lobbyName = privateLobbyNameInput.text.Trim();
+        string password = privatePasswordInput.text.Trim();
+
+        if (string.IsNullOrEmpty(lobbyName))
+        {
+            Debug.LogWarning("Debes escribir un nombre para el lobby.");
+            return;
+        }
+
+        // 1. Buscar si la sala ya existe entre las salas activas
+        List<Lobby> availableLobbies = await NetworkLobbyManager.Instance.GetPublicLobbiesAsync();
+        Lobby targetLobby = availableLobbies.Find(l => l.Name.Equals(lobbyName, System.StringComparison.OrdinalIgnoreCase));
+
+        if (targetLobby != null)
+        {
+            bool joined = await NetworkLobbyManager.Instance.JoinLobbyAsync(targetLobby, password);
+            if (joined)
+            {
+                EnterRoomPanel(isHost: false);
+                return;
+            }
+        }
+
+        // 2. Si no existe, crearla
+        bool created = await NetworkLobbyManager.Instance.CreateLobbyAndHostAsync(
+            lobbyName: lobbyName,
+            maxPlayers: 4,
+            isPrivate: false,
+            password: password
+        );
+
+        if (created)
+        {
+            EnterRoomPanel(isHost: true);
+        }
+    }
+
     public void OnClickToggleRole()
     {
-        LobbyPlayerState.Instance.RequestToggleRoleRpc();
+        if (LobbyPlayerState.Instance != null)
+        {
+            LobbyPlayerState.Instance.RequestToggleRoleRpc();
+        }
     }
 
     public void OnClickLeaveLobby()
     {
         NetworkLobbyManager.Instance.LeaveOrDestroyLobby();
+    }
+
+    public void OnClickStartGame()
+    {
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
+        {
+            LobbyCameraManager.Instance?.HideLobbyCamera();
+            LobbyPlayerState.Instance.ResolveRolesBeforeStart();
+            Debug.Log("Intentando hacer lo de marcar como in game");
+            _=  NetworkLobbyManager.Instance.MarkLobbyAsInGameAsync();
+            Debug.Log("Se supone uqe mandado lo de ingame");
+            sceneLoader.LoadScene();
+        }
     }
 
     private void OnPlayerListChanged(NetworkListEvent<PlayerLobbyData> changeEvent)
@@ -159,7 +258,7 @@ public class LobbyUIManager : MonoBehaviour
         {
             GameObject item = Instantiate(playerEntryPrefab, playerListContainer);
             string pingDisplay = player.ClientId == NetworkManager.Singleton.LocalClientId ? "Host" : $"{player.PingMs} ms";
-            string roleDisplay = player.Role == PlayerRole.Director ? " DIRECTOR" : " FANTASMA";
+            string roleDisplay = player.Role == PlayerRole.Director ? "DIRECTOR" : "FANTASMA";
 
             item.GetComponentInChildren<TMP_Text>().text = $"{player.PlayerName} [{roleDisplay}] | Ping: {pingDisplay}";
 
@@ -175,5 +274,4 @@ public class LobbyUIManager : MonoBehaviour
             }
         }
     }
-
 }

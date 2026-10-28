@@ -11,6 +11,13 @@ public class OnlyServerGameObject : NetworkBehaviour
             this.gameObject.SetActive(false);
         }
     }
+    private void OnEnable()
+    {
+        if (!IsServer && !IsHost)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     void Update()
