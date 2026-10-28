@@ -18,11 +18,23 @@ public abstract class SabotageAction : ScriptableObject
     {
         return utility;
     }
-    public abstract void Execute(Musician target);
+    public void ApplySabotagge(Musician target)
+    {
+        target.currentAction = this;
+        ApplyNegativeEffect(target);
+        this.Execute(target);
+    }
+    public void StopSabotagge(Musician target)
+    {
+        StopNegativeEffect(target);
+        this.Stop(target);
+        target.currentAction = null;
+    }
+    protected abstract void Execute(Musician target);
 
     // NUEVO: se llama cuando una acción continua termina (el jugador la apaga desde la rueda
     // o sale del músico). Sobrescríbelo para limpiar el efecto (ej. StopNegativeEffect).
-    public virtual void Stop(Musician target) { }
+    protected virtual void Stop(Musician target) { }
 
     protected void ApplyNegativeEffect(Musician target)
     {

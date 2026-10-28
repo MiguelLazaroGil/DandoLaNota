@@ -68,8 +68,8 @@ public class Musician : MonoBehaviour
     }
     public void RestoreMusician()
     {
-        currentAction.Stop(this);
-        currentAction = null;
+        currentAction.StopSabotagge(this);
+        currentAction = null; //por si acaso lol
 
         PossessingGhost = null;
 

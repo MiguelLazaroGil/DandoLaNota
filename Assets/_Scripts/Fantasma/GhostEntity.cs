@@ -81,8 +81,7 @@ public class GhostEntity : MonoBehaviour
         if (!action.isContinuous)
         {
             if (!ConsumeEnergy(action.energyCost)) return false;
-            CurrentMusician.currentAction = action;
-            action.Execute(CurrentMusician);
+            action.ApplySabotagge(CurrentMusician);
             return true;
         }
 
@@ -90,8 +89,7 @@ public class GhostEntity : MonoBehaviour
 
         StopContinuousAction(); // Solo puede haber una acción continua a la vez
         activeContinuousAction = action;
-        CurrentMusician.currentAction=action;
-        action.Execute(CurrentMusician);
+        action.ApplySabotagge(CurrentMusician);
         return true;
     }
 
@@ -104,11 +102,13 @@ public class GhostEntity : MonoBehaviour
         SabotageAction action = activeContinuousAction;
         activeContinuousAction = null;
 
-        action.Stop(CurrentMusician);
+        action.StopSabotagge(CurrentMusician);
+
+
 #pragma warning disable CS0618 // Compatibilidad con acciones antiguas que aún sobrescriban StopAction
         action.StopAction(this, CurrentMusician);
 #pragma warning restore CS0618
-        CurrentMusician.currentAction = null;
+
     }
 
     // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estás cooked)

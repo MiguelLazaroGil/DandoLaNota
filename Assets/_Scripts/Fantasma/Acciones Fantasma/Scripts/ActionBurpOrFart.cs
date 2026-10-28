@@ -6,7 +6,7 @@ public class ActionBurpOrFart : SabotageAction
 {
     public AudioClip[] audioClips;
 
-    public override void Execute(Musician target)
+    protected override void Execute(Musician target)
     {
         if (audioClips.Length == 0) return;
         AudioClip randomClip = audioClips[Random.Range(0, audioClips.Length)];
