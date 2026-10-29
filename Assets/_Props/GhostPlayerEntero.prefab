@@ -295,9 +295,9 @@ MonoBehaviour:
   onTargetChanged:
     m_PersistentCalls:
       m_Calls: []
-  moveWithCamera: 1
+  moveWithCamera: 0
   cameraGO: {fileID: 8651244830481758716}
-  range: 10
+  range: 0
   filter:
     ignoreSelf: 1
     ignoreChildren: 1
@@ -11470,6 +11470,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9109827317008226203}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5291263324578263778}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &4436562894102372 stripped
 GameObject:
@@ -11712,6 +11715,21 @@ MonoBehaviour:
   wheelRadius: 120
   normalColor: {r: 1, g: 1, b: 1, a: 0.6}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &5291263324578263778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414602790205852530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945a86798ae1f764592160abca23a7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComponentActivator
+  monoBehaviours:
+  - {fileID: 4414602790205852542}
+  initialState: 1
 --- !u!114 &4414602790205852533 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
