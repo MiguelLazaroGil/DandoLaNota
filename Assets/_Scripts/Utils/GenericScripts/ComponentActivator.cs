@@ -15,11 +15,11 @@ public class ComponentActivator : MonoBehaviour
         switch (initialState)
         {
             case InitialState.ACTIVATE:
-            ActivateMonoBehaviours();
-            break;
+                ActivateMonoBehaviours();
+                break;
             case InitialState.DEACTIVATE:
-            DeActivateMonoBehaviours();
-            break;
+                DeActivateMonoBehaviours();
+                break;
 
         }
     }
