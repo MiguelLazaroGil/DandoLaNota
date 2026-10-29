@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NetworkOrchestraSync : NetworkBehaviour
 {
+    public float initialDelay=5f;
     [Rpc(SendTo.ClientsAndHost)]
     public void StartOrchestraClientRpc(double networkStartTime)
     {
@@ -12,9 +13,16 @@ public class NetworkOrchestraSync : NetworkBehaviour
             OrchestraAudioManager.Instance.StartOrchestra();
         }
     }
+    void Start(){
+    
+    	if(IsServer || IsHost){
+    		SendStart();
+    
+    	}
+    }
     public void SendStart()
     {
-        StartOrchestraClientRpc(NetworkManager.Singleton.ServerTime.Time+ 0.5);
+        StartOrchestraClientRpc(NetworkManager.Singleton.ServerTime.Time+ initialDelay);
     }
 
     [Rpc(SendTo.ClientsAndHost)]
