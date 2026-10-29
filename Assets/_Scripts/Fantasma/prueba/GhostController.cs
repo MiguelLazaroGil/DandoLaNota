@@ -2,26 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Controla al fantasma usando el New Input System:
-///  - Mirar a un músico y pulsar E   -> poseerlo (la cámara pasa a su punto de primera persona).
-///                                      Mientras estás dentro NO puedes moverte por tu cuenta.
-///  - Mantener Tab                   -> abre la rueda de acciones; apuntas con el ratón y al soltar Tab
-///                                      se ejecuta la acción elegida (si no apuntas a ninguna, se cancela).
-///                                      Las acciones continuas funcionan como interruptor:
-///                                      elegirlas otra vez las apaga.
-///  - Acción "Mover músico" activa   -> WASD mueve el cuerpo del músico y el ratón lo gira.
-///  - E otra vez                     -> intenta salir (tarda exitCastTime, definido en GhostEntity)
-///
-/// Requisitos: la cámara debe ser hija del fantasma (o asignarla en el inspector) y los músicos
-/// necesitan un Collider para poder ser detectados.
-/// </summary>
 [RequireComponent(typeof(GhostEntity))]
 public class GhostController : MonoBehaviour
 {
     [Header("Referencias")]
     [Tooltip("Cámara del fantasma. Si está vacía se usa Camera.main")]
     [SerializeField] private Camera ghostCamera;
+    [Tooltip("Cámara que se activa al poseer (los 'ojos' del músico). Crea una Camera simple, sin scripts, " +
+             "y SIN el tag MainCamera. Si la dejas vacía se crea una automáticamente copiando la del fantasma.")]
+    [SerializeField] private Camera possessionCamera;
     [SerializeField] private ActionWheelUI actionWheel;
 
     [Header("Detección de músicos")]
@@ -70,8 +59,6 @@ public class GhostController : MonoBehaviour
     private InputAction lookAction =
         new InputAction("Look", InputActionType.Value, "<Mouse>/delta", null, null, "Vector2");
 
-    // Los bindings WASD (composite 2DVector) NO se pueden crear aquí, en el constructor:
-    // el Input System aún no está listo y da NullReferenceException. Se añaden en Reset() / Awake().
     [SerializeField]
     private InputAction moveAction =
         new InputAction("Move", InputActionType.Value, null, null, null, "Vector2");
@@ -79,16 +66,11 @@ public class GhostController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool showDebugGUI = true;
 
-    /// <summary>Músico al que está apuntando el fantasma ahora mismo (null si ninguno). Útil para tu UI.</summary>
     public Musician TargetedMusician { get; private set; }
 
     private GhostEntity ghost;
-    private Transform camTransform;
-
-    // Pose original de la cámara para devolverla al salir
-    private Transform camOriginalParent;
-    private Vector3 camOriginalLocalPos;
-    private Quaternion camOriginalLocalRot;
+    private Transform camTransform;            // cámara del fantasma
+    private Transform possessionCamTransform;  // cámara que hace de ojos del músico
 
     private float yaw;
     private float pitch;
@@ -136,6 +118,12 @@ public class GhostController : MonoBehaviour
             return;
         }
         camTransform = ghostCamera.transform;
+
+        // Si no hay cámara de posesión (o por error es la misma que la del fantasma), creamos una
+        if (possessionCamera == null || possessionCamera == ghostCamera)
+            possessionCamera = CreatePossessionCamera();
+        possessionCamTransform = possessionCamera.transform;
+        possessionCamera.gameObject.SetActive(false); // solo se activa mientras posees
 
         if (actionWheel == null)
             Debug.LogWarning("GhostController: falta asignar el ActionWheelUI, no podrás usar acciones.", this);
@@ -256,7 +244,7 @@ public class GhostController : MonoBehaviour
             yaw = Mathf.Clamp(yaw + delta.x, -maxYaw, maxYaw);
         }
 
-        camTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+        possessionCamTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
     }
 
     // ───────────────────────── Rueda de acciones ─────────────────────────
@@ -307,17 +295,16 @@ public class GhostController : MonoBehaviour
 
     private void HandlePossessed(Musician musician)
     {
-        // Guardamos la pose de la cámara para devolverla al salir
-        camOriginalParent = camTransform.parent;
-        camOriginalLocalPos = camTransform.localPosition;
-        camOriginalLocalRot = camTransform.localRotation;
+        if (musician.cameraFirstPersonPoint == null)
+            Debug.LogWarning($"{musician.name} no tiene Camera First Person Point asignado: la cámara se coloca en su pivote.", musician);
 
-        // La cámara pasa a ser los ojos del músico
-        camTransform.SetParent(musician.CameraPoint, false);
-        camTransform.localPosition = Vector3.zero;
-        camTransform.localRotation = Quaternion.identity;
+        // Cambiamos a la cámara del músico: la colocamos en sus ojos y apagamos la del fantasma
+        possessionCamTransform.SetParent(musician.CameraPoint, false);
+        possessionCamTransform.localPosition = Vector3.zero;
+        possessionCamTransform.localRotation = Quaternion.identity;
         yaw = 0f;
         pitch = 0f;
+        SetActiveCamera(true);
 
         // La rueda muestra las acciones de este músico
         if (actionWheel != null) actionWheel.LoadActions(musician.availableActions);
@@ -334,11 +321,38 @@ public class GhostController : MonoBehaviour
         // El fantasma reaparece donde estaba el músico (puede haberse movido), para que la cámara no pegue un salto
         MoveGhostTo(musician.transform.position);
 
-        camTransform.SetParent(camOriginalParent, false);
-        camTransform.localPosition = camOriginalLocalPos;
-        camTransform.localRotation = camOriginalLocalRot;
+        // Devolvemos la vista a la cámara del fantasma y guardamos la del músico en el fantasma
+        SetActiveCamera(false);
+        possessionCamTransform.SetParent(transform, false);
 
         SetGhostPresence(true);
+    }
+
+    // Intercambia qué cámara se ve. También se apaga el AudioListener del fantasma para no tener dos a la vez.
+    private void SetActiveCamera(bool possessing)
+    {
+        ghostCamera.enabled = !possessing;
+
+        AudioListener ghostListener = ghostCamera.GetComponent<AudioListener>();
+        if (ghostListener != null) ghostListener.enabled = !possessing;
+
+        possessionCamera.gameObject.SetActive(possessing);
+    }
+
+    // Plan B si no asignas una cámara de posesión en el inspector: copia los ajustes de la del fantasma
+    private Camera CreatePossessionCamera()
+    {
+        GameObject go = new GameObject("PossessionCamera");
+        go.SetActive(false); // inactivo mientras se configura, así no hay dos AudioListener a la vez
+        go.transform.SetParent(transform, false);
+
+        Camera cam = go.AddComponent<Camera>();
+        cam.CopyFrom(ghostCamera);
+        if (ghostCamera.GetComponent<AudioListener>() != null) go.AddComponent<AudioListener>();
+
+        Debug.LogWarning("GhostController: no había Possession Camera asignada, se ha creado una automática " +
+                         "(sin post-procesado). Para el resultado final crea una Camera propia y asígnala.", this);
+        return cam;
     }
 
     private void SetGhostPresence(bool present)

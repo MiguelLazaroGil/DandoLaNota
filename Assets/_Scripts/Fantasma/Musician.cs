@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class Musician : MonoBehaviour
@@ -7,7 +7,7 @@ public class Musician : MonoBehaviour
     public PlayingState currentState = PlayingState.PlayingWell;
     public MusicianQuality quality;
 
-    [Header("Configuración de Posesión")]
+    [Header("ConfiguraciÃ³n de PosesiÃ³n")]
     public Transform cameraFirstPersonPoint;
     public Transform sheetMusicTransform;
     public AudioSource musicianAudio;
@@ -21,10 +21,10 @@ public class Musician : MonoBehaviour
     public bool IsAvailable => currentAction == null;
     public bool IsPossessed => PossessingGhost != null;
 
-    // Punto donde se coloca la cámara al poseer (si no has asignado uno, usa el propio transform)
+    // Punto donde se coloca la cÃ¡mara al poseer (si no has asignado uno, usa el propio transform)
     public Transform CameraPoint => cameraFirstPersonPoint != null ? cameraFirstPersonPoint : transform;
 
-    // Componente opcional que permite moverlo (null si el músico no lo tiene)
+    // Componente opcional que permite moverlo (null si el mÃºsico no lo tiene)
     public MusicianMovement Movement { get; private set; }
 
     private void Awake()
@@ -32,7 +32,7 @@ public class Musician : MonoBehaviour
         Movement = GetComponent<MusicianMovement>();
     }
 
-    // Devuelve la acción de sabotaje en esa posición, o null si no existe
+    // Devuelve la acciÃ³n de sabotaje en esa posiciÃ³n, o null si no existe
     public SabotageAction GetAction(int index)
     {
         if (index < 0 || index >= availableActions.Count) return null;
@@ -46,15 +46,15 @@ public class Musician : MonoBehaviour
         if (musicianAudio && clip) musicianAudio.PlayOneShot(clip);
     }
 
-    public void SwapToFakeInstrument(GameObject fakePrefab) { /* Lógica visual */ }
-    public void ShowPhoneUI(bool show) { /* Lógica visual */ }
+    public void SwapToFakeInstrument(GameObject fakePrefab) { /* LÃ³gica visual */ }
+    public void ShowPhoneUI(bool show) { /* LÃ³gica visual */ }
 
-    // Llamar a este método cuando la batuta del Director golpea a este músico
+    // Llamar a este mÃ©todo cuando la batuta del Director golpea a este mÃºsico
     public void OnHitByConductor()
     {
         if (IsAvailable)
         {
-            Debug.Log("¡El Director golpeó a un músico inocente! Penalización para el director.");
+            Debug.Log("Â¡El Director golpeÃ³ a un mÃºsico inocente! PenalizaciÃ³n para el director.");
             //Hacer algo visual
             return;
         }
@@ -68,7 +68,7 @@ public class Musician : MonoBehaviour
     }
     public void RestoreMusician()
     {
-        currentAction.StopSabotagge(this);
+        if (currentAction != null) currentAction.StopSabotagge(this);
         currentAction = null; //por si acaso lol
 
         PossessingGhost = null;

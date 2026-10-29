@@ -386,22 +386,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4414602790205852530, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
   m_PrefabInstance: {fileID: 1470625461}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &775559983 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4414602790205852533, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
-  m_PrefabInstance: {fileID: 1470625461}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775559976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!143 &775559984 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 4414602790205852536, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
-  m_PrefabInstance: {fileID: 1470625461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &775559985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,23 +403,6 @@ MonoBehaviour:
   wheelRadius: 120
   normalColor: {r: 1, g: 1, b: 1, a: 0.6}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &775559986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775559976}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d829043afaf51f941ae24280cbc5c4ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostPlayerController
-  ghostEntity: {fileID: 775559987}
-  fpsController: {fileID: 775559983}
-  charController: {fileID: 775559984}
-  playerCameraRoot: {fileID: 1334895749}
-  actionWheel: {fileID: 775559985}
 --- !u!114 &775559987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostController
   ghostCamera: {fileID: 1334895753}
+  possessionCamera: {fileID: 0}
   actionWheel: {fileID: 775559985}
   possessRange: 8
   aimRadius: 0.4
@@ -482,7 +450,9 @@ MonoBehaviour:
   autoDisableOtherScripts: 1
   keepEnabledWhilePossessing: []
   disableWhilePossessing: []
-  hideWhilePossessing: []
+  hideWhilePossessing:
+  - {fileID: 1131928923}
+  - {fileID: 1445737423}
   possessExitAction:
     m_Name: PossessExit
     m_Type: 1
@@ -1350,9 +1320,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2114283753834967213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1334895749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8651244830481758713, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
+--- !u!1 &1131928923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4436562894102372, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
   m_PrefabInstance: {fileID: 1470625461}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &1334895753 stripped
@@ -1380,6 +1350,24 @@ MonoBehaviour:
   moveSpeed: 2.5
   gravity: -9.81
   returnToSeatWhenReleased: 1
+--- !u!114 &1445737437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445737423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
+  musicianQuality: 1
+  baseQuality: 1
+  desync: 0
+  targetQuality: 1
+  qualityDecaySpeed: 0.5
+  qualityRecoverySpeed: 0.2
 --- !u!1001 &1470625461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1466,9 +1454,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4414602790205852530, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 775559987}
-    - targetCorrespondingSourceObject: {fileID: 4414602790205852530, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 775559986}
     - targetCorrespondingSourceObject: {fileID: 4414602790205852530, guid: 5f791ae690751524e899bf165f5bacbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 775559994}
@@ -2080,7 +2065,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
   - {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
   - {fileID: 11400000, guid: eafc5f0643f970c42963348d17553b55, type: 2}
-  IsAvailable: 1
+  currentAction: {fileID: 0}
 --- !u!114 &1922604036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +2523,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1716705004971792996, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720527062132388004, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
+      propertyPath: quality
+      value: 
+      objectReference: {fileID: 1445737437}
     - target: {fileID: 4637672224811067649, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
       propertyPath: m_Name
       value: MusicoPRueba
@@ -2587,8 +2580,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4637672224811067649, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 1445737430}
+    - targetCorrespondingSourceObject: {fileID: 4637672224811067649, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1445737437}
   m_SourcePrefab: {fileID: 100100000, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
 --- !u!4 &8338988565591873055 stripped
 Transform:
