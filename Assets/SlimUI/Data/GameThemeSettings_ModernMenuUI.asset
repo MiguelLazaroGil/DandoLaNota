@@ -30,4 +30,4 @@ MonoBehaviour:
   currentColor: {r: 1, g: 1, b: 1, a: 1}
   textColor:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
