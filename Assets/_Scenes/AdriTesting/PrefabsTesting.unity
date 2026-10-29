@@ -1814,7 +1814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef524d447e52f482093db98ca5629d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractivePiano
-  pianoTransform: {fileID: 0}
+  pianoTransform: {fileID: 543450653493046500}
   currentInstrument: 4
   trumpet:
     notes:
@@ -9474,11 +9474,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1315442473 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7197365511321013618, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-  m_PrefabInstance: {fileID: 6654246099890531916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1353136068
 GameObject:
   m_ObjectHideFlags: 0
@@ -10564,6 +10559,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 732676764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1601600062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6006506961788243405, guid: 27371bce1b2be2e4baf14ac69fe9313c, type: 3}
+  m_PrefabInstance: {fileID: 2872074245467048919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1602678867
 GameObject:
   m_ObjectHideFlags: 0
@@ -16124,7 +16124,7 @@ PrefabInstance:
     - target: {fileID: 2756010028136629099, guid: 27371bce1b2be2e4baf14ac69fe9313c, type: 3}
       propertyPath: pianoTransform
       value: 
-      objectReference: {fileID: 1315442473}
+      objectReference: {fileID: 1601600062}
     - target: {fileID: 2787758450604188568, guid: 27371bce1b2be2e4baf14ac69fe9313c, type: 3}
       propertyPath: m_Layer
       value: 19
