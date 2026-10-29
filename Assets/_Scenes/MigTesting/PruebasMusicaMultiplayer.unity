@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetworkOrchestraSync
   ShowTopMostFoldoutHeaderGroup: 1
+  initialDelay: 5
 --- !u!4 &695747134
 Transform:
   m_ObjectHideFlags: 0
@@ -1750,11 +1751,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11790442354035416, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11790442354035416, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11790442354035416, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1762,19 +1763,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11790442354035416, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 11790442354035416, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -149.17667
       objectReference: {fileID: 0}
     - target: {fileID: 93501547384472914, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 93501547384472914, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 93501547384472914, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1782,11 +1783,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93501547384472914, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 93501547384472914, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 101416013788790028, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_Name
@@ -1818,11 +1819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463578623504826786, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4463578623504826786, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4463578623504826786, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1830,19 +1831,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463578623504826786, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4463578623504826786, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -350.44165
       objectReference: {fileID: 0}
     - target: {fileID: 4802828445350407839, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4802828445350407839, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4802828445350407839, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1850,19 +1851,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802828445350407839, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4802828445350407839, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -82.08833
       objectReference: {fileID: 0}
     - target: {fileID: 4829364137889889593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4829364137889889593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4829364137889889593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1870,11 +1871,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4829364137889889593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4829364137889889593, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -283.35333
       objectReference: {fileID: 0}
     - target: {fileID: 5242898682732955929, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_FontData.m_MaxSize
@@ -1902,11 +1903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6767229758192408718, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6767229758192408718, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6767229758192408718, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1914,11 +1915,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6767229758192408718, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 6767229758192408718, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -216.265
       objectReference: {fileID: 0}
     - target: {fileID: 7111026231565281699, guid: 23200fce674aa394a92b06af7a8aeadf, type: 3}
       propertyPath: m_FontData.m_MaxSize
@@ -2112,8 +2113,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5850850066250800332, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2415207395043712809}
   m_SourcePrefab: {fileID: 100100000, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+--- !u!1 &2415207395043712808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5850850066250800332, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
+  m_PrefabInstance: {fileID: 2415207395043712807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2415207395043712809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415207395043712808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 4026451028
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
