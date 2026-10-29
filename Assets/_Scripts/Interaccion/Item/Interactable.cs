@@ -8,7 +8,9 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     [SerializeField]
-    protected UnityEvent onInteractEvents;
+    protected UnityEvent onInteractEnter;
+    [SerializeField]
+    protected UnityEvent onInteractExit;
     [Space]
     [SerializeField]
     protected bool destroyOnInteract;
@@ -19,13 +21,9 @@ public class Interactable : MonoBehaviour
     /// <param name="code">Normally a casted Enum</param>
     public virtual void Interact()
     {
-        BatutaController batuta = Object.FindAnyObjectByType<BatutaController>();
-        if (batuta != null)
-        {
-            batuta.DesactivarModoDirector();
-        }
+  
 
-        onInteractEvents?.Invoke();
+        onInteractEnter?.Invoke();
         if (destroyOnInteract) GameObject.Destroy(gameObject);
 
     }
@@ -42,9 +40,12 @@ public class Interactable : MonoBehaviour
 
     }
 
-    protected void PlayInteractionEvents()
+    public void PlayInteractionEventEnter()
     {
-        onInteractEvents?.Invoke();
+        onInteractEnter?.Invoke();
     }
-
+    public void PlayInteractionEventExit()
+    {
+        onInteractExit?.Invoke();
+    }
 }
