@@ -1,19 +1,20 @@
 using UnityEngine;
 
 /// <summary>
-/// Permite que el fantasma mueva físicamente al músico. Lo activa la acción ActionMoveMusician
-/// y el input lo manda GhostController (este script no lee ningún input por sí mismo).
-/// Añádelo a los músicos que quieras que se puedan mover.
-/// Si el músico tiene un CharacterController se usa (con gravedad); si no, se mueve el transform.
+/// Permite que el fantasma mueva fï¿½sicamente al mï¿½sico. Lo activa la acciï¿½n ActionMoveMusician
+/// y el input lo manda GhostController (este script no lee ningï¿½n input por sï¿½ mismo).
+/// Aï¿½ï¿½delo a los mï¿½sicos que quieras que se puedan mover.
+/// Si el mï¿½sico tiene un CharacterController se usa (con gravedad); si no, se mueve el transform.
 /// </summary>
 public class MusicianMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2.5f;
     [SerializeField] private float gravity = -9.81f;
-    [Tooltip("Al terminar la acción, el músico vuelve solo a su asiento")]
+    [Tooltip("Al terminar la acciï¿½n, el mï¿½sico vuelve solo a su asiento")]
     [SerializeField] private bool returnToSeatWhenReleased = true;
+    [SerializeField] private RolyPoly rolyPoly;
 
-    /// <summary>True mientras el fantasma controla el cuerpo del músico.</summary>
+    /// <summary>True mientras el fantasma controla el cuerpo del mï¿½sico.</summary>
     public bool IsControlled { get; private set; }
 
     private CharacterController cc;
@@ -37,13 +38,13 @@ public class MusicianMovement : MonoBehaviour
         returning = !controlled && returnToSeatWhenReleased;
     }
 
-    // x = lateral, y = adelante/atrás (relativo a hacia dónde mira el cuerpo)
+    // x = lateral, y = adelante/atrï¿½s (relativo a hacia dï¿½nde mira el cuerpo)
     public void SetMoveInput(Vector2 input)
     {
         moveInput = Vector2.ClampMagnitude(input, 1f);
     }
 
-    // Gira el cuerpo en el eje vertical (lo usa GhostController con el ratón)
+    // Gira el cuerpo en el eje vertical (lo usa GhostController con el ratï¿½n)
     public void Rotate(float yawDegrees)
     {
         transform.Rotate(0f, yawDegrees, 0f, Space.World);
@@ -82,7 +83,7 @@ public class MusicianMovement : MonoBehaviour
         Vector3 toSeat = seatPosition - transform.position;
         toSeat.y = 0f;
 
-        // Si en este frame llegamos al asiento, nos colocamos exactamente en él
+        // Si en este frame llegamos al asiento, nos colocamos exactamente en ï¿½l
         if (toSeat.magnitude <= moveSpeed * Time.deltaTime)
         {
             SnapToSeat();
@@ -91,8 +92,8 @@ public class MusicianMovement : MonoBehaviour
         }
 
         Vector3 direction = toSeat.normalized;
-        transform.rotation = Quaternion.RotateTowards(
-            transform.rotation, Quaternion.LookRotation(direction), 360f * Time.deltaTime);
+
+        rolyPoly.UpdateTargetRot(seatRotation.eulerAngles);
         Move(direction * moveSpeed);
     }
 

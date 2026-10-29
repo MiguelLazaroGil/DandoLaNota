@@ -300,6 +300,8 @@ public class GhostController : MonoBehaviour
 
         // Cambiamos a la cámara del músico: la colocamos en sus ojos y apagamos la del fantasma
         possessionCamTransform.SetParent(musician.CameraPoint, false);
+        //Desactivar componentes propios(camara,player input en componentactivator.deactivate...)
+        //Activar componentes de musician(en componentactivator.activate... encontrar en Musician.GetcomponentInchildren<ComponentActivator>() )
         possessionCamTransform.localPosition = Vector3.zero;
         possessionCamTransform.localRotation = Quaternion.identity;
         yaw = 0f;
