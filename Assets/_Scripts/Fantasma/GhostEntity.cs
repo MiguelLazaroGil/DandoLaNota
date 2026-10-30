@@ -21,6 +21,10 @@ public class GhostEntity : NetworkBehaviour
 
     public SabotageAction ActiveContinuousAction => activeContinuousAction;
 
+    /// <summary>True si este fantasma es el de ESTA máquina (siempre true en offline).
+    /// Sirve para que los efectos visuales solo los vea el jugador que posee.</summary>
+    public bool IsLocallyControlled => !IsNetworkActive || IsOwner;
+
     public event System.Action<Musician> MusicianPossessed;
     public event System.Action<Musician> MusicianLeft;
 
