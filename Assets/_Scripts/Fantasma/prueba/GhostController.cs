@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;   // Volume (URP / HDRP)
 
 [RequireComponent(typeof(GhostEntity))]
 public class GhostController : MonoBehaviour
@@ -8,8 +9,10 @@ public class GhostController : MonoBehaviour
     [Header("Referencias")]
     [Tooltip("Cámara del fantasma. Si está vacía se usa Camera.main")]
     [SerializeField] private Camera ghostCamera;
-    [Tooltip("Cámara que se activa al poseer (los 'ojos' del músico). Crea una Camera simple, sin scripts, " +
-             "y SIN el tag MainCamera. Si la dejas vacía se crea una automáticamente copiando la del fantasma.")]
+    [Tooltip("Cámara que se activa al poseer (los 'ojos' del músico), SIN el tag MainCamera.\n" +
+             "• Vacía: se CLONA la cámara del fantasma (mismos ajustes, post-procesado, renderer, culling...).\n" +
+             "• Prefab de una cámara custom: se instancia al empezar.\n" +
+             "• Cámara de la escena: se usa tal cual.")]
     [SerializeField] private Camera possessionCamera;
     [SerializeField] private ActionWheelUI actionWheel;
 
@@ -19,6 +22,13 @@ public class GhostController : MonoBehaviour
     [SerializeField] private float aimRadius = 0.4f;
     [Tooltip("Capas que bloquean/detectan la mirada (incluye la capa de los músicos y las paredes)")]
     [SerializeField] private LayerMask aimMask = ~0;
+
+    [Header("Efecto al poseer (solo lo ve quien posee)")]
+    [Tooltip("Global Volume con el efecto de posesión. Déjalo ACTIVO en la escena: el script le pone peso 0 al empezar, " +
+             "lo sube a 1 al poseer y lo baja a 0 al salir.")]
+    [SerializeField] private Volume possessionVolume;
+    [Tooltip("Segundos que tarda el efecto en aparecer / desaparecer (0 = instantáneo)")]
+    [SerializeField, Min(0f)] private float volumeFadeTime = 0.4f;
 
     [Header("Cámara mientras posees")]
     [SerializeField] private float lookSensitivity = 0.1f;
@@ -71,6 +81,7 @@ public class GhostController : MonoBehaviour
     private GhostEntity ghost;
     private Transform camTransform;            // cámara del fantasma
     private Transform possessionCamTransform;  // cámara que hace de ojos del músico
+    private float volumeTargetWeight;          // 0 = efecto apagado, 1 = encendido
 
     private float yaw;
     private float pitch;
@@ -119,11 +130,19 @@ public class GhostController : MonoBehaviour
         }
         camTransform = ghostCamera.transform;
 
-        // Si no hay cámara de posesión (o por error es la misma que la del fantasma), creamos una
+        // Cámara de posesión:
+        //  - vacía (o la misma que la del fantasma) -> clon de la cámara del fantasma
+        //  - prefab (no está en la escena)          -> se instancia
+        //  - objeto de la escena                    -> se usa tal cual
         if (possessionCamera == null || possessionCamera == ghostCamera)
-            possessionCamera = CreatePossessionCamera();
+            possessionCamera = CreatePossessionCamera(ghostCamera.gameObject, stripScripts: true);
+        else if (!possessionCamera.gameObject.scene.IsValid())
+            possessionCamera = CreatePossessionCamera(possessionCamera.gameObject, stripScripts: false);
         possessionCamTransform = possessionCamera.transform;
         possessionCamera.gameObject.SetActive(false); // solo se activa mientras posees
+
+        // El efecto de posesión empieza apagado
+        if (possessionVolume != null) possessionVolume.weight = 0f;
 
         if (actionWheel == null)
             Debug.LogWarning("GhostController: falta asignar el ActionWheelUI, no podrás usar acciones.", this);
@@ -161,6 +180,8 @@ public class GhostController : MonoBehaviour
     {
         if (ghost.CurrentMusician == null) UpdateFreeMode();
         else UpdatePossessedMode();
+
+        UpdatePossessionVolume();
     }
 
     // ───────────────────────── Modo libre (sin poseer) ─────────────────────────
@@ -307,6 +328,7 @@ public class GhostController : MonoBehaviour
         yaw = 0f;
         pitch = 0f;
         SetActiveCamera(true);
+        SetPossessionEffect(true);
 
         // La rueda muestra las acciones de este músico
         if (actionWheel != null) actionWheel.LoadActions(musician.availableActions);
@@ -325,6 +347,7 @@ public class GhostController : MonoBehaviour
 
         // Devolvemos la vista a la cámara del fantasma y guardamos la del músico en el fantasma
         SetActiveCamera(false);
+        SetPossessionEffect(false);
         possessionCamTransform.SetParent(transform, false);
 
         SetGhostPresence(true);
@@ -341,20 +364,61 @@ public class GhostController : MonoBehaviour
         possessionCamera.gameObject.SetActive(possessing);
     }
 
-    // Plan B si no asignas una cámara de posesión en el inspector: copia los ajustes de la del fantasma
-    private Camera CreatePossessionCamera()
+    // Crea la cámara de posesión CLONANDO un GameObject de cámara (la del fantasma o un prefab custom).
+    // Al clonar el objeto entero se copian TODOS sus componentes, incluido el de URP/HDRP donde viven el
+    // post-procesado, la volume mask, el renderer, etc. (Camera.CopyFrom no copia nada de eso).
+    private Camera CreatePossessionCamera(GameObject source, bool stripScripts)
     {
-        GameObject go = new GameObject("PossessionCamera");
-        go.SetActive(false); // inactivo mientras se configura, así no hay dos AudioListener a la vez
+        // Se instancia dentro de un contenedor inactivo para que no se ejecute el Awake/OnEnable de los scripts clonados
+        GameObject holder = new GameObject("~PossessionCameraHolder");
+        holder.SetActive(false);
+
+        GameObject go = Instantiate(source, holder.transform);
+        go.name = "PossessionCamera";
+        go.tag = "Untagged"; // que no compita con Camera.main
+        if (stripScripts) StripClonedCamera(go);
+
+        go.SetActive(false); // inactivo hasta que poseas (así no hay dos AudioListener a la vez)
         go.transform.SetParent(transform, false);
+        Destroy(holder);
 
-        Camera cam = go.AddComponent<Camera>();
-        cam.CopyFrom(ghostCamera);
-        if (ghostCamera.GetComponent<AudioListener>() != null) go.AddComponent<AudioListener>();
+        return go.GetComponent<Camera>();
+    }
 
-        Debug.LogWarning("GhostController: no había Possession Camera asignada, se ha creado una automática " +
-                         "(sin post-procesado). Para el resultado final crea una Camera propia y asígnala.", this);
-        return cam;
+    // Deja solo lo necesario para renderizar: fuera hijos y fuera los scripts de gameplay de la cámara original
+    // (movimiento, look, Cinemachine...). Se conservan los componentes de render de URP/HDRP/Post Processing.
+    private static void StripClonedCamera(GameObject go)
+    {
+        for (int i = go.transform.childCount - 1; i >= 0; i--)
+            DestroyImmediate(go.transform.GetChild(i).gameObject);
+
+        foreach (MonoBehaviour mb in go.GetComponents<MonoBehaviour>())
+        {
+            if (mb == null) continue;
+
+            string ns = mb.GetType().Namespace;
+            if (ns != null && ns.StartsWith("UnityEngine.Rendering")) continue;
+
+            DestroyImmediate(mb);
+        }
+    }
+
+    // ───────────────────────── Efecto de posesión (Global Volume) ─────────────────────────
+
+    // Un Volume solo afecta a lo que renderiza la máquina donde está, así que en red lo ve únicamente quien posee
+    // (el director y los demás no). Y como al poseer la cámara del fantasma se apaga, el efecto solo se ve
+    // a través de la cámara del músico, nunca desde la vista libre del fantasma.
+    private void SetPossessionEffect(bool on)
+    {
+        volumeTargetWeight = (on && ghost.IsLocallyControlled) ? 1f : 0f;
+    }
+
+    private void UpdatePossessionVolume()
+    {
+        if (possessionVolume == null) return;
+
+        float speed = volumeFadeTime > 0f ? 1f / volumeFadeTime : float.MaxValue;
+        possessionVolume.weight = Mathf.MoveTowards(possessionVolume.weight, volumeTargetWeight, speed * Time.deltaTime);
     }
 
     private void SetGhostPresence(bool present)
