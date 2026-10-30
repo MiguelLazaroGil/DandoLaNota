@@ -21,9 +21,9 @@ public class PlayerLobbyBootstrapper : NetworkBehaviour
             yield return null;
         }
 
-        // 2. Si el cliente se une tarde y estamos en la escena de juego,
-        // esperamos a que el cliente confirme que ha terminado de cargar la escena por completo
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        // 2. Esperar confirmación de escena SOLO si es un cliente remoto (Late-joiner).
+        // El Host ya tiene la escena cargada y no necesita esperar a su propio evento.
+        if (SceneManager.GetActiveScene().buildIndex != 0 && OwnerClientId != NetworkManager.Singleton.LocalClientId)
         {
             bool clientSceneReady = false;
 
@@ -39,7 +39,7 @@ public class PlayerLobbyBootstrapper : NetworkBehaviour
             NetworkManager.Singleton.SceneManager.OnSceneEvent += OnSceneEvent;
 
             float timeout = 0f;
-            while (!clientSceneReady && timeout < 10f)
+            while (!clientSceneReady && timeout < 5f)
             {
                 timeout += Time.deltaTime;
                 yield return null;
@@ -54,7 +54,7 @@ public class PlayerLobbyBootstrapper : NetworkBehaviour
             yield return null;
         }
 
-        // 4. Asignar rol (en partida en curso, como ya hay Director, devolverá Fantasma)
+        // 4. Asignar rol (Director para Host, Fantasma para el resto)
         PlayerRole role = LobbyPlayerState.Instance.GetOrAssignInitialRole(OwnerClientId);
 
         // 5. Instanciar el avatar en la escena de juego

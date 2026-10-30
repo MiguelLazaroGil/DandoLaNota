@@ -11,6 +11,7 @@ public class PlayerNetworkSetup : NetworkBehaviour
     [SerializeField] private List<GameObject> gameobjects = new();
     [SerializeField] private List<Rigidbody> rigidbodies = new();
     [SerializeField] private PlayerMeshHidder playerMeshHidder;
+    [SerializeField] private CharacterController characterController;
     public override void OnNetworkSpawn()
     {
         if (IsOwner)
@@ -29,7 +30,10 @@ public class PlayerNetworkSetup : NetworkBehaviour
 
             // 2. Ocultar la c�mara est�tica del Lobby/Men�
             LobbyCameraManager.Instance?.HideLobbyCamera();
-
+            if(characterController != null)
+            {
+                characterController.enabled = true;
+            }
             // 3. Posicionar en un SpawnPoint de la sala
             PositionPlayerAtSpawnPoint();
         }
@@ -48,6 +52,10 @@ public class PlayerNetworkSetup : NetworkBehaviour
             foreach (var rb in rigidbodies)
             {
                 rb.isKinematic = true;
+            }
+            if (characterController != null)
+            {
+                characterController.enabled = true;
             }
             playerMeshHidder?.ShowMeshes();
 

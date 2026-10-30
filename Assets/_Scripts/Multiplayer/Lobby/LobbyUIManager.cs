@@ -226,7 +226,7 @@ public class LobbyUIManager : MonoBehaviour
 
     public void OnClickToggleRole()
     {
-        if (LobbyPlayerState.Instance != null)
+        if (LobbyPlayerState.Instance != null && LobbyPlayerState.Instance.IsSpawned)
         {
             LobbyPlayerState.Instance.RequestToggleRoleRpc();
         }

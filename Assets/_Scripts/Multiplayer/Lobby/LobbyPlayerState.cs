@@ -13,12 +13,36 @@ public class LobbyPlayerState : NetworkBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            // Si la instancia guardada ya no está activa en red (sesión anterior), la destruimos
+            if (!Instance.IsSpawned)
+            {
+                Destroy(Instance.gameObject);
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        else
+        {
+            Instance = this;
+        }
+
         DontDestroyOnLoad(gameObject);
         ConnectedPlayers = new NetworkList<PlayerLobbyData>();
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
     public override void OnNetworkSpawn()
     {
         if (IsServer)

@@ -188,7 +188,7 @@ public class NetworkLobbyManager : MonoBehaviour
         {
             try
             {
-                if (NetworkManager.Singleton.IsServer)
+                if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
                 {
                     await LobbyService.Instance.DeleteLobbyAsync(_currentLobbyId);
                 }
@@ -205,6 +205,12 @@ public class NetworkLobbyManager : MonoBehaviour
         }
 
         _currentLobbyId = null;
+
+        // Destruir el estado del lobby para evitar que persista como zombi al volver al menú
+        if (LobbyPlayerState.Instance != null)
+        {
+            Destroy(LobbyPlayerState.Instance.gameObject);
+        }
 
         if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening)
         {
