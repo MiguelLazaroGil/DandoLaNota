@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1918186763
+  GlobalObjectIdHash: 1841506328
   InScenePlacedSourceGlobalObjectIdHash: 1918186763
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -470,7 +470,7 @@ Cloth:
   m_BendingStiffness: 0.5
   m_UseTethers: 1
   m_UseGravity: 1
-  m_Damping: 0.25
+  m_Damping: 0.75
   m_ExternalAcceleration: {x: 0, y: -5, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
@@ -11760,18 +11760,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostController
   ghostCamera: {fileID: 8651244830481758718}
-  possessionCamera: {fileID: 0}
+  possessionCameraTemplate: {fileID: 0}
   actionWheel: {fileID: 9109827317008226203}
-  possessRange: 8
-  aimRadius: 0.4
-  aimMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  interactionDetector: {fileID: 0}
   possessionVolume: {fileID: 4180524577983254456}
   volumeFadeTime: 0.4
   lookSensitivity: 0.1
   maxYaw: 70
   pitchLimits: {x: -22.8, y: 60.6}
+  possessionCameraPriority: 20
+  followMusician: 0
   wheelCursorRadius: 80
   wheelDeadZone: 10
   autoDisableOtherScripts: 1

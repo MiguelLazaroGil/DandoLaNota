@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Cinemachine;      // Cinemachine 3 (CinemachineCamera)
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;   // Volume (URP / HDRP)
@@ -9,19 +10,19 @@ public class GhostController : MonoBehaviour
     [Header("Referencias")]
     [Tooltip("Cámara del fantasma. Si está vacía se usa Camera.main")]
     [SerializeField] private Camera ghostCamera;
-    [Tooltip("Cámara que se activa al poseer (los 'ojos' del músico), SIN el tag MainCamera.\n" +
-             "• Vacía: se CLONA la cámara del fantasma (mismos ajustes, post-procesado, renderer, culling...).\n" +
-             "• Prefab de una cámara custom: se instancia al empezar.\n" +
-             "• Cámara de la escena: se usa tal cual.")]
-    [SerializeField] private Camera possessionCamera;
+    [Tooltip("ARRASTRA AQUÍ la cámara que quieres tener al poseer (un objeto de la escena o un prefab). " +
+             "Al empezar se hace un CLON del objeto entero (hijos y todos sus componentes), así que queda igual que el original.\n" +
+             "• Con una Cinemachine Camera: se clona la vcam; la Camera real con el Brain no se toca.\n" +
+             "• Con una Camera normal: se clona y se activa en lugar de la del fantasma.\n" +
+             "• Vacío: se clona la Camera del fantasma sin sus scripts.")]
+    [SerializeField] private GameObject possessionCameraTemplate;
     [SerializeField] private ActionWheelUI actionWheel;
 
-    [Header("Detección de músicos")]
-    [SerializeField] private float possessRange = 8f;
-    [Tooltip("Radio del SphereCast: más grande = más fácil apuntar")]
-    [SerializeField] private float aimRadius = 0.4f;
-    [Tooltip("Capas que bloquean/detectan la mirada (incluye la capa de los músicos y las paredes)")]
-    [SerializeField] private LayerMask aimMask = ~0;
+    [Header("Detección de músicos (tu sistema de interacción)")]
+    [Tooltip("El InteractionDetector (CompleteTaggedDetector). Si lo dejas vacío se busca en los hijos de este objeto. " +
+             "Su Filter debe aceptar a los músicos. El resaltado (HighlighterScript) y el texto (InteractTextScript) " +
+             "funcionan solos porque escuchan a este detector.")]
+    [SerializeField] private CompleteTaggedDetector interactionDetector;
 
     [Header("Efecto al poseer (solo lo ve quien posee)")]
     [Tooltip("Global Volume con el efecto de posesión. Déjalo ACTIVO en la escena: el script le pone peso 0 al empezar, " +
@@ -36,6 +37,13 @@ public class GhostController : MonoBehaviour
     [SerializeField] private float maxYaw = 70f;
     [Tooltip("X = límite mirando hacia arriba (negativo), Y = límite mirando hacia abajo")]
     [SerializeField] private Vector2 pitchLimits = new Vector2(-35f, 45f);
+    [Tooltip("Solo con Cinemachine. Prioridad de la vcam clonada: debe ser MAYOR que la de la vcam del fantasma (10 en tu captura).")]
+    [SerializeField] private int possessionCameraPriority = 20;
+    [Tooltip("Solo con Cinemachine.\n" +
+             "Desmarcado: la cámara va en los ojos del músico y la giras con el ratón. Se quitan Follow / Hard Look At " +
+             "(control de posición y rotación) y se conserva todo lo demás: lente, ruido Perlin, extensiones...\n" +
+             "Marcado: se conserva TODO, también Follow / Hard Look At, y la cámara sigue al músico igual que la del fantasma te sigue a ti.")]
+    [SerializeField] private bool followMusician = false;
 
     [Header("Rueda de acciones")]
     [Tooltip("Hasta dónde se acumula el movimiento del ratón al apuntar en la rueda (píxeles)")]
@@ -79,8 +87,10 @@ public class GhostController : MonoBehaviour
     public Musician TargetedMusician { get; private set; }
 
     private GhostEntity ghost;
-    private Transform camTransform;            // cámara del fantasma
+    private Collider detectorCollider;         // collider trigger del InteractionDetector
     private Transform possessionCamTransform;  // cámara que hace de ojos del músico
+    private GameObject possessionRoot;         // raíz del clon de la cámara de posesión
+    private CinemachineCamera possessionVcam;  // != null -> estamos en modo Cinemachine
     private float volumeTargetWeight;          // 0 = efecto apagado, 1 = encendido
 
     private float yaw;
@@ -128,21 +138,23 @@ public class GhostController : MonoBehaviour
             enabled = false;
             return;
         }
-        camTransform = ghostCamera.transform;
 
-        // Cámara de posesión:
-        //  - vacía (o la misma que la del fantasma) -> clon de la cámara del fantasma
-        //  - prefab (no está en la escena)          -> se instancia
-        //  - objeto de la escena                    -> se usa tal cual
-        if (possessionCamera == null || possessionCamera == ghostCamera)
-            possessionCamera = CreatePossessionCamera(ghostCamera.gameObject, stripScripts: true);
-        else if (!possessionCamera.gameObject.scene.IsValid())
-            possessionCamera = CreatePossessionCamera(possessionCamera.gameObject, stripScripts: false);
-        possessionCamTransform = possessionCamera.transform;
-        possessionCamera.gameObject.SetActive(false); // solo se activa mientras posees
+        // Cámara de posesión: clon de la plantilla que arrastraste (o de la cámara del fantasma si no hay plantilla)
+        if (!SetupPossessionCamera())
+        {
+            enabled = false;
+            return;
+        }
 
         // El efecto de posesión empieza apagado
         if (possessionVolume != null) possessionVolume.weight = 0f;
+
+        // Detector de interacción: el asignado o, si no, el que cuelgue de este objeto (el InteractionDetector)
+        if (interactionDetector == null) interactionDetector = GetComponentInChildren<CompleteTaggedDetector>(true);
+        if (interactionDetector != null)
+            detectorCollider = interactionDetector.GetComponent<Collider>();
+        else
+            Debug.LogWarning("GhostController: no hay ningún CompleteTaggedDetector (InteractionDetector), no podrás poseer.", this);
 
         if (actionWheel == null)
             Debug.LogWarning("GhostController: falta asignar el ActionWheelUI, no podrás usar acciones.", this);
@@ -197,16 +209,35 @@ public class GhostController : MonoBehaviour
         }
     }
 
+    // El objetivo lo decide tu CompleteTaggedDetector (el que resalta y muestra el texto); aquí solo lo traducimos a Musician.
+    // El objetivo puede ser un collider hijo del músico, por eso se busca el Musician hacia arriba.
     private Musician FindTargetedMusician()
     {
-        Transform t = camTransform;
-        if (Physics.SphereCast(t.position, aimRadius, t.forward, out RaycastHit hit,
-                               possessRange, aimMask, QueryTriggerInteraction.Ignore))
+        if (interactionDetector == null || !interactionDetector.HasTarget()) return null;
+
+        Musician m = interactionDetector.GetTarget().GetComponentInParent<Musician>();
+        return (m != null && m.IsAvailable && !m.IsPossessed) ? m : null;
+    }
+
+    // Mientras posees, el detector se apaga: no detecta nada y se quita el resaltado y el texto del último objetivo.
+    // Como no tiene objetivo, la mano (Interactor) tampoco puede interactuar con nada.
+    private void SetInteractionActive(bool active)
+    {
+        if (interactionDetector == null) return;
+
+        if (!active)
         {
-            Musician m = hit.collider.GetComponentInParent<Musician>();
-            if (m != null && m.IsAvailable && !m.IsPossessed) return m;
+            interactionDetector.SetLocked(true);
+            interactionDetector.NullTarget();                  // olvida el objetivo y lo que hubiera dentro del trigger
+            interactionDetector.onTargetChanged.Invoke(null);  // el Highlighter y el InteractText se limpian solos
+            if (detectorCollider != null) detectorCollider.enabled = false;
         }
-        return null;
+        else
+        {
+            // Al reactivar el trigger, Unity vuelve a avisar de todo lo que ya tenga dentro
+            if (detectorCollider != null) detectorCollider.enabled = true;
+            interactionDetector.SetLocked(false);
+        }
     }
 
     // ───────────────────────── Modo poseído ─────────────────────────
@@ -320,7 +351,7 @@ public class GhostController : MonoBehaviour
             Debug.LogWarning($"{musician.name} no tiene Camera First Person Point asignado: la cámara se coloca en su pivote.", musician);
 
         // Cambiamos a la cámara del músico: la colocamos en sus ojos y apagamos la del fantasma
-        possessionCamTransform.SetParent(musician.CameraPoint, false);
+        AttachPossessionCamera(musician);
         //Desactivar componentes propios(camara,player input en componentactivator.deactivate...)
         //Activar componentes de musician(en componentactivator.activate... encontrar en Musician.GetcomponentInchildren<ComponentActivator>() )
         possessionCamTransform.localPosition = Vector3.zero;
@@ -334,6 +365,7 @@ public class GhostController : MonoBehaviour
         if (actionWheel != null) actionWheel.LoadActions(musician.availableActions);
 
         TargetedMusician = null;
+        SetInteractionActive(false);
         SetGhostPresence(false);
     }
 
@@ -350,39 +382,113 @@ public class GhostController : MonoBehaviour
         SetPossessionEffect(false);
         possessionCamTransform.SetParent(transform, false);
 
+        SetInteractionActive(true);
         SetGhostPresence(true);
     }
 
     // Intercambia qué cámara se ve. También se apaga el AudioListener del fantasma para no tener dos a la vez.
     private void SetActiveCamera(bool possessing)
     {
+        // Con Cinemachine hay UNA sola Camera real (la del Brain) y no se apaga: lo que cambia es qué vcam está "live"
+        // (la clonada tiene más prioridad, así que el Brain hace la transición hacia ella al activarla).
+        if (possessionVcam != null)
+        {
+            possessionRoot.SetActive(possessing);
+            return;
+        }
+
         ghostCamera.enabled = !possessing;
 
         AudioListener ghostListener = ghostCamera.GetComponent<AudioListener>();
         if (ghostListener != null) ghostListener.enabled = !possessing;
 
-        possessionCamera.gameObject.SetActive(possessing);
+        possessionRoot.SetActive(possessing);
     }
 
-    // Crea la cámara de posesión CLONANDO un GameObject de cámara (la del fantasma o un prefab custom).
-    // Al clonar el objeto entero se copian TODOS sus componentes, incluido el de URP/HDRP donde viven el
-    // post-procesado, la volume mask, el renderer, etc. (Camera.CopyFrom no copia nada de eso).
-    private Camera CreatePossessionCamera(GameObject source, bool stripScripts)
+    // Prepara la cámara de posesión a partir de la plantilla del inspector. Se CLONA el objeto entero (hijos y todos
+    // sus componentes), así que queda igual que el original. Devuelve false si la plantilla no sirve.
+    private bool SetupPossessionCamera()
     {
-        // Se instancia dentro de un contenedor inactivo para que no se ejecute el Awake/OnEnable de los scripts clonados
+        CinemachineCamera templateVcam = possessionCameraTemplate != null
+            ? possessionCameraTemplate.GetComponentInChildren<CinemachineCamera>(true)
+            : null;
+
+        if (templateVcam != null)
+        {
+            // 1) Cinemachine: se clona la vcam. La Camera real (la del Brain) no se toca.
+            possessionRoot = InstantiateDetached(possessionCameraTemplate);
+            possessionVcam = possessionRoot.GetComponentInChildren<CinemachineCamera>(true);
+            possessionVcam.Priority.Enabled = true;
+            possessionVcam.Priority.Value = possessionCameraPriority;
+
+            if (!followMusician) RemoveBodyAndAim(possessionRoot);
+        }
+        else
+        {
+            // 2) Camera normal (o sin plantilla: se clona la del fantasma sin sus scripts)
+            GameObject source = possessionCameraTemplate != null ? possessionCameraTemplate : ghostCamera.gameObject;
+            possessionRoot = InstantiateDetached(source);
+            if (possessionCameraTemplate == null) StripClonedCamera(possessionRoot);
+
+            if (possessionRoot.GetComponentInChildren<Camera>(true) == null)
+            {
+                Debug.LogError("GhostController: la plantilla de cámara no tiene ninguna Camera ni Cinemachine Camera.", this);
+                Destroy(possessionRoot.transform.parent.gameObject);
+                return false;
+            }
+        }
+
+        // Inactiva hasta que poseas (así no hay dos AudioListener ni dos cámaras compitiendo)
+        GameObject holder = possessionRoot.transform.parent.gameObject;
+        possessionRoot.SetActive(false);
+        possessionRoot.transform.SetParent(transform, false);
+        Destroy(holder);
+
+        possessionCamTransform = possessionRoot.transform;
+        return true;
+    }
+
+    // Instancia el clon DENTRO de un contenedor inactivo, para que no se ejecuten el Awake/OnEnable de los
+    // scripts clonados mientras lo preparamos.
+    private static GameObject InstantiateDetached(GameObject source)
+    {
         GameObject holder = new GameObject("~PossessionCameraHolder");
         holder.SetActive(false);
 
         GameObject go = Instantiate(source, holder.transform);
         go.name = "PossessionCamera";
         go.tag = "Untagged"; // que no compita con Camera.main
-        if (stripScripts) StripClonedCamera(go);
+        return go;
+    }
 
-        go.SetActive(false); // inactivo hasta que poseas (así no hay dos AudioListener a la vez)
-        go.transform.SetParent(transform, false);
-        Destroy(holder);
+    // Modo "ojos del músico": se quita el control de posición y de rotación (Follow, Hard Look At...) para que la
+    // cámara vaya en los ojos del músico. Se conserva el resto: lente, ruido Perlin, extensiones, etc.
+    private static void RemoveBodyAndAim(GameObject root)
+    {
+        foreach (CinemachineComponentBase c in root.GetComponentsInChildren<CinemachineComponentBase>(true))
+        {
+            if (c == null) continue;
+            if (c.Stage == CinemachineCore.Stage.Body || c.Stage == CinemachineCore.Stage.Aim)
+                DestroyImmediate(c);
+        }
+    }
 
-        return go.GetComponent<Camera>();
+    // Coloca la cámara de posesión en el músico que acabas de poseer
+    private void AttachPossessionCamera(Musician musician)
+    {
+        if (possessionVcam != null && followMusician)
+        {
+            // La vcam conserva su Follow / Look At, pero ahora apuntando al músico
+            var target = possessionVcam.Target;
+            target.TrackingTarget = musician.CameraPoint;
+            target.LookAtTarget = musician.CameraPoint;
+            possessionVcam.Target = target;
+        }
+        else
+        {
+            // Ojos del músico: la cámara cuelga de su punto de cámara
+            possessionCamTransform.SetParent(musician.CameraPoint, false);
+        }
     }
 
     // Deja solo lo necesario para renderizar: fuera hijos y fuera los scripts de gameplay de la cámara original
@@ -406,8 +512,8 @@ public class GhostController : MonoBehaviour
     // ───────────────────────── Efecto de posesión (Global Volume) ─────────────────────────
 
     // Un Volume solo afecta a lo que renderiza la máquina donde está, así que en red lo ve únicamente quien posee
-    // (el director y los demás no). Y como al poseer la cámara del fantasma se apaga, el efecto solo se ve
-    // a través de la cámara del músico, nunca desde la vista libre del fantasma.
+    // (el director y los demás no). Y solo está encendido mientras posees, así que nunca se ve
+    // desde la vista libre del fantasma.
     private void SetPossessionEffect(bool on)
     {
         volumeTargetWeight = (on && ghost.IsLocallyControlled) ? 1f : 0f;
