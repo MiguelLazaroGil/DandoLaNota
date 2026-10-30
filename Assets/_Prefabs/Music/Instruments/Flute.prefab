@@ -2170,6 +2170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6006506961788243405}
   - component: {fileID: 5105331145535281787}
+  - component: {fileID: 596686141144252216}
   - component: {fileID: 2756010028136629099}
   - component: {fileID: 5481928044501450488}
   - component: {fileID: 5486922650758005024}
@@ -2188,7 +2189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2516464611213454074}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -3.802, z: 1.05}
   m_LocalScale: {x: 0.027194861, y: 0.027194861, z: 0.027194861}
   m_ConstrainProportionsScale: 0
@@ -2346,6 +2347,33 @@ MonoBehaviour:
   grabRotationOffset: {x: 352.9013, y: 0.000021623418, z: -0.0000026721918}
   myColliders:
   - {fileID: 5481928044501450488}
+--- !u!114 &596686141144252216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516464611213454074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 4255044431
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &2756010028136629099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2358,6 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef524d447e52f482093db98ca5629d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractivePiano
+  ShowTopMostFoldoutHeaderGroup: 1
   pianoTransform: {fileID: 0}
   currentInstrument: 1
   trumpet:
