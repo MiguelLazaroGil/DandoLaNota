@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 931482968
+  GlobalObjectIdHash: 1918186763
   InScenePlacedSourceGlobalObjectIdHash: 1918186763
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 6243431674722296007}
   - component: {fileID: 3875414757837175719}
   - component: {fileID: 101974747550120204}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11595,6 +11595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7908dde87c59c40b75b0440fec6f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostEntity
+  ShowTopMostFoldoutHeaderGroup: 1
   maxEnergy: 100
   currentEnergy: 50
   baseRegenRate: 5

@@ -151,7 +151,7 @@ public class LobbyPlayerState : NetworkBehaviour
 
     public void ResolveRolesBeforeStart()
     {
-        if (!IsServer) return;
+        if (!IsServer && !IsHost) return;
 
         List<int> directorIndices = new List<int>();
 

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private OrchestraAudioManager orchestraAudioManager;
     [SerializeField] private MusicClockFMOD musicClock;
-    [SerializeField] private RhythmTracker rhythmTracker;
+    [SerializeField] public RhythmTracker rhythmTracker;
 
     public ModoJuego ModoActual => modoJuego;
 

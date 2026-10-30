@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NetworkMusicScoreBridge : NetworkBehaviour
 {
+    public static NetworkMusicScoreBridge Instance { get; private set; }
     [SerializeField] private MusicScoreManager localScoreManager;
 
     // Variables de red sincronizadas automáticamente del Servidor a todos los Clientes
@@ -11,8 +12,15 @@ public class NetworkMusicScoreBridge : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+
+        Instance = this;
         NetRhythm.OnValueChanged += (prev, current) => ApplyToLocalScore();
         NetQuality.OnValueChanged += (prev, current) => ApplyToLocalScore();
+    }
+    public override void OnNetworkDespawn()
+    {
+        base.OnNetworkDespawn();
+        Instance = null;
     }
 
     private void Update()
@@ -34,7 +42,6 @@ public class NetworkMusicScoreBridge : NetworkBehaviour
             localScoreManager.ReceiveDirectorInput(rhythm, quality);
         }
     }
-
     private void ApplyToLocalScore()
     {
         // En los clientes que no son el servidor, forzamos la lectura del estado sincronizado

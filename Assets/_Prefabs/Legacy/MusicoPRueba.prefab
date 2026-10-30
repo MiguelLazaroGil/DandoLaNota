@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3363186957302268738}
   - component: {fileID: 543124616452454630}
   - component: {fileID: 5012463044455068660}
+  - component: {fileID: -6884019927609767582}
   - component: {fileID: 2720527062132388004}
   - component: {fileID: 5750214707555998737}
   m_Layer: 0
@@ -146,6 +147,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6884019927609767582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637672224811067649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 1315115821
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &2720527062132388004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Musician
+  ShowTopMostFoldoutHeaderGroup: 1
   currentState: 0
+  quality: {fileID: 0}
   cameraFirstPersonPoint: {fileID: 1716705004971792996}
   sheetMusicTransform: {fileID: 0}
   musicianAudio: {fileID: 5750214707555998737}
@@ -169,7 +199,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
   - {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
   - {fileID: 11400000, guid: eafc5f0643f970c42963348d17553b55, type: 2}
-  IsAvailable: 1
 --- !u!82 &5750214707555998737
 AudioSource:
   m_ObjectHideFlags: 0

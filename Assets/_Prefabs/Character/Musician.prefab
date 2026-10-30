@@ -4243,6 +4243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Musician
+  ShowTopMostFoldoutHeaderGroup: 1
   currentState: 0
   quality: {fileID: 521949473840394162}
   cameraFirstPersonPoint: {fileID: 0}
@@ -4255,7 +4256,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
   - {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
   - {fileID: 11400000, guid: eafc5f0643f970c42963348d17553b55, type: 2}
-  currentAction: {fileID: 0}
 --- !u!114 &521949473840394162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,7 +4795,6 @@ GameObject:
   - component: {fileID: 2871138353081463067}
   - component: {fileID: 6839336420489282278}
   - component: {fileID: 1707437143234220429}
-  - component: {fileID: 111481394360765849}
   m_Layer: 0
   m_Name: Musician
   m_TagString: Untagged
@@ -4835,7 +4834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2505339516
+  GlobalObjectIdHash: 1339508328
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -4957,24 +4956,6 @@ MonoBehaviour:
   - {fileID: 6927101529687689086}
   - {fileID: 3987847686522865892}
   - {fileID: 2821909868402086139}
---- !u!114 &111481394360765849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8537963215254219450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd8151bb202a694db87a1bfb41083d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisibilityController
-  ShowTopMostFoldoutHeaderGroup: 1
-  playerCamera: {fileID: 1744348598411068298}
-  ghostLayerName: Ghost
-  lobbyScene:
-    sceneAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    index: 2
 --- !u!1 &8590711853121482613
 GameObject:
   m_ObjectHideFlags: 0

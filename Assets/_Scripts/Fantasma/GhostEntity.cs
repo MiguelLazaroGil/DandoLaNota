@@ -1,49 +1,47 @@
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime;
+using Unity.Netcode;
 using UnityEngine;
 
-public class GhostEntity : MonoBehaviour
+public class GhostEntity : NetworkBehaviour
 {
-
     [Header("Energía / Maná")]
     public float maxEnergy = 100f;
     public float currentEnergy = 50f;
     public float baseRegenRate = 5f;
-    public float regenScalingPerMinute = 3f; // Va en aumento para que el director acabe perdiendo
+    public float regenScalingPerMinute = 3f;
     public float possessInitialCost = 20f;
 
     [Header("Tiempos y Cooldowns")]
-    public float exitCastTime = 1.5f;     // Tarda un tiempo en salir voluntariamente
-    public float stunCooldownTime = 8f;   // Cooldown cuando el director te golpea
+    public float exitCastTime = 1.5f;
+    public float stunCooldownTime = 8f;
 
     public Musician CurrentMusician { get; private set; }
     public bool IsStunned { get; private set; }
     public bool IsExiting { get; private set; }
 
-    // Acción continua que se está ejecutando ahora mismo (null si no hay ninguna)
     public SabotageAction ActiveContinuousAction => activeContinuousAction;
 
-    // Eventos para que otros scripts (GhostController, UI, audio...) reaccionen
-    // sin necesidad de SendMessage.
     public event System.Action<Musician> MusicianPossessed;
     public event System.Action<Musician> MusicianLeft;
 
     private SabotageAction activeContinuousAction;
     private float matchTime;
 
+    private bool IsNetworkActive => NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening && IsSpawned;
+
     private void Update()
     {
+        // En multijugador, solo la máquina que controla a este fantasma ejecuta su Update local
+        if (IsNetworkActive && !IsOwner) return;
+
         matchTime += Time.deltaTime;
 
-        // Regenerar energía (aumenta con el tiempo de partida)
         if (!IsStunned && activeContinuousAction == null)
         {
             float currentRegen = baseRegenRate + (regenScalingPerMinute * (matchTime / 60f));
             currentEnergy = Mathf.Min(maxEnergy, currentEnergy + currentRegen * Time.deltaTime);
         }
 
-        // Compatibilidad: OnUpdateAction está marcado como obsoleto, pero si alguna acción
-        // antigua lo sigue usando, se llama igual. Si ya no lo usa ninguna, puedes borrar este bloque.
         if (activeContinuousAction != null && CurrentMusician != null)
         {
 #pragma warning disable CS0618
@@ -67,92 +65,92 @@ public class GhostEntity : MonoBehaviour
 
         CurrentMusician = target;
         target.PossessingGhost = this;
-        target.SetPlayingState(Musician.PlayingState.PlayingWell); // Empieza fingiendo que toca bien
+
+        if (IsNetworkActive)
+        {
+            target.SetPossessorClientId(NetworkManager.Singleton.LocalClientId);
+        }
+
+        target.SetPlayingState(Musician.PlayingState.PlayingWell);
 
         MusicianPossessed?.Invoke(target);
         return true;
     }
 
-    // Devuelve true si la acción se ha ejecutado / iniciado
     public bool ExecuteSabotage(SabotageAction action)
     {
         if (action == null || CurrentMusician == null || IsExiting) return false;
 
+        int actionIndex = CurrentMusician.availableActions.IndexOf(action);
+        if (actionIndex == -1) return false;
+
         if (!action.isContinuous)
         {
             if (!ConsumeEnergy(action.energyCost)) return false;
-            action.ApplySabotagge(CurrentMusician);
+
+            CurrentMusician.StartSabotage(actionIndex);
             return true;
         }
 
-        if (activeContinuousAction == action) return true; // Ya estaba activa
+        if (activeContinuousAction == action) return true;
 
-        StopContinuousAction(); // Solo puede haber una acción continua a la vez
+        StopContinuousAction();
         activeContinuousAction = action;
-        action.ApplySabotagge(CurrentMusician);
+
+        CurrentMusician.StartSabotage(actionIndex);
         return true;
     }
 
-    // Para la acción continua activa (el controller lo llama al volver a elegirla en la rueda,
-    // y se llama solo al salir del músico)
     public void StopContinuousAction()
     {
-        if (activeContinuousAction == null) return;
+        if (activeContinuousAction == null || CurrentMusician == null) return;
 
-        SabotageAction action = activeContinuousAction;
+        int actionIndex = CurrentMusician.availableActions.IndexOf(activeContinuousAction);
+        if (actionIndex != -1)
+        {
+            CurrentMusician.StopSabotage(actionIndex);
+        }
+
         activeContinuousAction = null;
-
-        action.StopSabotagge(CurrentMusician);
-
-
-#pragma warning disable CS0618 // Compatibilidad con acciones antiguas que aún sobrescriban StopAction
-        action.StopAction(this, CurrentMusician);
-#pragma warning restore CS0618
-
     }
 
-    // Salir anticipadamente (tarda un tiempo, si el director te da mientras sales, estás cooked)
     public void RequestVoluntaryExit()
     {
         if (CurrentMusician != null && !IsExiting)
-            StartCoroutine(VoluntaryExitRoutine()); // perdón miguel
+            StartCoroutine(VoluntaryExitRoutine());
     }
 
-    // perdon miguel esto me lo ha hecho el chati, yo no se corrutinas ni delayed actions :c
-    // (Una corrutina es una función que se puede "pausar": el yield return de abajo
-    //  espera exitCastTime segundos y luego continúa por donde iba.)
     private IEnumerator VoluntaryExitRoutine()
     {
         IsExiting = true;
         Debug.Log("Saliendo del músico... ¡No dejes que el director te golpee!");
         yield return new WaitForSeconds(exitCastTime);
 
-        if (CurrentMusician != null) // Si no nos golpeó el director durante la espera  // MIG: esto sobra poque Paras todas las corrutinas cuando te golpean, asi que esto no se ejecuta
+        if (CurrentMusician != null)
         {
-            CurrentMusician.RestoreMusician(); //esto es lo que hará que el musico recupere su buena musica etc
-            LeaveMusician(); //esto no afectará al musico
+            CurrentMusician.RestoreMusician();
+            LeaveMusician();
         }
         IsExiting = false;
     }
 
-    // Cuando el director te pilla y te golpea
     public void GetHitByConductor()
     {
-        StopAllCoroutines(); // Cancela tu huida si estabas intentando salir
+        StopAllCoroutines();
         IsExiting = false;
-        LeaveMusician(); 
+        LeaveMusician();
         StartCoroutine(StunCooldownRoutine());
     }
 
-    private void LeaveMusician() //ya no accede al musico, todo lo que hacía ahora lo hace el musico en si mismo
+    private void LeaveMusician()
     {
         if (CurrentMusician == null) return;
 
         Musician oldMusician = CurrentMusician;
         CurrentMusician = null;
-        MusicianLeft?.Invoke(oldMusician);
+        activeContinuousAction = null;
 
-        
+        MusicianLeft?.Invoke(oldMusician);
     }
 
     private IEnumerator StunCooldownRoutine()

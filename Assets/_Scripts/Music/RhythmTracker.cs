@@ -22,7 +22,7 @@ public class RhythmTracker : MonoBehaviour
     private float toleranciaTiempo = 0.18f;
     [Header("Puntuacion musical")]
     [SerializeField] private MusicScoreManager musicScoreManager;
-    [SerializeField] private NetworkMusicScoreBridge scoreBridge;
+ 
 
     [Tooltip("Desviacion relativa respecto al BPM ideal a partir de la cual la calidad sera 0. Por ejemplo, 0.5 significa un 50%.")]
     [SerializeField, Range(0.05f, 2f)]
@@ -130,6 +130,53 @@ public class RhythmTracker : MonoBehaviour
     private double comienzoPausa;
 
     public bool SeguimientoActivo => seguimientoActivo;
+
+    private void Start()
+    {
+        if(GameManager.Instance !=null)
+        {
+            GameManager.Instance.rhythmTracker = this;
+            //buscar pocho el level manager
+            var parentObj= GameManager.Instance.transform.parent;
+            if(parentObj != null)
+            {
+                LevelManager temp= parentObj.GetComponentInChildren<LevelManager>();
+                if(temp != null)
+                {
+                    temp.rhythmTracker= this;
+                }
+            }
+            else
+            {
+                LevelManager temp = FindAnyObjectByType<LevelManager>();
+                if( temp != null)
+                {
+                    temp.rhythmTracker= this;
+                }
+            }
+        }
+        
+        if (musicClockFMOD == null)
+        {
+            var temp = OrchestraAudioManager.Instance;
+            if( temp != null)
+            {
+                var temp2 =temp.gameObject.GetComponent<MusicClockFMOD>();
+                if( temp != null)
+                {
+                    musicClockFMOD = temp2;
+                }
+            }
+            else
+            {
+                MusicClockFMOD temp2 = FindAnyObjectByType<MusicClockFMOD>();
+                if ( temp2 != null)
+                {
+                    musicClockFMOD = temp2;
+                }
+            }
+        }
+    }
     private void LateUpdate()
     {
         if (seguimientoPausado || Time.timeScale == 0f)
@@ -497,9 +544,9 @@ public class RhythmTracker : MonoBehaviour
                 factorCorreccion
             );
             // --- CAMBIO PARA MULTIJUGADOR ---
-            if (scoreBridge != null)
+            if (NetworkMusicScoreBridge.Instance != null)
             {
-                scoreBridge.SubmitDirectorInputRpc(ritmoEnviado, calidadNormalizada);
+                NetworkMusicScoreBridge.Instance.SubmitDirectorInputRpc(ritmoEnviado, calidadNormalizada);
             }
             else if (musicScoreManager != null)
             {

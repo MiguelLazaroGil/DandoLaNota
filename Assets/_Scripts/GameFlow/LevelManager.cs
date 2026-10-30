@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
     [Header("Managers")]
     [SerializeField] private OrchestraAudioManager orchestraAudioManager;
     [SerializeField] private MusicClockFMOD musicClock;
-    [SerializeField] private RhythmTracker rhythmTracker;
+    [SerializeField] public RhythmTracker rhythmTracker;
     [SerializeField] private AudienceManager audienceManager;
     [SerializeField] private MusicScoreManager musicScoreManager;
     [Header("Inicio de la canción")]
