@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 6659245262829969751}
   - component: {fileID: 2343760769019352952}
   - component: {fileID: 7251488542696278002}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HairType5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 605861754178402896}
   - component: {fileID: 6631891006071682953}
   - component: {fileID: 6701753457227630153}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HairType1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RolyPoly
   _rb: {fileID: 2388654497685550282}
-  _uprightJointTargetRot: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
+  _uprightJointTargetRot: {x: -0.00000003090862, y: -0.70710677, z: -0.70710677, w: 0.00000003090862}
   offsetRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   _uprightJointSpringStrength: 8
   _uprightJointSpringDamper: 6
@@ -2246,7 +2246,7 @@ GameObject:
   - component: {fileID: 8465560526047309974}
   - component: {fileID: 2427799348556636766}
   - component: {fileID: 6108098935040410448}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HairType2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2864,7 +2864,7 @@ GameObject:
   - component: {fileID: 8782646894559995784}
   - component: {fileID: 8076456558115801803}
   - component: {fileID: 3891487638873339340}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HairType4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3679,7 +3679,7 @@ GameObject:
   - component: {fileID: 7791060578099134475}
   - component: {fileID: 6189403388545557027}
   - component: {fileID: 6778417344581645112}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HairType3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4430,7 +4430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6528391773427444624}
   - component: {fileID: 4423893149348024061}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4608,7 +4608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491243905138428480}
   - component: {fileID: 7808417681351708751}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Ears
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5053,7 +5053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6638048341250846100}
   - component: {fileID: 1318538906656877702}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5326,7 +5326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8900816061314572635}
   - component: {fileID: 390145939203682835}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5862,15 +5862,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5020154
+      value: 2.0120153
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8583556
+      value: 1.8883556
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8342404
+      value: -7.7657595
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5910,7 +5910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: field of view
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_FocalLength
