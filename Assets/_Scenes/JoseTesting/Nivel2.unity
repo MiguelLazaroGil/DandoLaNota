@@ -251,6 +251,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &113912894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2787227341544917830, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &120429212
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +790,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252620528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &280528386
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +851,8 @@ MonoBehaviour:
   orchestraAudioManager: {fileID: 1109185333}
   musicClock: {fileID: 1109185332}
   rhythmTracker: {fileID: 519149538}
+  playerInput: {fileID: 0}
+  framesIgnorarMirada: 2
 --- !u!1 &296125816
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,14 +917,16 @@ MonoBehaviour:
   minUtilityThreshold: 5
   categoryCooldownDuration: 10
   minCategoryUtilityMultiplier: 0.1
+  automaticActionsEnabled: 1
+  maxSimultaneousGhosts: 2
   registeredEnemies:
-  - {fileID: 1249307151}
-  - {fileID: 1249307150}
-  - {fileID: 1249307149}
-  - {fileID: 1249307148}
-  - {fileID: 1249307147}
-  - {fileID: 1249307146}
-  - {fileID: 1249307145}
+  - {fileID: 113912894}
+  - {fileID: 1146784287}
+  - {fileID: 252620528}
+  - {fileID: 594112659}
+  - {fileID: 1548155395}
+  - {fileID: 1110410691}
+  - {fileID: 1914310173}
   - {fileID: 1249307144}
 --- !u!1001 &519149535
 PrefabInstance:
@@ -942,10 +968,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheaterPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3214922725189106999, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.86444354
+      objectReference: {fileID: 0}
     - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 280528388}
+    - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Nivel2
+      objectReference: {fileID: 0}
     - target: {fileID: 3926918970649556215, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1006,6 +1040,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4907610607929295167, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907610607929295167, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3750007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907610607929295167, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5210051110670055074, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1588603170
@@ -1014,6 +1060,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 280528388}
+    - target: {fileID: 5220019415976582889, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Nivel2
+      objectReference: {fileID: 0}
     - target: {fileID: 5338634095187940375, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1557790156
@@ -1065,6 +1115,10 @@ PrefabInstance:
     - target: {fileID: 8191795178106979082, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2572260278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653752366110433617, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 0.67999935
       objectReference: {fileID: 0}
     - target: {fileID: 9025951555122268754, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -1216,6 +1270,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &594112659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5372490009010652841, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &753000985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1529,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e33d4ad0e8ccd499735faddc4bd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrchestraAudioManager
+--- !u!114 &1110410691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 352521589450278667, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1146784287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5949076385692720370, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1001 &1249307143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1603,6 +1690,10 @@ PrefabInstance:
     - target: {fileID: 1622202976818050400, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000017881393
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622202976818050400, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52444375
       objectReference: {fileID: 0}
     - target: {fileID: 1622202976818050400, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2407,84 +2498,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
 --- !u!114 &1249307144 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5108332306950242637, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307145 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9128193742830663228, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3788653808725352267, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307147 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2930163782049095185, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8862665318606839529, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307149 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8517185247199945486, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307150 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7133479022456423602, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1249307143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!114 &1249307151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1647842937341268742, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8544482152656247053, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1249307143}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2814,6 +2828,17 @@ Transform:
   - {fileID: 120429213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548155395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1790849884003632721, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &1665108393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3214,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811331701}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1914310173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5682895996897144444, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1249307143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &1924002831
 GameObject:
   m_ObjectHideFlags: 0

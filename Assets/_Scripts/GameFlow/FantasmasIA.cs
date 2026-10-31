@@ -1,272 +1,406 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
+/// <summary>
+/// IA de sabotajes para single player: selecciona acciones, marca musicos
+/// y recibe correcciones. Es independiente del tutorial y del input.
+/// </summary>
 public class FantasmasIA : MonoBehaviour
 {
+    [Header("Periodo de gracia")]
+    [SerializeField, Min(0f)] private float initialQuietTime = 5f;
 
-    [Header("--- PERIODO DE GRACIA ---")]
-    [Tooltip("Tiempo en segundos al inicio del nivel en el que NO se ejecutarán acciones.")]
-    [SerializeField] private float initialQuietTime = 5.0f;
-
-    [Header("--- ENERGÍA GLOBAL ---")]
+    [Header("Energia global")]
     [SerializeField] private float currentEnergy = 0f;
-    [SerializeField] private float maxEnergy = 100f;
+    [SerializeField, Min(1f)] private float maxEnergy = 100f;
     [SerializeField] private float initialEnergyRate = 2f;
     [SerializeField] private float energyGrowthRate = 0.05f;
 
-    [Header("--- MODO OLA / OVERDRIVE ---")]
-    [Tooltip("Porcentaje de energía máxima (0.8 a 1.0) necesario para activar la ola.")]
+    [Header("Overdrive")]
     [SerializeField, Range(0.8f, 1f)] private float overdriveTriggerPercentage = 0.95f;
-
-    [Tooltip("Multiplicador del tiempo de espera entre acciones durante la ola (ej. 0.3 = 70% más rápido).")]
-    [SerializeField] private float overdriveDelayMultiplier = 0.3f;
-
-    [Tooltip("Probabilidad de acciones consecutivas/ráfaga mientras dura la ola.")]
+    [SerializeField, Min(0.01f)] private float overdriveDelayMultiplier = 0.3f;
     [SerializeField, Range(0f, 1f)] private float overdriveConsecutiveChance = 0.6f;
-
-    [Tooltip("Nivel de energía al que termina la ola y el director vuelve al estado normal.")]
     [SerializeField] private float overdriveEndEnergyThreshold = 10f;
+    [SerializeField] private bool isOverdriveActive;
+    public bool IsOverdriveActive => isOverdriveActive;
 
-    // Estado interno del modo furia
-    [SerializeField,ReadOnly]
-    private bool isOverdriveActive = false;
-    public bool IsOverdriveActive => isOverdriveActive; // Útil si quieres conectar música o UI
+    [Header("Pacing")]
+    [SerializeField, Min(0.1f)] private float initialMinDelay = 3f;
+    [SerializeField, Min(0.01f)] private float absoluteMinDelay = 0.4f;
+    [SerializeField, Min(0f)] private float delayDecayRate = 0.02f;
+    [SerializeField, Min(0f)] private float randomDelayVariance = 1f;
 
-    [Header("--- PACING Y SEPARACIÓN TEMPORAL ---")]
-    [SerializeField] private float initialMinDelay = 3f;
-    [SerializeField] private float absoluteMinDelay = 0.4f;
-    [SerializeField] private float delayDecayRate = 0.02f;
-    [SerializeField] private float randomDelayVariance = 1.0f;
-
-    [Header("--- CONTROL DE RÁFAGAS Y REPETICIÓN ---")]
-    [Tooltip("Probabilidad (0-1) de ejecutar una acción en ráfaga inmediatamente después de otra.")]
+    [Header("Rafagas y repeticion")]
     [SerializeField, Range(0f, 1f)] private float consecutiveActionChance = 0.15f;
-    [Tooltip("Si es verdadero, impide que el MISMO enemigo ejecute dos acciones seguidas.")]
     [SerializeField] private bool preventSameEnemyConsecutive = true;
 
-    [Header("--- SELECCIÓN Y ALEATORIEDAD ---")]
-    [Tooltip("Probabilidad (0 a 1) de elegir una acción ponderada por utilidad (ruleta) en vez de escoger siempre la de mayor utilidad de forma estricta.")]
+    [Header("Seleccion por utilidad")]
     [SerializeField, Range(0f, 1f)] private float randomSelectionChance = 0.3f;
-
-    [Tooltip("Si la utilidad final cae por debajo de este umbral, la acción se descarta.")]
     [SerializeField] private float minUtilityThreshold = 5f;
-
-    [Header("--- PENALIZACIÓN GLOBAL POR TIPO DE ACCIÓN ---")]
-    [Tooltip("Tiempo (segundos) que tarda una categoría de acción en recuperar su utilidad normal tras usarse.")]
-    [SerializeField] private float categoryCooldownDuration = 10f;
-    [Tooltip("Multiplicador de utilidad inmediatamente después de usar la acción (ej: 0.1 = 10% de la utilidad normal).")]
+    [SerializeField, Min(0f)] private float categoryCooldownDuration = 10f;
     [SerializeField, Range(0f, 1f)] private float minCategoryUtilityMultiplier = 0.1f;
 
-    // Estado interno
+    [Header("Control reutilizable")]
+    [Tooltip("La IA sigue activa para recibir comandos cuando se desactiva el modo automatico.")]
+    [SerializeField] private bool automaticActionsEnabled = true;
+    [Tooltip("Limita cuantos musicos pueden estar marcados al mismo tiempo.")]
+    [SerializeField, Min(1)] private int maxSimultaneousGhosts = 3;
+
+    [Header("Musicos registrados")]
+    public List<Musician> registeredEnemies = new List<Musician>();
+
+    public bool AutomaticActionsEnabled => automaticActionsEnabled;
+    public event Action<Musician, SabotageAction> OnSabotajeEjecutado;
+    public event Action<Musician> OnMusicoCorregido;
+
     private float elapsedTime;
     private float actionTimer;
     private float targetDelay;
     private bool lastStepWasAction;
-
     private Musician lastEnemyWhoActed;
-
-    public List<Musician> registeredEnemies = new List<Musician>();
     private readonly Dictionary<Type, float> categoryLastUsedTime = new Dictionary<Type, float>();
 
-
+    private struct ActionCandidate
+    {
+        public Musician musician;
+        public GhostCorrectionTarget target;
+        public SabotageAction action;
+        public float utility;
+    }
 
     private void Start()
     {
         CalculateNextDelay();
     }
+
     private void Update()
     {
+        if (!automaticActionsEnabled || Time.timeScale == 0f)
+            return;
+
         float dt = Time.deltaTime;
         elapsedTime += dt;
+        float energyRate = initialEnergyRate + energyGrowthRate * elapsedTime;
+        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + energyRate * dt);
 
-        // Regeneración normal de energía
-        float effectiveEnergyRate = initialEnergyRate + (energyGrowthRate * elapsedTime);
-        currentEnergy = Mathf.Min(maxEnergy, currentEnergy + effectiveEnergyRate * dt);
-
-        // 1. CONTROL DE ENTRADA Y SALIDA DE OLA
         if (!isOverdriveActive && currentEnergy >= maxEnergy * overdriveTriggerPercentage)
-        {
             StartOverdrive();
-        }
         else if (isOverdriveActive && currentEnergy <= overdriveEndEnergyThreshold)
-        {
             EndOverdrive();
-        }
 
         if (elapsedTime < initialQuietTime) return;
 
         actionTimer += dt;
-
         if (actionTimer >= targetDelay)
-        {
             TryExecuteUtilityAction();
+    }
+
+    /// <summary>Detiene/reanuda solo la seleccion automatica. Sirve en tutorial y eventos guionizados.</summary>
+    public void SetAutomaticActionsEnabled(bool enabled)
+    {
+        automaticActionsEnabled = enabled;
+        CalculateNextDelay();
+    }
+
+    /// <summary>
+    /// Ejecuta exactamente UNA accion. Con musico=null elige UN musico aleatorio
+    /// valido; con musico asignado, solo ese. -1 elige la accion mas util.
+    /// No consume energia, no aplica cooldown y no reactiva la IA automatica.
+    /// Retorna el musico afectado o null si no pudo ejecutarse.
+    /// </summary>
+    public Musician EjecutarUnSabotaje(Musician musico = null, int indiceAccion = -1)
+    {
+        if (CountActiveGhosts() >= maxSimultaneousGhosts)
+        {
+            Debug.LogWarning("FantasmasIA: se alcanzo el limite de musicos saboteados.");
+            return null;
         }
+
+        if (musico != null)
+        {
+            if (!TryGetTarget(musico, out GhostCorrectionTarget target)) return null;
+            SabotageAction accion = ChooseManualAction(musico, indiceAccion);
+            return ApplySabotage(musico, target, accion, false) ? musico : null;
+        }
+
+        // Randomizado ENTRE candidatos elegibles: un solo musico, una sola accion.
+        List<Musician> valid = new List<Musician>();
+        foreach (Musician candidate in registeredEnemies)
+        {
+            if (TryGetTarget(candidate, out _) && ChooseManualAction(candidate, indiceAccion) != null)
+                valid.Add(candidate);
+        }
+        if (valid.Count == 0)
+        {
+            Debug.LogWarning("FantasmasIA: no hay musicos elegibles para sabotaje controlado.");
+            return null;
+        }
+
+        Musician selected = valid[UnityEngine.Random.Range(0, valid.Count)];
+        TryGetTarget(selected, out GhostCorrectionTarget selectedTarget);
+        SabotageAction selectedAction = ChooseManualAction(selected, indiceAccion);
+        return ApplySabotage(selected, selectedTarget, selectedAction, false) ? selected : null;
+    }
+
+    /// <summary>Alias para compatibilidad con las llamadas anteriores del tutorial.</summary>
+    public bool EjecutarSabotajeTutorial(Musician musico, int indiceAccion = -1)
+    {
+        return EjecutarUnSabotaje(musico, indiceAccion) != null;
+    }
+
+    /// <summary>Corrige el musico alcanzado por la batuta.</summary>
+    public bool CorregirMusico(GhostCorrectionTarget target)
+    {
+        if (target == null || !target.TieneFantasma) return false;
+        Musician musico = target.GetComponent<Musician>();
+        if (musico == null || !registeredEnemies.Contains(musico)) return false;
+        target.DesactivarSabotaje();
+
+        OnMusicoCorregido?.Invoke(musico);
+        return true;
+    }
+
+    public void RegisterMusician(Musician musico)
+    {
+        if (musico != null && !registeredEnemies.Contains(musico))
+            registeredEnemies.Add(musico);
+    }
+
+    public void UnregisterMusician(Musician musico)
+    {
+        registeredEnemies.Remove(musico);
+    }
+
+    private bool TryGetTarget(Musician musico, out GhostCorrectionTarget target)
+    {
+        target = null;
+        if (musico == null || !musico.IsAvailable || musico.availableActions == null)
+            return false;
+
+        target = musico.GetComponent<GhostCorrectionTarget>();
+        if (target == null || target.TieneFantasma) return false;
+
+        return true;
+    }
+
+    private SabotageAction ChooseManualAction(Musician musico, int index)
+    {
+        SabotageAction best = null;
+        float bestUtility = float.NegativeInfinity;
+        int current = 0;
+
+        foreach (SabotageAction action in musico.availableActions)
+        {
+            if (index >= 0 && current != index) { current++; continue; }
+            current++;
+            if (action == null || action.playerOnly) continue;
+            if (index >= 0) return action;
+
+            float utility = action.GetRawUtility();
+            if (utility > bestUtility)
+            {
+                bestUtility = utility;
+                best = action;
+            }
+        }
+        return best;
+    }
+
+    private void TryExecuteUtilityAction()
+    {
+        // Siempre reiniciar el temporizador, incluso si no hay candidatos.
+        CalculateNextDelay();
+        if (CountActiveGhosts() >= maxSimultaneousGhosts) return;
+
+        float burstChance = isOverdriveActive ? overdriveConsecutiveChance : consecutiveActionChance;
+        if (lastStepWasAction && UnityEngine.Random.value > burstChance)
+        {
+            lastStepWasAction = false;
+            return;
+        }
+
+        List<ActionCandidate> candidates = new List<ActionCandidate>();
+        float totalUtility = 0f;
+        foreach (Musician musician in registeredEnemies)
+        {
+            if (!TryGetTarget(musician, out GhostCorrectionTarget target)) continue;
+            if (preventSameEnemyConsecutive && musician == lastEnemyWhoActed) continue;
+
+            foreach (SabotageAction action in musician.availableActions)
+            {
+                if (action == null || action.playerOnly || action.energyCost > currentEnergy) continue;
+                float utility = action.GetRawUtility() * GetCategoryUtilityMultiplier(action.GetType());
+                if (utility < minUtilityThreshold) continue;
+                candidates.Add(new ActionCandidate { musician = musician, target = target, action = action, utility = utility });
+                totalUtility += utility;
+            }
+        }
+
+        if (candidates.Count == 0)
+        {
+            lastStepWasAction = false;
+            return;
+        }
+
+        ActionCandidate selected;
+        if (UnityEngine.Random.value < randomSelectionChance && totalUtility > 0f)
+        {
+            float choice = UnityEngine.Random.Range(0f, totalUtility);
+            selected = candidates[candidates.Count - 1];
+            foreach (ActionCandidate candidate in candidates)
+            {
+                choice -= candidate.utility;
+                if (choice <= 0f) { selected = candidate; break; }
+            }
+        }
+        else
+        {
+            selected = candidates[0];
+            foreach (ActionCandidate candidate in candidates)
+                if (candidate.utility > selected.utility) selected = candidate;
+        }
+
+        if (!ApplySabotage(selected.musician, selected.target, selected.action, true))
+        {
+            lastStepWasAction = false;
+            return;
+        }
+        lastStepWasAction = true;
+    }
+
+    private int CountActiveGhosts()
+    {
+        int count = 0;
+        foreach (Musician musician in registeredEnemies)
+            if (musician != null && musician.TryGetComponent(out GhostCorrectionTarget target) && target.TieneFantasma)
+                count++;
+        return count;
+    }
+
+    private bool ApplySabotage(Musician musician, GhostCorrectionTarget target, SabotageAction action, bool spendEnergy)
+    {
+        if (target == null || target.TieneFantasma || action == null) return false;
+        if (spendEnergy)
+        {
+            currentEnergy -= action.energyCost;
+            categoryLastUsedTime[action.GetType()] = Time.time;
+            lastEnemyWhoActed = musician;
+        }
+
+        action.ApplySabotagge(musician);
+        target.ActivarSabotaje(action);
+
+        OnSabotajeEjecutado?.Invoke(musician, action);
+        return true;
     }
 
     private void StartOverdrive()
     {
         isOverdriveActive = true;
         CalculateNextDelay();
-        Debug.Log("<b>[DIRECTOR]</b> ¡INICIO DE OLA INTENSA!");
+        Debug.Log("[FantasmasIA] INICIO OLA INTENSA");
     }
 
     private void EndOverdrive()
     {
         isOverdriveActive = false;
         CalculateNextDelay();
-        Debug.Log("<b>[DIRECTOR]</b> Fin de la ola. Volviendo a ritmo normal.");
-    }
-    // Estructura auxiliar para almacenar candidatos válidos
-    private struct ActionCandidate
-    {
-        public SabotageAction action;
-        public Musician enemy;
-        public float utility;
+        Debug.Log("[FantasmasIA] Fin de la ola");
     }
 
-    private void TryExecuteUtilityAction()
-    {
-        // ... (Mantener tu chequeo previo de ráfaga/timers) ...
-
-        float activeBurstChance = isOverdriveActive ? overdriveConsecutiveChance : consecutiveActionChance;
-
-        if (lastStepWasAction)
-        {
-            if (UnityEngine.Random.value > activeBurstChance)
-            {
-                lastStepWasAction = false;
-                CalculateNextDelay();
-                return;
-            }
-        }
-
-        List<ActionCandidate> validCandidates = new List<ActionCandidate>();
-        float totalUtilitySum = 0f;
-
-
-
-        // 1. Recolectar todos los candidatos válidos
-        for (int i = registeredEnemies.Count - 1; i >= 0; i--)
-        {
-            Musician enemy = registeredEnemies[i];
-            if (enemy == null || !enemy.IsAvailable) continue;
-            if (preventSameEnemyConsecutive && enemy == lastEnemyWhoActed) continue;
-
-            foreach (var action in enemy.availableActions)
-            {
-                if (action == null || action.energyCost > currentEnergy ||action.playerOnly) continue;
-
-                // Ponderación: Utilidad base * Multiplicador Global Tipo * Multiplicador Individual
-                float rawUtility = action.GetRawUtility();
-                float globalMultiplier = GetCategoryUtilityMultiplier(action.GetType());
-
-
-                float finalUtility = rawUtility * globalMultiplier;
-
-                if (finalUtility >= minUtilityThreshold)
-                {
-                    validCandidates.Add(new ActionCandidate
-                    {
-                        action = action,
-                        enemy = enemy,
-                        utility = finalUtility
-                    });
-                    totalUtilitySum += finalUtility;
-                }
-            }
-        }
-
-        if (validCandidates.Count == 0)
-        {
-            lastStepWasAction = false;
-            return;
-        }
-
-        // 2. Elegir acción según el nivel de aleatoriedad
-        ActionCandidate selectedCandidate;
-
-        if (UnityEngine.Random.value < randomSelectionChance)
-        {
-            // SELECCIÓN POR RULETA PONDERADA (Mayor utilidad = Más probabilidades, pero no garantizado)
-            selectedCandidate = SelectWeightedRandomCandidate(validCandidates, totalUtilitySum);
-        }
-        else
-        {
-            // SELECCIÓN STRICTA (Best Utility)
-            selectedCandidate = SelectBestCandidate(validCandidates);
-        }
-
-        // 3. Ejecutar acción elegida
-        currentEnergy -= selectedCandidate.action.energyCost;
-        categoryLastUsedTime[selectedCandidate.action.GetType()] = Time.time; // Global
-
-
-        lastEnemyWhoActed = selectedCandidate.enemy;
-        selectedCandidate.action.ApplySabotagge(selectedCandidate.enemy);
-
-        lastStepWasAction = true;
-        CalculateNextDelay();
-    }
-
-    private ActionCandidate SelectBestCandidate(List<ActionCandidate> candidates)
-    {
-        ActionCandidate best = candidates[0];
-        for (int i = 1; i < candidates.Count; i++)
-        {
-            if (candidates[i].utility > best.utility)
-                best = candidates[i];
-        }
-        return best;
-    }
-
-    private ActionCandidate SelectWeightedRandomCandidate(List<ActionCandidate> candidates, float totalUtility)
-    {
-        float randomPoint = UnityEngine.Random.Range(0f, totalUtility);
-        float currentSum = 0f;
-
-        foreach (var candidate in candidates)
-        {
-            currentSum += candidate.utility;
-            if (randomPoint <= currentSum)
-                return candidate;
-        }
-
-        return candidates[candidates.Count - 1];
-    }
     private float GetCategoryUtilityMultiplier(Type category)
     {
-        if (!categoryLastUsedTime.TryGetValue(category, out float lastUsed))
-        {
-            return 1.0f; // Nunca se ha usado, 100% de utilidad
-        }
-
-        float timeSinceUse = Time.time - lastUsed;
-        if (timeSinceUse >= categoryCooldownDuration)
-        {
-            return 1.0f; // Ya pasó el cooldown global
-        }
-
-        // Transición lineal desde minCategoryUtilityMultiplier hasta 1.0f conforme pasa el tiempo
-        float progress = timeSinceUse / categoryCooldownDuration;
-        return Mathf.Lerp(minCategoryUtilityMultiplier, 1.0f, progress);
+        if (!categoryLastUsedTime.TryGetValue(category, out float lastUsed)) return 1f;
+        if (categoryCooldownDuration <= 0f) return 1f;
+        float elapsed = Time.time - lastUsed;
+        if (elapsed >= categoryCooldownDuration) return 1f;
+        return Mathf.Lerp(minCategoryUtilityMultiplier, 1f, elapsed / categoryCooldownDuration);
     }
+
     private void CalculateNextDelay()
     {
         actionTimer = 0f;
+        float baseDelay = Mathf.Max(absoluteMinDelay, initialMinDelay - delayDecayRate * elapsedTime);
+        baseDelay += UnityEngine.Random.Range(0f, randomDelayVariance);
+        targetDelay = isOverdriveActive
+            ? Mathf.Max(absoluteMinDelay, baseDelay * overdriveDelayMultiplier)
+            : baseDelay;
+    }
+    [ContextMenu("DEBUG/Probar sabotaje manual")]
+    private void DebugProbarSabotaje()
+    {
+        Musician musico = EjecutarUnSabotaje();
 
-        float currentMinDelay = Mathf.Max(absoluteMinDelay, initialMinDelay - (delayDecayRate * elapsedTime));
-        float noise = UnityEngine.Random.Range(0f, randomDelayVariance);
-        float baseDelay = currentMinDelay + noise;
-
-        // Si la ola está activa, reducimos el delay multiplicándolo por overdriveDelayMultiplier
-        if (isOverdriveActive)
-        {
-            targetDelay = Mathf.Max(absoluteMinDelay, baseDelay * overdriveDelayMultiplier);
-        }
+        if (musico != null)
+            Debug.Log($"[FantasmasIA] Sabotaje ejecutado en {musico.name}");
         else
+            Debug.LogError("[FantasmasIA] No se encontrÃ³ un mÃºsico vÃ¡lido.");
+    }
+
+    [ContextMenu("DEBUG/Diagnosticar musicos registrados")]
+    private void DiagnosticarMusicos()
+    {
+        HashSet<Musician> musicosEncontrados = new HashSet<Musician>();
+
+        Debug.Log(
+            $"[FantasmasIA] Automatico: {automaticActionsEnabled}, " +
+            $"Energia: {currentEnergy:F1}, " +
+            $"Musicos registrados: {registeredEnemies.Count}"
+        );
+
+        for (int i = 0; i < registeredEnemies.Count; i++)
         {
-            targetDelay = baseDelay;
+            Musician musico = registeredEnemies[i];
+
+            if (musico == null)
+            {
+                Debug.LogWarning($"Musico [{i}]: NULL");
+                continue;
+            }
+
+            bool duplicado = !musicosEncontrados.Add(musico);
+
+            GhostCorrectionTarget target =
+                musico.GetComponent<GhostCorrectionTarget>();
+
+            int accionesValidas = 0;
+            int accionesAutomaticas = 0;
+
+            if (musico.availableActions != null)
+            {
+                foreach (SabotageAction action in musico.availableActions)
+                {
+                    if (action == null || action.playerOnly)
+                        continue;
+
+                    accionesValidas++;
+
+                    float utilidad = action.GetRawUtility() *
+                        GetCategoryUtilityMultiplier(action.GetType());
+
+                    if (action.energyCost <= currentEnergy &&
+                        utilidad >= minUtilityThreshold)
+                    {
+                        accionesAutomaticas++;
+                    }
+                }
+            }
+
+            Debug.Log(
+                $"[Musico {i}] {musico.name}\n" +
+                $"Duplicado: {duplicado}\n" +
+                $"Escena: {musico.gameObject.scene.name} | " +
+                $"Escena valida: {musico.gameObject.scene.IsValid()}\n" +
+                $"IsAvailable: {musico.IsAvailable}\n" +
+                $"CurrentAction: {(musico.currentAction != null ? "OCUPADO" : "NULL")}\n" +
+                $"IsPossessed: {musico.IsPossessed}\n" +
+                $"GhostCorrectionTarget: {(target != null ? "SI" : "NO")}\n" +
+                $"TieneFantasma: {(target != null && target.TieneFantasma)}\n" +
+                $"Acciones validas: {accionesValidas}\n" +
+                $"Acciones automaticas posibles: {accionesAutomaticas}",
+                musico
+            );
         }
     }
 

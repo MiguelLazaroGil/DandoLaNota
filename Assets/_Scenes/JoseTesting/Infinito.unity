@@ -308,6 +308,19 @@ MonoBehaviour:
   orchestraAudioManager: {fileID: 1575116655}
   musicClock: {fileID: 1575116654}
   rhythmTracker: {fileID: 1547701124}
+  playerInput: {fileID: 2026623027}
+  framesIgnorarMirada: 2
+--- !u!114 &371231407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
 --- !u!1 &511409316
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +448,147 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &556014971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!114 &926468106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!114 &930295073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!114 &1121104260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!114 &1122500804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!1 &1131746252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131746253}
+  - component: {fileID: 1131746254}
+  m_Layer: 0
+  m_Name: FantasmaAI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1131746253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131746252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1774487638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131746254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131746252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4d1166b56ed1145bd25f49f7679e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FantasmasIA
+  initialQuietTime: 5
+  currentEnergy: 0
+  maxEnergy: 100
+  initialEnergyRate: 2
+  energyGrowthRate: 0.05
+  overdriveTriggerPercentage: 0.95
+  overdriveDelayMultiplier: 0.3
+  overdriveConsecutiveChance: 0.6
+  overdriveEndEnergyThreshold: 10
+  isOverdriveActive: 0
+  initialMinDelay: 3
+  absoluteMinDelay: 0.4
+  delayDecayRate: 0.02
+  randomDelayVariance: 1
+  consecutiveActionChance: 0.15
+  preventSameEnemyConsecutive: 1
+  randomSelectionChance: 0.3
+  minUtilityThreshold: 5
+  categoryCooldownDuration: 10
+  minCategoryUtilityMultiplier: 0.1
+  automaticActionsEnabled: 1
+  maxSimultaneousGhosts: 3
+  registeredEnemies:
+  - {fileID: 1575116663}
+  - {fileID: 1575116662}
+  - {fileID: 1575116661}
+  - {fileID: 1575116660}
+  - {fileID: 1575116659}
+  - {fileID: 1575116658}
+  - {fileID: 1575116657}
+  - {fileID: 1575116656}
+--- !u!114 &1300537044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
 --- !u!1 &1393824465
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,9 +686,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheaterPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3214922725189106999, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.86444354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 280528388}
+    - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Infinito
       objectReference: {fileID: 0}
     - target: {fileID: 3926918970649556215, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -643,6 +813,10 @@ PrefabInstance:
     - target: {fileID: 6833819946105230332, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 280528388}
+    - target: {fileID: 6833819946105230332, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSceneToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7031161427679855754, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -667,6 +841,10 @@ PrefabInstance:
     - target: {fileID: 8191795178106979082, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4260541612
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653752366110433617, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 0.67999935
       objectReference: {fileID: 0}
     - target: {fileID: 9025951555122268754, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -860,6 +1038,10 @@ PrefabInstance:
       value: -0.00000017881393
       objectReference: {fileID: 0}
     - target: {fileID: 1622202976818050400, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52444375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622202976818050400, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.6317315
       objectReference: {fileID: 0}
@@ -930,6 +1112,10 @@ PrefabInstance:
     - target: {fileID: 1946736805982757246, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225305539911785424, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1176260168
       objectReference: {fileID: 0}
     - target: {fileID: 2397955322253543248, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1107,6 +1293,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1968141711
       objectReference: {fileID: 0}
+    - target: {fileID: 4109012763403969739, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3417477894
+      objectReference: {fileID: 0}
     - target: {fileID: 4218149132731574552, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -1210,6 +1400,10 @@ PrefabInstance:
     - target: {fileID: 5096131131559192363, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000011592501
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261387729177768515, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 649880361
       objectReference: {fileID: 0}
     - target: {fileID: 5275039087683674730, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1359,6 +1553,10 @@ PrefabInstance:
       propertyPath: m_TranslationOffsets.Array.data[0].z
       value: 1.6050014
       objectReference: {fileID: 0}
+    - target: {fileID: 6361110585255397728, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 484634066
+      objectReference: {fileID: 0}
     - target: {fileID: 6464527808710846606, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1810684644
@@ -1390,6 +1588,10 @@ PrefabInstance:
     - target: {fileID: 7107344354816664276, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000011592501
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206885280404623239, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3831568060
       objectReference: {fileID: 0}
     - target: {fileID: 7476755821045786009, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -1682,6 +1884,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e33d4ad0e8ccd499735faddc4bd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrchestraAudioManager
+--- !u!114 &1575116656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8544482152656247053, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5682895996897144444, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 352521589450278667, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1790849884003632721, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5372490009010652841, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5949076385692720370, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+--- !u!114 &1575116663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2787227341544917830, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &1662003160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +2035,7 @@ MonoBehaviour:
         Data4: -1302151621
       Path: event:/Tema2/ClockT2
     pistas:
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 556014971}
       eventoFMOD:
         Guid:
           Data1: 1267792455
@@ -1753,7 +2043,7 @@ MonoBehaviour:
           Data3: 1357168827
           Data4: 1023125611
         Path: event:/Tema2/Tema2Harp
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1814118985}
       eventoFMOD:
         Guid:
           Data1: -102725138
@@ -1761,7 +2051,7 @@ MonoBehaviour:
           Data3: 654727585
           Data4: 1547999702
         Path: event:/Tema2/Tema2Trumpet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1121104260}
       eventoFMOD:
         Guid:
           Data1: -76664784
@@ -1769,7 +2059,7 @@ MonoBehaviour:
           Data3: -1666497370
           Data4: 1555384118
         Path: event:/Tema2/Tema2Clarinet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1122500804}
       eventoFMOD:
         Guid:
           Data1: -2061297520
@@ -1777,7 +2067,7 @@ MonoBehaviour:
           Data3: 1187210383
           Data4: -40355368
         Path: event:/Tema2/Tema2Violin
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1300537044}
       eventoFMOD:
         Guid:
           Data1: 49161744
@@ -1785,7 +2075,7 @@ MonoBehaviour:
           Data3: -652137301
           Data4: 664345827
         Path: event:/Tema2/Tema2Flute
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 930295073}
       eventoFMOD:
         Guid:
           Data1: 814945318
@@ -1793,7 +2083,7 @@ MonoBehaviour:
           Data3: -223792223
           Data4: 353220685
         Path: event:/Tema2/Tema2Cymbals
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 371231407}
       eventoFMOD:
         Guid:
           Data1: 443027912
@@ -1801,7 +2091,7 @@ MonoBehaviour:
           Data3: 1485150653
           Data4: -264288993
         Path: event:/Tema2/Tema2Kick
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 926468106}
       eventoFMOD:
         Guid:
           Data1: -1749333621
@@ -1822,7 +2112,7 @@ MonoBehaviour:
         Data4: -1710343443
       Path: event:/Tema3/ClockT3
     pistas:
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 556014971}
       eventoFMOD:
         Guid:
           Data1: -497101742
@@ -1830,7 +2120,7 @@ MonoBehaviour:
           Data3: -1606606163
           Data4: 1855733208
         Path: event:/Tema3/Tema3Harp
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1814118985}
       eventoFMOD:
         Guid:
           Data1: 2093313465
@@ -1838,7 +2128,7 @@ MonoBehaviour:
           Data3: -1362369602
           Data4: 926349969
         Path: event:/Tema3/Tema3Trumpet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1121104260}
       eventoFMOD:
         Guid:
           Data1: 654724483
@@ -1846,7 +2136,7 @@ MonoBehaviour:
           Data3: 1372622770
           Data4: 1967575882
         Path: event:/Tema3/Tema3Clarinet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1122500804}
       eventoFMOD:
         Guid:
           Data1: 476202571
@@ -1854,7 +2144,7 @@ MonoBehaviour:
           Data3: -681629525
           Data4: -661812333
         Path: event:/Tema3/Tema3Violin
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1300537044}
       eventoFMOD:
         Guid:
           Data1: -152405387
@@ -1862,7 +2152,7 @@ MonoBehaviour:
           Data3: 1803109001
           Data4: 1008513835
         Path: event:/Tema3/Tema3Flute
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 930295073}
       eventoFMOD:
         Guid:
           Data1: -38899308
@@ -1870,7 +2160,7 @@ MonoBehaviour:
           Data3: 1640112801
           Data4: 1778580967
         Path: event:/Tema3/Tema3Cymbals
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 371231407}
       eventoFMOD:
         Guid:
           Data1: 1754607968
@@ -1878,7 +2168,7 @@ MonoBehaviour:
           Data3: -657892446
           Data4: -274601106
         Path: event:/Tema3/Tema3Kick
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 926468106}
       eventoFMOD:
         Guid:
           Data1: -795833304
@@ -1899,7 +2189,7 @@ MonoBehaviour:
         Data4: 2059216661
       Path: event:/Tema4/ClockT4
     pistas:
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 556014971}
       eventoFMOD:
         Guid:
           Data1: 2145944617
@@ -1907,7 +2197,7 @@ MonoBehaviour:
           Data3: -1945679170
           Data4: -138276901
         Path: event:/Tema4/Tema4Harp
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1814118985}
       eventoFMOD:
         Guid:
           Data1: 1139225785
@@ -1915,7 +2205,7 @@ MonoBehaviour:
           Data3: -2018390862
           Data4: -710192297
         Path: event:/Tema4/Tema4Trumpet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1121104260}
       eventoFMOD:
         Guid:
           Data1: -1636881765
@@ -1923,7 +2213,7 @@ MonoBehaviour:
           Data3: -915327853
           Data4: 1912929610
         Path: event:/Tema4/Tema4Clarinet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1122500804}
       eventoFMOD:
         Guid:
           Data1: 129305715
@@ -1931,7 +2221,7 @@ MonoBehaviour:
           Data3: -529912189
           Data4: -1341340621
         Path: event:/Tema4/Tema4Violin
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1300537044}
       eventoFMOD:
         Guid:
           Data1: 1864671460
@@ -1939,7 +2229,7 @@ MonoBehaviour:
           Data3: 919394689
           Data4: -849484301
         Path: event:/Tema4/Tema4Flute
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 930295073}
       eventoFMOD:
         Guid:
           Data1: -449475821
@@ -1947,7 +2237,7 @@ MonoBehaviour:
           Data3: 1314051500
           Data4: 647186472
         Path: event:/Tema4/Tema4Cymbals
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 371231407}
       eventoFMOD:
         Guid:
           Data1: -1172392127
@@ -1955,7 +2245,7 @@ MonoBehaviour:
           Data3: 709727638
           Data4: 164675872
         Path: event:/Tema4/Tema4Kick
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 926468106}
       eventoFMOD:
         Guid:
           Data1: 2033310587
@@ -1976,7 +2266,7 @@ MonoBehaviour:
         Data4: 1954079220
       Path: event:/Tema5/ClockT5
     pistas:
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 556014971}
       eventoFMOD:
         Guid:
           Data1: -963569179
@@ -1984,7 +2274,7 @@ MonoBehaviour:
           Data3: 423428745
           Data4: -1506660658
         Path: event:/Tema5/Tema5Harp
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1814118985}
       eventoFMOD:
         Guid:
           Data1: 1911968461
@@ -1992,7 +2282,7 @@ MonoBehaviour:
           Data3: -1711774800
           Data4: -1396794496
         Path: event:/Tema5/Tema5Trumpet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1121104260}
       eventoFMOD:
         Guid:
           Data1: -267461201
@@ -2000,7 +2290,7 @@ MonoBehaviour:
           Data3: 1620850608
           Data4: -255709170
         Path: event:/Tema5/Tema5Clarinet
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1122500804}
       eventoFMOD:
         Guid:
           Data1: -851885720
@@ -2008,7 +2298,7 @@ MonoBehaviour:
           Data3: -980660034
           Data4: -524048956
         Path: event:/Tema5/Tema5Violin
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 1300537044}
       eventoFMOD:
         Guid:
           Data1: -1295150811
@@ -2016,7 +2306,7 @@ MonoBehaviour:
           Data3: 631468699
           Data4: -65864515
         Path: event:/Tema5/Tema5Flute
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 930295073}
       eventoFMOD:
         Guid:
           Data1: 1035162809
@@ -2024,7 +2314,7 @@ MonoBehaviour:
           Data3: 1290656690
           Data4: -1355609385
         Path: event:/Tema5/Tema5Cymbals
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 371231407}
       eventoFMOD:
         Guid:
           Data1: 1496921561
@@ -2032,7 +2322,7 @@ MonoBehaviour:
           Data3: -644479355
           Data4: 761263908
         Path: event:/Tema5/Tema5Kick
-    - grupo: {fileID: 0}
+    - grupo: {fileID: 926468106}
       eventoFMOD:
         Guid:
           Data1: 258963479
@@ -2082,8 +2372,31 @@ Transform:
   - {fileID: 1662003161}
   - {fileID: 203055782}
   - {fileID: 1393824467}
+  - {fileID: 1131746253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1814118985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1575116653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e719d87086d60604fbcef91792be0dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentGroup
+--- !u!114 &2026623027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4772236354618341026, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+  m_PrefabInstance: {fileID: 1547701121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

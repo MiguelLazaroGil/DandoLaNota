@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -99,6 +100,24 @@ public class TutorialManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float calidadMinima = 0.6f;
     [SerializeField, Min(0.1f)] private float segundosCalidadMantenida = 4f;
 
+    [Header("Tutorial: evento de fantasma")]
+    [SerializeField] private FantasmasIA fantasmasIA;
+    [Tooltip("Opcional. Sin asignar elige UN musico aleatorio registrado.")]
+    [SerializeField] private Musician musicoTutorial;
+    private Musician musicoSaboteadoTutorial;
+    [Tooltip("Índice dentro de availableActions. -1 = acción válida más útil.")]
+    [SerializeField] private int indiceAccionTutorial = -1;
+    [SerializeField, Min(0f)] private float retrasoSabotajeTutorial = 1f;
+
+    [Header("Finalización del tutorial")]
+    [SerializeField] private string nombreEscenaMenu = "MainMenu";
+    [SerializeField] private RhythmTracker rhythmTracker;
+
+
+    private bool estadoIAAnterior;
+    private bool iaBloqueadaPorTutorial;
+    private Coroutine preparacionFantasma;
+
     private float tiempoCalidadCorrecta;
     private void Awake()
     {
@@ -127,6 +146,18 @@ public class TutorialManager : MonoBehaviour
         espacioCompletada = false;
         fCompletada = false;
         tiempoCalidadCorrecta = 0f;
+
+        // El tutorial controla cuándo ocurre el único sabotaje de aprendizaje.
+        if (fantasmasIA != null && !iaBloqueadaPorTutorial)
+        {
+            estadoIAAnterior = fantasmasIA.AutomaticActionsEnabled;
+            fantasmasIA.SetAutomaticActionsEnabled(false);
+            iaBloqueadaPorTutorial = true;
+            fantasmasIA.OnMusicoCorregido -= AlCorregirMusico;
+            fantasmasIA.OnMusicoCorregido += AlCorregirMusico;
+        }
+
+        musicoSaboteadoTutorial = null;
 
         posicionAnterior = jugador.position;
 
@@ -412,7 +443,9 @@ public class TutorialManager : MonoBehaviour
 
     private void ActualizarInstruccionCorregirMusicos()
     {
-        textoInstruccion.text = "Presta atención a los músicos y corrígelos cuando sea necesario.";
+        textoInstruccion.text =
+            "¡Un fantasma ha saboteado a un músico!\n" +
+            "Míralo, mantén clic izquierdo y da un golpe rápido con la batuta.";
     }
 
     private string MostrarTecla(string tecla, bool completada)
@@ -456,7 +489,62 @@ public class TutorialManager : MonoBehaviour
         ));
     }
 
-    // Se llamará desde la futura mecánica cuando se cumpla su objetivo.
+    private IEnumerator PrepararEventoFantasma()
+    {
+        yield return new WaitForSeconds(retrasoSabotajeTutorial);
+        preparacionFantasma = null;
+
+        if (PasoActual != PasoTutorial.CorregirMusicos || transicionEnCurso)
+            yield break;
+
+        if (fantasmasIA == null)
+        {
+            Debug.LogError("TutorialManager: asigna FantasmasIA.");
+            yield break;
+        }
+
+        // La IA ejecuta el sabotaje y activa el contorno visual del musico.
+        // musicoTutorial=null selecciona un unico musico aleatorio valido.
+        musicoSaboteadoTutorial = fantasmasIA.EjecutarUnSabotaje(
+            musicoTutorial, indiceAccionTutorial);
+
+        if (musicoSaboteadoTutorial == null)
+        {
+            Debug.LogError("TutorialManager: no se pudo iniciar el sabotaje. " +
+                "Revisa availableActions, IsAvailable y GhostCorrectionTarget.");
+            yield break;
+        }
+
+        ActualizarInstruccionCorregirMusicos();
+    }
+
+    private void AlCorregirMusico(Musician corregido)
+    {
+        if (corregido != null && corregido == musicoSaboteadoTutorial)
+            NotificarCorreccionMusicosCompletada();
+    }
+
+    private void RestaurarIA()
+    {
+        if (!iaBloqueadaPorTutorial) return;
+
+        if (fantasmasIA != null)
+        {
+            fantasmasIA.OnMusicoCorregido -= AlCorregirMusico;
+            fantasmasIA.SetAutomaticActionsEnabled(estadoIAAnterior);
+        }
+
+        iaBloqueadaPorTutorial = false;
+    }
+
+    private void OnDestroy()
+    {
+        RestaurarIA();
+        if (Instance == this)
+            Instance = null;
+    }
+
+    // Se invoca automáticamente cuando el golpe de batuta corrige al músico.
     public void NotificarCorreccionMusicosCompletada()
     {
         if (!tutorialIniciado || transicionEnCurso ||
@@ -494,7 +582,7 @@ public class TutorialManager : MonoBehaviour
 
         GameManager.Instance.PauseGame();
         panelInstrucciones.SetActive(true);
-        imagenSecuenciaBatuta.SetActive(pasoPendiente == PasoTutorial.MoverBatuta|| pasoPendiente == PasoTutorial.SeguirMetronomo);
+        imagenSecuenciaBatuta.SetActive(pasoPendiente == PasoTutorial.MoverBatuta || pasoPendiente == PasoTutorial.SeguirMetronomo);
 
         // Preparamos las instrucciones del siguiente paso.
         switch (pasoPendiente)
@@ -532,14 +620,17 @@ public class TutorialManager : MonoBehaviour
             case PasoTutorial.CorregirMusicos:
                 textoPanel.text = "¡Buen trabajo! Ya sabes seguir el ritmo.\n\n" +
                     "Ahora tendrás que estar atento a los músicos. " +
-                    "Cuando alguno empiece a molestar, deberás corregirlo.";
+                    "Un fantasma saboteará a un músico. " +
+                    "Acercate a él, mantén el clic izquierdo y golpealo " +
+                    "con la batuta rápidamente para espantarlo.";
                 ActualizarInstruccionCorregirMusicos();
                 break;
 
             case PasoTutorial.TutorialCompletado:
-                textoPanel.text = "¡Enhorabuena! Has terminado el tutorial.\n\n" +
-                    "Ya sabes moverte, manejar la batuta, seguir el metrónomo " +
-                    "y corregir a los músicos.";
+                textoPanel.text = "¡ENHORABUENA!\n\n" +
+        "¡Has completado el tutorial!\n\n" +
+        "¡Estás listo para dirigir tu primera orquesta!\n\n" +
+        "Pulsa CONTINUAR para volver al menú.";
                 break;
 
         }
@@ -554,6 +645,13 @@ public class TutorialManager : MonoBehaviour
             PasoActual != PasoTutorial.EsperandoSiguienteOrden)
             return;
 
+        // Si estamos en el último panel, terminamos el tutorial.
+        if (pasoPendiente == PasoTutorial.TutorialCompletado)
+        {
+            FinalizarTutorial();
+            return;
+        }
+
         CambiarPasoTutorial(pasoPendiente);
 
         panelInstrucciones.SetActive(false);
@@ -561,7 +659,7 @@ public class TutorialManager : MonoBehaviour
 
         GameManager.Instance.UnpauseGame();
 
-        // La música arranca una sola vez, al cerrar el panel de este paso.
+        // La música solo comienza al iniciar el paso del metrónomo.
         if (PasoActual == PasoTutorial.SeguirMetronomo)
             GameManager.Instance.IniciarMusica();
     }
@@ -594,6 +692,9 @@ public class TutorialManager : MonoBehaviour
 
             case PasoTutorial.CorregirMusicos:
                 ActualizarInstruccionCorregirMusicos();
+                if (preparacionFantasma != null)
+                    StopCoroutine(preparacionFantasma);
+                preparacionFantasma = StartCoroutine(PrepararEventoFantasma());
                 break;
 
             case PasoTutorial.EsperandoSiguienteOrden:
@@ -603,8 +704,46 @@ public class TutorialManager : MonoBehaviour
 
             case PasoTutorial.TutorialCompletado:
                 textoInstruccion.text = "";
+                RestaurarIA();
                 break;
 
         }
+    }
+    private void FinalizarTutorial()
+    {
+        // Comprobar que la escena de destino existe.
+        if (string.IsNullOrWhiteSpace(nombreEscenaMenu) ||
+            !Application.CanStreamedLevelBeLoaded(nombreEscenaMenu))
+        {
+            Debug.LogError(
+                "TutorialManager: la escena del menú no está configurada."
+            );
+            return;
+        }
+
+        tutorialIniciado = false;
+        PasoActual = PasoTutorial.TutorialCompletado;
+
+        // Detener seguimiento del ritmo.
+        if (rhythmTracker != null)
+            rhythmTracker.DetenerSeguimiento();
+
+        // Restaurar el estado de pausa del juego.
+        if (GameManager.Instance != null)
+            GameManager.Instance.UnpauseGame();
+
+        Time.timeScale = 1f;
+
+        // Detener orquesta y metrónomo FMOD.
+        if (OrchestraAudioManager.Instance != null)
+            OrchestraAudioManager.Instance.StopOrchestra();
+
+        // Restaurar configuración de la IA.
+        RestaurarIA();
+
+        Debug.Log("Tutorial completado. Volviendo al menú.");
+
+        // Cargar menú principal.
+        GameManager.Instance.ChangeScene("MainMenu");
     }
 }

@@ -217,6 +217,7 @@ public class InfiniteLevelManager : MonoBehaviour
                 pista.grupo.ConfigurarEvento(pista.eventoFMOD);
         }
 
+        
         // Arrancamos el nuevo reloj y todos los grupos.
         orchestra.StartOrchestra();
 

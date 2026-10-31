@@ -3843,6 +3843,7 @@ MonoBehaviour:
   walker: {fileID: 2963547347522617796}
   movementTransform: {fileID: 6216356376682872183}
   movementThresHold: 0.01
+  IsGrabbing: 0
 --- !u!114 &1288995521368225447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,7 +4463,7 @@ GameObject:
   - component: {fileID: 3768554594750452499}
   m_Layer: 10
   m_Name: ORG-spine
-  m_TagString: Untagged
+  m_TagString: MusicoGolpeable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4531,6 +4532,9 @@ GameObject:
   - component: {fileID: 1212235504760049886}
   - component: {fileID: 1707437143234220429}
   - component: {fileID: 6412596802200349298}
+  - component: {fileID: 5890220633653575169}
+  - component: {fileID: 4003256611705703067}
+  - component: {fileID: 1325354165435474111}
   m_Layer: 0
   m_Name: Musician
   m_TagString: Untagged
@@ -4653,6 +4657,73 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &5890220633653575169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537963215254219450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
+  ShowTopMostFoldoutHeaderGroup: 1
+  currentState: 0
+  quality: {fileID: 521949473840394162}
+  cameraFirstPersonPoint: {fileID: 0}
+  sheetMusicTransform: {fileID: 0}
+  musicianAudio: {fileID: 5445348841006083540}
+  availableActions:
+  - {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
+  - {fileID: 11400000, guid: 7f3cdb658bf433d4e874f9b195267980, type: 2}
+  - {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
+  - {fileID: 11400000, guid: eafc5f0643f970c42963348d17553b55, type: 2}
+  - {fileID: 11400000, guid: 66825a83d8987a746aaef202f4fc3816, type: 2}
+  - {fileID: 11400000, guid: cea650e7ed92f734bad214fdd9770d6a, type: 2}
+  currentAction: {fileID: 0}
+--- !u!114 &4003256611705703067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537963215254219450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fe336417191564198ce892e2b42592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostOutlineVisual
+  outlineMaterial: {fileID: 2100000, guid: bd3439886ed9c6c45b6c8af15ae8ddb4, type: 2}
+  targetRenderers:
+  - {fileID: 7251488542696278002}
+  - {fileID: 3891487638873339340}
+  - {fileID: 6778417344581645112}
+  - {fileID: 6108098935040410448}
+  - {fileID: 6701753457227630153}
+  - {fileID: 1318538906656877702}
+  - {fileID: 7808417681351708751}
+  - {fileID: 390145939203682835}
+  - {fileID: 4423893149348024061}
+  - {fileID: 722017396385295469}
+  - {fileID: 7017430903952591831}
+--- !u!114 &1325354165435474111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537963215254219450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d40bbe9eee124498a9fa13c3a05b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostCorrectionTarget
+  outline: {fileID: 4003256611705703067}
+  onCorregido:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8590711853121482613
 GameObject:
   m_ObjectHideFlags: 0

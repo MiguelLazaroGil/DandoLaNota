@@ -2264,9 +2264,10 @@ MonoBehaviour:
   limiteHorizontal: 0.6
   limiteVertical: 0.6
   velocidadRetornoMano: 12
-  multiplicadorInclinacion: 7
+  sensibilidadInclinacion: 0.15
   inclinacionMaxima: 10
-  velocidadRecuperacionMuneca: 30
+  rigidezMuneca: 100
+  amortiguacionMuneca: 15
 --- !u!114 &1150500004254754089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,7 +2394,7 @@ Transform:
   m_GameObject: {fileID: 2923063893528581163}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06190806, y: -0.00000018689434, z: 0.000000011592501, w: 0.9980819}
-  m_LocalPosition: {x: -0.00000035762787, y: 0.8644438, z: 1.631731}
+  m_LocalPosition: {x: -0.00000035762787, y: 0.86444426, z: 1.631731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2536,7 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 674409225
+  GlobalObjectIdHash: 1041245995
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -4050,7 +4051,7 @@ Transform:
   m_GameObject: {fileID: 4426549524959194629}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0136, z: 0.0321}
+  m_LocalPosition: {x: 5.0068794e-10, y: 0.013600007, z: 0.032100003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4066,10 +4067,10 @@ ParentConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0.0136, z: 0.0321}
+  m_TranslationAtRest: {x: 0, y: 0.013600007, z: 0.032100003}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.6799998, z: 1.6050005}
+  - {x: 0, y: 0.6800003, z: 1.6050005}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -5119,6 +5120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836559908765362254}
   - component: {fileID: 4496182579333342630}
+  - component: {fileID: 3420172823072970239}
   m_Layer: 2
   m_Name: Mano
   m_TagString: Untagged
@@ -5157,6 +5159,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: UtilsEditorAssembly::ChildrenHandles
   showHandles: 1
   sphereSize: 0.099
+--- !u!114 &3420172823072970239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816912481603254166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d143f463a611294c9d326d043a5f29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatonGhostHit
+  batutaController: {fileID: 1994153965966568212}
+  manoBatuta: {fileID: 4836559908765362254}
+  puntaBatuta: {fileID: 7786839907782906634}
+  fantasmasIA: {fileID: 0}
+  radioGolpe: 0.2
+  capasImpacto:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  velocidadMinima: 0.04
+  desplazamientoMinimo: 0.006
+  cooldownGolpe: 0.4
+  corregirDirectamente: 1
 --- !u!1 &6106454075282582664
 GameObject:
   m_ObjectHideFlags: 0
@@ -6709,6 +6735,7 @@ MonoBehaviour:
   walker: {fileID: 4096542772867800230}
   movementTransform: {fileID: 6320203707744546718}
   movementThresHold: 0.01
+  IsGrabbing: 0
 --- !u!114 &8139738749094322388
 MonoBehaviour:
   m_ObjectHideFlags: 0
