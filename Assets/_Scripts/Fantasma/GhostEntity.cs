@@ -21,8 +21,7 @@ public class GhostEntity : NetworkBehaviour
 
     public SabotageAction ActiveContinuousAction => activeContinuousAction;
 
-    /// <summary>True si este fantasma es el de ESTA máquina (siempre true en offline).
-    /// Sirve para que los efectos visuales solo los vea el jugador que posee.</summary>
+    /// <summary>True si este fantasma es el de ESTA máquina (siempre true en offline).</summary>
     public bool IsLocallyControlled => !IsNetworkActive || IsOwner;
 
     public event System.Action<Musician> MusicianPossessed;
@@ -35,7 +34,6 @@ public class GhostEntity : NetworkBehaviour
 
     private void Update()
     {
-        // En multijugador, solo la máquina que controla a este fantasma ejecuta su Update local
         if (IsNetworkActive && !IsOwner) return;
 
         matchTime += Time.deltaTime;
@@ -67,18 +65,30 @@ public class GhostEntity : NetworkBehaviour
         if (IsStunned || CurrentMusician != null || target.IsPossessed) return false;
         if (!ConsumeEnergy(possessInitialCost)) return false;
 
-        CurrentMusician = target;
-        target.PossessingGhost = this;
-
         if (IsNetworkActive)
         {
-            target.SetPossessorClientId(NetworkManager.Singleton.LocalClientId);
+            // Solicitar al músico que gestione el cambio de Ownership en el Servidor
+            target.RequestPossess(this);
+        }
+        else
+        {
+            // Lógica local Offline
+            CurrentMusician = target;
+            target.PossessingGhost = this;
+            target.SetPlayingState(Musician.PlayingState.PlayingWell);
+            MusicianPossessed?.Invoke(target);
         }
 
-        target.SetPlayingState(Musician.PlayingState.PlayingWell);
-
-        MusicianPossessed?.Invoke(target);
         return true;
+    }
+
+    /// <summary>
+    /// Llamado desde el RPC del Músico cuando el Servidor confirma la transferencia de Ownership.
+    /// </summary>
+    public void SetPossessedMusicianFromNetwork(Musician musician)
+    {
+        CurrentMusician = musician;
+        MusicianPossessed?.Invoke(musician);
     }
 
     public bool ExecuteSabotage(SabotageAction action)

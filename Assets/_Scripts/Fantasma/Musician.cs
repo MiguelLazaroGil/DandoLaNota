@@ -14,7 +14,7 @@ public class Musician : NetworkBehaviour
     public AudioSource musicianAudio;
     public List<SabotageAction> availableActions = new List<SabotageAction>();
 
-    [System.NonSerialized]
+    [ReadOnly]
     public SabotageAction currentAction = null;
 
     public GhostEntity PossessingGhost { get; set; }
@@ -49,10 +49,67 @@ public class Musician : NetworkBehaviour
     {
         if (musicianAudio && clip) musicianAudio.PlayOneShot(clip);
     }
+
     public void SwapToFakeInstrument(GameObject fakePrefab) { /* Lógica visual */ }
     public void ShowPhoneUI(bool show) { /* Lógica visual */ }
+
     // ========================================================================
-    // SINCRONIZACIÓN DE SABOTAJES (ONLINE Y OFFLINE)
+    // POSESIÓN Y TRANSFERENCIA DE OWNERSHIP
+    // ========================================================================
+
+    /// <summary>
+    /// Inicia la solicitud de posesión desde el fantasma local.
+    /// </summary>
+    public void RequestPossess(GhostEntity ghost)
+    {
+        if (IsNetworkActive)
+        {
+            RequestPossessServerRpc(NetworkManager.Singleton.LocalClientId, ghost);
+        }
+        else
+        {
+            // Lógica local Offline
+            PossessingGhost = ghost;
+            SetPlayingState(PlayingState.PlayingWell);
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    private void RequestPossessServerRpc(ulong requestingClientId, NetworkBehaviourReference ghostRef)
+    {
+        if (!IsAvailable) return;
+
+        // 1. TRANSFERIR OWNERSHIP: Asignar la propiedad del NetworkObject al cliente que posee
+        if (NetworkObject != null && NetworkObject.IsSpawned)
+        {
+            NetworkObject.ChangeOwnership(requestingClientId);
+        }
+
+        // 2. Registrar el ID del cliente en la NetworkVariable del Servidor
+        netPossessorClientId.Value = requestingClientId;
+
+        // 3. Notificar a los clientes para enlazar las referencias locales
+        NotifyPossessClientRpc(requestingClientId, ghostRef);
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void NotifyPossessClientRpc(ulong requestingClientId, NetworkBehaviourReference ghostRef)
+    {
+        if (ghostRef.TryGet(out GhostEntity ghost))
+        {
+            PossessingGhost = ghost;
+            SetPlayingState(PlayingState.PlayingWell);
+
+            // Si somos el cliente que ha tomado posesión, configuramos nuestro estado local
+            if (IsNetworkActive && NetworkManager.Singleton.LocalClientId == requestingClientId)
+            {
+                ghost.SetPossessedMusicianFromNetwork(this);
+            }
+        }
+    }
+
+    // ========================================================================
+    // SINCRONIZACIÓN DE SABOTAJES
     // ========================================================================
 
     public void StartSabotage(int actionIndex)
@@ -125,7 +182,7 @@ public class Musician : NetworkBehaviour
     }
 
     // ========================================================================
-    // GOLPE DEL DIRECTOR Y RECUPERACIÓN
+    // GOLPE DEL DIRECTOR Y RESTAURACIÓN DE OWNERSHIP
     // ========================================================================
 
     public void OnHitByConductor()
@@ -143,11 +200,11 @@ public class Musician : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void OnHitByConductorServerRpc()
     {
-        ProcessHitLocalClientRpc();
+        ProcessHitClientRpc();
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    private void ProcessHitLocalClientRpc()
+    private void ProcessHitClientRpc()
     {
         ProcessHitLocal();
     }
@@ -170,11 +227,52 @@ public class Musician : NetworkBehaviour
 
     public void RestoreMusician()
     {
-        if (IsNetworkActive && IsServer)
+        if (IsNetworkActive)
         {
-            netPossessorClientId.Value = ulong.MaxValue;
+            if (IsServer)
+            {
+                ProcessRestoreOnServer();
+            }
+            else
+            {
+                RequestRestoreServerRpc();
+            }
+        }
+        else
+        {
+            ProcessRestoreLocal();
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    private void RequestRestoreServerRpc()
+    {
+        ProcessRestoreOnServer();
+    }
+
+    private void ProcessRestoreOnServer()
+    {
+        // 1. Limpiar la variable de red
+        netPossessorClientId.Value = ulong.MaxValue;
+
+        // 2. DEVOLVER OWNERSHIP AL SERVIDOR: Quitar la propiedad al cliente
+        if (NetworkObject != null && NetworkObject.IsSpawned && NetworkObject.OwnerClientId != NetworkManager.ServerClientId)
+        {
+            NetworkObject.RemoveOwnership();
         }
 
+        // 3. Notificar a todos los clientes para limpiar su estado local
+        NotifyRestoreClientRpc();
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void NotifyRestoreClientRpc()
+    {
+        ProcessRestoreLocal();
+    }
+
+    private void ProcessRestoreLocal()
+    {
         if (currentAction != null)
         {
             currentAction.StopSabotagge(this);
@@ -190,13 +288,5 @@ public class Musician : NetworkBehaviour
     private void EventosRecuperarse()
     {
         Debug.Log("ya no estoy controlado, vuelvo a tocar normal: " + this.name);
-    }
-
-    public void SetPossessorClientId(ulong clientId)
-    {
-        if (IsNetworkActive && IsServer)
-        {
-            netPossessorClientId.Value = clientId;
-        }
     }
 }
