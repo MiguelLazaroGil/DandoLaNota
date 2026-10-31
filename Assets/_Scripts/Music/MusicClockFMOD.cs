@@ -23,6 +23,9 @@ public class MusicClockFMOD : MonoBehaviour
 
     [Header("Automatic Metronome Volume")]
     [SerializeField] private bool automaticVolume = true;
+    [Header("Tolerancia del metronomo")]
+    [SerializeField, Range(0f, 20f)]
+    private float rhythmDeadZone = 5f;
 
     [SerializeField, Range(1f, 100f)]
     private float maxScoreDeviation = 60f;
@@ -66,11 +69,12 @@ public class MusicClockFMOD : MonoBehaviour
         if (automaticVolume && musicScoreManager != null)
         {
             float scoreDifference =
-                Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
+    Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
 
-            // Calculamos el volumen segun la distancia respecto al ritmo perfecto.
-            float targetVolume = Mathf.Clamp01(
-                scoreDifference / maxScoreDeviation
+            float targetVolume = Mathf.InverseLerp(
+                rhythmDeadZone,
+                maxScoreDeviation,
+                scoreDifference
             );
 
             // Suavizamos los cambios de volumen.
@@ -126,8 +130,10 @@ public class MusicClockFMOD : MonoBehaviour
             float scoreDifference =
                 Mathf.Abs(musicScoreManager.CurrentRhythm - 100f);
 
-            currentVolume = Mathf.Clamp01(
-                scoreDifference / maxScoreDeviation
+            currentVolume = Mathf.InverseLerp(
+                rhythmDeadZone,
+                maxScoreDeviation,
+                scoreDifference
             );
         }
         else
