@@ -2257,15 +2257,15 @@ MonoBehaviour:
   cameraController: {fileID: 3670130861491366416}
   modeloBatuta: {fileID: 6489937741726349417}
   mano: {fileID: 4836559908765362254}
-  camaraPrincipal: {fileID: 2829183600671902932}
   velocidadCaminarDirector: 1.5
   velocidadRotacionDirector: 0.2
-  sensibilidadCamara: 0.57
-  suavizadoCamara: 26
-  sensibilidadRaton: 0.005
-  limiteDistancia: 0.009
-  tiempoSuavizado: 0.1
+  multiplicadorCamaraAlDirigir: 0.08
+  sensibilidadRaton: 0.0035
+  limiteHorizontal: 0.6
+  limiteVertical: 0.6
+  velocidadRetornoMano: 12
   multiplicadorInclinacion: 7
+  inclinacionMaxima: 10
   velocidadRecuperacionMuneca: 30
 --- !u!114 &1150500004254754089
 MonoBehaviour:
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1041245995
+  GlobalObjectIdHash: 674409225
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
