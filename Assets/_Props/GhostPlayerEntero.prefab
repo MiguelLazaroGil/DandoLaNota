@@ -1,5 +1,284 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1777809887030670320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 378410438545425343}
+  - component: {fileID: 71346649537197818}
+  - component: {fileID: 5998869656424658119}
+  - component: {fileID: 2797511938714964879}
+  - component: {fileID: 267230772219105733}
+  - component: {fileID: 278112000024768508}
+  - component: {fileID: 5874319572113688331}
+  - component: {fileID: 7143453805284484852}
+  - component: {fileID: 1885500955870635824}
+  - component: {fileID: 6641567707113883795}
+  m_Layer: 12
+  m_Name: GhostScripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &378410438545425343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3893363482100978120}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &71346649537197818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061bfd021007440439bf2b076460ffd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostController1
+--- !u!114 &5998869656424658119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7908dde87c59c40b75b0440fec6f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostEntity
+  ShowTopMostFoldoutHeaderGroup: 1
+  maxEnergy: 100
+  currentEnergy: 50
+  baseRegenRate: 5
+  regenScalingPerMinute: 3
+  possessInitialCost: 20
+  exitCastTime: 1.5
+  stunCooldownTime: 8
+--- !u!114 &2797511938714964879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be982d46838c82946b27a2409414dde1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostInputHandler
+  possessExitAction:
+    m_Name: PossessExit
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 689eadbe-e148-44c0-8b8a-83263f274235
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8a68368a-489c-4a76-b9df-d9ff87c1a72e
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PossessExit
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  wheelAction:
+    m_Name: ActionWheel
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: fe3e552c-d2d0-4c18-bdef-c6e269265f3d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: af0781cc-6f53-4e59-9575-2157000ca6f8
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: ActionWheel
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  lookAction:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 344cddf4-51fe-425f-83a3-4c84b22b999f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ae364c5f-88c3-4638-a83c-78b5c101156a
+      m_Path: <Mouse>/delta
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Look
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 7e110f4a-8360-487d-9c59-477d9759c912
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2DVector
+      m_Id: 44cd0481-9478-42c3-b834-f3d5ae024047
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: Up
+      m_Id: 23148cb4-2307-4734-b00b-ea127b78a22e
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Down
+      m_Id: 2dec05c5-bd1f-4a88-8032-3c45de28a358
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Left
+      m_Id: 81fc290b-4554-448b-8cd3-117e675442cb
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Right
+      m_Id: 4b7d9fcf-5e20-44d3-932a-65464fbc9bb9
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
+    m_Priority: 0
+--- !u!114 &267230772219105733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae06b30838db2674cbe1bdb4b7307290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostTargeting
+  interactionDetector: {fileID: 4903716779065431234}
+--- !u!114 &278112000024768508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e0af1809f7c0a4ca059cd340a4b6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PossessionCamera
+  ghostCamera: {fileID: 8651244830481758718}
+  possessionCameraTemplate: {fileID: 6501626303878178547}
+  lookSensitivity: 0.1
+  maxYaw: 70
+  pitchLimits: {x: -35, y: 45}
+  possessionCameraPriority: 20
+  followMusician: 0
+--- !u!114 &5874319572113688331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc373f49f172ac34b911de49066de9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PossessionVolumeEffect
+  possessionVolume: {fileID: 4180524577983254456}
+  volumeFadeTime: 0.4
+--- !u!114 &7143453805284484852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e998df946851704e9b459c67c4e607e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostActionWheel
+  actionWheel: {fileID: 9109827317008226203}
+  wheelCursorRadius: 80
+  wheelDeadZone: 10
+--- !u!114 &1885500955870635824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb754654e1c975f4eb741e4a68285c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostPresence
+  ghostRoot: {fileID: 3893363482100978120}
+  autoDisableOtherScripts: 0
+  keepEnabledWhilePossessing: []
+  disableWhilePossessing: []
+  hideWhilePossessing:
+  - {fileID: 4065956691414866092}
+--- !u!114 &6641567707113883795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777809887030670320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2ce4855dbb0c04fae0f8b4ad3c3b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostDebugGUI
 --- !u!1 &3021010317084540422
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,8 +398,8 @@ MonoBehaviour:
   - {fileID: 9148942504033123527}
   - {fileID: 9148942504033123527}
   - {fileID: 1960417443339734425}
-  - {fileID: 3462541255618170525}
-  - {fileID: 4681734047287597039}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 9109827317008226203}
   gameobjects:
   - {fileID: 8651244830481758716}
@@ -11590,6 +11869,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 378410438545425343}
+    - targetCorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 3480539431199939421}
     - targetCorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
@@ -11607,12 +11889,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1960417443339734425}
-    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3462541255618170525}
-    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4681734047287597039}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9109827317008226203}
@@ -11727,121 +12003,6 @@ MonoBehaviour:
   OnInteractionOtherSuccess:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3462541255618170525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414602790205852530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7908dde87c59c40b75b0440fec6f77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostEntity
-  ShowTopMostFoldoutHeaderGroup: 1
-  maxEnergy: 100
-  currentEnergy: 50
-  baseRegenRate: 5
-  regenScalingPerMinute: 3
-  possessInitialCost: 20
-  exitCastTime: 1.5
-  stunCooldownTime: 8
---- !u!114 &4681734047287597039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414602790205852530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e064b1c067f128429b9623dc5d889e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostController
-  ghostCamera: {fileID: 8651244830481758718}
-  possessionCameraTemplate: {fileID: 0}
-  actionWheel: {fileID: 9109827317008226203}
-  interactionDetector: {fileID: 0}
-  possessionVolume: {fileID: 4180524577983254456}
-  volumeFadeTime: 0.4
-  lookSensitivity: 0.1
-  maxYaw: 70
-  pitchLimits: {x: -22.8, y: 60.6}
-  possessionCameraPriority: 20
-  followMusician: 0
-  wheelCursorRadius: 80
-  wheelDeadZone: 10
-  autoDisableOtherScripts: 1
-  keepEnabledWhilePossessing: []
-  disableWhilePossessing: []
-  hideWhilePossessing:
-  - {fileID: 4065956691414866092}
-  possessExitAction:
-    m_Name: PossessExit
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 2171b1b0-38d4-4655-abff-5c1f3e1f11fe
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ee29794b-144b-4845-bee4-352176640c8e
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: PossessExit
-      m_Flags: 0
-    m_Flags: 0
-    m_Priority: 0
-  wheelAction:
-    m_Name: ActionWheel
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: cd54f994-221f-41af-9f37-d79f6ccf1c75
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: cd74a055-ccde-432e-b44c-a6fb8ba282e8
-      m_Path: <Keyboard>/tab
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: ActionWheel
-      m_Flags: 0
-    m_Flags: 0
-    m_Priority: 0
-  lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: Vector2
-    m_Id: 07352963-d1e6-4bc0-be0b-7fe3c668d44b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c7cb20a1-6960-4930-a9ab-f3eb8dc8c74d
-      m_Path: <Mouse>/delta
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 0
-    m_Flags: 0
-    m_Priority: 0
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 721114a1-78a7-4232-8984-0a73cecfa1f8
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-    m_Priority: 0
-  showDebugGUI: 1
 --- !u!114 &9109827317008226203
 MonoBehaviour:
   m_ObjectHideFlags: 0
