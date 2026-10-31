@@ -828,7 +828,7 @@ MonoBehaviour:
   tutorialManager: {fileID: 0}
   orchestraAudioManager: {fileID: 1109185333}
   musicClock: {fileID: 1109185332}
-  rhythmTracker: {fileID: 0}
+  rhythmTracker: {fileID: 519149538}
 --- !u!1 &296125816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1092,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4120760520946266188, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
   m_PrefabInstance: {fileID: 519149535}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &519149538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5347323284672348791, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+  m_PrefabInstance: {fileID: 519149535}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636d33ccb05915942957cd69d442631d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmTracker
 --- !u!1 &540426618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,7 +3149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   orchestraAudioManager: {fileID: 1109185333}
   musicClock: {fileID: 1109185332}
-  rhythmTracker: {fileID: 0}
+  rhythmTracker: {fileID: 519149538}
   audienceManager: {fileID: 203055781}
   musicScoreManager: {fileID: 1393824466}
   tiempoEsperaInicial: 5
