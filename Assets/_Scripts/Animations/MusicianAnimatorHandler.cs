@@ -23,7 +23,7 @@ public class MusicianAnimatorHandler : MonoBehaviour
     [SerializeField]
     public float movementThresHold = 0.1f;
     private bool IsMoving = false;
-    private bool IsGrabbing = false;
+    public bool IsGrabbing = false;
     private bool backWards = false;
     private Vector3 oldPos;
     private Vector3 newPos;
@@ -39,6 +39,10 @@ public class MusicianAnimatorHandler : MonoBehaviour
         if (walker == null) return;
         Stand();
         oldPos = movementTransform.position;
+        if (IsGrabbing)
+        {
+            onGrab(null);
+        }
 
     }
 
@@ -62,6 +66,11 @@ public class MusicianAnimatorHandler : MonoBehaviour
     public void onGrab(Grabbable grabbobject)
     {
         IsGrabbing = true;
+        if (grabbobject == null)
+        {
+            handMovement.PlayHandGrabAnimation(MusicianHandMovement.HandGrabAnimations.GrabBox);
+            return;
+        }
         switch (grabbobject.name)
         {
             case "Box":

@@ -40,7 +40,7 @@ public class Grabbable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         linSamples = new Vector3[velocitySamples];
         angSamples = new Vector3[velocitySamples];
-        
+
     }
     List<Collider> combinedColliders = new List<Collider>();
     public void Grab(Transform pivot)
@@ -110,8 +110,8 @@ public class Grabbable : MonoBehaviour
 
         if (rb)
         {
-            // Primero quitar kinematic: a un rb kinemático no se le puede asignar velocidad
             rb.isKinematic = usedKinematic;
+            rb.isKinematic = false;
             rb.useGravity = usedGravity;
 
             if (!rb.isKinematic)
