@@ -12,6 +12,9 @@ public class Musician : NetworkBehaviour
     public Transform cameraFirstPersonPoint;
     public Transform sheetMusicTransform;
     public AudioSource musicianAudio;
+    [Tooltip("AudioSource solo para los efectos de sabotaje (eructo, móvil...). Así se pueden parar sin cortar la música. " +
+             "Si se deja vacío se crea uno solo, copiando el mixer y la configuración 3D de Musician Audio.")]
+    public AudioSource sfxAudio;
     public List<SabotageAction> availableActions = new List<SabotageAction>();
 
     [ReadOnly]
@@ -35,6 +38,7 @@ public class Musician : NetworkBehaviour
     {
         Movement = GetComponent<MusicianMovement>();
         if (quality == null) quality = GetComponent<MusicianQuality>();
+        if (sfxAudio == null) sfxAudio = CreateSfxSource();
     }
 
     public SabotageAction GetAction(int index)
@@ -45,9 +49,39 @@ public class Musician : NetworkBehaviour
 
     public void SetPlayingState(PlayingState newState) => currentState = newState;
 
-    public void PlaySound(AudioClip clip)
+    // Los efectos de sabotaje suenan por su propio AudioSource (no por el del instrumento) para poder pararlos.
+    // Con loop = true el sonido se repite hasta que se llame a StopSound().
+    // Si suena otro efecto mientras tanto, el nuevo sustituye al anterior.
+    public void PlaySound(AudioClip clip, bool loop = false)
     {
-        if (musicianAudio && clip) musicianAudio.PlayOneShot(clip);
+        if (sfxAudio == null || clip == null) return;
+        sfxAudio.clip = clip;
+        sfxAudio.loop = loop;
+        sfxAudio.Play();
+    }
+
+    public void StopSound()
+    {
+        if (sfxAudio != null) sfxAudio.Stop();
+    }
+
+    private AudioSource CreateSfxSource()
+    {
+        // Se crea junto al AudioSource del instrumento para que el sonido salga de la misma posición
+        GameObject host = musicianAudio != null ? musicianAudio.gameObject : gameObject;
+        AudioSource source = host.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.loop = false;
+
+        if (musicianAudio != null)
+        {
+            source.outputAudioMixerGroup = musicianAudio.outputAudioMixerGroup;
+            source.spatialBlend = musicianAudio.spatialBlend;
+            source.rolloffMode = musicianAudio.rolloffMode;
+            source.minDistance = musicianAudio.minDistance;
+            source.maxDistance = musicianAudio.maxDistance;
+        }
+        return source;
     }
 
     public void SwapToFakeInstrument(GameObject fakePrefab) { /* Lógica visual */ }

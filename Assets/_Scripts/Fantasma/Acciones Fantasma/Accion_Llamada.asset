@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767d64c42838e5b4e8dfee24ae24c984, type: 3}
   m_Name: Accion_Llamada
   m_EditorClassIdentifier: Assembly-CSharp::ActionPhoneRing
-  actionName: Llamada
-  icon: {fileID: 4954367995422826791, guid: 21e4e6f25d38f2a44ad04f4e66f1c01a, type: 3}
+  actionName: Accion_Llamada
+  icon: {fileID: 898791711, guid: de689c461b21029448b5db3c3fe9ce7e, type: 3}
   energyCost: 15
-  isContinuous: 0
+  isContinuous: 1
   playerOnly: 0
+  utility: 100
   audioLlamada: {fileID: 8300000, guid: 8727860823ad17e4a94eac4719e80177, type: 3}
