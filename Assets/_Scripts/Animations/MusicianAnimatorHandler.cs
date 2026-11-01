@@ -116,7 +116,8 @@ public class MusicianAnimatorHandler : MonoBehaviour
         while (true)
         {
             ApplyExpresion();
-            yield return new WaitForSeconds(blinkTimeInterval);
+            float interval=UnityEngine.Random.Range(blinkTimeInterval-1,blinkTimeInterval+1);
+            yield return new WaitForSeconds(interval);
             Blink();
             yield return new WaitForSeconds(0.2f);
         }
