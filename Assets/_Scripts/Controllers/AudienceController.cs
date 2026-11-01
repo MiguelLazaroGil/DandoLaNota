@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ public class AudienceController : MonoBehaviour
 
     [Header("Puntuación (0 a 100)")]
     [Range(0f, 100f)]
-    [SerializeField] private float score = 100f;
+    [SerializeField] private float score = 100f; // Por defecto a 100 para que empiecen todos en su sitio
 
     [Header("Parámetros de Movimiento")]
     [SerializeField] private float moveSpeed = 3f;
@@ -34,6 +35,7 @@ public class AudienceController : MonoBehaviour
     [Tooltip("Distancia mínima para considerar que ha llegado a la salida o al asiento.")]
     [SerializeField] private float reachThreshold = 0.05f;
 
+    [SerializeField] private AudienceManager audienceManager;
     // Clase interna para gestionar los datos de cada miembro y sus saltos
     private class AudienceMember
     {
@@ -42,12 +44,14 @@ public class AudienceController : MonoBehaviour
         public SpriteRenderer spriteRenderer;
         public bool hasLeft = false;
 
+        // Variables para controlar el movimiento suave con saltitos
         public Vector3 moveStartPos;
         public Vector3 moveTargetPos;
         public float journeyLength;
         public float startTime;
         bool wasMovingToExit = false;
 
+        // Propiedad pública interna para el setter
         public bool WasMovingToExit
         {
             get => wasMovingToExit;
@@ -68,7 +72,7 @@ public class AudienceController : MonoBehaviour
     }
 
     /// <summary>
-    /// Configura los sprites, mezcla la lista y posiciona directamente a los que deban estar fuera según la puntuación inicial.
+    /// Configura los sprites en los transforms existentes según los pesos, guarda posiciones y mezcla la lista aleatoriamente.
     /// </summary>
     private void InitializeAudience()
     {
@@ -117,39 +121,19 @@ public class AudienceController : MonoBehaviour
         for (int i = 0; i < audienceMembers.Count; i++)
         {
             AudienceMember temp = audienceMembers[i];
-            int randomIndex = Random.Range(i, audienceMembers.Count);
+            int randomIndex = UnityEngine.Random.Range(i, audienceMembers.Count);
             audienceMembers[i] = audienceMembers[randomIndex];
             audienceMembers[randomIndex] = temp;
         }
-
-        // --- POSICIONAMIENTO INICIAL SEGÚN LA PUNTUACIÓN DE START ---
-        float normalizedScore = Mathf.Clamp01(score / 100f);
-        int totalCount = audienceMembers.Count;
-        int targetLeavingCount = Mathf.RoundToInt(totalCount * (1f - normalizedScore));
-
-        for (int i = 0; i < totalCount; i++)
+        if (audienceManager == null)
         {
-            AudienceMember member = audienceMembers[i];
-            bool shouldLeave = i < targetLeavingCount;
-
-            if (shouldLeave && exit != null)
-            {
-                // Aparecen directamente en la salida desde el primer fotograma
-                member.transform.position = exit.position;
-                member.hasLeft = true;
-                member.moveStartPos = exit.position;
-                member.moveTargetPos = exit.position;
-                member.WasMovingToExit = true;
-            }
-            else
-            {
-                member.transform.position = member.initialPosition;
-                member.hasLeft = false;
-                member.moveStartPos = member.initialPosition;
-                member.moveTargetPos = member.initialPosition;
-                member.WasMovingToExit = false;
-            }
+            audienceManager = FindAnyObjectByType<AudienceManager>();
         }
+        if (audienceManager != null)
+        {
+            SetScore(audienceManager.currentAudience);
+        }
+
     }
 
     /// <summary>
@@ -165,7 +149,7 @@ public class AudienceController : MonoBehaviour
 
         if (totalWeight <= 0f) return audienceTypes[0].sprite;
 
-        float randomValue = Random.Range(0f, totalWeight);
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
         float currentSum = 0f;
 
         foreach (var audience in audienceTypes)
@@ -197,7 +181,7 @@ public class AudienceController : MonoBehaviour
             bool shouldLeave = i < targetLeavingCount;
             Vector3 targetPosition = shouldLeave ? exit.position : member.initialPosition;
 
-            // Si cambia de objetivo en tiempo de ejecución, inicia el movimiento con saltitos
+            // Si cambia de objetivo, reiniciamos el trayecto
             if (shouldLeave != member.WasMovingToExit || member.moveTargetPos != targetPosition)
             {
                 member.moveStartPos = member.transform.position;
@@ -212,8 +196,10 @@ public class AudienceController : MonoBehaviour
                 float distanceCovered = (Time.time - member.startTime) * moveSpeed;
                 float fractionOfJourney = Mathf.Clamp01(distanceCovered / member.journeyLength);
 
+                // Posición lineal base entre origen y destino
                 Vector3 currentPos = Vector3.Lerp(member.moveStartPos, member.moveTargetPos, fractionOfJourney);
 
+                // Añadimos múltiples saltitos usando el valor absoluto de la función Seno basado en la distancia recorrida
                 float currentHop = Mathf.Abs(Mathf.Sin(distanceCovered * hopFrequency)) * hopHeight;
                 currentPos.y += currentHop;
 
@@ -224,6 +210,7 @@ public class AudienceController : MonoBehaviour
                 member.transform.position = targetPosition;
             }
 
+            // Actualizar estado de llegada
             if (shouldLeave)
             {
                 if (Vector3.Distance(member.transform.position, exit.position) <= reachThreshold)
@@ -238,6 +225,10 @@ public class AudienceController : MonoBehaviour
                     member.hasLeft = false;
                 }
             }
+        }
+        if (audienceManager != null)
+        {
+            SetScore(audienceManager.currentAudience);
         }
     }
 
