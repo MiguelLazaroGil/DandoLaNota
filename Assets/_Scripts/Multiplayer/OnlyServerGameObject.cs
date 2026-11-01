@@ -10,12 +10,20 @@ public class OnlyServerGameObject : NetworkBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        else
+        {
+            this.gameObject.SetActive(true);
+        }
     }
     private void OnEnable()
     {
         if (!IsServer && !IsHost)
         {
             this.gameObject.SetActive(false);
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
         }
     }
 

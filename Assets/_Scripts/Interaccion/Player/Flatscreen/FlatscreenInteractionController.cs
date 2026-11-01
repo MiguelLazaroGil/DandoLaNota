@@ -53,7 +53,7 @@ public class FlatscreenInteractionController : MonoBehaviour
         }
         else
         {
-            PauseHandler.Pause();
+          //  PauseHandler.Pause();
         }
     }
 

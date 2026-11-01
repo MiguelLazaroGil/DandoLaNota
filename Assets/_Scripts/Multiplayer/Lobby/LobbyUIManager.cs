@@ -57,11 +57,15 @@ public class LobbyUIManager : MonoBehaviour
     {
         string defaultName = "Jugador_" + Random.Range(100, 999);
         string savedName = PlayerPrefs.GetString(PlayerNameKey, defaultName);
-        nameInputField.text = savedName;
+        if(nameInputField != null)
+        {
 
-        nameInputField.onValueChanged.AddListener(OnPlayerNameInputChanged);
+            nameInputField.text = savedName;
+        }
 
-        ReturnToMainPanel();
+        nameInputField?.onValueChanged.AddListener(OnPlayerNameInputChanged);
+
+        //ReturnToMainPanel();
 
         if (LobbyPlayerState.Instance != null)
         {
@@ -115,6 +119,10 @@ public class LobbyUIManager : MonoBehaviour
 
     public void ReturnToMainPanel()
     {
+        if(roomPanel == null)
+        {
+            return;
+        }
         roomPanel.SetActive(false);
         ShowPublicTab();
     }
