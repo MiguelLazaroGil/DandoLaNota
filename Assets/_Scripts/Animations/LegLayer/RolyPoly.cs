@@ -39,6 +39,19 @@ public class RolyPoly : MonoBehaviour
         _uprightJointTargetRot = Quaternion.LookRotation(lookDirection) * offsetRotation;
     }
 
+    // Lo contrario de UpdateTargetRot: hacia dónde mira el cuerpo AHORA MISMO, leído de su rotación física (plano XZ).
+    // El cuerpo apunta a LookRotation(dirección) * offsetRotation, así que su forward NO es hacia donde mira:
+    // se le quita el offset para recuperar la dirección. Devuelve Vector3.zero si no se puede calcular.
+    public Vector3 GetLookDirection()
+    {
+        Quaternion offset = offsetRotation;
+        if (offset.x == 0f && offset.y == 0f && offset.z == 0f && offset.w == 0f) offset = Quaternion.identity;
+
+        Vector3 forward = (transform.rotation * Quaternion.Inverse(offset)) * Vector3.forward;
+        forward.y = 0f;
+        return forward.sqrMagnitude > 0.0001f ? forward.normalized : Vector3.zero;
+    }
+
     public void UpdateTargetRotFromTransform(Transform copyTransform)
     {
         UpdateTargetRot(copyTransform.forward);

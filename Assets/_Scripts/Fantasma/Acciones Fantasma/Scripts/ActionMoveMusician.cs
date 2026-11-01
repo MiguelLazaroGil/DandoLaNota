@@ -110,7 +110,7 @@ public class ActionMoveMusician : SabotageAction
         roly.enabled = true;
         rb.isKinematic = false;
 
-        movement.SetExternalDrive(true);   // MusicianMovement deja de mover el transform y solo recoge el input
+        movement.SetExternalDrive(true, rb.transform);   // MusicianMovement deja de mover el transform y solo recoge el input; la cámara sigue a este cuerpo
         movement.SetControlled(true);
 
         Report(target, roly, rb, state);
@@ -122,10 +122,15 @@ public class ActionMoveMusician : SabotageAction
     {
         if (!states.TryGetValue(target, out DriveState state))
         {
+            // Hacia dónde mira el cuerpo en su asiento, leído de sus físicas
+            float seatYaw;
+            if (target.Movement == null || !target.Movement.TryGetBodyLookYaw(out seatYaw))
+                seatYaw = FlatYaw(target.CameraPoint, target.transform);
+
             state = new DriveState
             {
                 seatPosition = rb.position,
-                seatYaw = FlatYaw(target.CameraPoint, target.transform),
+                seatYaw = seatYaw,
                 rolyWasEnabled = roly.enabled,
                 wasKinematic = rb.isKinematic
             };
@@ -140,19 +145,23 @@ public class ActionMoveMusician : SabotageAction
     {
         float speed = movement.MoveSpeed;
 
-        // Hacia dónde QUIERE mirar (grados, plano horizontal). Empieza donde ya miraba su punto de cámara,
-        // y el ratón lo va girando. El cuerpo lo persigue gracias al torque del RolyPoly.
-        float facingYaw = FlatYaw(target.CameraPoint, target.transform);
+        // Solo se usa si no se puede leer hacia dónde mira el cuerpo (no debería pasar con un RolyPoly con Rigidbody)
+        float fallbackYaw = FlatYaw(target.CameraPoint, target.transform);
 
         // 1) El jugador lo controla
         while (movement.IsControlled)
         {
-            facingYaw += movement.TakeYaw();
+            // Hacia dónde mira el cuerpo AHORA, leído de sus físicas: es lo que ve la cámara y la referencia de WASD
+            float bodyYaw = movement.TryGetBodyLookYaw(out float lookedYaw) ? lookedYaw : fallbackYaw;
+
+            // Hacia dónde QUIERE mirar el jugador (lo mueve el ratón y lo publica PossessionCamera). El cuerpo lo
+            // persigue gracias al torque del RolyPoly. Si nadie lo publica, se queda mirando hacia donde ya miraba.
+            float targetYaw = movement.LookYaw ?? bodyYaw;
 
             Vector2 input = movement.MoveInput;
-            Vector3 direction = Quaternion.Euler(0f, facingYaw, 0f) * new Vector3(input.x, 0f, input.y);
+            Vector3 direction = Quaternion.Euler(0f, bodyYaw, 0f) * new Vector3(input.x, 0f, input.y);
 
-            roly.UpdateTargetRot(YawToDirection(facingYaw));
+            roly.UpdateTargetRot(YawToDirection(targetYaw));
             DrivePlanarVelocity(rb, direction * speed);
 
             yield return new WaitForFixedUpdate();
@@ -285,9 +294,8 @@ public class ActionMoveMusician : SabotageAction
                   $"Camera First Person Point = '{look.name}'.", target);
 
         if (!look.IsChildOf(rb.transform))
-            Debug.LogWarning($"[{actionName}] {target.name}: el Camera First Person Point '{look.name}' NO cuelga del cuerpo " +
-                             $"físico '{rb.name}'. El cuerpo se moverá pero la cámara se quedará quieta. " +
-                             "Hazlo hijo de ese objeto (o de uno de sus huesos).", target);
+            Debug.Log($"[{actionName}] {target.name}: el Camera First Person Point '{look.name}' no cuelga del cuerpo " +
+                      $"físico '{rb.name}'. No pasa nada: la cámara de posesión sigue al cuerpo físico igualmente.", target);
 
         if ((rb.constraints & (RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ)) != 0)
             Debug.LogWarning($"[{actionName}] {target.name}: el Rigidbody '{rb.name}' tiene la posición X/Z congelada " +

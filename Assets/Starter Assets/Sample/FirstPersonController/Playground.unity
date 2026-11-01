@@ -1885,6 +1885,14 @@ PrefabInstance:
       propertyPath: quality
       value: 
       objectReference: {fileID: 1445737437}
+    - target: {fileID: 2720527062132388004, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
+      propertyPath: 'availableActions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
+    - target: {fileID: 2720527062132388004, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
+      propertyPath: 'availableActions.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
     - target: {fileID: 4637672224811067649, guid: 61ff0fc046504a543a047e1b447dded9, type: 3}
       propertyPath: m_Name
       value: MusicoPRueba
