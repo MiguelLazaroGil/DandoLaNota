@@ -1,4 +1,5 @@
 ﻿using Unity.Cinemachine;      // Cinemachine 3 (CinemachineCamera)
+using Unity.Netcode;
 using UnityEngine;
 
 /// <summary>
@@ -88,6 +89,10 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
     // Cambiamos a la cámara del músico: la colocamos en sus ojos y apagamos la del fantasma
     public void BeginPossession(Musician musician)
     {
+        // Si estamos en red y este fantasma NO es del jugador local, ignoramos la cámara
+        var netObj = GetComponent<NetworkObject>();
+        if (netObj != null && netObj.IsSpawned && !netObj.IsOwner) return;
+
         if (musician.cameraFirstPersonPoint == null)
             Debug.LogWarning($"{musician.name} no tiene Camera First Person Point asignado: la cámara se coloca en su pivote.", musician);
 
@@ -131,6 +136,9 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
 
     private void LateUpdate()
     {
+        var netObj = GetComponent<NetworkObject>();
+        if (netObj != null && netObj.IsSpawned && !netObj.IsOwner) return;
+
         if (!possessing || eyePoint == null) return;
 
         Vector2 delta = lookDelta;
@@ -357,9 +365,6 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
         possessionCamTransform = possessionRoot.transform;
         return true;
     }
-
-    // Instancia el clon DENTRO de un contenedor inactivo, para que no se ejecuten el Awake/OnEnable de los
-    // scripts clonados mientras lo preparamos.
     private static GameObject InstantiateDetached(GameObject source)
     {
         GameObject holder = new GameObject("~PossessionCameraHolder");
@@ -368,6 +373,20 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
         GameObject go = Instantiate(source, holder.transform);
         go.name = "PossessionCamera";
         go.tag = "Untagged"; // que no compita con Camera.main
+
+        // Novedad: Si la plantilla tenía un NetworkObject por error, lo eliminamos
+        // en el clon para que Netcode no intente registrarlo en los clientes.
+        NetworkObject netObj = go.GetComponent<NetworkObject>();
+        if (netObj != null)
+        {
+            DestroyImmediate(netObj);
+        }
+
+        foreach (var childNetObj in go.GetComponentsInChildren<NetworkObject>(true))
+        {
+            DestroyImmediate(childNetObj);
+        }
+
         return go;
     }
 
