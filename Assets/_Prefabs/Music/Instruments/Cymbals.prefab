@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3515936812017158428}
   - component: {fileID: 5243712213273460865}
+  - component: {fileID: 8709564137751912559}
   - component: {fileID: 461290217039267855}
   - component: {fileID: 5526204109197159864}
   - component: {fileID: 431836349844155679}
@@ -68,6 +69,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &8709564137751912559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967955477065125029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25a3d2db4ad693418bc0f68a77c391d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractTextComponent
+  interactText: E para coger
 --- !u!114 &461290217039267855
 MonoBehaviour:
   m_ObjectHideFlags: 0
