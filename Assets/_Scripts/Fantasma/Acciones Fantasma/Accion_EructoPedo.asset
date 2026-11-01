@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee8ebf9da1147419db87732ba5ae55, type: 3}
   m_Name: Accion_EructoPedo
   m_EditorClassIdentifier: Assembly-CSharp::ActionBurpOrFart
-  actionName: Accion_EructoPedo
+  actionName: "Uy Perd\xF3n"
   icon: {fileID: -251140932, guid: de689c461b21029448b5db3c3fe9ce7e, type: 3}
   energyCost: 15
   isContinuous: 1

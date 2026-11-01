@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Accion_InstrumentoEquivocado
   m_EditorClassIdentifier: Assembly-CSharp::ActionWrongInstrument
   actionName: Instrumento Equivocado
-  icon: {fileID: 0}
+  icon: {fileID: 3119247914601428756, guid: 7ec96ada961256041841459cdb213edd, type: 3}
   energyCost: 15
   isContinuous: 0
   playerOnly: 0
+  utility: 100
   fakeInstrumentPrefab: {fileID: 0}
