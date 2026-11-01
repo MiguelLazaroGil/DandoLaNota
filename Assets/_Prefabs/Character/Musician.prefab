@@ -4513,7 +4513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 341970491
+  GlobalObjectIdHash: 1339508328
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -4693,7 +4693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d40bbe9eee124498a9fa13c3a05b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostCorrectionTarget
-  outline: {fileID: 0}
+  outline: {fileID: 4003256611705703067}
   onCorregido:
     m_PersistentCalls:
       m_Calls: []
