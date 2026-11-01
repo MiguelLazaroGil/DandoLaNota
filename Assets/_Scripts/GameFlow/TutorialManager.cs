@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
         MoverBatuta,
         SeguirMetronomo,
         CorregirMusicos,
+        MantenerRitmoFinal,
         EsperandoSiguienteOrden,
         TutorialCompletado
     }
@@ -46,6 +47,7 @@ public class TutorialManager : MonoBehaviour
          PasoActual == PasoTutorial.MoverBatuta ||
          PasoActual == PasoTutorial.SeguirMetronomo ||
          PasoActual == PasoTutorial.CorregirMusicos ||
+         PasoActual == PasoTutorial.MantenerRitmoFinal ||
          PasoActual == PasoTutorial.TutorialCompletado);
 
 
@@ -109,6 +111,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private int indiceAccionTutorial = -1;
     [SerializeField, Min(0f)] private float retrasoSabotajeTutorial = 1f;
 
+    [Header("Practica final del tutorial")]
+    [Tooltip("Segundos para seguir dirigiendo después de corregir al primer músico.")]
+    [SerializeField, Min(0f)] private float duracionRitmoFinal = 20f;
+    [Tooltip("Lanzar un sabotaje adicional durante la práctica final.")]
+    [SerializeField] private bool repetirSabotajeFinal = true;
+    [SerializeField, Min(0f)] private float retrasoSabotajeFinal = 3f;
+
     [Header("Finalización del tutorial")]
     [SerializeField] private string nombreEscenaMenu = "MainMenu";
     [SerializeField] private RhythmTracker rhythmTracker;
@@ -147,7 +156,7 @@ public class TutorialManager : MonoBehaviour
         fCompletada = false;
         tiempoCalidadCorrecta = 0f;
 
-        // El tutorial controla cuándo ocurre el único sabotaje de aprendizaje.
+        // El tutorial controla los sabotajes sin activar las acciones automáticas.
         if (fantasmasIA != null && !iaBloqueadaPorTutorial)
         {
             estadoIAAnterior = fantasmasIA.AutomaticActionsEnabled;
@@ -551,10 +560,54 @@ public class TutorialManager : MonoBehaviour
             PasoActual != PasoTutorial.CorregirMusicos)
             return;
 
-        StartCoroutine(MostrarResultadoYPrepararSiguiente(
-            "¡Perfecto! Has corregido a los músicos.",
+        // No detener ni pausar la música: comienza una práctica final libre.
+        // Cambiamos de estado inmediatamente para ignorar correcciones duplicadas.
+        PasoActual = PasoTutorial.MantenerRitmoFinal;
+        StartCoroutine(PracticaFinal());
+    }
+
+    private IEnumerator PracticaFinal()
+    {
+        float transcurrido = 0f;
+        int ultimoSegundoMostrado = -1;
+        bool sabotajeExtraIntentado = false;
+
+        // No se comprueba el score ni la calidad: basta con agotar el tiempo.
+        // Time.deltaTime hace que la cuenta se detenga si el juego se pausa.
+        while (transcurrido < duracionRitmoFinal)
+        {
+            int segundosRestantes = Mathf.CeilToInt(duracionRitmoFinal - transcurrido);
+            if (segundosRestantes != ultimoSegundoMostrado)
+            {
+                textoInstruccion.text =
+                "¡Mantén el ritmo! Tocar bien aumenta la audiencia; " +
+                "fallar la reduce.\n" +
+                "Si llega a 0, ¡pierdes!\n" ;
+            }
+
+            if (repetirSabotajeFinal && !sabotajeExtraIntentado &&
+                transcurrido >= retrasoSabotajeFinal)
+            {
+                sabotajeExtraIntentado = true;
+                if (fantasmasIA != null)
+                {
+                    // Forzamos UN segundo sabotaje sin reactivar las acciones automáticas.
+                    // No es obligatorio corregirlo para completar el tutorial.
+                    Musician segundoObjetivo = fantasmasIA.EjecutarUnSabotaje(null, -1);
+                    if (segundoObjetivo == null)
+                        Debug.LogWarning("TutorialManager: no hay músico válido para el segundo sabotaje.");
+                }
+            }
+
+            transcurrido += Time.deltaTime;
+            yield return null;
+        }
+
+        // Reutilizamos el panel final ya existente (precedido por el mensaje de éxito).
+        yield return MostrarResultadoYPrepararSiguiente(
+            "¡Excelente! Has terminado tu práctica como director.",
             PasoTutorial.TutorialCompletado
-        ));
+        );
     }
 
     // Útil para comprobar el final sin tener implementada la mecánica.
