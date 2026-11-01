@@ -3858,7 +3858,7 @@ MonoBehaviour:
   XUVStep: 0.2656
   YUVStep: 0.3594
   dimensions: {x: 2, y: 4}
-  texturePropertyName: _BaseMap
+  texturePropertyName: _MainTex
 --- !u!114 &8741860783717436177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4513,7 +4513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 341970491
+  GlobalObjectIdHash: 1339508328
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
