@@ -23,7 +23,9 @@ namespace MLG.DelayedActionsTool.Samples
 
                 if(timeLeft < 10 && timeLeft >9.5 )
                 {
+#if UNITY_EDITOR
                     action.actionName = "Doing nothing but with a new name";
+#endif
                 }
                 Color color = Color.Lerp(Color.red, Color.green, (float)(timeLeft / 30));
                 image.color = color;

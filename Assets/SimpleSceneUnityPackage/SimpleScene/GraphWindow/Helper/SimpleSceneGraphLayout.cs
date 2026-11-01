@@ -531,5 +531,5 @@ namespace MLG.SimpleSceneTool.GraphWindow
 
         #endregion
     }
-#endif
 }
+#endif

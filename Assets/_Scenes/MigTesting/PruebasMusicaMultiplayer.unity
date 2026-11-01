@@ -738,9 +738,49 @@ PrefabInstance:
       value: 0.52444386
       objectReference: {fileID: 0}
     - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: clockEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: musicScoreManager
       value: 
       objectReference: {fileID: 99706119}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: clockEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: clockEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: clockEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: clockEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262667214106632490, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3263526074885417924, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -760,6 +800,26 @@ PrefabInstance:
     - target: {fileID: 3803687875658103085, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.52444386
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897982093456436179, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4033224769048655826, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_InScenePlaced
@@ -817,6 +877,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.025104636
       objectReference: {fileID: 0}
+    - target: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862271372717046744, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5010418640887556564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -849,6 +929,26 @@ PrefabInstance:
       propertyPath: SceneMigrationSynchronization
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447228428808242342, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5579686430968511111, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.18
@@ -876,6 +976,26 @@ PrefabInstance:
     - target: {fileID: 5579686430968511111, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.025104636
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813448085732904078, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5859481910298868701, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1017,6 +1137,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orquesta
       objectReference: {fileID: 0}
+    - target: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145587612701391478, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8257060528879584410, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.38
@@ -1069,9 +1209,49 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.00000047683716
       objectReference: {fileID: 0}
+    - target: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085649084042698564, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9147007312397045850, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.52444386
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159419259899917792, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: audioEvent.Guid.Data4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
