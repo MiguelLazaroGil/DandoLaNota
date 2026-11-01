@@ -4812,7 +4812,7 @@ MonoBehaviour:
   SpringDamper: 50
   IgnoreMask:
     serializedVersion: 2
-    m_Bits: 525316
+    m_Bits: 1573892
 --- !u!114 &657005893940500952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,6 +7168,7 @@ GameObject:
   - component: {fileID: 3724112282269922809}
   - component: {fileID: 8728987352166686991}
   - component: {fileID: 6921562140070794269}
+  - component: {fileID: 2100739005787690792}
   m_Layer: 10
   m_Name: BaseMusician
   m_TagString: Untagged
@@ -7293,6 +7294,19 @@ MonoBehaviour:
   - m_Rig: {fileID: 2437798730008751439}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &2100739005787690792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794874812319415025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2a7f9fe84252a4ebcae038bac6d053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsApplierDirector
+  firstPersonCameraController: {fileID: 3670130861491366416}
 --- !u!1 &8866525081961927969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7841,15 +7855,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1152499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.6409206
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7856798
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
