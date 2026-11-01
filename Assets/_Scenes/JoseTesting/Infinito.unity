@@ -2569,6 +2569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudienceController
       objectReference: {fileID: 0}
+    - target: {fileID: 4614804170734515140, guid: ff1b5513b8653bc499f1b5b81f16f836, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8365123483429606560, guid: ff1b5513b8653bc499f1b5b81f16f836, type: 3}
       propertyPath: audienceManager
       value: 
