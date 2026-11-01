@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &178367948 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1269990221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1 &213498599
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +248,8 @@ MonoBehaviour:
   orchestraAudioManager: {fileID: 1269990223}
   musicClock: {fileID: 1269990222}
   rhythmTracker: {fileID: 1643294323}
+  playerInput: {fileID: 0}
+  framesIgnorarMirada: 2
 --- !u!1 &325282692
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +348,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: SIGUIENTE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -424,7 +415,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &331908251
@@ -569,8 +560,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+  m_sharedMaterial: {fileID: 21975412471922176, guid: debe894442e153d479c7f9d07cce1276, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -708,9 +699,12 @@ MonoBehaviour:
   calidadMinima: 0.6
   segundosCalidadMantenida: 4
   fantasmasIA: {fileID: 936862872}
-  musicoTutorial: {fileID: 1804324910}
+  musicoTutorial: {fileID: 0}
   indiceAccionTutorial: -1
   retrasoSabotajeTutorial: 1
+  duracionRitmoFinal: 10
+  repetirSabotajeFinal: 1
+  retrasoSabotajeFinal: 3
   nombreEscenaMenu: MainMenu
   rhythmTracker: {fileID: 1643294323}
 --- !u!4 &545333164 stripped
@@ -722,22 +716,6 @@ Transform:
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6659963281358383259, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1269990221}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &908753838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1207920166650194685, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1269990221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43a17254071bc54cba8fd25996e3171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicianQuality
---- !u!4 &916689060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2217571515925833352, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
-  m_PrefabInstance: {fileID: 1643294319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &936862870
 GameObject:
@@ -806,9 +784,9 @@ MonoBehaviour:
   automaticActionsEnabled: 1
   maxSimultaneousGhosts: 3
   registeredEnemies:
-  - {fileID: 1204942625}
-  - {fileID: 1804324910}
-  - {fileID: 178367948}
+  - {fileID: 1204942634}
+  - {fileID: 1804324918}
+  - {fileID: 1595742016}
 --- !u!1 &1129805793
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,9 +862,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129805793}
   m_CullTransparentMesh: 1
---- !u!114 &1204942625 stripped
+--- !u!114 &1204942634 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2787227341544917830, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5068748915621212790, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1269990221}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1055,6 +1033,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1137186896153953989, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1433165877459497517, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 38184385
@@ -1110,6 +1092,10 @@ PrefabInstance:
     - target: {fileID: 1805544717322596385, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946736805982757241, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1946736805982757246, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1198,7 +1184,7 @@ PrefabInstance:
     - target: {fileID: 2787227341544917830, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: sheetMusicTransform
       value: 
-      objectReference: {fileID: 1641251506}
+      objectReference: {fileID: 0}
     - target: {fileID: 2787227341544917830, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: availableActions.Array.size
       value: 1
@@ -1430,7 +1416,7 @@ PrefabInstance:
     - target: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: quality
       value: 
-      objectReference: {fileID: 908753838}
+      objectReference: {fileID: 0}
     - target: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: musicianAudio
       value: 
@@ -1438,7 +1424,7 @@ PrefabInstance:
     - target: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: sheetMusicTransform
       value: 
-      objectReference: {fileID: 1820533864}
+      objectReference: {fileID: 0}
     - target: {fileID: 5063021039493757774, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: availableActions.Array.size
       value: 1
@@ -1606,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: 5949076385692720370, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: sheetMusicTransform
       value: 
-      objectReference: {fileID: 916689060}
+      objectReference: {fileID: 0}
     - target: {fileID: 5949076385692720370, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: availableActions.Array.size
       value: 1
@@ -1738,6 +1724,10 @@ PrefabInstance:
     - target: {fileID: 8008904013689681610, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008904013689681613, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8033869459386122290, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_Layer
@@ -2087,7 +2077,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "BIENVENIDO AL TUTORIAL\n\nPara comenzar,\n Prueba a moverte por el escenario\nmediante las teclas [W][A][S][D]"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2154,7 +2144,7 @@ MonoBehaviour:
   m_margin: {x: -173.34186, y: 0, z: -162.83374, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1460345204
@@ -2165,11 +2155,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460345201}
   m_CullTransparentMesh: 1
---- !u!4 &1641251506 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5773212235981854270, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
-  m_PrefabInstance: {fileID: 1643294319}
+--- !u!114 &1595742016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2790717707357487742, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_PrefabInstance: {fileID: 1269990221}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musician
 --- !u!1001 &1643294319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,6 +2186,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1229853272270930010, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 1229853272270930010, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1352239133353345159, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 777402318
@@ -2197,6 +2201,14 @@ PrefabInstance:
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 382452675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160970834709260290, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 2160970834709260290, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300071029810623329, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -2214,9 +2226,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.86444354
       objectReference: {fileID: 0}
+    - target: {fileID: 3505927575734369034, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 3505927575734369034, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3852003675272110149, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889906490845674459, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 3889906490845674459, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926918970649556215, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -2233,6 +2261,26 @@ PrefabInstance:
     - target: {fileID: 4059800659301271025, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169064651656589327, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 4169064651656589327, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218162923147723554, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 4218162923147723554, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21975412471922176, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 4218162923147723554, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4239501093469970795, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -2337,6 +2385,14 @@ PrefabInstance:
     - target: {fileID: 7031161427679855754, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2850975349
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299700626167664538, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: debe894442e153d479c7f9d07cce1276, type: 2}
+    - target: {fileID: 7299700626167664538, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7583167800760036249, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -2607,9 +2663,9 @@ Transform:
   - {fileID: 936862871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1804324910 stripped
+--- !u!114 &1804324918 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5949076385692720370, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3636293050609968578, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1269990221}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2618,11 +2674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Musician
---- !u!4 &1820533864 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9035895813078162016, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
-  m_PrefabInstance: {fileID: 1643294319}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1860138992
 GameObject:
   m_ObjectHideFlags: 0

@@ -514,6 +514,7 @@ public class TutorialManager : MonoBehaviour
 
         // La IA ejecuta el sabotaje y activa el contorno visual del musico.
         // musicoTutorial=null selecciona un unico musico aleatorio valido.
+        DiagnosticarMusicos();
         musicoSaboteadoTutorial = fantasmasIA.EjecutarUnSabotaje(
             musicoTutorial, indiceAccionTutorial);
 
@@ -582,7 +583,7 @@ public class TutorialManager : MonoBehaviour
                 textoInstruccion.text =
                 "¡Mantén el ritmo! Tocar bien aumenta la audiencia; " +
                 "fallar la reduce.\n" +
-                "Si llega a 0, ¡pierdes!\n" ;
+                "Si llega a 0, ¡pierdes!\n";
             }
 
             if (repetirSabotajeFinal && !sabotajeExtraIntentado &&
@@ -681,8 +682,8 @@ public class TutorialManager : MonoBehaviour
 
             case PasoTutorial.TutorialCompletado:
                 textoPanel.text = "¡ENHORABUENA!\n\n" +
-        "¡Has completado el tutorial!\n\n" +
-        "¡Estás listo para dirigir tu primera orquesta!\n\n" +
+        "¡Has completado el tutorial!\n" +
+        "¡Estás listo para dirigir tu primera orquesta!\n" +
         "Pulsa CONTINUAR para volver al menú.";
                 break;
 
@@ -798,5 +799,43 @@ public class TutorialManager : MonoBehaviour
 
         // Cargar menú principal.
         GameManager.Instance.ChangeScene("MainMenu");
+    }
+    [ContextMenu("DEBUG/Diagnosticar músicos")]
+    private void DiagnosticarMusicos()
+    {
+        Debug.Log("========== DIAGNÓSTICO MÚSICOS ==========");
+
+        Debug.Log(
+            $"FantasmasIA: {(fantasmasIA != null ? fantasmasIA.name : "NULL")}"
+        );
+
+        Debug.Log(
+            $"Músico tutorial: {(musicoTutorial != null ? musicoTutorial.name : "ALEATORIO")}"
+        );
+
+        Debug.Log($"Índice acción tutorial: {indiceAccionTutorial}");
+
+        Musician[] musicos = FindObjectsByType<Musician>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        Debug.Log($"Músicos encontrados: {musicos.Length}");
+
+        foreach (Musician musico in musicos)
+        {
+            GhostCorrectionTarget target =
+                musico.GetComponentInChildren<GhostCorrectionTarget>(true);
+
+            Debug.Log(
+                $"MÚSICO: {musico.name}\n" +
+                $"Activo jerarquía: {musico.gameObject.activeInHierarchy}\n" +
+                $"Componente habilitado: {musico.enabled}\n" +
+                $"GhostCorrectionTarget en hijos: {(target != null ? target.name : "NULL")}",
+                musico.gameObject
+            );
+        }
+
+        Debug.Log("========== FIN DIAGNÓSTICO ==========");
     }
 }
