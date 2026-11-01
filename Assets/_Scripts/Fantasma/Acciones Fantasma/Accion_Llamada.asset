@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767d64c42838e5b4e8dfee24ae24c984, type: 3}
   m_Name: Accion_Llamada
   m_EditorClassIdentifier: Assembly-CSharp::ActionPhoneRing
-  actionName: Accion_Llamada
+  actionName: John Pork call
   icon: {fileID: 898791711, guid: de689c461b21029448b5db3c3fe9ce7e, type: 3}
   energyCost: 15
   isContinuous: 1

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f8dd4b2c8ca7cbc41aa5d9e73eb4c892
+guid: 7ec96ada961256041841459cdb213edd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6995180988234750447
-    second: zzz_0
+      213: 3119247914601428756
+    second: pngfind.com-candado-png-4594457_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zzz_0
+      name: pngfind.com-candado-png-4594457_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 900
-        height: 1600
+        width: 604
+        height: 785
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe95c47fb00e31160800000000000000
-      internalID: 6995180988234750447
+      spriteID: 417323ca37bc94b20800000000000000
+      internalID: 3119247914601428756
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      zzz_0: 6995180988234750447
+      pngfind.com-candado-png-4594457_0: 3119247914601428756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
