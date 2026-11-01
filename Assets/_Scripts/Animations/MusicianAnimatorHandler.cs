@@ -48,8 +48,8 @@ public class MusicianAnimatorHandler : MonoBehaviour
         if (audienceManager != null)
         {
             audienceManager.onAudienceReach20.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Angry));
-            audienceManager.onAudienceReach50.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Iddle));
-            audienceManager.onAudienceReach80.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Happy));
+            audienceManager.onAudienceReach50.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Focus));
+            audienceManager.onAudienceReach80.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Iddle));
 
         }
         GhostCorrectionTarget ghostCorrectionTarget = GetComponentInParent<GhostCorrectionTarget>();
@@ -116,7 +116,8 @@ public class MusicianAnimatorHandler : MonoBehaviour
         while (true)
         {
             ApplyExpresion();
-            yield return new WaitForSeconds(blinkTimeInterval);
+            float interval=UnityEngine.Random.Range(blinkTimeInterval-1,blinkTimeInterval+1);
+            yield return new WaitForSeconds(interval);
             Blink();
             yield return new WaitForSeconds(0.2f);
         }
