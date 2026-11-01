@@ -45,6 +45,10 @@ public class MusicianAnimatorHandler : MonoBehaviour
         }
 
     }
+    public void SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions faceExpresions)
+    {
+        currentEmotion = faceExpresions;
+    }
 
     void OnDisable()
     {

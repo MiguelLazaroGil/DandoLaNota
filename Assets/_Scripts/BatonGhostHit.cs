@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BatonGhostHit : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class BatonGhostHit : MonoBehaviour
     private float cooldownGolpe = 0.4f;
 
     [SerializeField] private bool corregirDirectamente = true;
+    [SerializeField] private AudioClip sonidoGolpe;
 
     public event Action<GhostCorrectionTarget> GolpeDetectado;
 
@@ -119,13 +121,17 @@ public class BatonGhostHit : MonoBehaviour
             return;
 
         GhostCorrectionTarget objetivo =
-            BuscarContacto(origenPunta, puntaActual);
+    BuscarContacto(origenPunta, puntaActual, out AudioSource audioGolpe);
 
         if (objetivo == null)
             return;
 
         inicioGesto = manoActual;
         siguienteGolpe = Time.time + cooldownGolpe;
+
+        // Reproducir el sonido del músico golpeado.
+        if (audioGolpe != null && sonidoGolpe != null)
+            audioGolpe.PlayOneShot(sonidoGolpe);
 
         GolpeDetectado?.Invoke(objetivo);
 
@@ -134,59 +140,66 @@ public class BatonGhostHit : MonoBehaviour
     }
 
     private GhostCorrectionTarget BuscarContacto(
-    Vector3 origen, Vector3 destino)
-{
-    Vector3 movimiento = destino - origen;
-    float distancia = movimiento.magnitude;
-
-    if (distancia > 0.00001f)
+    Vector3 origen,
+    Vector3 destino,
+    out AudioSource audioGolpe)
     {
-        RaycastHit[] impactos = Physics.SphereCastAll(
-            origen,
+        audioGolpe = null;
+
+        Vector3 movimiento = destino - origen;
+        float distancia = movimiento.magnitude;
+
+        if (distancia > 0.00001f)
+        {
+            RaycastHit[] impactos = Physics.SphereCastAll(
+                origen,
+                radioGolpe,
+                movimiento.normalized,
+                distancia,
+                capasImpacto,
+                QueryTriggerInteraction.Collide
+            );
+
+            foreach (RaycastHit hit in impactos)
+            {
+                if (!hit.collider.CompareTag("MusicoGolpeable"))
+                    continue;
+
+                GhostCorrectionTarget objetivo =
+                    hit.collider.GetComponentInParent<GhostCorrectionTarget>();
+
+                if (objetivo != null && objetivo.TieneFantasma)
+                {
+                    audioGolpe = hit.collider.GetComponentInParent<AudioSource>();
+                    return objetivo;
+                }
+            }
+        }
+
+        Collider[] contactos = Physics.OverlapSphere(
+            destino,
             radioGolpe,
-            movimiento.normalized,
-            distancia,
             capasImpacto,
             QueryTriggerInteraction.Collide
         );
 
-        foreach (RaycastHit hit in impactos)
+        foreach (Collider contacto in contactos)
         {
-            // Solo detectamos el collider del cuerpo del musico.
-            if (!hit.collider.CompareTag("MusicoGolpeable"))
+            if (!contacto.CompareTag("MusicoGolpeable"))
                 continue;
 
             GhostCorrectionTarget objetivo =
-                hit.collider.GetComponentInParent<GhostCorrectionTarget>();
+                contacto.GetComponentInParent<GhostCorrectionTarget>();
 
             if (objetivo != null && objetivo.TieneFantasma)
+            {
+                audioGolpe = contacto.GetComponentInParent<AudioSource>();
                 return objetivo;
+            }
         }
+
+        return null;
     }
-
-    // Comprobamos tambien si la punta termina
-    // dentro del collider.
-    Collider[] contactos = Physics.OverlapSphere(
-        destino,
-        radioGolpe,
-        capasImpacto,
-        QueryTriggerInteraction.Collide
-    );
-
-    foreach (Collider contacto in contactos)
-    {
-        if (!contacto.CompareTag("MusicoGolpeable"))
-            continue;
-
-        GhostCorrectionTarget objetivo =
-            contacto.GetComponentInParent<GhostCorrectionTarget>();
-
-        if (objetivo != null && objetivo.TieneFantasma)
-            return objetivo;
-    }
-
-    return null;
-}
     private void OnDrawGizmosSelected()
     {
         if (puntaBatuta == null) return;

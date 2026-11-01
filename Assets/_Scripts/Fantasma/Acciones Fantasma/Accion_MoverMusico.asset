@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Accion_MoverMusico
   m_EditorClassIdentifier: Assembly-CSharp::ActionMoveMusician
   actionName: Mover
-  icon: {fileID: 0}
+  icon: {fileID: -968430744, guid: de689c461b21029448b5db3c3fe9ce7e, type: 3}
   energyCost: 15
   isContinuous: 1
   playerOnly: 1
+  utility: 100
