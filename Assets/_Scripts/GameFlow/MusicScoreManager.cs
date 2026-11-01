@@ -159,4 +159,13 @@ public class MusicScoreManager : MonoBehaviour
         // Calidad global = calidad de direccion (BPM x fase) x calidad de los musicos.
         currentQuality = Mathf.Clamp01(currentDirectorQuality * orchestraQuality);
     }
+    /// <summary>
+    /// Aplica directamente los valores sincronizados desde el servidor en los clientes remotos.
+    /// </summary>
+    public void ApplyNetworkSync(float rhythm, float quality, float directorQuality)
+    {
+        currentRhythm = rhythm;
+        currentQuality = quality;
+        currentDirectorQuality = directorQuality;
+    }
 }

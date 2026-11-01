@@ -505,6 +505,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: maxDeviation
+      value: 0.068
+      objectReference: {fileID: 0}
+    - target: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: musicScoreManager
       value: 
       objectReference: {fileID: 99706119}
@@ -930,8 +934,6 @@ GameObject:
   - component: {fileID: 695747134}
   - component: {fileID: 695747132}
   - component: {fileID: 695747133}
-  - component: {fileID: 695747135}
-  - component: {fileID: 695747136}
   m_Layer: 0
   m_Name: NetworkOrchestraSync
   m_TagString: Untagged
@@ -995,90 +997,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &695747135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695747131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad7d64860129f44c907b06626624e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UtilsInGameAssembly::EventPlayer
-  events:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 695747133}
-        m_TargetAssemblyTypeName: NetworkOrchestraSync, Assembly-CSharp
-        m_MethodName: StartOrchestraClientRpc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playOnStart: 0
-  playOnEnable: 0
-  delay: 0
-  verbose: 1
---- !u!114 &695747136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695747131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae465bffabe96249a183cdbeda374d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TestingAssembly::GeneralTesting
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  on0Pressed:
-    m_PersistentCalls:
-      m_Calls: []
-  on1Pressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 695747135}
-        m_TargetAssemblyTypeName: EventPlayer, UtilsInGameAssembly
-        m_MethodName: PlayEvents
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  on2Pressed:
-    m_PersistentCalls:
-      m_Calls: []
-  on3Pressed:
-    m_PersistentCalls:
-      m_Calls: []
-  on4Pressed:
-    m_PersistentCalls:
-      m_Calls: []
-  on5Pressed:
-    m_PersistentCalls:
-      m_Calls: []
-  on6Pressed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &740901189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6746668961538724888, guid: 722d70aa308a14b00bf80d6727e8a8a6, type: 3}
   m_PrefabInstance: {fileID: 2415207395043712807}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &849079598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 849079601}
+  - component: {fileID: 849079599}
+  - component: {fileID: 849079600}
+  m_Layer: 0
+  m_Name: NetworkMusicScoreBridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &849079599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849079598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 1957689430
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &849079600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849079598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb887a669cfd1b4b9305ea8435cae6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkMusicScoreBridge
+  ShowTopMostFoldoutHeaderGroup: 1
+  localScoreManager: {fileID: 99706119}
+  NetRhythm:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 100
+  NetQuality:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 1
+--- !u!4 &849079601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849079598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -946.1742, y: 0.0000035450394, z: -263.05038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864112083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2474,7 @@ SceneRoots:
   - {fileID: 2415207395043712807}
   - {fileID: 908993672}
   - {fileID: 695747134}
+  - {fileID: 849079601}
   - {fileID: 233237515}
   - {fileID: 427967424}
   - {fileID: 1462020749}

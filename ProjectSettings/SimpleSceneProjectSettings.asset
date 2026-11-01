@@ -17,6 +17,9 @@ MonoBehaviour:
   sceneGraph:
   - scene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     outgoingScenes:
+    - {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    - {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    - {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
     - {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
@@ -28,41 +31,60 @@ MonoBehaviour:
     - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     - {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
     - {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+  - scene: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+  - scene: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
   - scene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   - scene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     outgoingScenes:
-    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    - {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    - {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    - {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    - {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    - {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    - {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
     - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
   - scene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
-    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   - scene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   - scene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
-  - scene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    outgoingScenes:
-    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    incomingScenes:
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   - scene: {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
     outgoingScenes:
@@ -72,7 +94,42 @@ MonoBehaviour:
     outgoingScenes: []
     incomingScenes:
     - {fileID: 102900000, guid: 4c5609c3fa9d76a448540f11c33d9a8d, type: 3}
+  - scene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    outgoingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    incomingScenes:
+    - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
   sceneGraphEdges:
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+      gameObjectPath: 'MainMenu[3]/SeleccionNiveles[3]/Horizontal[1]/Nivel 1[0]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+      gameObjectPath: 'MainMenu[3]/SeleccionNiveles[3]/Horizontal[1]/Nivel2 [1]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+    targetScene: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
+      gameObjectPath: 'MainMenu[3]/SeleccionNiveles[3]/Horizontal[1]/ModoInifinito[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     targetScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     referenceCount: 1
@@ -123,16 +180,6 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
       referenceCount: 1
-  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    targetScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    referenceCount: 1
-    references:
-    - rootSource: {fileID: 0}
-      sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-      gameObjectPath: 'LobbyUICanvas[8]/Scripts[0]'
-      componentType: LoadSceneMultiplayer
-      propertyPath: sceneToLoad
-      referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     referenceCount: 1
@@ -154,14 +201,70 @@ MonoBehaviour:
       propertyPath: scene
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     referenceCount: 1
     references:
     - rootSource: {fileID: 0}
-      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      gameObjectPath: 'CharacterController[0]'
+      sourceAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
+      gameObjectPath: 'LobbyUICanvas[0]/Scripts[0]'
+      componentType: LoadSceneMultiplayer
+      propertyPath: sceneToLoad
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 2
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+      gameObjectPath: 'Director[0]'
       componentType: PlayerVisibilityController
       propertyPath: lobbyScene
+      referenceCount: 1
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionJugar[1]/Horizontal[1]/Multijugador[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionJugar[1]/Horizontal[1]/Tutorial[0]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/Nivel 1[0]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/Nivel2 [1]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/ModoInifinito[2]'
+      componentType: MLG.SimpleSceneTool.SimpleSceneLoader
+      propertyPath: scene
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
@@ -172,16 +275,6 @@ MonoBehaviour:
       gameObjectPath: 'PauseMenu[0]/TodoMenuPausa[0]/Home[0]/Vertical[0]/Volver al Menu[2]'
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
-      referenceCount: 1
-  - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    referenceCount: 1
-    references:
-    - rootSource: {fileID: 0}
-      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      gameObjectPath: 'CharacterController[0]'
-      componentType: PlayerVisibilityController
-      propertyPath: lobbyScene
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
@@ -203,13 +296,33 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
       referenceCount: 1
-  - sourceScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+  - sourceScene: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
     targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     referenceCount: 1
     references:
     - rootSource: {fileID: 0}
-      sourceAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-      gameObjectPath: 'CharacterController[0]'
+      sourceAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+      gameObjectPath: 'Director[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+      gameObjectPath: 'Director[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+      gameObjectPath: 'Director[0]'
       componentType: PlayerVisibilityController
       propertyPath: lobbyScene
       referenceCount: 1
@@ -223,11 +336,42 @@ MonoBehaviour:
       componentType: MLG.SimpleSceneTool.CheckpointSystem.SceneSet
       propertyPath: Scene-set entry
       referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+      gameObjectPath: 'Director[0]'
+      componentType: PlayerVisibilityController
+      propertyPath: lobbyScene
+      referenceCount: 1
   assetLinks:
   - rootScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     sourceAsset: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     targetAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
     gameObjectPath: 'MainMenu[3]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    targetAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    gameObjectPath: 'TheaterPrefab[6]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    targetAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    gameObjectPath: 'TheaterPrefab[6]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    sourceAsset: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    targetAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    gameObjectPath: 'TheaterPrefab[4]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
@@ -275,22 +419,29 @@ MonoBehaviour:
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'GameSpawnManager[11]'
+    targetAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
+    gameObjectPath: 'LobbyUICanvas[6]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+    gameObjectPath: 'GameSpawnManager[9]'
     componentType: LobbyAvatarSpawner
     propertyPath: directorPrefab
     referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    sourceAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
-    gameObjectPath: 'PauseMenu[1]'
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+    gameObjectPath: 'MainMenu[11]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     sourceAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'CharacterController[20]'
+    targetAsset: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+    gameObjectPath: 'PauseMenu[1]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
@@ -308,17 +459,24 @@ MonoBehaviour:
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'CharacterController[5]'
+  - rootScene: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
+    sourceAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+    gameObjectPath: 'TheaterPrefab[0]/Director[7]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    targetAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    gameObjectPath: 'Orquesta[10]'
+  - rootScene: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    sourceAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+    gameObjectPath: 'TheaterPrefab[0]/Director[7]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
+    sourceAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+    gameObjectPath: 'TheaterPrefab[0]/Director[7]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
@@ -338,64 +496,22 @@ MonoBehaviour:
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 11400000, guid: 1323c8ead021a3442bbd4375a830b0ad, type: 2}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
     gameObjectPath: 
     componentType: Unity.Netcode.NetworkPrefabsList
-    propertyPath: List.Array.data[3].Prefab
+    propertyPath: List.Array.data[4].Prefab
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Arpas[0]/Arpador1[0]'
+    sourceAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    targetAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    gameObjectPath: 'TheaterPrefab[9]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Trompetas[1]/Trompetista1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Clarinetes[2]/Clarinetista1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Violines[3]/Violinista1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Flautas[4]/Flautista1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Platillos[5]/Platillista1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Bombo[6]/Bombero1[0]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    sourceAsset: {fileID: 7903589529647988682, guid: 3dacb636cf7d0684eb3e8693e4802768, type: 3}
-    targetAsset: {fileID: 843643802184795946, guid: be35e740b8b36924d9377881e8fef9a3, type: 3}
-    gameObjectPath: 'Orquesta[0]/Triangulo[7]/Triangulista1[0]'
+    sourceAsset: {fileID: 2650430397032974209, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+    targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
+    gameObjectPath: 'TheaterPrefab[0]/Director[7]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
