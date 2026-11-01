@@ -405,5 +405,5 @@ namespace MLG.SimpleSceneTool.CheckpointSystem
             editorWindow.Close();
         }
     }
-#endif
 }
+#endif

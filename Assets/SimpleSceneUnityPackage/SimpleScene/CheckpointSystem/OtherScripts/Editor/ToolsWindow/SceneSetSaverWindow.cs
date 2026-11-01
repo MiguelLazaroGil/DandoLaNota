@@ -214,5 +214,5 @@ namespace MLG.SimpleSceneTool.CheckpointSystem
             Selection.activeObject = newSceneSet;
         }
     }
-#endif
 }
+#endif

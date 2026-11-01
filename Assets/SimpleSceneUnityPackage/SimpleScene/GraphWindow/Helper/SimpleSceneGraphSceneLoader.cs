@@ -37,5 +37,5 @@ namespace MLG.SimpleSceneTool.GraphWindow
             return SimpleSceneGraphSceneObjectResolver.Resolve(sceneAsset, gameObjectPath, componentType);
         }
     }
-#endif
 }
+#endif
