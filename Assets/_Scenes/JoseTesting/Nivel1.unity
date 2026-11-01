@@ -1781,6 +1781,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 1907785695288055943, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907785695288055943, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2615799440
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907785695288055943, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1946736805982757241, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: field of view
       value: 60
@@ -1913,6 +1925,18 @@ PrefabInstance:
       propertyPath: musicScoreManager
       value: 
       objectReference: {fileID: 1393824466}
+    - target: {fileID: 3263526074885417924, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263526074885417924, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 279853708
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263526074885417924, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3803687875658103085, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000035762787
@@ -2212,6 +2236,18 @@ PrefabInstance:
     - target: {fileID: 6500490689432963289, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_TranslationOffsets.Array.data[0].z
       value: 1.6050014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839396494609733177, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: IsworldPositionStaying
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839396494609733177, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: OnDropped.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839396494609733177, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: OnGrabbed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7107344354816664276, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x

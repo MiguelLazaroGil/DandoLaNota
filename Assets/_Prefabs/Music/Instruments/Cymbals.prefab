@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3515936812017158428}
+  - component: {fileID: 5243712213273460865}
   - component: {fileID: 461290217039267855}
   - component: {fileID: 5526204109197159864}
   - component: {fileID: 431836349844155679}
   - component: {fileID: 995474361043989319}
-  - component: {fileID: 5243712213273460865}
   - component: {fileID: 5549987738747699163}
   - component: {fileID: 1625438029423512988}
+  - component: {fileID: 6139130422499524202}
   m_Layer: 19
   m_Name: Cymbals
   m_TagString: Interactable
@@ -40,6 +41,33 @@ Transform:
   - {fileID: 7148636413092443317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5243712213273460865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967955477065125029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 2585278017
+  InScenePlacedSourceGlobalObjectIdHash: 2585278017
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &461290217039267855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec56b7e2f570364ebcc663ccadc1f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabbable
+  ShowTopMostFoldoutHeaderGroup: 1
   OnGrabbed:
     m_PersistentCalls:
       m_Calls:
@@ -86,7 +115,7 @@ MonoBehaviour:
   throwMultiplier: 1
   maxThrowSpeed: 20
   maxThrowAngularSpeed: 30
-  IsworldPositionStaying: 1
+  IsworldPositionStaying: 0
   grabPositionOffset: {x: 0, y: 0.152, z: -0.734}
   grabRotationOffset: {x: -7.099, y: 0, z: 0}
   myColliders:
@@ -153,33 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandPoseStorer
   leftHandTransform: {fileID: 7115102225077070573}
   righHandTransform: {fileID: 7148636413092443317}
---- !u!114 &5243712213273460865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967955477065125029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1912768961
-  InScenePlacedSourceGlobalObjectIdHash: 2585278017
-  m_InScenePlacedDisabledByDefault: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  m_InScenePlaced: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!114 &5549987738747699163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +574,29 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!1773428102 &6139130422499524202
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967955477065125029}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets: []
+  m_RotationOffsets: []
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 0
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1 &2283825960082998492
 GameObject:
   m_ObjectHideFlags: 0
