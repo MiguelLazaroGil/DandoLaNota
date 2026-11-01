@@ -25,7 +25,7 @@ public class SettingsApplierDirector : MonoBehaviour
     }
     public void ApplyMouseSensibility(float ApplyMouseSensibility)
     {
-        Mathf.Clamp01(ApplyMouseSensibility);
+   
         firstPersonCameraController.RotationSpeed = ApplyMouseSensibility;
     }
 }

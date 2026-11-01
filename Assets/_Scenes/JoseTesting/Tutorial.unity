@@ -2198,6 +2198,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 777402318
       objectReference: {fileID: 0}
+    - target: {fileID: 1535685731379811781, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 382452675
@@ -2402,6 +2406,10 @@ PrefabInstance:
       propertyPath: fantasmasIA
       value: 
       objectReference: {fileID: 936862872}
+    - target: {fileID: 7746868974262819317, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7844189165600923370, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2409,6 +2417,14 @@ PrefabInstance:
     - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1785615741
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128895286066838101, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh

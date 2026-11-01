@@ -19,12 +19,12 @@ MonoBehaviour:
       type: 11
       customTypeName: SoundSettings
       value:
-        rid: 5255470191615934789
-    - name: NewFLOAT
+        rid: 3562616723186385122
+    - name: MouseSensibility
       type: 1
       customTypeName: SoundSettings
       value:
-        rid: 3923500760137728356
+        rid: 3562616723186385123
   version:
     major: 1
     minor: 0
@@ -33,11 +33,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3923500760137728356
-      type: {class: FloatGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
-      data:
-        value: 0
-    - rid: 5255470191615934789
+    - rid: 3562616723186385122
       type: {class: StringGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
       data:
-        value: '{"mute":false,"masterVolume":0.3291652798652649,"musicVolume":0.4808710515499115,"SFXVolume":0.4145437777042389,"interfaceVolume":0.6798520088195801}'
+        value: '{"mute":false,"masterVolume":0.3291652798652649,"musicVolume":0.4808710515499115,"SFXVolume":0.4145437777042389,"interfaceVolume":1.0}'
+    - rid: 3562616723186385123
+      type: {class: FloatGVValue, ns: GVLoadSystem.Core, asm: LoadSystem}
+      data:
+        value: 0.8429971
