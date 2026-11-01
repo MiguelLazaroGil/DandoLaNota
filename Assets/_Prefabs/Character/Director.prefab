@@ -7306,6 +7306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a7f9fe84252a4ebcae038bac6d053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsApplierDirector
+  gVEntry:
+    _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
+    _fieldName: Settings
+    _entryKey: NewFLOAT
+    _path: 
   firstPersonCameraController: {fileID: 3670130861491366416}
 --- !u!1 &8866525081961927969
 GameObject:

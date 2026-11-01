@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4590888281900918643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8979993125267599900}
+  - component: {fileID: 5934547736981537854}
+  m_Layer: 0
+  m_Name: SoundSettingsApplier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8979993125267599900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590888281900918643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 482.7726, y: -0.00002, z: 1975.8665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5934547736981537854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590888281900918643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4ed6427afbc2b4ba01dfca32a48c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsApplierSound
+  masterVolume:
+    _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
+    _fieldName: Settings
+    _entryKey: SoundSettings
+    _path: masterVolume
+  musicVolume:
+    _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
+    _fieldName: Settings
+    _entryKey: SoundSettings
+    _path: musicVolume
+  sfxVolume:
+    _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
+    _fieldName: Settings
+    _entryKey: SoundSettings
+    _path: SFXVolume
+  muteToggle:
+    _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
+    _fieldName: Settings
+    _entryKey: SoundSettings
+    _path: mute
+  audioMixer: {fileID: 24100000, guid: 24c60e3fd325e084588ccf8b34ab7a77, type: 2}
