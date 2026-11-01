@@ -1,0 +1,58 @@
+{
+    "fields": [
+        {
+            "fieldName": "Settings",
+            "entries": [
+                {
+                    "name": "SoundSettings",
+                    "type": 11,
+                    "customTypeName": "SoundSettings",
+                    "value": {
+                        "rid": 1000
+                    }
+                },
+                {
+                    "name": "MouseSensibility",
+                    "type": 1,
+                    "customTypeName": "SoundSettings",
+                    "value": {
+                        "rid": 1001
+                    }
+                }
+            ]
+        }
+    ],
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "label": ""
+    },
+    "references": {
+        "version": 2,
+        "RefIds": [
+            {
+                "rid": 1000,
+                "type": {
+                    "class": "StringGVValue",
+                    "ns": "GVLoadSystem.Core",
+                    "asm": "LoadSystem"
+                },
+                "data": {
+                    "value": "{\"mute\":false,\"masterVolume\":0.3291652798652649,\"musicVolume\":0.4808710515499115,\"SFXVolume\":0.4145437777042389,\"interfaceVolume\":1.0}"
+                }
+            },
+            {
+                "rid": 1001,
+                "type": {
+                    "class": "FloatGVValue",
+                    "ns": "GVLoadSystem.Core",
+                    "asm": "LoadSystem"
+                },
+                "data": {
+                    "value": 0.5
+                }
+            }
+        ]
+    }
+}

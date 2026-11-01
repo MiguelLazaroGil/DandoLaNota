@@ -916,6 +916,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1535685731379811781, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -923,6 +927,14 @@ PrefabInstance:
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4102262516
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_InScenePlacedDisabledByDefault
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2562306697265986603, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -1024,6 +1036,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3220386224
       objectReference: {fileID: 0}
+    - target: {fileID: 5340575124791795166, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_InScenePlacedDisabledByDefault
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5347323284672348791, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: musicClockFMOD
       value: 
@@ -1036,6 +1052,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6405725487924703350, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: gVEntry._entryKey
+      value: MouseSensibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405725487924703350, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: gVEntry._fieldName
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405725487924703350, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: gVEntry._groupValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
     - target: {fileID: 6700346288572508299, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1059,6 +1087,14 @@ PrefabInstance:
     - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 219594938
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_InScenePlacedDisabledByDefault
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3094,6 +3130,10 @@ PrefabInstance:
     - target: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 336593810587809242, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 691079023472361760, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_Pivot.x

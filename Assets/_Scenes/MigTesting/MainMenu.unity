@@ -5163,8 +5163,8 @@ MonoBehaviour:
   _entry:
     _groupValues: {fileID: 11400000, guid: 06f6c837c897bc14a9216307f2fa809e, type: 2}
     _fieldName: Settings
-    _entryKey: SoundSettings
-    _path: interfaceVolume
+    _entryKey: MouseSensibility
+    _path: 
   _uiElement: 1
   _dataType: 1
   _loadOnEnable: 1

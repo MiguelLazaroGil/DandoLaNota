@@ -2255,6 +2255,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 777402318
       objectReference: {fileID: 0}
+    - target: {fileID: 1535685731379811781, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 382452675
@@ -2459,6 +2463,10 @@ PrefabInstance:
       propertyPath: fantasmasIA
       value: 
       objectReference: {fileID: 936862872}
+    - target: {fileID: 7746868974262819317, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7844189165600923370, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2466,6 +2474,14 @@ PrefabInstance:
     - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1785615741
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128895286066838101, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
@@ -2909,6 +2925,10 @@ PrefabInstance:
     - target: {fileID: 4149626288852313784, guid: ff1b5513b8653bc499f1b5b81f16f836, type: 3}
       propertyPath: m_Name
       value: AudienceController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614804170734515140, guid: ff1b5513b8653bc499f1b5b81f16f836, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.2
       objectReference: {fileID: 0}
     - target: {fileID: 8365123483429606560, guid: ff1b5513b8653bc499f1b5b81f16f836, type: 3}
       propertyPath: score
