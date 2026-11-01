@@ -4638,8 +4638,8 @@ MonoBehaviour:
   _rb: {fileID: 2165565872931236464}
   _uprightJointTargetRot: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   offsetRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
-  _uprightJointSpringStrength: 8
-  _uprightJointSpringDamper: 6
+  _uprightJointSpringStrength: 15
+  _uprightJointSpringDamper: 8
   FreezeX: 0
   FreezeY: 0
   FreezeZ: 0
@@ -4662,7 +4662,7 @@ MonoBehaviour:
   deactivateScripts:
   - {fileID: 657005893940500952}
   - {fileID: 7405636697648857773}
-  maxTiltAngle: 115
+  maxTiltAngle: 130
   disableDuration: 2
   coolDownDuration: 4
 --- !u!114 &6272495648735139119
@@ -7364,15 +7364,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1152499
+      value: -0.86999995
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.6409206
+      value: 2.6750002
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7856798
+      value: 1.3199997
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w

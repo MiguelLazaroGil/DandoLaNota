@@ -10,7 +10,7 @@ public class GhostCorrectionTarget : MonoBehaviour
     [SerializeField] private GhostOutlineVisual outline;
 
     [Header("Eventos")]
-    [SerializeField] private UnityEvent onCorregido;
+    [SerializeField] public UnityEvent onCorregido;
 
     public bool TieneFantasma { get; private set; }
 
