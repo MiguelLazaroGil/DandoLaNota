@@ -287,7 +287,7 @@ public class GhostController : MonoBehaviour
         if (bodyIsFree)
         {
             // El ratón gira el cuerpo entero (absorbe también el giro de cabeza que hubiera, sin saltos)
-            movement.Rotate(yaw + delta.x);
+           // movement.Rotate(yaw + delta.x);
             yaw = 0f;
         }
         else

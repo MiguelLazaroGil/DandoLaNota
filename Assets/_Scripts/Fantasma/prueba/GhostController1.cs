@@ -98,7 +98,7 @@ public class GhostController1 : MonoBehaviour, IGhostSystemPart
             return;
         }
 
-        possessionCamera.UpdateLook(input.Look, ghost.CurrentMusician.Movement);
+        possessionCamera.UpdateLook(input.Look);
     }
 
     private void UpdateMovement()
