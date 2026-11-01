@@ -14,7 +14,7 @@ public class SettingsApplierSound : MonoBehaviour
 
     [SerializeField]
     GVLoadSystem.Core.GVEntryReference sfxVolume;
-    GVLoadSystem.Core.GVEntryReference muteToggle;
+    [SerializeField] GVLoadSystem.Core.GVEntryReference muteToggle;
 
     [SerializeField]
     AudioMixer audioMixer;
