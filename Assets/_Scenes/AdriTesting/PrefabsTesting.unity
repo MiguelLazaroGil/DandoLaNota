@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_TranslationOffsets.Array.data[0].z
       value: 1.6049976
       objectReference: {fileID: 0}
+    - target: {fileID: 1907785695288055943, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3684467870
+      objectReference: {fileID: 0}
     - target: {fileID: 1946736805982757241, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: field of view
       value: 60
@@ -295,6 +299,10 @@ PrefabInstance:
     - target: {fileID: 2951934767312844919, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.524444
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263526074885417924, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3084216912
       objectReference: {fileID: 0}
     - target: {fileID: 3803687875658103085, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -601,6 +609,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 2262716259
       objectReference: {fileID: 0}
+    - target: {fileID: 1535685731379811781, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1827277889075008330, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3709880759
@@ -732,6 +744,14 @@ PrefabInstance:
     - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3804215365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128895286066838101, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
