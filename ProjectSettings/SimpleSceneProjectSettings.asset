@@ -62,12 +62,12 @@ MonoBehaviour:
   - scene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     outgoingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
-    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     - {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
     - {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     - {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
     - {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
+    - {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
     incomingScenes:
     - {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
     - {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
@@ -275,16 +275,6 @@ MonoBehaviour:
       propertyPath: scene
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    targetScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    referenceCount: 1
-    references:
-    - rootSource: {fileID: 0}
-      sourceAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      gameObjectPath: 'LobbyUICanvas[0]/Scripts[0]'
-      componentType: LoadSceneMultiplayer
-      propertyPath: sceneToLoad
-      referenceCount: 1
-  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     targetScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     referenceCount: 2
     references:
@@ -339,6 +329,16 @@ MonoBehaviour:
       gameObjectPath: 'MainMenu[0]/SeleccionNiveles[3]/Horizontal[1]/ModoInifinito[2]'
       componentType: MLG.SimpleSceneTool.SimpleSceneLoader
       propertyPath: scene
+      referenceCount: 1
+  - sourceScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetScene: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
+    referenceCount: 1
+    references:
+    - rootSource: {fileID: 0}
+      sourceAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
+      gameObjectPath: 'LobbyUICanvas[0]/Scripts[0]'
+      componentType: LoadSceneMultiplayer
+      propertyPath: sceneToLoad
       referenceCount: 1
   - sourceScene: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
     targetScene: {fileID: 102900000, guid: d4c5dcdbfb22ef8408a9c017fd276bb0, type: 3}
@@ -548,22 +548,22 @@ MonoBehaviour:
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    targetAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-    gameObjectPath: 'LobbyUICanvas[6]'
-    componentType: 
-    propertyPath: Prefab instance
-    referenceCount: 1
-  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     targetAsset: {fileID: 3037368576377586085, guid: e750bb6adbf4a5c4badb63de507e73f7, type: 3}
-    gameObjectPath: 'GameSpawnManager[9]'
+    gameObjectPath: 'GameSpawnManager[8]'
     componentType: LobbyAvatarSpawner
     propertyPath: directorPrefab
     referenceCount: 1
   - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
     targetAsset: {fileID: 336593810587809242, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
-    gameObjectPath: 'MainMenu[11]'
+    gameObjectPath: 'MainMenu[10]'
+    componentType: 
+    propertyPath: Prefab instance
+    referenceCount: 1
+  - rootScene: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    sourceAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
+    targetAsset: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
+    gameObjectPath: 'LobbyUICanvas[15]'
     componentType: 
     propertyPath: Prefab instance
     referenceCount: 1
