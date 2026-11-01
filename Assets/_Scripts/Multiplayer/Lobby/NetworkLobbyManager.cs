@@ -19,14 +19,20 @@ public class NetworkLobbyManager : MonoBehaviour
 
     private string _currentLobbyId;
     private Coroutine _heartbeatCoroutine;
+    private Task _servicesReadyTask;
 
-    private async void Awake()
+    private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        await InitializeServicesAsync();
+        _servicesReadyTask = InitializeServicesAsync();
     }
 
     private void Start()
@@ -47,21 +53,26 @@ public class NetworkLobbyManager : MonoBehaviour
 
     private async Task InitializeServicesAsync()
     {
-        if (UnityServices.State == ServicesInitializationState.Initialized) return;
+        if (UnityServices.State != ServicesInitializationState.Initialized)
+        {
+            InitializationOptions options = new InitializationOptions();
 
-        InitializationOptions options = new InitializationOptions();
 #if UNITY_EDITOR
-        options.SetProfile($"Profile_{Random.Range(1000, 9999)}");
+            options.SetProfile($"Profile_{Random.Range(1000, 9999)}");
 #endif
-        await UnityServices.InitializeAsync(options);
+
+            await UnityServices.InitializeAsync(options);
+        }
 
         if (!AuthenticationService.Instance.IsSignedIn)
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
+
+        Debug.Log($"UGS autenticado correctamente. PlayerID: {AuthenticationService.Instance.PlayerId}");
     }
 
-    // Convierte cualquier contraseña a un Hash SHA256 de 64 caracteres para superar la restricción de UGS
+    // Convierte cualquier contraseï¿½a a un Hash SHA256 de 64 caracteres para superar la restricciï¿½n de UGS
     public static string HashPassword(string rawPassword)
     {
         if (string.IsNullOrEmpty(rawPassword)) return null;
@@ -82,6 +93,7 @@ public class NetworkLobbyManager : MonoBehaviour
     {
         try
         {
+            await _servicesReadyTask;
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
@@ -99,7 +111,7 @@ public class NetworkLobbyManager : MonoBehaviour
 
             CreateLobbyOptions options = new CreateLobbyOptions
             {
-                IsPrivate = false, // Se mantiene descubrible para permitir unión por nombre desde la pestaña privada
+                IsPrivate = false, // Se mantiene descubrible para permitir uniï¿½n por nombre desde la pestaï¿½a privada
                 Password = hasPassword ? hashedPassword : null,
                 Data = new Dictionary<string, DataObject>
                 {
@@ -127,21 +139,32 @@ public class NetworkLobbyManager : MonoBehaviour
     {
         try
         {
+            // Esperar a que Unity Services y Authentication estÃ©n listos
+            await _servicesReadyTask;
+
+            Debug.Log($"Buscando lobbies. Autenticado: {AuthenticationService.Instance.IsSignedIn}");
+
             QueryLobbiesOptions options = new QueryLobbiesOptions
             {
                 Count = 25,
                 Filters = new List<QueryFilter>
-                {
-                    new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
-                }
+            {
+                new QueryFilter(
+                    QueryFilter.FieldOptions.AvailableSlots,
+                    "0",
+                    QueryFilter.OpOptions.GT
+                )
+            }
             };
 
-            QueryResponse response = await LobbyService.Instance.QueryLobbiesAsync(options);
+            QueryResponse response =
+                await LobbyService.Instance.QueryLobbiesAsync(options);
+
             return response.Results;
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Error al buscar lobbies: {e.Message}");
+            Debug.LogException(e);
             return new List<Lobby>();
         }
     }
@@ -150,6 +173,7 @@ public class NetworkLobbyManager : MonoBehaviour
     {
         try
         {
+            await _servicesReadyTask;
             string hashedPassword = HashPassword(password);
             JoinLobbyByIdOptions options = new JoinLobbyByIdOptions { Password = hashedPassword };
 
@@ -206,7 +230,7 @@ public class NetworkLobbyManager : MonoBehaviour
 
         _currentLobbyId = null;
 
-        // Destruir el estado del lobby para evitar que persista como zombi al volver al menú
+        // Destruir el estado del lobby para evitar que persista como zombi al volver al menï¿½
         if (LobbyPlayerState.Instance != null)
         {
             Destroy(LobbyPlayerState.Instance.gameObject);

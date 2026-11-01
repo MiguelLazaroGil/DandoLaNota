@@ -1,6 +1,7 @@
 
 using UnityEngine;
 
+
 public class RhythmTracker : MonoBehaviour
 {
     [Header("Referencias")]
@@ -22,7 +23,7 @@ public class RhythmTracker : MonoBehaviour
     private float toleranciaTiempo = 0.18f;
     [Header("Puntuacion musical")]
     [SerializeField] private MusicScoreManager musicScoreManager;
- 
+
 
     [Tooltip("Desviacion relativa respecto al BPM ideal a partir de la cual la calidad sera 0. Por ejemplo, 0.5 significa un 50%.")]
     [SerializeField, Range(0.05f, 2f)]
@@ -133,36 +134,36 @@ public class RhythmTracker : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.Instance !=null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.rhythmTracker = this;
             //buscar pocho el level manager
-            var parentObj= GameManager.Instance.transform.parent;
-            if(parentObj != null)
+            var parentObj = GameManager.Instance.transform.parent;
+            if (parentObj != null)
             {
-                LevelManager temp= parentObj.GetComponentInChildren<LevelManager>();
-                if(temp != null)
+                LevelManager temp = parentObj.GetComponentInChildren<LevelManager>();
+                if (temp != null)
                 {
-                    temp.rhythmTracker= this;
+                    temp.rhythmTracker = this;
                 }
             }
             else
             {
                 LevelManager temp = FindAnyObjectByType<LevelManager>();
-                if( temp != null)
+                if (temp != null)
                 {
-                    temp.rhythmTracker= this;
+                    temp.rhythmTracker = this;
                 }
             }
         }
-        
+
         if (musicClockFMOD == null)
         {
             var temp = OrchestraAudioManager.Instance;
-            if( temp != null)
+            if (temp != null)
             {
-                var temp2 =temp.gameObject.GetComponent<MusicClockFMOD>();
-                if( temp != null)
+                var temp2 = temp.gameObject.GetComponent<MusicClockFMOD>();
+                if (temp != null)
                 {
                     musicClockFMOD = temp2;
                 }
@@ -170,7 +171,7 @@ public class RhythmTracker : MonoBehaviour
             else
             {
                 MusicClockFMOD temp2 = FindAnyObjectByType<MusicClockFMOD>();
-                if ( temp2 != null)
+                if (temp2 != null)
                 {
                     musicClockFMOD = temp2;
                 }
@@ -785,6 +786,32 @@ public class RhythmTracker : MonoBehaviour
 
             ReiniciarGesto();
         }
+    }
+
+    public void ConfigurarReferenciasMultijugador(
+    BatutaController controlador,
+    Transform manoJugador,
+    MusicClockFMOD reloj,
+    MusicScoreManager score)
+    {
+        if (controlador == null || manoJugador == null)
+            return;
+
+        if (seguimientoActivo)
+            DetenerSeguimiento();
+
+        batutaController = controlador;
+        mano = manoJugador;
+
+        if (reloj != null)
+            musicClockFMOD = reloj;
+
+        if (score != null)
+            musicScoreManager = score;
+
+        directorAnterior = false;
+        ReiniciarGesto();
+        posicionAnterior = ObtenerPosicion();
     }
 
     private Vector2 ObtenerPosicion()

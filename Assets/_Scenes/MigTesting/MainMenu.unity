@@ -7416,6 +7416,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2910842070409934958, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.index
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910842070409934958, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 37710243c59a95044b341477b1a287f5, type: 3}
     - target: {fileID: 3077559991642686608, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -7532,6 +7540,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3427902908443097814, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.index
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427902908443097814, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 0f16862bd7339e34d80fa05b08ce075a, type: 3}
+    - target: {fileID: 5077348967595465656, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.index
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077348967595465656, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
+      propertyPath: scene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 529100a6ea01b4b46ab987dc90510bc8, type: 3}
     - target: {fileID: 5537674731747297609, guid: c8fe4619b3bf68d42b21df75edfb9912, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2

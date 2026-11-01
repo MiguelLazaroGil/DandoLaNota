@@ -3793,7 +3793,6 @@ GameObject:
   - component: {fileID: 8741860783717436177}
   - component: {fileID: 862564720821547037}
   - component: {fileID: 6293808362116021602}
-  - component: {fileID: 7047619262697875009}
   - component: {fileID: 521949473840394162}
   - component: {fileID: 7118212616847631903}
   - component: {fileID: 5445348841006083540}
@@ -3923,32 +3922,6 @@ MonoBehaviour:
   - m_Rig: {fileID: 6394779532397325542}
     m_Active: 1
   m_Effectors: []
---- !u!114 &7047619262697875009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678869955508303751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49721e4d3f166db41b66953e52f244b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Musician
-  ShowTopMostFoldoutHeaderGroup: 1
-  currentState: 0
-  quality: {fileID: 521949473840394162}
-  cameraFirstPersonPoint: {fileID: 0}
-  sheetMusicTransform: {fileID: 0}
-  musicianAudio: {fileID: 5445348841006083540}
-  availableActions:
-  - {fileID: 11400000, guid: cea650e7ed92f734bad214fdd9770d6a, type: 2}
-  - {fileID: 11400000, guid: 66825a83d8987a746aaef202f4fc3816, type: 2}
-  - {fileID: 11400000, guid: 7f3cdb658bf433d4e874f9b195267980, type: 2}
-  - {fileID: 11400000, guid: fda3c2da6c31aaa44b1b8edc9d394c20, type: 2}
-  - {fileID: 11400000, guid: f721ad059886eea409f8ea916a227d2d, type: 2}
-  - {fileID: 11400000, guid: eafc5f0643f970c42963348d17553b55, type: 2}
-  currentAction: {fileID: 0}
 --- !u!114 &521949473840394162
 MonoBehaviour:
   m_ObjectHideFlags: 0

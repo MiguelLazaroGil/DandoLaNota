@@ -299,6 +299,22 @@ public class GameManager : MonoBehaviour
         );
     }
 
+    public void ConfigurarPlayerInput(PlayerInput nuevoInput)
+    {
+        if (nuevoInput == null)
+        {
+            Debug.LogWarning("GameManager: PlayerInput no encontrado.");
+            return;
+        }
+
+        playerInput = nuevoInput;
+        lookAction = null;
+        BuscarAccionMirada();
+
+        if (JuegoPausado)
+            BloquearMirada();
+    }
+
     private IEnumerator ReactivarMiradaCoroutine()
     {
         // Esperamos frames, no segundos, para descartar

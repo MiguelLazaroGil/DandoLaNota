@@ -2259,15 +2259,15 @@ MonoBehaviour:
   mano: {fileID: 4836559908765362254}
   velocidadCaminarDirector: 1.5
   velocidadRotacionDirector: 0.2
-  multiplicadorCamaraAlDirigir: 0.08
-  sensibilidadRaton: 0.0035
-  limiteHorizontal: 0.6
-  limiteVertical: 0.6
+  multiplicadorCamaraAlDirigir: 0.001
+  sensibilidadRaton: 0.0001
+  limiteHorizontal: 0.015
+  limiteVertical: 0.015
   velocidadRetornoMano: 12
-  sensibilidadInclinacion: 0.15
-  inclinacionMaxima: 10
-  rigidezMuneca: 100
-  amortiguacionMuneca: 15
+  sensibilidadInclinacion: 2
+  inclinacionMaxima: 6
+  rigidezMuneca: 140
+  amortiguacionMuneca: 10
 --- !u!114 &1150500004254754089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7363,15 +7363,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1152499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.6409206
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7856798
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
