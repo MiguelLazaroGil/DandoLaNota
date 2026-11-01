@@ -23,6 +23,11 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
     [SerializeField] private float maxYaw = 70f;
     [Tooltip("X = límite mirando hacia arriba (negativo), Y = límite mirando hacia abajo")]
     [SerializeField] private Vector2 pitchLimits = new Vector2(-35f, 45f);
+    [Tooltip("Solo en modo 'ojos del músico' (Follow Musician desmarcado). Desplazamiento de la cámara respecto al " +
+             "Camera First Person Point del músico, en SUS ejes locales: Z = hacia delante, Y = arriba, X = derecha. " +
+             "Sácala hacia delante para no quedarte dentro de la cabeza. Se aplica cada frame, así que puedes " +
+             "ajustarlo con el juego en marcha.")]
+    [SerializeField] private Vector3 possessionCameraOffset = new Vector3(0f, 0f, 0.3f);
     [Tooltip("Solo con Cinemachine. Prioridad de la vcam clonada: debe ser MAYOR que la de la vcam del fantasma (10 en tu captura).")]
     [SerializeField] private int possessionCameraPriority = 20;
     [Tooltip("Solo con Cinemachine.\n" +
@@ -63,6 +68,7 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
         AttachPossessionCamera(musician);
 
         possessionCamTransform.localPosition = Vector3.zero;
+        ApplyEyeOffset();
         possessionCamTransform.localRotation = Quaternion.identity;
         yaw = 0f;
         pitch = 0f;
@@ -96,7 +102,16 @@ public class PossessionCamera : MonoBehaviour, IGhostSystemPart
             yaw = Mathf.Clamp(yaw + delta.x, -maxYaw, maxYaw);
         }
 
+        ApplyEyeOffset();
         possessionCamTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+    }
+
+    // En modo "ojos del músico" la cámara cuelga del Camera First Person Point y se saca un poco hacia delante
+    // para no quedarse dentro de la cabeza. Con Follow Musician (Cinemachine) manda el Follow Offset de la vcam, no esto.
+    private void ApplyEyeOffset()
+    {
+        bool vcamFollowsMusician = possessionVcam != null && followMusician;
+        if (!vcamFollowsMusician) possessionCamTransform.localPosition = possessionCameraOffset;
     }
 
     // Intercambia qué cámara se ve. También se apaga el AudioListener del fantasma para no tener dos a la vez.
