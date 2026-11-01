@@ -48,8 +48,8 @@ public class MusicianAnimatorHandler : MonoBehaviour
         if (audienceManager != null)
         {
             audienceManager.onAudienceReach20.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Angry));
-            audienceManager.onAudienceReach50.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Iddle));
-            audienceManager.onAudienceReach80.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Happy));
+            audienceManager.onAudienceReach50.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Focus));
+            audienceManager.onAudienceReach80.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Iddle));
 
         }
         GhostCorrectionTarget ghostCorrectionTarget = GetComponentInParent<GhostCorrectionTarget>();
