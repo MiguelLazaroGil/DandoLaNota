@@ -4,7 +4,7 @@ public class MusicScoreManager : MonoBehaviour
 {
     [Header("--- ESTADO GENERAL EN VIVO (LECTURA) ---")]
     [Tooltip("Ritmo actual de la obra (0 a 200). 100 es el ritmo perfecto.")]
-    [SerializeField] private float currentRhythm = 100f;
+    [SerializeField] public float currentRhythm = 100f;
 
     [Tooltip("Calidad global de la direccion y de todos los musicos (0 a 1).")]
     [SerializeField] private float currentQuality = 1.0f;

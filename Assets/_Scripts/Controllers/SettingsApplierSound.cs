@@ -1,10 +1,43 @@
+using GVLoadSystem.Core;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SettingsApplierSound : MonoBehaviour
 {
+
+
+    [SerializeField]
+    GVLoadSystem.Core.GVEntryReference masterVolume;
+
+    [SerializeField]
+    GVLoadSystem.Core.GVEntryReference musicVolume;
+
+    [SerializeField]
+    GVLoadSystem.Core.GVEntryReference sfxVolume;
+    GVLoadSystem.Core.GVEntryReference muteToggle;
+
     [SerializeField]
     AudioMixer audioMixer;
+
+
+    private void Start()
+    {
+        applySetting();
+    }
+    private void OnEnable()
+    {
+        PauseHandler.OnResume.AddListener(applySetting);
+    }
+    private void OnDisable()
+    {
+
+        PauseHandler.OnResume.RemoveListener(applySetting);
+    }
+    private void applySetting()
+    {
+        ApplySoundSettings(muteToggle.Get<bool>(), masterVolume.Get<float>(), musicVolume.Get<float>(), sfxVolume.Get<float>());
+    }
+
     public void ApplySoundSettings(bool Mute = false, float MasterVolume = 1f, float MusicVolume = 1f, float SFXVolume = 1f)
     {
         if (Mute)//if mute set to -80 all values
