@@ -3177,19 +3177,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2736972261080400953, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2736972261080400953, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2736972261080400953, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2736972261080400953, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -81.57
       objectReference: {fileID: 0}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onPauseEvents.m_PersistentCalls.m_Calls.Array.size

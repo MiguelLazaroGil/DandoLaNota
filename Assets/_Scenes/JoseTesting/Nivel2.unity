@@ -669,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ec3199124795b40b0b90c1a35b4d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudienceManager
-  scoreManager: {fileID: 1393824466}
-  orchestraManager: {fileID: 1109185333}
+  scoreManager: {fileID: 0}
+  orchestraManager: {fileID: 0}
   onAudienceReach20:
     m_PersistentCalls:
       m_Calls: []
@@ -686,8 +686,8 @@ MonoBehaviour:
   averageMusicianQuality: 1
   initialAudience: 50
   maxAudience: 100
-  rhythmWeight: 0.65
-  musicianQualityWeight: 0.35
+  rhythmWeight: 0.35
+  musicianQualityWeight: 0.65
   neutralThresholdScore: 75
   baseGainPercentage: 0.08
   baseLossPercentage: 0.25
@@ -884,28 +884,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4d1166b56ed1145bd25f49f7679e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FantasmasIA
-  initialQuietTime: 5
+  initialQuietTime: 15
   currentEnergy: 0
   maxEnergy: 100
   initialEnergyRate: 2
-  energyGrowthRate: 0.05
+  energyGrowthRate: 0.01
   overdriveTriggerPercentage: 0.95
-  overdriveDelayMultiplier: 0.3
-  overdriveConsecutiveChance: 0.6
+  overdriveDelayMultiplier: 0.8
+  overdriveConsecutiveChance: 0.16
   overdriveEndEnergyThreshold: 10
   isOverdriveActive: 0
-  initialMinDelay: 3
+  initialMinDelay: 8
   absoluteMinDelay: 0.4
-  delayDecayRate: 0.02
-  randomDelayVariance: 1
-  consecutiveActionChance: 0.15
+  delayDecayRate: 0.01
+  randomDelayVariance: 3
+  consecutiveActionChance: 0.05
   preventSameEnemyConsecutive: 1
   randomSelectionChance: 0.3
   minUtilityThreshold: 5
   categoryCooldownDuration: 10
   minCategoryUtilityMultiplier: 0.1
   automaticActionsEnabled: 1
-  maxSimultaneousGhosts: 2
+  maxSimultaneousGhosts: 1
   registeredEnemies:
   - {fileID: 1249307151}
   - {fileID: 1249307150}
@@ -1126,6 +1126,14 @@ PrefabInstance:
     - target: {fileID: 7868240220778199354, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_InScenePlacedDisabledByDefault
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035977589812684095, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8128895286066838101, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_Mesh
