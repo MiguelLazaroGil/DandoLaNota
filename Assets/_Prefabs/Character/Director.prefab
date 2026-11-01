@@ -6754,7 +6754,7 @@ MonoBehaviour:
   XUVStep: 0.2656
   YUVStep: 0.3594
   dimensions: {x: 2, y: 4}
-  texturePropertyName: _BaseMap
+  texturePropertyName: _MainTex
 --- !u!114 &3724112282269922809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7364,15 +7364,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.1152499
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.375
+      value: 6.6409206
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.7856798
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w

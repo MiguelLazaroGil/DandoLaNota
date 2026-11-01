@@ -27,10 +27,11 @@ public class MusicianAnimatorHandler : MonoBehaviour
     private bool backWards = false;
     private Vector3 oldPos;
     private Vector3 newPos;
-    void OnEnable()
+    void Start()
     {
         if (faceExpresions == null) return;
         StartCoroutine(Blinking());
+
         ApplyExpresion();
 
         if (handMovement == null) return;
@@ -42,6 +43,14 @@ public class MusicianAnimatorHandler : MonoBehaviour
         if (IsGrabbing)
         {
             onGrab(null);
+        }
+        AudienceManager audienceManager = FindAnyObjectByType<AudienceManager>();
+        if (audienceManager != null)
+        {
+            audienceManager.onAudienceReach20.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Angry));
+            audienceManager.onAudienceReach50.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Iddle));
+            audienceManager.onAudienceReach80.AddListener(() => SetCurrentEmotion(MusicianFaceExpresions.FaceExpresions.Happy));
+
         }
 
     }
