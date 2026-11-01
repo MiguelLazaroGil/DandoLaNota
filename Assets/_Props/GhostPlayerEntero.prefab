@@ -11609,7 +11609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_ClearFlags
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: field of view
