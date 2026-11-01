@@ -1291,22 +1291,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6209685982130314394, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6209685982130314394, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6209685982130314394, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6209685982130314394, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7942715459265157751, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1385,22 +1369,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942715459265157751, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957478297338921213, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957478297338921213, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957478297338921213, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957478297338921213, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9034977586762704907, guid: ab75cddafc1380f4bad5f7283653ff43, type: 3}

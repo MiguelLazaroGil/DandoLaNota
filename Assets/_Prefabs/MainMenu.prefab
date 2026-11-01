@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: 39dc4aa53a4beb2478ec58eff8ea2665, type: 3}
-    index: 5
+    index: 8
 --- !u!114 &553345568941883658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,7 +3507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: f3645095b71e84340a695e636fc0cdb8, type: 3}
-    index: 1
+    index: 4
 --- !u!114 &3730082161411304656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3672,7 +3672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: 0049084b32e5a8d409a7c0de6001a541, type: 3}
-    index: 4
+    index: 7
 --- !u!114 &8314032578720285418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    index: 2
+    index: 5
 --- !u!114 &5006796251105105274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4544,7 +4544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: 10b462413ab162e40b3d22cb04061853, type: 3}
-    index: 3
+    index: 6
 --- !u!114 &6516296426962888851
 MonoBehaviour:
   m_ObjectHideFlags: 0
