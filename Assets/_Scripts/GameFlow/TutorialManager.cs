@@ -1,10 +1,10 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -13,9 +13,12 @@ public class TutorialManager : MonoBehaviour
     public enum PasoTutorial
     {
         Movimiento,
+        CogerInstrumento,
+        SoltarInstrumento,
         SacarBatuta,
         MoverBatuta,
         SeguirMetronomo,
+        ExplicarIndicadores,
         CorregirMusicos,
         MantenerRitmoFinal,
         EsperandoSiguienteOrden,
@@ -37,6 +40,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField, Min(0.0001f)]
     private float distanciaMinimaMovimiento = 0.001f;
 
+    [Header("Tutorial: coger y soltar objetos")]
+    [SerializeField] private Grabbable instrumentoPrefab;
+    [SerializeField] private Transform puntoSpawnInstrumento;
+
+    [Tooltip("Tecla que se muestra en pantalla. Comprueba la asignación en Input Actions.")]
+    [SerializeField] private string teclaCoger = "E";
+    [Tooltip("Tecla que se muestra en pantalla. Comprueba la asignación en Input Actions.")]
+    [SerializeField] private string teclaSoltar = "Q";
+
+    private Grabbable instrumentoTutorial;
+
     public PasoTutorial PasoActual { get; private set; }
 
     // Permite controlar cuando se puede sacar la batuta.
@@ -46,6 +60,7 @@ public class TutorialManager : MonoBehaviour
         (PasoActual == PasoTutorial.SacarBatuta ||
          PasoActual == PasoTutorial.MoverBatuta ||
          PasoActual == PasoTutorial.SeguirMetronomo ||
+         PasoActual == PasoTutorial.ExplicarIndicadores ||
          PasoActual == PasoTutorial.CorregirMusicos ||
          PasoActual == PasoTutorial.MantenerRitmoFinal ||
          PasoActual == PasoTutorial.TutorialCompletado);
@@ -102,6 +117,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float calidadMinima = 0.6f;
     [SerializeField, Min(0.1f)] private float segundosCalidadMantenida = 4f;
 
+    [Header("Tutorial: indicadores de ritmo y audiencia")]
+    [Tooltip("Duración de la explicación en pantalla, sin requisitos de puntuación.")]
+    [SerializeField, Min(0f)] private float duracionExplicacionIndicadores = 10f;
+
     [Header("Tutorial: evento de fantasma")]
     [SerializeField] private FantasmasIA fantasmasIA;
     [Tooltip("Opcional. Sin asignar elige UN musico aleatorio registrado.")]
@@ -155,6 +174,14 @@ public class TutorialManager : MonoBehaviour
         espacioCompletada = false;
         fCompletada = false;
         tiempoCalidadCorrecta = 0f;
+
+        // Si se reinicia el tutorial, eliminamos cualquier instrumento anterior.
+        if (instrumentoTutorial != null)
+        {
+            DesuscribirInstrumento();
+            Destroy(instrumentoTutorial.gameObject);
+            instrumentoTutorial = null;
+        }
 
         // El tutorial controla los sabotajes sin activar las acciones automáticas.
         if (fantasmasIA != null && !iaBloqueadaPorTutorial)
@@ -470,8 +497,74 @@ public class TutorialManager : MonoBehaviour
     {
         StartCoroutine(MostrarResultadoYPrepararSiguiente(
             "¡Muy bien! Has completado el movimiento.",
+            PasoTutorial.CogerInstrumento
+        ));
+    }
+
+    // ============================================================
+    // TUTORIAL: COGER Y SOLTAR INSTRUMENTO
+    // ============================================================
+
+    private void GenerarInstrumentoTutorial()
+    {
+        if (instrumentoTutorial != null)
+            return;
+
+        if (instrumentoPrefab == null || puntoSpawnInstrumento == null)
+        {
+            Debug.LogError(
+                "TutorialManager: asigna Instrumento Prefab y Punto Spawn Instrumento."
+            );
+            return;
+        }
+
+        // El tutorial es local: se instancia el objeto de la escena sin NetworkObject.Spawn().
+        instrumentoTutorial = Instantiate(
+            instrumentoPrefab,
+            puntoSpawnInstrumento.position,
+            puntoSpawnInstrumento.rotation
+        );
+
+        if (instrumentoTutorial.OnGrabbed == null)
+            instrumentoTutorial.OnGrabbed = new UnityEvent();
+        if (instrumentoTutorial.OnDropped == null)
+            instrumentoTutorial.OnDropped = new UnityEvent();
+
+        instrumentoTutorial.OnGrabbed.AddListener(AlCogerInstrumento);
+        instrumentoTutorial.OnDropped.AddListener(AlSoltarInstrumento);
+
+        Debug.Log("TutorialManager: instrumento generado para practicar la interacción.");
+    }
+
+    private void AlCogerInstrumento()
+    {
+        if (!tutorialIniciado || transicionEnCurso ||
+            PasoActual != PasoTutorial.CogerInstrumento)
+            return;
+
+        // Pasamos a soltar sin pausar el juego ni abrir otro panel.
+        CambiarPasoTutorial(PasoTutorial.SoltarInstrumento);
+    }
+
+    private void AlSoltarInstrumento()
+    {
+        if (!tutorialIniciado || transicionEnCurso ||
+            PasoActual != PasoTutorial.SoltarInstrumento)
+            return;
+
+        StartCoroutine(MostrarResultadoYPrepararSiguiente(
+            "¡Perfecto! Ya sabes coger y soltar objetos.",
             PasoTutorial.SacarBatuta
         ));
+    }
+
+    private void DesuscribirInstrumento()
+    {
+        if (instrumentoTutorial == null)
+            return;
+
+        instrumentoTutorial.OnGrabbed?.RemoveListener(AlCogerInstrumento);
+        instrumentoTutorial.OnDropped?.RemoveListener(AlSoltarInstrumento);
     }
 
     private void CompletarSacarBatuta()
@@ -492,10 +585,24 @@ public class TutorialManager : MonoBehaviour
 
     private void CompletarSeguirMetronomo()
     {
-        StartCoroutine(MostrarResultadoYPrepararSiguiente(
-            "¡Muy bien! Has conseguido mantener el ritmo.",
+        // Entramos directamente en el paso explicativo, sin pausar ni abrir panel.
+        CambiarPasoTutorial(PasoTutorial.ExplicarIndicadores);
+    }
+
+    private IEnumerator ExplicarIndicadores()
+    {
+        // La música continúa sonando; basta con leer la explicación.
+        // WaitForSeconds respeta las pausas del juego.
+        yield return new WaitForSeconds(duracionExplicacionIndicadores);
+
+        if (!tutorialIniciado || PasoActual != PasoTutorial.ExplicarIndicadores)
+            yield break;
+
+        // Retomamos el flujo normal con el panel de instrucciones del fantasma.
+        yield return MostrarResultadoYPrepararSiguiente(
+            "¡Muy bien! Ya conoces el ritmo y la audiencia.",
             PasoTutorial.CorregirMusicos
-        ));
+        );
     }
 
     private IEnumerator PrepararEventoFantasma()
@@ -514,7 +621,6 @@ public class TutorialManager : MonoBehaviour
 
         // La IA ejecuta el sabotaje y activa el contorno visual del musico.
         // musicoTutorial=null selecciona un unico musico aleatorio valido.
-        DiagnosticarMusicos();
         musicoSaboteadoTutorial = fantasmasIA.EjecutarUnSabotaje(
             musicoTutorial, indiceAccionTutorial);
 
@@ -549,6 +655,7 @@ public class TutorialManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        DesuscribirInstrumento();
         RestaurarIA();
         if (Instance == this)
             Instance = null;
@@ -580,10 +687,11 @@ public class TutorialManager : MonoBehaviour
             int segundosRestantes = Mathf.CeilToInt(duracionRitmoFinal - transcurrido);
             if (segundosRestantes != ultimoSegundoMostrado)
             {
+                ultimoSegundoMostrado = segundosRestantes;
                 textoInstruccion.text =
                 "¡Mantén el ritmo! Tocar bien aumenta la audiencia; " +
                 "fallar la reduce.\n" +
-                "Si llega a 0, ¡pierdes!\n";
+                "Si llega a 0, ¡pierdes!\n" ;
             }
 
             if (repetirSabotajeFinal && !sabotajeExtraIntentado &&
@@ -650,6 +758,21 @@ public class TutorialManager : MonoBehaviour
                 ActualizarInstruccionMovimiento();
                 break;
 
+            case PasoTutorial.CogerInstrumento:
+                textoPanel.text = "¡Bien hecho!\n\n" +
+                    "También puedes recoger objetos.\n" +
+                    $"Acércate al instrumento y pulsa [{teclaCoger}] para cogerlo.";
+                textoInstruccion.text =
+                    $"Acércate al instrumento y pulsa [{teclaCoger}] para cogerlo.";
+                break;
+
+            case PasoTutorial.SoltarInstrumento:
+                textoPanel.text =
+                    $"Ahora suelta el instrumento pulsando [{teclaSoltar}] brevemente.";
+                textoInstruccion.text =
+                    $"Pulsa [{teclaSoltar}] brevemente para soltar el instrumento.";
+                break;
+
             case PasoTutorial.SacarBatuta:
                 textoPanel.text = "¡Bien hecho!\n\n" +
                 "Prueba a sacar la batuta con la tecla [F].";
@@ -682,8 +805,8 @@ public class TutorialManager : MonoBehaviour
 
             case PasoTutorial.TutorialCompletado:
                 textoPanel.text = "¡ENHORABUENA!\n\n" +
-        "¡Has completado el tutorial!\n" +
-        "¡Estás listo para dirigir tu primera orquesta!\n" +
+        "¡Has completado el tutorial!" +
+        "¡Estás listo para dirigir tu primera orquesta!" +
         "Pulsa CONTINUAR para volver al menú.";
                 break;
 
@@ -729,6 +852,17 @@ public class TutorialManager : MonoBehaviour
                 ActualizarInstruccionMovimiento();
                 break;
 
+            case PasoTutorial.CogerInstrumento:
+                GenerarInstrumentoTutorial();
+                textoInstruccion.text =
+                    $"Acércate al instrumento y pulsa [{teclaCoger}] para cogerlo.";
+                break;
+
+            case PasoTutorial.SoltarInstrumento:
+                textoInstruccion.text =
+                    $"¡Bien! Ahora pulsa [{teclaSoltar}] brevemente para soltarlo.";
+                break;
+
             case PasoTutorial.SacarBatuta:
                 ActualizarInstruccionSacarBatuta();
                 break;
@@ -742,6 +876,14 @@ public class TutorialManager : MonoBehaviour
             case PasoTutorial.SeguirMetronomo:
                 tiempoCalidadCorrecta = 0f;
                 ActualizarInstruccionSeguirMetronomo();
+                break;
+
+            case PasoTutorial.ExplicarIndicadores:
+                textoInstruccion.text =
+                    "Arriba: ritmo. Mantén el punto negro en el centro\n" +
+                    "para que la banda toque a tiempo.\n" +
+                    "Derecha: audiencia. Si llega a 0, ¡pierdes!";
+                StartCoroutine(ExplicarIndicadores());
                 break;
 
             case PasoTutorial.CorregirMusicos:
@@ -799,43 +941,5 @@ public class TutorialManager : MonoBehaviour
 
         // Cargar menú principal.
         GameManager.Instance.ChangeScene("MainMenu");
-    }
-    [ContextMenu("DEBUG/Diagnosticar músicos")]
-    private void DiagnosticarMusicos()
-    {
-        Debug.Log("========== DIAGNÓSTICO MÚSICOS ==========");
-
-        Debug.Log(
-            $"FantasmasIA: {(fantasmasIA != null ? fantasmasIA.name : "NULL")}"
-        );
-
-        Debug.Log(
-            $"Músico tutorial: {(musicoTutorial != null ? musicoTutorial.name : "ALEATORIO")}"
-        );
-
-        Debug.Log($"Índice acción tutorial: {indiceAccionTutorial}");
-
-        Musician[] musicos = FindObjectsByType<Musician>(
-            FindObjectsInactive.Include,
-            FindObjectsSortMode.None
-        );
-
-        Debug.Log($"Músicos encontrados: {musicos.Length}");
-
-        foreach (Musician musico in musicos)
-        {
-            GhostCorrectionTarget target =
-                musico.GetComponentInChildren<GhostCorrectionTarget>(true);
-
-            Debug.Log(
-                $"MÚSICO: {musico.name}\n" +
-                $"Activo jerarquía: {musico.gameObject.activeInHierarchy}\n" +
-                $"Componente habilitado: {musico.enabled}\n" +
-                $"GhostCorrectionTarget en hijos: {(target != null ? target.name : "NULL")}",
-                musico.gameObject
-            );
-        }
-
-        Debug.Log("========== FIN DIAGNÓSTICO ==========");
     }
 }

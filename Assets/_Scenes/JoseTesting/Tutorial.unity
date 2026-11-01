@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &210875961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210875962}
+  m_Layer: 0
+  m_Name: SpawnInstrumento
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &210875962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210875961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.97, y: 7.85, z: 17.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213498599
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +721,10 @@ MonoBehaviour:
   musicScoreManager: {fileID: 1393824466}
   tiempoEntrePasos: 2
   distanciaMinimaMovimiento: 0.001
+  instrumentoPrefab: {fileID: 3891016102809318034, guid: e9af0bcdab31d714ba2d05539bd96190, type: 3}
+  puntoSpawnInstrumento: {fileID: 210875962}
+  teclaCoger: E
+  teclaSoltar: Q
   batutaController: {fileID: 1643294326}
   manoBatuta: {fileID: 1643294324}
   imagenSecuenciaBatuta: {fileID: 351063456}
@@ -698,6 +733,7 @@ MonoBehaviour:
   precisionDireccionBatuta: 0.75
   calidadMinima: 0.6
   segundosCalidadMantenida: 4
+  duracionExplicacionIndicadores: 10
   fantasmasIA: {fileID: 936862872}
   musicoTutorial: {fileID: 0}
   indiceAccionTutorial: -1
@@ -2323,6 +2359,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4111308009223007270, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -121.107666
+      objectReference: {fileID: 0}
     - target: {fileID: 4169064651656589327, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2490,6 +2530,14 @@ PrefabInstance:
     - target: {fileID: 8191795178106979082, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1251878994
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313285601295363428, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319878894553424343, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653752366110433617, guid: 634df6b6a5b7d734a83c3d23d8184f00, type: 3}
       propertyPath: m_TranslationOffsets.Array.data[0].y
@@ -2734,6 +2782,7 @@ Transform:
   - {fileID: 530589335}
   - {fileID: 1393824467}
   - {fileID: 936862871}
+  - {fileID: 2050054302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1804324918 stripped
@@ -2874,6 +2923,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2050054301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050054302}
+  - component: {fileID: 2050054303}
+  m_Layer: 0
+  m_Name: AudienceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2050054302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050054301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1774487638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050054303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050054301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ec3199124795b40b0b90c1a35b4d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudienceManager
+  scoreManager: {fileID: 1393824466}
+  orchestraManager: {fileID: 1269990223}
+  onAudienceReach20:
+    m_PersistentCalls:
+      m_Calls: []
+  onAudienceReach50:
+    m_PersistentCalls:
+      m_Calls: []
+  onAudienceReach80:
+    m_PersistentCalls:
+      m_Calls: []
+  audienceUpdateInterval: 0.5
+  pseudoScore: 100
+  currentAudience: 50
+  averageMusicianQuality: 1
+  initialAudience: 50
+  maxAudience: 100
+  rhythmWeight: 0.5
+  musicianQualityWeight: 0.5
+  neutralThresholdScore: 85
+  baseGainPercentage: 0.05
+  baseLossPercentage: 0.08
+  minAbsoluteChangeRate: 0.5
+  naturalFatigueDecay: 0.005
+  minExtremeSpeedFactor: 0.1
 --- !u!1001 &2077508027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2946,3 +3064,4 @@ SceneRoots:
   - {fileID: 1643294319}
   - {fileID: 2077508027}
   - {fileID: 1497738277}
+  - {fileID: 210875962}
