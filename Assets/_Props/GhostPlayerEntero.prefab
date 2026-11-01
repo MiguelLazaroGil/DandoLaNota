@@ -218,6 +218,9 @@ MonoBehaviour:
   lookSensitivity: 0.1
   maxYaw: 70
   pitchLimits: {x: -35, y: 45}
+  possessionCameraOffset: {x: 0, y: 0, z: 0.3}
+  eyeRotationOffset: {x: 0, y: 0, z: 0}
+  maxTargetLead: 120
   possessionCameraPriority: 20
   followMusician: 0
 --- !u!114 &5874319572113688331
@@ -363,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1841506328
+  GlobalObjectIdHash: 1918186763
   InScenePlacedSourceGlobalObjectIdHash: 1918186763
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -398,8 +401,6 @@ MonoBehaviour:
   - {fileID: 9148942504033123527}
   - {fileID: 9148942504033123527}
   - {fileID: 1960417443339734425}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 9109827317008226203}
   gameobjects:
   - {fileID: 8651244830481758716}
