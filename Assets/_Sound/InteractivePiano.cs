@@ -136,6 +136,7 @@ public class InteractivePiano : NetworkBehaviour
     {
         if (IsNetworkActive)
         {
+            Debug.Log("Etoy n e netwrok");
             PlayNoteServerRpc(index);
         }
         else

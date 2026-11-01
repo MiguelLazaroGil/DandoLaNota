@@ -721,8 +721,8 @@ MonoBehaviour:
   musicScoreManager: {fileID: 1393824466}
   tiempoEntrePasos: 2
   distanciaMinimaMovimiento: 0.001
-  instrumentoPrefab: {fileID: 3891016102809318034, guid: e9af0bcdab31d714ba2d05539bd96190, type: 3}
-  puntoSpawnInstrumento: {fileID: 210875962}
+  instrumentoPrefab: {fileID: 0}
+  puntoSpawnInstrumento: {fileID: 0}
   teclaCoger: E
   teclaSoltar: Q
   batutaController: {fileID: 1643294326}
@@ -1128,6 +1128,10 @@ PrefabInstance:
     - target: {fileID: 1805544717322596385, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907785695288055943, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1427496657
       objectReference: {fileID: 0}
     - target: {fileID: 1946736805982757241, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
       propertyPath: field of view
