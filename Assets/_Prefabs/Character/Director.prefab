@@ -7168,6 +7168,7 @@ GameObject:
   - component: {fileID: 3724112282269922809}
   - component: {fileID: 8728987352166686991}
   - component: {fileID: 6921562140070794269}
+  - component: {fileID: 2100739005787690792}
   m_Layer: 10
   m_Name: BaseMusician
   m_TagString: Untagged
@@ -7293,6 +7294,19 @@ MonoBehaviour:
   - m_Rig: {fileID: 2437798730008751439}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &2100739005787690792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794874812319415025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2a7f9fe84252a4ebcae038bac6d053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsApplierDirector
+  firstPersonCameraController: {fileID: 3670130861491366416}
 --- !u!1 &8866525081961927969
 GameObject:
   m_ObjectHideFlags: 0
