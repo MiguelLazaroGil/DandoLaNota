@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneMultiplayer
   sceneToLoad:
     sceneAsset: {fileID: 102900000, guid: 7de730714b234ac4a8cd85f3f31807ec, type: 3}
-    index: 11
+    index: 7
 --- !u!1 &1647519231753537687
 GameObject:
   m_ObjectHideFlags: 0

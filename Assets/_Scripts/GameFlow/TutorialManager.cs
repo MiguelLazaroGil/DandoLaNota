@@ -41,7 +41,7 @@ public class TutorialManager : MonoBehaviour
     private float distanciaMinimaMovimiento = 0.001f;
 
     [Header("Tutorial: coger y soltar objetos")]
-    [SerializeField] private Grabbable instrumentoPrefab;
+    [SerializeField] private GameObject instrumentoPrefab;
     [SerializeField] private Transform puntoSpawnInstrumento;
 
     [Tooltip("Tecla que se muestra en pantalla. Comprueba la asignación en Input Actions.")]
@@ -519,11 +519,8 @@ public class TutorialManager : MonoBehaviour
         }
 
         // El tutorial es local: se instancia el objeto de la escena sin NetworkObject.Spawn().
-        instrumentoTutorial = Instantiate(
-            instrumentoPrefab,
-            puntoSpawnInstrumento.position,
-            puntoSpawnInstrumento.rotation
-        );
+        instrumentoPrefab.gameObject.SetActive(true);
+        instrumentoTutorial = instrumentoPrefab.GetComponent<Grabbable>();
 
         if (instrumentoTutorial.OnGrabbed == null)
             instrumentoTutorial.OnGrabbed = new UnityEvent();
@@ -691,7 +688,7 @@ public class TutorialManager : MonoBehaviour
                 textoInstruccion.text =
                 "¡Mantén el ritmo! Tocar bien aumenta la audiencia; " +
                 "fallar la reduce.\n" +
-                "Si llega a 0, ¡pierdes!\n" ;
+                "Si llega a 0, ¡pierdes!\n";
             }
 
             if (repetirSabotajeFinal && !sabotajeExtraIntentado &&

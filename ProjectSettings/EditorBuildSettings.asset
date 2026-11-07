@@ -18,20 +18,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/JoseTesting/Infinito.unity
     guid: 529100a6ea01b4b46ab987dc90510bc8
   - enabled: 1
-    path: Assets/_Scenes/MigTesting/Tutorial-MIg.unity
-    guid: f3645095b71e84340a695e636fc0cdb8
-  - enabled: 1
     path: Assets/_Scenes/MigTesting/LobbyMultiplayer.unity
     guid: b4687c88e3d1abb409b2d609767b70b6
-  - enabled: 1
-    path: Assets/_Scenes/MigTesting/Nivel1Mig.unity
-    guid: 10b462413ab162e40b3d22cb04061853
-  - enabled: 1
-    path: Assets/_Scenes/MigTesting/Nivel2_Mig.unity
-    guid: 0049084b32e5a8d409a7c0de6001a541
-  - enabled: 1
-    path: Assets/_Scenes/MigTesting/NivelInfinito.unity
-    guid: 39dc4aa53a4beb2478ec58eff8ea2665
   - enabled: 1
     path: Assets/SimpleSceneUnityPackage/SimpleScene/SampleScenes/TODOs.unity
     guid: 4c5609c3fa9d76a448540f11c33d9a8d

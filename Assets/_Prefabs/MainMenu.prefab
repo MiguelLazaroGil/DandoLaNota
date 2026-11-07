@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SceneUtilsAssembly::MLG.SimpleSceneTool.SimpleSceneLoader
   scene:
     sceneAsset: {fileID: 102900000, guid: b4687c88e3d1abb409b2d609767b70b6, type: 3}
-    index: 5
+    index: 4
 --- !u!114 &5006796251105105274
 MonoBehaviour:
   m_ObjectHideFlags: 0

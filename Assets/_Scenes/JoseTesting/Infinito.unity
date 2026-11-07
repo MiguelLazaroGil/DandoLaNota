@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &103258532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8091396550385849235, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
-  m_PrefabInstance: {fileID: 1575116653}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203055780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,7 +1993,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3065818828474259620, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1575116653}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103258532}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb946e2ca4340f048bd931d5b826fb7b, type: 3}
@@ -2009,7 +2004,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 252046489727939653, guid: 7bfb336fd8b82004680f367f5ea03454, type: 3}
   m_PrefabInstance: {fileID: 1575116653}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103258532}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1e33d4ad0e8ccd499735faddc4bd1ea, type: 3}
@@ -2709,7 +2704,7 @@ PrefabInstance:
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onPauseEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 103258532}
+      objectReference: {fileID: 1575116655}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onResumeEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2720,7 +2715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onPauseEvents.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: PausarOrquesta
       objectReference: {fileID: 0}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onResumeEvents.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2732,7 +2727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onPauseEvents.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: OrchestraAudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4616705179537413434, guid: 453cd14ba6cd9224abffd788fa9fd334, type: 3}
       propertyPath: onResumeEvents.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

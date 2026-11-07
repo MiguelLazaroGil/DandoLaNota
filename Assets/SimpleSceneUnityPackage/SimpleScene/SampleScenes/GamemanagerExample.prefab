@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene:
     sceneAsset: {fileID: 102900000, guid: fcf10878f3ca0e04ab9341639d655d20, type: 3}
-    index: 0
+    index: 8
